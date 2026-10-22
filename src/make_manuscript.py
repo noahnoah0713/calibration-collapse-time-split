@@ -9,8 +9,8 @@
 파일에 `\\input` 을 쓰지 말라고 적어 두었다(sn-article.tex 머리 주석).
 
 그래서 작업용은 `manuscript/main.tex`(\\input 유지), 투고용은 이 스크립트가
-펼친 `manuscript/submission.tex` 로 나눈다. **submission.tex 를 손으로
-고치지 말 것** — 고치면 다음 조립에서 덮인다.
+펼친 `manuscript/submission.tex` 로 나눈다. submission.tex 를 손으로
+고치지 말 것 — 고치면 다음 조립에서 덮인다.
 
 조립 순서는 main.tex 가 정한다. 이 스크립트는 순서를 모른다.
 
