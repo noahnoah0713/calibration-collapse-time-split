@@ -264,7 +264,7 @@
     "src/hparam_sensitivity.py": "75c2bb433050619912952733748f3c1eedf5f76d84f84cbca5fc6536331cbdfc",
     "src/label_threshold.py": "f5ee1e068af7f0d525ffdb4884bbf9ee04006ebf0afb9b2c2fed46b35a7dd27e",
     "src/make_figures.py": "5f9c859c738f31d4c32fd9d82c8d4810a871ce2c3c50b420dd9d3b96b7ea3178",
-    "src/make_manuscript.py": "09d42c8a8218604fa61c95f02825413aec4c62fa0a40c6a023ec00f915eb0742",
+    "src/make_manuscript.py": "dbc8533382fbe7e4698495f4fc203a2a064399e9e348b82c61c57722e783ce05",
     "src/make_report.py": "cb35c222a847746111fd9f160f9510d1621022a8d0d02fe0de8e8ebe33e38903",
     "src/make_tables.py": "5cb97b3130002cee2d95f49b03d7fb3426938f5e0576407da2859037bc946164",
     "src/map_approval_year.py": "287a3293c507ded56979a5580eaf617bf85d50415dae33d9730354b13115cdd3",
@@ -304,7 +304,7 @@
     "src/useful_threshold_sweep.py": "8018cd28d25591c6587a7c4b7149b1c613152812fb5571827e7119722c76183b",
     "src/verify10.py": "1e9523d7e27385f22463253bfaecd0c82b8a811da5c47d811426f70268c8ca5d",
     "src/verify11.py": "87636c27ae3d8563262cb3d7fce290f75d0a349755351957258a858c6a104522",
-    "src/verify12.py": "4e319111133ff0fad868ef88a59ae6724b11836923038055e698a837ff90c7c0",
+    "src/verify12.py": "9ff7f297591b1da90d23b624c4a9ce40fb714e52e79ca4ab1b8e3d20ad5d0f2c",
     "src/verify9.py": "df2612e985b56c049cb446ecdea85a1fd25328a4e7bd94a1628f40de4aac9f9d",
     "src/year_sensitivity.py": "1d169d0bf7e6ca053826daf6b4588764715aa8fece8dc8f644ab61256b880039"
   },
@@ -354,7 +354,7 @@
     "src/hparam_sensitivity.py": "9a6f9c07865a4271d7f1d76d789344d5b8082ad9508d838044e44e7a8aa40e19",
     "src/label_threshold.py": "1bd82269bb2f2675112d4becf2c8675a18b18a3717650dec5d139bd1ad5ded9d",
     "src/make_figures.py": "b0690b0b649c8761521085c983856e1e7c4cf65b549b34bef1c7d27c31067633",
-    "src/make_manuscript.py": "dc1043da98abf850ed5e1033e894ecf1f36f272f409cc0281accbf2240d8a61f",
+    "src/make_manuscript.py": "3f6d9a210697e194433cef627fb788fa20c08f5107f807ae4a62a2b022140c70",
     "src/make_report.py": "5c25a36c9a9a728e7874b35a4b07b0bac85bebf3c3ec35c3aad00850427edc4b",
     "src/make_tables.py": "3cd9fdd4c150dd11942697ebb2bffa4f571decb6efc5cb411d59195e92d54198",
     "src/map_approval_year.py": "7fdb45c14610c1985c64e1b4d163afd37f117b6d3559e563c3aa92f19aba3605",
@@ -394,7 +394,7 @@
     "src/useful_threshold_sweep.py": "17b57e7d11f2cc684b5ca634936b38bbf5c292bf532ce0799002546037cb81cb",
     "src/verify10.py": "93f539a3eb92fa6e213bf560916304e21693078f2748a18bed5ea246b4424305",
     "src/verify11.py": "e613ff7f5f8efd62cee74f1aa2bcbe4c5a7dffe5818ae53b0748d418c27e976e",
-    "src/verify12.py": "65162f19c5fd8581c79245728ad3d9b3d1f3723e8b4f80ec7a662cbbccbd5681",
+    "src/verify12.py": "37d6519341e6194c9cb07d162fc7c626d65116d4a0715f062828efad74bcd3d0",
     "src/verify9.py": "95505fdd3f87d29643bc613e1d2465696a5d89e9c0ce81ce677f31df074f80b7",
     "src/year_sensitivity.py": "2ce0b4ba5144341c0eae295f505909b247d1bd94cf21ae9326722e5975f31234"
   }
