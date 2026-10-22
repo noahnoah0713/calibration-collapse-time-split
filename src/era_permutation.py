@@ -372,7 +372,7 @@ def main():
     log()
     log(f"저장: {RES/'era_permutation.csv'}")
     log(f"      {RES/'era_permutation_summary.txt'}")
-    log(f"      era_permutation_null_<데이터셋>.csv (귀무분포 전체)")
+    log("      era_permutation_null_<데이터셋>.csv (귀무분포 전체)")
 
     (RES / "era_permutation_summary.txt").write_text("\n".join(log_lines) + "\n", encoding="utf-8")
 

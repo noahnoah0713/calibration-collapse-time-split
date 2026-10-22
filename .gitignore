@@ -100,3 +100,33 @@ results/*_run.log
 /results_논문값*/
 /results_backup*/
 /results_백업*/
+
+# 2026-10-22 공개 범위 — 재현에 필요한 것만 올린다.
+#   논문 원고와 참고문헌은 재현과 무관하다 (게재 후 추가).
+#   redo_*.sh 는 일회성 복구 스크립트다. 입구는 rerun_all.sh 하나다.
+#   순수 실행 로그는 증거가 아니라 작업 흔적이다 — 빼도 verify9 의
+#   근거 불명이 0 으로 유지되는 것을 확인했다. 수치의 근거가 되는
+#   *_summary.txt 는 남긴다.
+/manuscript/
+/REFS.txt
+/RELEASE_CHECKLIST.md
+/redo_*.sh
+/rerun_rest.sh
+/results/rerun_all_log.txt
+/results/rerun_rest_log.txt
+/results/rerun_rest_nohup.txt
+/results/final2_log*.txt
+/results/new3_log.txt
+/results/supplementary_log.txt
+/results/run_everything_log.txt
+/results/seed_rerun_log.txt
+/results/redo_*_log.txt
+/results/diff_ladder*.txt
+/results/*_progress.txt
+/results/mondrian_log.txt
+/results/prequential_log.txt
+/results/subgroup_calib_log.txt
+/results/retrain_interval_log.txt
+/results/recal_prec_log.txt
+/results/extra_calib_log.txt
+/results/determinism_log.txt

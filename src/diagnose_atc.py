@@ -1,6 +1,5 @@
 """PubChem ATC 응답 구조 진단 - 왜 전부 'A'로 나왔는지 확인"""
 
-import json
 import re
 import requests
 

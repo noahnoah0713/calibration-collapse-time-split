@@ -201,7 +201,7 @@ def run(name, pre_path, cur_path, n_rep):
     out = pd.DataFrame(rows)
     if len(out) == 2:
         a, b = out.iloc[0], out.iloc[1]
-        log(f"\n[3] 비교")
+        log("\n[3] 비교")
         log(f"    {'지표':18s} {'14자리':>10s} {'27자리':>10s} {'차이':>10s}")
         for f, lab in [
             ("n", "분석집합 n"),

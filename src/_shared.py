@@ -14,7 +14,6 @@ from rdkit import Chem, RDLogger
 from rdkit.Chem import AllChem, Descriptors
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import brier_score_loss, roc_auc_score
 from xgboost import XGBClassifier
 
 warnings.filterwarnings("ignore")

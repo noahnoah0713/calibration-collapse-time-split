@@ -22,7 +22,6 @@
     results/precision_fix_20261020.csv
 """
 
-import io
 import os
 import sys
 

@@ -35,7 +35,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from rdkit import Chem
 from rdkit.Chem.Scaffolds import MurckoScaffold
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold
@@ -145,7 +144,7 @@ def run(name, path, n_seeds):
             f"{r['ece_fold_mean']:11.4f}±{r['ece_fold_sd']:.4f}"
         )
 
-    log(f"\n[B1] 스캐폴드 CV — 결정론적 그리디 (baseline_cv.py 현재 방식)")
+    log("\n[B1] 스캐폴드 CV — 결정론적 그리디 (baseline_cv.py 현재 방식)")
     r = eval_folds(X, y, scaffold_folds(smi))
     if r:
         rows.append(dict(dataset=name, split="scaffold_cv_greedy", seed=np.nan, **r))

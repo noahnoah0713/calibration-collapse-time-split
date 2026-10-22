@@ -199,7 +199,7 @@ def main():
         held = g[g["approval_year"] >= 2010]
         log(f"    {ds}: {len(g)}개 (그중 검증군 {len(held)}개)")
         log(
-            f"      매칭 방식: "
+            "      매칭 방식: "
             + ", ".join(f"{k} {v}" for k, v in g["match_type"].value_counts().items())
         )
     L.sort_values(["dataset", "compound"]).to_csv(RES / "atc_review_L.csv", index=False)

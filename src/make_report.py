@@ -8,12 +8,10 @@
     python src/make_report.py            # 보고서 생성
 """
 
-import glob
 import io
 import json
 import os
 import re
-import sys
 import pandas as pd
 
 

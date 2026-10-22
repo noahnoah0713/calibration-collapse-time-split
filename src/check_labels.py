@@ -136,7 +136,7 @@ def compare(name, raw, proc, key, concern_col, severity_col):
         ct = pd.crosstab(raw[severity_col].astype(str), raw["_tok"])
         log(ct.to_string())
     else:
-        log(f"\n[3] 중증도 열 없음 - 교차 확인 생략")
+        log("\n[3] 중증도 열 없음 - 교차 확인 생략")
 
     # ---- 분석 집합과 대조
     log(f"\n[4] 분석 집합 {len(proc)}행과 행 단위 대조 (키: {key})")
@@ -170,7 +170,7 @@ def compare(name, raw, proc, key, concern_col, severity_col):
                 .to_string(index=False)
             )
         else:
-            log(f"    중복 키끼리 라벨은 모두 같다 — 첫 행 채택이 안전하다.")
+            log("    중복 키끼리 라벨은 모두 같다 — 첫 행 채택이 안전하다.")
         r = r.drop_duplicates(key)
         p = p.drop_duplicates(key)
 
@@ -184,7 +184,7 @@ def compare(name, raw, proc, key, concern_col, severity_col):
         )
         log(orphan[[key]].head(20).to_string(index=False))
     else:
-        log(f"    분석집합의 모든 행을 원자료에서 찾음 (고아 0건)")
+        log("    분석집합의 모든 행을 원자료에서 찾음 (고아 0건)")
 
     ok = m[m["_merge"] == "both"].copy()
     ok["y_actual"] = ok["y_actual"].astype(float)
@@ -199,7 +199,7 @@ def compare(name, raw, proc, key, concern_col, severity_col):
         )
 
     # ---- 탈락 경로
-    log(f"\n[5] 원자료에서 분석집합까지 줄어든 경로")
+    log("\n[5] 원자료에서 분석집합까지 줄어든 경로")
     eligible = r[r["_y_expected"].notna()]
     in_proc = set(p[key])
     lost = eligible[~eligible[key].isin(in_proc)]
@@ -209,8 +209,8 @@ def compare(name, raw, proc, key, concern_col, severity_col):
     log(f"      - concern 제외(ambiguous 등) {len(r) - len(eligible)}행")
     log(f"      = 이진화 대상 {len(eligible)}행")
     log(f"      - 이후 단계에서 탈락 {len(lost)}행")
-    log(f"        (SMILES 확보 실패 / 승인연도 미매칭 / 구조 중복 제거 /")
-    log(f"         탄소 없는 화합물 필터 — 각각은 별도 로그에 기록됨)")
+    log("        (SMILES 확보 실패 / 승인연도 미매칭 / 구조 중복 제거 /")
+    log("         탄소 없는 화합물 필터 — 각각은 별도 로그에 기록됨)")
     log(f"      = 분석집합 {len(p)}행")
 
     out = m.drop(columns=["_merge"]).copy()
@@ -301,20 +301,20 @@ def check_structure_merge(name, path, smiles_col="smiles_raw", frame=None):
     n_conf_group = conf["_k"].nunique() if len(conf) else 0
     if n_conf_group:
         log(f"    !! 그중 라벨(y)이 서로 다른 그룹: {n_conf_group}그룹 " f"/ {len(conf)}행")
-        log(f"       합쳐질 때 한쪽 라벨이 버려졌다. 아래를 확인할 것:")
+        log("       합쳐질 때 한쪽 라벨이 버려졌다. 아래를 확인할 것:")
         log(
             conf[["CompoundName", "y", "_k"]]
             .sort_values(["_k", "CompoundName"])
             .to_string(index=False)
         )
         log()
-        log(f"       선택지: (a) Methods 에 그대로 밝히고 둔다")
-        log(f"               (b) 해당 쌍을 분석에서 제외한다")
-        log(f"               (c) 27자리 전체 InChIKey 로 중복을 제거한다")
-        log(f"                   (염은 이미 표준화에서 떨어졌으므로 이 경우")
-        log(f"                    입체이성질체만 분리된다. 단 전체 재실행 필요)")
+        log("       선택지: (a) Methods 에 그대로 밝히고 둔다")
+        log("               (b) 해당 쌍을 분석에서 제외한다")
+        log("               (c) 27자리 전체 InChIKey 로 중복을 제거한다")
+        log("                   (염은 이미 표준화에서 떨어졌으므로 이 경우")
+        log("                    입체이성질체만 분리된다. 단 전체 재실행 필요)")
     else:
-        log(f"    합쳐진 그룹끼리 라벨은 모두 같다 — 라벨이 버려진 곳은 없다.")
+        log("    합쳐진 그룹끼리 라벨은 모두 같다 — 라벨이 버려진 곳은 없다.")
     log()
     return n_conf_group
 
@@ -340,7 +340,7 @@ def main():
         problems.append(("DILIrank", nm, no_, nu, nc))
         log()
     else:
-        log(f"[건너뜀] DILIrank: 원자료 또는 처리 CSV 없음")
+        log("[건너뜀] DILIrank: 원자료 또는 처리 CSV 없음")
 
     # ------------------------------------------------------- DICTrank
     if DICT_XLSX.exists() and (PROC / "dictrank_processed.csv").exists():
@@ -358,7 +358,7 @@ def main():
         problems.append(("DICTrank", nm, no_, nu, nc))
         log()
     else:
-        log(f"[건너뜀] DICTrank: 원자료 또는 처리 CSV 없음")
+        log("[건너뜀] DICTrank: 원자료 또는 처리 CSV 없음")
 
     n_merge = check_structure_merge("DILIrank", PROC / "dilirank2_with_smiles.csv")
     dict_pre = PROC / "dictrank_prededup.csv"

@@ -39,7 +39,6 @@ U > U* 면 (나), U < U* 면 (다) 다. 그래서 U* 를 팔마다 적어 두면
 """
 
 import os
-import sys
 import warnings
 from pathlib import Path
 

@@ -71,7 +71,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from rdkit import Chem
 from rdkit.Chem.Scaffolds import MurckoScaffold
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold

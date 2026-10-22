@@ -174,7 +174,7 @@ def run_dataset(name, path):
     seed42 = d[d.seed == 42].iloc[0]
     log(f"  기존 보고값(seed=42): AUROC {seed42['auroc']:.4f}, ECE {seed42['ece']:.4f}")
     log(
-        f"  -> seed=42가 10개 시드 범위 안에서 대표성을 갖는지 확인됨"
+        "  -> seed=42가 10개 시드 범위 안에서 대표성을 갖는지 확인됨"
         if (d["auroc"].min() <= seed42["auroc"] <= d["auroc"].max())
         else "  -> 경고: seed=42가 이례적일 수 있음, 재확인 필요"
     )
