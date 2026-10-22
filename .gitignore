@@ -130,3 +130,4 @@ results/*_run.log
 /results/recal_prec_log.txt
 /results/extra_calib_log.txt
 /results/determinism_log.txt
+/results/.!*!*
