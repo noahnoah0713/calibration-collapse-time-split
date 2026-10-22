@@ -1,0 +1,518 @@
+승인연도 배정 검수
+======================================================================
+Drugs@FDA 고유 성분 2,745개, 연도 1939-2026
+1982년 이전 승인으로 기록된 성분: 818개 (29.8%)
+  -> 이 비율이 낮다는 것 자체가 옛 승인 기록의 결손을 보여준다.
+
+======================================================================
+DILIrank   (n=796, 라벨 공개 2025년)
+======================================================================
+
+[1] 라벨 공개연도 이후로 배정: 0건
+
+[2] 느슨한 키로 찾은 최소 연도보다 5년 이상 늦게 배정: 7건
+               compound  assigned_year  min_year_tight  gap  in_heldout
+Riboflavin 5'-phosphate           2016          1947.0 69.0        True
+        Codeine sulfate           2009          1952.0 57.0       False
+       Caffeine citrate           1999          1948.0 51.0       False
+               Atropine           1973          1960.0 13.0       False
+        Calcium acetate           1982          1971.0 11.0       False
+  Norethindrone acetate           1973          1962.0 11.0       False
+         Sodium lactate           1971          1965.0  6.0       False
+
+    이 중 절단선을 넘는 것(배정>=2010, 최소<2010): 1건
+               compound  assigned_year  min_year_tight
+Riboflavin 5'-phosphate           2016          1947.0
+
+[3] 검증군(2010년 이후) 156건 전체 - 육안 검수용
+    (오래된 약이 여기 있으면 매칭 오류다. 예: phenobarbital, vancomycin,
+     amantadine 같은 고전 약물)
+                     compound  assigned_year
+         Phenobarbital sodium           2022
+                   Finerenone           2021
+                  Voclosporin           2021
+         Pafolacianine sodium           2021
+                   Vericiguat           2021
+        Difelikefalin acetate           2021
+                    Maribavir           2021
+     Viloxazine hydrochloride           2021
+                   Vosoritide           2021
+   Fosdenopterin hydrobromide           2021
+           Piflufolastat f-18           2021
+                    Risdiplam           2020
+           Rimegepant sulfate           2020
+        Copper cu-64 dotatate           2020
+        Setmelanotide acetate           2020
+     Capmatinib hydrochloride           2020
+                    Opicapone           2020
+                   Nifurtimox           2020
+     Gallium ga-68 gozetotide           2020
+         Remimazolam besylate           2020
+                 Triheptanoin           2020
+            Flortaucipir f-18           2020
+                     Vibegron           2020
+         Fluoroestradiol f-18           2020
+                  Amisulpride           2020
+                     Lactitol           2020
+                   Remdesivir           2020
+                Ferric maltol           2019
+                  Lemborexant           2019
+         Lasmiditan succinate           2019
+   Pexidartinib hydrochloride           2019
+              Fluorodopa f-18           2019
+               Istradefylline           2019
+     Pitolisant hydrochloride           2019
+                 Zanubrutinib           2019
+                  Brexanolone           2019
+    Gallium ga-68 edotreotide           2019
+                    Voxelotor           2019
+                    Alpelisib           2019
+   Solriamfetol hydrochloride           2019
+          Tafamidis meglumine           2019
+                   Ubrogepant           2019
+             Brilliant blue g           2019
+      Tenapanor hydrochloride           2019
+                  Dacomitinib           2018
+                Amifampridine           2018
+                  Apalutamide           2018
+         Avatrombopag maleate           2018
+           Baloxavir marboxil           2018
+     Lofexidine hydrochloride           2018
+                Lusutrombopag           2018
+                  Tecovirimat           2018
+       Prucalopride succinate           2018
+     Migalastat hydrochloride           2018
+                  Stiripentol           2018
+    Sarecycline hydrochloride           2018
+             Rifamycin sodium           2018
+                  Abemaciclib           2017
+                   Letermovir           2017
+          Macimorelin acetate           2017
+         Naldemedine tosylate           2017
+                  Semaglutide           2017
+          Safinamide mesylate           2017
+         Ribociclib succinate           2017
+                Abaloparatide           2017
+                    Edaravone           2017
+             Deutetrabenazine           2017
+       Angiotensin ii acetate           2017
+                   Betrixaban           2017
+                  Deflazacort           2017
+   Copanlisib dihydrochloride           2017
+                Ertugliflozin           2017
+                Etelcalcetide           2017
+                   Venetoclax           2016
+        Pimavanserin tartrate           2016
+                 Brivaracetam           2016
+      Riboflavin 5'-phosphate           2016
+             Obeticholic acid           2016
+            Ephedrine sulfate           2016
+            Fluciclovine f-18           2016
+        Aripiprazole lauroxil           2015
+                    Selexipag           2015
+                  Palbociclib           2015
+     Ivabradine hydrochloride           2015
+     Rolapitant hydrochloride           2015
+            Sugammadex sodium           2015
+         Osimertinib mesylate           2015
+                    Cangrelor           2015
+             Deoxycholic acid           2015
+                Brexpiprazole           2015
+           Uridine triacetate           2015
+                  Flibanserin           2015
+                  Pirfenidone           2014
+                   Idelalisib           2014
+                   Suvorexant           2014
+                    Droxidopa           2014
+                    Ceritinib           2014
+                     Olaparib           2014
+            Vorapaxar sulfate           2014
+           Nintedanib esylate           2014
+          Eliglustat tartrate           2014
+            Naloxegol oxalate           2014
+                Empagliflozin           2014
+             Florbetaben f-18           2014
+                   Apremilast           2014
+                Dapagliflozin           2014
+                Canagliflozin           2013
+                   Sofosbuvir           2013
+                    Riociguat           2013
+         Gadoterate meglumine           2013
+                 Pomalidomide           2013
+            Dimethyl fumarate           2013
+          Dolutegravir sodium           2013
+Trametinib dimethyl sulfoxide           2013
+                   Ospemifene           2013
+                   Macitentan           2013
+         Umeclidinium bromide           2013
+            Flutemetamol f-18           2013
+    Vortioxetine hydrobromide           2013
+                    Ibrutinib           2013
+        Bosutinib monohydrate           2012
+                Teriflunomide           2012
+                     Avanafil           2012
+                     Apixaban           2012
+                  Carfilzomib           2012
+                  Regorafenib           2012
+                  Linaclotide           2012
+          Lomitapide mesylate           2012
+                 Choline c-11           2012
+             Florbetapir f-18           2012
+                    Ivacaftor           2012
+                 Enzalutamide           2012
+                   Perampanel           2012
+                   Ticagrelor           2011
+                  Vemurafenib           2011
+       Azilsartan kamedoxomil           2011
+         Gabapentin enacarbil           2011
+                  Linagliptin           2011
+                   Gadobutrol           2011
+              Ioflupane i-123           2011
+          Abiraterone acetate           2011
+                   Crizotinib           2011
+    Rilpivirine hydrochloride           2011
+                  Rivaroxaban           2011
+                  Roflumilast           2011
+     Vilazodone hydrochloride           2011
+         Levomefolate calcium           2010
+               Carglumic acid           2010
+                  Liraglutide           2010
+     Fingolimod hydrochloride           2010
+     Lurasidone hydrochloride           2010
+          Ceftaroline fosamil           2010
+                  Polidocanol           2010
+                Dalfampridine           2010
+Dabigatran etexilate mesylate           2010
+           Ulipristal acetate           2010
+
+======================================================================
+DICTrank   (n=919, 라벨 공개 2023년)
+======================================================================
+
+[1] 라벨 공개연도 이후로 배정: 3건
+   compound  assigned_year
+  NILOTINIB           2025
+ AMANTADINE           2024
+SELUMETINIB           2025
+
+[2] 느슨한 키로 찾은 최소 연도보다 5년 이상 늦게 배정: 21건
+                           compound  assigned_year  min_year_tight  gap  in_heldout
+                          OXYCODONE           2016          1950.0 66.0        True
+                    CODEINE SULFATE           2009          1952.0 57.0       False
+                         AMANTADINE           2024          1968.0 56.0        True
+                        AMPHETAMINE           2015          1960.0 55.0        True
+                   CAFFEINE CITRATE           1999          1948.0 51.0       False
+                    METHYLPHENIDATE           2006          1955.0 51.0       False
+                 ALLOPURINOL SODIUM           1996          1966.0 30.0       False
+                         DICLOFENAC           2013          1988.0 25.0        True
+             BUPROPION HYDROBROMIDE           2008          1985.0 23.0       False
+                         naltrexone           2006          1984.0 22.0       False
+                INDOMETHACIN SODIUM           1985          1965.0 20.0       False
+                          NILOTINIB           2025          2007.0 18.0        True
+      PREDNISOLONE SODIUM PHOSPHATE           1973          1955.0 18.0       False
+CLINDAMYCIN PALMITATE HYDROCHLORIDE           1986          1970.0 16.0       False
+                etoposide phosphate           1996          1983.0 13.0       False
+                 Olanzapine pamoate           2009          1996.0 13.0       False
+                PAROXETINE MESYLATE           2003          1992.0 11.0       False
+   CHLORAMPHENICOL SODIUM SUCCINATE           1959          1951.0  8.0       False
+                AZATHIOPRINE SODIUM           1974          1968.0  6.0       False
+                     DESVENLAFAXINE           2013          2008.0  5.0        True
+                        SELUMETINIB           2025          2020.0  5.0        True
+
+    이 중 절단선을 넘는 것(배정>=2010, 최소<2010): 6건
+      compound  assigned_year  min_year_tight
+     OXYCODONE           2016          1950.0
+    AMANTADINE           2024          1968.0
+   AMPHETAMINE           2015          1960.0
+    DICLOFENAC           2013          1988.0
+     NILOTINIB           2025          2007.0
+DESVENLAFAXINE           2013          2008.0
+
+[3] 검증군(2010년 이후) 267건 전체 - 육안 검수용
+    (오래된 약이 여기 있으면 매칭 오류다. 예: phenobarbital, vancomycin,
+     amantadine 같은 고전 약물)
+                        compound  assigned_year
+                       NILOTINIB           2025
+                     SELUMETINIB           2025
+                      AMANTADINE           2024
+             umbralisib tosylate           2021
+           IBREXAFUNGERP CITRATE           2021
+                    Mobocertinib           2021
+                        AVACOPAN           2021
+        VILOXAZINE HYDROCHLORIDE           2021
+            PAFOLACIANINE SODIUM           2021
+     trilaciclib dihydrochloride           2021
+                       MARIBAVIR           2021
+              PIFLUFOLASTAT F-18           2021
+                    FEXINIDAZOLE           2021
+            maralixibat chloride           2021
+         Tepotinib Hydrochloride           2021
+           DIFELIKEFALIN ACETATE           2021
+                      odevixibat           2021
+                     VOCLOSPORIN           2021
+                       SOTORASIB           2021
+                LEVOKETOCONAZOLE           2021
+                      VERICIGUAT           2021
+                      FINERENONE           2021
+                    INFIGRATINIB           2021
+             CABOTEGRAVIR SODIUM           2021
+                       ATOGEPANT           2021
+      fosdenopterin hydrobromide           2021
+                      BELZUTIFAN           2021
+                     BELUMOSUDIL           2021
+                       Ponesimod           2021
+                      VOSORITIDE           2021
+         tivozanib hydrochloride           2021
+                    DASIGLUCAGON           2021
+         ASCIMINIB HYDROCHLORIDE           2021
+                   selpercatinib           2020
+                    TRIHEPTANOIN           2020
+       tazemetostat hydrobromide           2020
+             monomethyl fumarate           2020
+          OSILODROSTAT PHOSPHATE           2020
+                       OPICAPONE           2020
+                       RISDIPLAM           2020
+                        LACTITOL           2020
+                     avapritinib           2020
+                      Ripretinib           2020
+        FOSTEMSAVIR TROMETHAMINE           2020
+                        vibegron           2020
+                      CAPMATINIB           2020
+      Berotralstat hydrochloride           2020
+                      LONAFARNIB           2020
+          OZANIMOD HYDROCHLORIDE           2020
+                    FENFLURAMINE           2020
+                       RELUGOLIX           2020
+                  Bempedoic Acid           2020
+                     PRALSETINIB           2020
+            FLUOROESTRADIOL F-18           2020
+            remimazolam besylate           2020
+                     OLICERIDINE           2020
+              RIMEGEPANT SULFATE           2020
+                   LURBINECTEDIN           2020
+               Flortaucipir F-18           2020
+        GALLIUM GA-68 GOZETOTIDE           2020
+                   SETMELANOTIDE           2020
+                     Amisulpride           2020
+                 TRICLABENDAZOLE           2019
+                     BREXANOLONE           2019
+                      UBROGEPANT           2019
+                    ZANUBRUTINIB           2019
+                     ENTRECTINIB           2019
+                   FERRIC MALTOL           2019
+                       selinexor           2019
+                       Voxelotor           2019
+                    upadacitinib           2019
+                       SIPONIMOD           2019
+         TENAPANOR HYDROCHLORIDE           2019
+              diroximel fumarate           2019
+                      CENOBAMATE           2019
+                     LEMBOREXANT           2019
+                    LUMATEPERONE           2019
+           bremelanotide acetate           2019
+        FEDRATINIB HYDROCHLORIDE           2019
+                     Erdafitinib           2019
+    Cefiderocol sulfate tosylate           2019
+                      lasmiditan           2019
+                    SOLRIAMFETOL           2019
+                BRILLIANT BLUE G           2019
+                  istradefylline           2019
+                    DAROLUTAMIDE           2019
+                 FLUORODOPA F-18           2019
+      PEXIDARTINIB HYDROCHLORIDE           2019
+             Amlodipine Benzoate           2019
+        PITOLISANT HYDROCHLORIDE           2019
+            AVATROMBOPAG MALEATE           2018
+                   LUSUTROMBOPAG           2018
+                     baricitinib           2018
+                      PLAZOMICIN           2018
+                       GLASDEGIB           2018
+    ERAVACYCLINE DIHYDROCHLORIDE           2018
+          PRUCALOPRIDE SUCCINATE           2018
+                       DUVELISIB           2018
+                       Rifamycin           2018
+                     Apalutamide           2018
+              BALOXAVIR MARBOXIL           2018
+           TAFENOQUINE SUCCINATE           2018
+                     ENCORAFENIB           2018
+                     DACOMITINIB           2018
+        MIGALASTAT HYDROCHLORIDE           2018
+                      doravirine           2018
+                IOBENGUANE I-131           2018
+           GILTERITINIB FUMARATE           2018
+                 ELAGOLIX SODIUM           2018
+                    omadacycline           2018
+                   LAROTRECTINIB           2018
+        LOFEXIDINE HYDROCHLORIDE           2018
+                    FOSTAMATINIB           2018
+                     BINIMETINIB           2018
+                      LORLATINIB           2018
+                      MOXIDECTIN           2018
+         TECOVIRIMAT MONOHYDRATE           2018
+                     CANNABIDIOL           2018
+                     Stiripentol           2018
+                      ivosidenib           2018
+                   ABALOPARATIDE           2017
+               telotristat ethyl           2017
+                     SEMAGLUTIDE           2017
+                    BENZNIDAZOLE           2017
+                DEUTETRABENAZINE           2017
+                     SECNIDAZOLE           2017
+                  ANGIOTENSIN II           2017
+                     MACIMORELIN           2017
+            RIBOCICLIB SUCCINATE           2017
+            VALBENAZINE TOSYLATE           2017
+             ENASIDENIB MESYLATE           2017
+               NERATINIB MALEATE           2017
+     ETELCALCETIDE HYDROCHLORIDE           2017
+                      COPANLISIB           2017
+                       niraparib           2017
+                     DEFLAZACORT           2017
+          ERTUGLIFLOZIN PIDOLATE           2017
+                      LETERMOVIR           2017
+                     MIDOSTAURIN           2017
+                   ACALABRUTINIB           2017
+                      brigatinib           2017
+            naldemedine tosylate           2017
+          delafloxacin meglumine           2017
+             SAFINAMIDE MESYLATE           2017
+                     Plecanatide           2017
+                    brivaracetam           2016
+             rucaparib camsylate           2016
+                       OXYCODONE           2016
+               Fluciclovine F-18           2016
+           pimavanserin tartrate           2016
+               Ephedrine Sulfate           2016
+                      Venetoclax           2016
+                Obeticholic Acid           2016
+                       SELEXIPAG           2015
+            COBIMETINIB FUMARATE           2015
+             SONIDEGIB PHOSPHATE           2015
+                DEOXYCHOLIC ACID           2015
+              uridine triacetate           2015
+                   brexpiprazole           2015
+         ISAVUCONAZONIUM SULFATE           2015
+               SUGAMMADEX SODIUM           2015
+        IVABRADINE HYDROCHLORIDE           2015
+                     CARIPRAZINE           2015
+                     ELUXADOLINE           2015
+            PANOBINOSTAT LACTATE           2015
+                ixazomib citrate           2015
+                     OSIMERTINIB           2015
+                     PALBOCICLIB           2015
+                     CHOLIC ACID           2015
+  TENOFOVIR ALAFENAMIDE FUMARATE           2015
+        ROLAPITANT HYDROCHLORIDE           2015
+           aripiprazole lauroxil           2015
+                      LENVATINIB           2015
+                     Flibanserin           2015
+                       CANGRELOR           2015
+         ALECTINIB HYDROCHLORIDE           2015
+                     AMPHETAMINE           2015
+            darunavir ethanolate           2015
+               EDOXABAN TOSYLATE           2015
+                     Trabectedin           2015
+               NALOXEGOL OXALATE           2014
+                      suvorexant           2014
+                     MILTEFOSINE           2014
+              NINTEDANIB ESYLATE           2014
+        TESTOSTERONE UNDECANOATE           2014
+                      IDELALISIB           2014
+                       peramivir           2014
+                     TASIMELTEON           2014
+                       CERITINIB           2014
+                       DROXIDOPA           2014
+               VORAPAXAR SULFATE           2014
+                   empagliflozin           2014
+                FLORBETABEN F-18           2014
+                      APREMILAST           2014
+                        OLAPARIB           2014
+                      eliglustat           2014
+                     PIRFENIDONE           2014
+                      BELINOSTAT           2014
+         oritavancin diphosphate           2014
+             tedizolid phosphate           2014
+       DAPAGLIFLOZIN PROPANEDIOL           2014
+                     PASIREOTIDE           2014
+                      macitentan           2013
+         GLYCEROL PHENYLBUTYRATE           2013
+               DIMETHYL FUMARATE           2013
+            UMECLIDINIUM BROMIDE           2013
+                       IBRUTINIB           2013
+       NEOSTIGMINE METHYLSULFATE           2013
+             DOLUTEGRAVIR SODIUM           2013
+            gadoterate meglumine           2013
+               Flutemetamol F-18           2013
+                   canagliflozin           2013
+                       RIOCIGUAT           2013
+                  DESVENLAFAXINE           2013
+                      DICLOFENAC           2013
+   TRAMETINIB DIMETHYL SULFOXIDE           2013
+             DABRAFENIB MESYLATE           2013
+                        AFATINIB           2013
+               MIPOMERSEN SODIUM           2013
+                    POMALIDOMIDE           2013
+                      OSPEMIFENE           2013
+                 ICOSAPENT ETHYL           2012
+                   TERIFLUNOMIDE           2012
+           BOSUTINIB MONOHYDRATE           2012
+                    ENZALUTAMIDE           2012
+         ponatinib hydrochloride           2012
+                       ivacaftor           2012
+                FLORBETAPIR F-18           2012
+                     CARFILZOMIB           2012
+                      VISMODEGIB           2012
+                      MIRABEGRON           2012
+                        APIXABAN           2012
+                        AXITINIB           2012
+                        AVANAFIL           2012
+             LOMITAPIDE MESYLATE           2012
+           cabozantinib s-malate           2012
+       OMACETAXINE MEPESUCCINATE           2012
+                      COBICISTAT           2012
+                    CHOLINE C-11           2012
+         REGORAFENIB MONOHYDRATE           2012
+            Bedaquiline Fumarate           2012
+             TOFACITINIB CITRATE           2012
+             ABIRATERONE ACETATE           2011
+                     roflumilast           2011
+                 ioflupane I-123           2011
+            gabapentin enacarbil           2011
+                      GADOBUTROL           2011
+        VILAZODONE HYDROCHLORIDE           2011
+                     RUXOLITINIB           2011
+                     rivaroxaban           2011
+                      CRIZOTINIB           2011
+                      TICAGRELOR           2011
+                     LINAGLIPTIN           2011
+                      VANDETANIB           2011
+                     FIDAXOMICIN           2011
+       rilpivirine hydrochloride           2011
+                     VEMURAFENIB           2011
+               ICATIBANT ACETATE           2011
+                   DALFAMPRIDINE           2010
+               ERIBULIN MESYLATE           2010
+                     POLIDOCANOL           2010
+   DABIGATRAN ETEXILATE MESYLATE           2010
+HEXAMINOLEVULINATE HYDROCHLORIDE           2010
+                     LIRAGLUTIDE           2010
+        LURASIDONE HYDROCHLORIDE           2010
+        FINGOLIMOD HYDROCHLORIDE           2010
+             CEFTAROLINE FOSAMIL           2010
+
+======================================================================
+[4] 두 데이터셋 공통 화합물 531개의 연도 일치 여부
+    불일치: 0건
+======================================================================
+[5] 절단선을 넘는 수정 후보 7건 -> results/year_corrections.csv
+    이 화합물들은 배정연도상 검증군이지만 실제로는 학습군에 속한다.
+    민감도 분석: 이 연도를 적용해 시간분할을 다시 돌리고 결론이
+    유지되는지 확인할 것. 전부 육안 확인 후 적용하라.
+ dataset                compound  assigned_year  suggested_year
+DILIrank Riboflavin 5'-phosphate           2016            1947
+DICTrank          DESVENLAFAXINE           2013            2008
+DICTrank               NILOTINIB           2025            2007
+DICTrank             AMPHETAMINE           2015            1960
+DICTrank               OXYCODONE           2016            1950
+DICTrank              AMANTADINE           2024            1968
+DICTrank              DICLOFENAC           2013            1988

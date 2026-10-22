@@ -1,0 +1,18 @@
+{
+  "recorded_utc": "2026-09-30T05:22:22+00:00",
+  "python": "3.11.14",
+  "python_executable": "/Users/noah/miniconda3/envs/pharmml/bin/python",
+  "platform": "macOS-14.3.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "conda_env": "pharmml",
+  "core": {
+    "RDKit": "2026.03.5",
+    "XGBoost": "3.2.0",
+    "scikit-learn": "1.9.0",
+    "NumPy": "2.4.6",
+    "pandas": "3.0.5",
+    "SciPy": "1.17.1",
+    "statsmodels": "0.15.0",
+    "LightGBM": "4.7.0"
+  }
+}

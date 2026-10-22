@@ -1,0 +1,8 @@
+metric,n_defs,n_identical,all_identical
+ece,7,7,True
+calib_slope,3,3,True
+bin_table,3,3,True
+murphy_decomposition,3,3,True
+subsample_to_rate,2,2,True
+ece_mce (별명: ece),1,1,True
+calib_slope_intercept (별명: calib_slope),1,1,True

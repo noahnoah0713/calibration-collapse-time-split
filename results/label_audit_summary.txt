@@ -1,0 +1,155 @@
+라벨 이진화 검수 — 엑셀 원자료에서 분석용 y 까지 역추적
+중간 산출 CSV 는 쓰지 않는다. 원자료를 직접 다시 읽는다.
+
+==========================================================================
+DILIrank
+==========================================================================
+
+[1] 원자료 1336행의 concern 열 분포
+    no             414
+    ambiguous      354
+    less           351
+    most           217
+
+[2] 규칙 적용 결과: 양성 568, 음성 414, 제외 354 (합 1336 / 원자료 1336)
+
+[3] SeverityClass x concern 교차표 (모순이 있으면 한 칸에 몰리지 않고 흩어진다)
+_tok           ambiguous  less  most   no
+SeverityClass                            
+0                      1    52     0  413
+1                      2     1     0    1
+2                     23    25     0    0
+3                    222   174     6    0
+4                     45    36    15    0
+5                     26    32    12    0
+6                      4     1     1    0
+7                     17    24    25    0
+8                     14     6   158    0
+
+[4] 분석 집합 796행과 행 단위 대조 (키: LTKBID)
+    분석집합의 모든 행을 원자료에서 찾음 (고아 0건)
+    y 불일치: 0건 / 대조 가능 796건
+
+[5] 원자료에서 분석집합까지 줄어든 경로
+    고유 키 1336행
+      - concern 제외(ambiguous 등) 354행
+      = 이진화 대상 982행
+      - 이후 단계에서 탈락 186행
+        (SMILES 확보 실패 / 승인연도 미매칭 / 구조 중복 제거 /
+         탄소 없는 화합물 필터 — 각각은 별도 로그에 기록됨)
+      = 분석집합 796행
+
+==========================================================================
+DICTrank
+==========================================================================
+
+[1] 원자료 1318행의 concern 열 분포
+    less           527
+    no             343
+    most           341
+    ambiguous      107
+
+[2] 규칙 적용 결과: 양성 868, 음성 343, 제외 107 (합 1318 / 원자료 1318)
+
+[3] DIC Severity Level x concern 교차표 (모순이 있으면 한 칸에 몰리지 않고 흩어진다)
+_tok                ambiguous  less  most
+DIC Severity Level                       
+Mild                        0     1     0
+Moderate                    0     0     1
+mild                       29   371     9
+moderate                    3    30    79
+severe                     21   121   224
+
+[4] 분석 집합 919행과 행 단위 대조 (키: CompoundName)
+    [주의] 키 중복 — 원자료 26건, 분석집합 0건.
+    중복 키끼리 라벨은 모두 같다 — 첫 행 채택이 안전하다.
+    분석집합의 모든 행을 원자료에서 찾음 (고아 0건)
+    y 불일치: 0건 / 대조 가능 919건
+
+[5] 원자료에서 분석집합까지 줄어든 경로
+    원자료 1318행 (키 중복 26행 접음)
+    고유 키 1292행
+      - concern 제외(ambiguous 등) 107행
+      = 이진화 대상 1185행
+      - 이후 단계에서 탈락 266행
+        (SMILES 확보 실패 / 승인연도 미매칭 / 구조 중복 제거 /
+         탄소 없는 화합물 필터 — 각각은 별도 로그에 기록됨)
+      = 분석집합 919행
+
+--------------------------------------------------------------------------
+[6] DILIrank — 구조 중복 제거로 합쳐진 화합물
+--------------------------------------------------------------------------
+    표준화 통과 882행
+    같은 14자리 키를 갖는 서로 다른 이름: 21그룹 / 42행  -> 중복 제거로 21행 사라짐
+    !! 그중 라벨(y)이 서로 다른 그룹: 1그룹 / 2행
+       합쳐질 때 한쪽 라벨이 버려졌다. 아래를 확인할 것:
+             CompoundName   y             _k
+      Amphetamine sulfate 1.0 KWTSXDURSIMDCE
+Dextroamphetamine sulfate 0.0 KWTSXDURSIMDCE
+
+       선택지: (a) Methods 에 그대로 밝히고 둔다
+               (b) 해당 쌍을 분석에서 제외한다
+               (c) 27자리 전체 InChIKey 로 중복을 제거한다
+                   (염은 이미 표준화에서 떨어졌으므로 이 경우
+                    입체이성질체만 분리된다. 단 전체 재실행 필요)
+
+--------------------------------------------------------------------------
+[6] DICTrank — 구조 중복 제거로 합쳐진 화합물
+--------------------------------------------------------------------------
+    표준화 통과 1057행
+    같은 14자리 키를 갖는 서로 다른 이름: 91그룹 / 203행  -> 중복 제거로 112행 사라짐
+    !! 그중 라벨(y)이 서로 다른 그룹: 13그룹 / 34행
+       합쳐질 때 한쪽 라벨이 버려졌다. 아래를 확인할 것:
+                    CompoundName   y             _k
+         PENICILLIN G BENZATHINE 1.0 JGSARLDLIJGVTE
+          PENICILLIN G POTASSIUM 1.0 JGSARLDLIJGVTE
+           PENICILLIN G PROCAINE 0.0 JGSARLDLIJGVTE
+             PENICILLIN G SODIUM 1.0 JGSARLDLIJGVTE
+    FERRIC PYROPHOSPHATE CITRATE 1.0 KRKNYBCHXYNGOX
+           GALLIUM CITRATE GA-67 0.0 KRKNYBCHXYNGOX
+                 Lithium Citrate 1.0 KRKNYBCHXYNGOX
+                  SODIUM CITRATE 0.0 KRKNYBCHXYNGOX
+                       ACYCLOVIR 0.0 MKUXAQIIEYXACX
+                ACYCLOVIR SODIUM 1.0 MKUXAQIIEYXACX
+                      VANCOMYCIN 1.0 MYPYJXKWCTUITO
+        vancomycin hydrochloride 0.0 MYPYJXKWCTUITO
+          ESOMEPRAZOLE MAGNESIUM 1.0 MZXXONIZWOBROX
+ESOMEPRAZOLE MAGNESIUM DIHYDRATE 1.0 MZXXONIZWOBROX
+             Esomeprazole Sodium 0.0 MZXXONIZWOBROX
+            OMEPRAZOLE MAGNESIUM 1.0 MZXXONIZWOBROX
+                   Amifampridine 0.0 OYTKINVCDFNREN
+         amifampridine phosphate 1.0 OYTKINVCDFNREN
+       GADOPENTETATE DIMEGLUMINE 1.0 QPCDCPDFJACHGM
+Indium In-111 Pentetate Disodium 0.0 QPCDCPDFJACHGM
+                 CALCIUM ACETATE 0.0 QTBSBXVTEAMEQO
+               POTASSIUM ACETATE 1.0 QTBSBXVTEAMEQO
+      COPPER OXODOTREOTIDE CU-64 0.0 QVFLVLMYXXNJDT
+                        DOTATATE 0.0 QVFLVLMYXXNJDT
+   LUTETIUM OXODOTREOTIDE LU-177 1.0 QVFLVLMYXXNJDT
+                  Cyanocobalamin 1.0 RHYVGCKRBKDRDX
+        HYDROXOCOBALAMIN ACETATE 0.0 RHYVGCKRBKDRDX
+                Hydroxocobalamin 1.0 RHYVGCKRBKDRDX
+           IOTHALAMATE MEGLUMINE 1.0 UXIGWFXRQKWHHA
+        IOTHALAMATE SODIUM I-125 0.0 UXIGWFXRQKWHHA
+             FERRIC FERROCYANIDE 0.0 XFXPMWWXUTWYJX
+            Sodium Nitroprusside 1.0 XFXPMWWXUTWYJX
+              Diatrizoate Sodium 1.0 YVPYQUNUQOZFHG
+           diatrizoate meglumine 0.0 YVPYQUNUQOZFHG
+
+       선택지: (a) Methods 에 그대로 밝히고 둔다
+               (b) 해당 쌍을 분석에서 제외한다
+               (c) 27자리 전체 InChIKey 로 중복을 제거한다
+                   (염은 이미 표준화에서 떨어졌으므로 이 경우
+                    입체이성질체만 분리된다. 단 전체 재실행 필요)
+
+==========================================================================
+판정
+==========================================================================
+  구조 중복 제거로 라벨이 버려진 그룹: 14개
+  DILIrank  y 불일치 0건 | 원자료 미발견 0건 | 규칙 밖 concern 값 0건 | 중복키 라벨충돌 0건
+  DICTrank  y 불일치 0건 | 원자료 미발견 0건 | 규칙 밖 concern 값 0건 | 중복키 라벨충돌 0건
+
+  => 라벨 이진화는 원자료와 완전히 일치한다.
+     (이 검수가 보장하는 것: 적힌 규칙이 그대로 실행됐다는 것.
+      most+less 를 양성으로 묶는 선택이 타당한가는 별개 문제이며,
+      Methods 와 Discussion 에서 근거를 밝혀야 한다.)

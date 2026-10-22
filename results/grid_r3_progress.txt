@@ -1,0 +1,33 @@
+grid_r3 진행 기록 — 2026-10-21 21:26
+21:26:27  DILIrank ECFP4+desc/XGBoost 배율 1.37
+21:26:37  DILIrank ECFP4+desc/RandomForest 배율 1.13
+21:26:37  DILIrank ECFP4+desc/LogisticReg 배율 1.22
+21:26:40  DILIrank ECFP4+desc/LightGBM 배율 1.41
+21:26:56  DILIrank ECFP4/XGBoost 배율 1.31
+21:27:06  DILIrank ECFP4/RandomForest 배율 1.11
+21:27:07  DILIrank ECFP4/LogisticReg 배율 1.18
+21:27:09  DILIrank ECFP4/LightGBM 배율 1.42
+21:27:21  DILIrank MACCS/XGBoost 배율 1.35
+21:27:30  DILIrank MACCS/RandomForest 배율 1.27
+21:27:30  DILIrank MACCS/LogisticReg 배율 1.28
+21:27:32  DILIrank MACCS/LightGBM 배율 1.32
+21:27:42  DILIrank RDKit desc/XGBoost 배율 1.24
+21:27:51  DILIrank RDKit desc/RandomForest 배율 1.23
+21:27:51  DILIrank RDKit desc/LogisticReg 배율 1.18
+21:27:52  DILIrank RDKit desc/LightGBM 배율 1.24
+21:28:11  DICTrank ECFP4+desc/XGBoost 배율 1.20
+21:28:21  DICTrank ECFP4+desc/RandomForest 배율 1.18
+21:28:21  DICTrank ECFP4+desc/LogisticReg 배율 1.16
+21:28:25  DICTrank ECFP4+desc/LightGBM 배율 1.22
+21:28:41  DICTrank ECFP4/XGBoost 배율 1.23
+21:28:52  DICTrank ECFP4/RandomForest 배율 1.17
+21:28:52  DICTrank ECFP4/LogisticReg 배율 1.13
+21:28:56  DICTrank ECFP4/LightGBM 배율 1.21
+21:29:07  DICTrank MACCS/XGBoost 배율 1.18
+21:29:16  DICTrank MACCS/RandomForest 배율 1.24
+21:29:17  DICTrank MACCS/LogisticReg 배율 1.14
+21:29:19  DICTrank MACCS/LightGBM 배율 1.24
+21:29:29  DICTrank RDKit desc/XGBoost 배율 1.09
+21:29:38  DICTrank RDKit desc/RandomForest 배율 1.20
+21:29:38  DICTrank RDKit desc/LogisticReg 배율 1.32
+21:29:40  DICTrank RDKit desc/LightGBM 배율 1.12

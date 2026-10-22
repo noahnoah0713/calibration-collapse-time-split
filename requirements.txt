@@ -1,0 +1,37 @@
+# 논문 "Beyond AUROC" 재현용 패키지 목록
+# 기록 환경: Python 3.11.14 / macOS 14.3.1 arm64 / conda env "pharmml"
+# 전체 기록: results/environment.json, results/environment.txt
+#
+#   pip install -r requirements.txt
+#
+# ---------------------------------------------------------------------
+# 버전을 고정하는 이유
+#   LightGBM 은 스레드 수에 따라 결과가 달라지므로 deterministic=True,
+#   force_row_wise=True, n_jobs=1 로 고정해 쓴다. scikit-learn 의
+#   RandomForest 는 예측 누적을 단일 스레드로 묶어야 비트 단위로
+#   재현된다 (src/_shared.py 의 DeterministicRF). 버전이 달라지면
+#   소수 네 자리까지 일치한다는 보장이 사라진다.
+#
+# conda 로 설치된 패키지
+#   numpy, pandas, rdkit 세 개는 conda-forge 로 설치되어 pip freeze 에
+#   버전이 아닌 빌드 경로로 기록되었다. 아래 버전은
+#   results/environment.json 에 기록된 값이다. conda 사용을 권한다:
+#     conda install -c conda-forge numpy=2.4.6 pandas=3.0.5 rdkit=2026.03.5
+#   pip 로 설치할 경우 rdkit 패키지 이름은 rdkit (구 rdkit-pypi) 이고,
+#   버전 표기가 2026.3.5 형태일 수 있다.
+#
+# 그림
+#   matplotlib 은 Arial 로 글꼴을 임베딩한다. Arial 이 없으면 대체
+#   글꼴로 그려지며 수치는 같지만 투고용 서식과 달라진다.
+# ---------------------------------------------------------------------
+
+numpy==2.4.6
+pandas==3.0.5
+rdkit==2026.03.5
+
+scipy==1.17.1
+scikit-learn==1.9.0
+xgboost==3.2.0
+lightgbm==4.7.0
+statsmodels==0.15.0
+matplotlib==3.11.1

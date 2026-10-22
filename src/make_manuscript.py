@@ -1,0 +1,105 @@
+# -*- coding: utf-8 -*-
+"""원고 투고본 한 파일을 조립한다 — \\input 을 펼친다.
+
+왜 필요한가
+----------
+작업용 원고는 부분 파일로 쪼개 두는 쪽이 안전하다. 표는 생성기가 만들고
+(`make_tables.py`), Results·Discussion·Methods 는 각자 파일이며, 한 군데를
+고칠 때 다른 데를 건드리지 않는다. 그런데 Springer Nature 템플릿은 투고
+파일에 `\\input` 을 쓰지 말라고 적어 두었다(sn-article.tex 머리 주석).
+
+그래서 작업용은 `manuscript/main.tex`(\\input 유지), 투고용은 이 스크립트가
+펼친 `manuscript/submission.tex` 로 나눈다. **submission.tex 를 손으로
+고치지 말 것** — 고치면 다음 조립에서 덮인다.
+
+조립 순서는 main.tex 가 정한다. 이 스크립트는 순서를 모른다.
+
+사용법
+------
+    python src/make_manuscript.py
+    python src/make_manuscript.py --check    # 조립만 해 보고 쓰지 않는다
+
+출력
+----
+    manuscript/submission.tex
+"""
+
+import io
+import os
+import re
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MAN = os.path.join(ROOT, "manuscript")
+SRC = os.path.join(MAN, "main.tex")
+OUT = os.path.join(MAN, "submission.tex")
+
+
+def expand(path, seen, depth=0):
+    if depth > 8:
+        raise SystemExit("\\input 중첩이 너무 깊다: %s" % path)
+    if not os.path.exists(path):
+        raise SystemExit("없는 파일을 \\input 한다: %s" % path)
+    real = os.path.realpath(path)
+    if real in seen:
+        raise SystemExit("\\input 순환: %s" % path)
+    seen = seen | {real}
+    out = []
+    for ln in io.open(path, encoding="utf-8").read().split("\n"):
+        m = re.match(r"\s*\\input\{([^}]+)\}\s*$", ln)
+        if m and not ln.strip().startswith("%"):
+            sub = m.group(1)
+            if not sub.endswith(".tex"):
+                sub += ".tex"
+            out.append("%% ---- %s 시작 (make_manuscript.py 가 펼쳤다) ----" % sub)
+            out.append(expand(os.path.join(MAN, sub), seen, depth + 1))
+            out.append("%% ---- %s 끝 ----" % sub)
+            continue
+        out.append(ln)
+    return "\n".join(out)
+
+
+def main():
+    txt = expand(SRC, set())
+    # 펼친 결과에 \input 이 남아 있으면 조립이 덜 된 것이다.
+    left = [
+        l for l in txt.split("\n") if re.match(r"\s*\\input\{", l) and not l.strip().startswith("%")
+    ]
+    if left:
+        raise SystemExit("펼치지 못한 \\input 이 남았다: %s" % left[:3])
+    head = (
+        "%% 투고용 단일 파일 — src/make_manuscript.py 가 "
+        "manuscript/main.tex 에서 조립했다.\n"
+        "%% **손으로 고치지 말 것.** 부분 파일을 고치고 다시 조립할 것.\n"
+    )
+    txt = head + txt
+    n_sec = len(re.findall(r"^\\section\{", txt, re.M))
+    n_sub = len(re.findall(r"^\\subsection\{", txt, re.M))
+    n_tab = len(re.findall(r"\\begin\{table\}", txt))
+    n_fig = len(re.findall(r"\\begin\{figure\}", txt))
+    n_todo = len(re.findall(r"\[TODO", txt)) + txt.count("[이름]")
+    print(
+        "조립: 절 %d / 하위절 %d / 표 %d / 그림 %d / %d행"
+        % (n_sec, n_sub, n_tab, n_fig, txt.count("\n") + 1)
+    )
+    print("남은 [TODO]·플레이스홀더 %d개" % n_todo)
+    for pat, lab in (
+        (r"\\begin\{document\}", "begin{document}"),
+        (r"\\end\{document\}", "end{document}"),
+        (r"\\maketitle", "maketitle"),
+        (r"\\backmatter", "backmatter"),
+        (r"\\bibliography\{", "bibliography"),
+    ):
+        c = len(re.findall(pat, txt))
+        if c != 1:
+            print("  [주의] %s 가 %d개다 (1개여야 한다)" % (lab, c))
+    if "--check" in sys.argv:
+        print("(--check: 쓰지 않았다)")
+        return 0
+    io.open(OUT, "w", encoding="utf-8").write(txt)
+    print("저장: %s" % OUT)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,1716 @@
+dataset,LTKBID,y_actual,vDILI-Concern,_tok,_y_expected,mismatch,CompoundName,concern
+DILIrank,LT00040,1.0,vMOST-DILI-concern,most,1.0,False,,
+DILIrank,LT03618,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03619,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02339,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01141,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01034,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01035,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00004,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00498,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02096,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01041,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01042,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00041,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01155,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01047,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00461,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00499,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01051,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00980,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00925,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01107,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01244,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00043,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01053,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01070,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03621,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00501,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01215,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01629,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03376,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01067,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01068,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02070,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01071,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00054,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00711,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00505,1.0,vMOST-DILI-concern,most,1.0,False,,
+DILIrank,LT00046,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01793,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00047,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00175,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00507,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00048,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00049,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00263,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02229,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01203,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03622,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02418,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02217,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03623,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01030,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02077,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01143,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03624,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00053,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01199,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00277,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01139,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00258,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00917,0.0,vNo-DILI-Concern,no,0.0,False,,
+DILIrank,LT00511,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02166,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02440,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03629,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00006,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03630,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00265,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02059,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01113,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03631,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01116,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00659,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00825,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00800,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00832,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01123,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02189,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00730,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03798,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01064,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00056,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00817,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02190,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01027,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01202,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01140,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02349,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03639,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03640,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03868,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03643,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00519,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00279,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02076,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01144,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00058,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00280,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01151,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01152,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01888,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00878,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00899,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00947,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02899,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01022,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02516,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02018,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03646,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00059,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00060,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01159,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00759,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00061,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00898,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02395,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00675,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02037,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00207,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01166,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01167,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01171,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01289,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01087,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01172,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01173,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01176,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01177,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01182,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02387,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00062,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01185,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01186,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00252,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01189,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03596,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01190,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00286,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01196,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01198,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01201,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01207,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01208,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00009,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00068,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00379,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00067,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03899,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01218,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01209,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00178,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00219,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01224,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00187,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02222,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00644,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01225,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02346,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00011,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00233,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00185,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00532,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01023,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00248,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01235,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00287,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01269,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00881,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01275,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01210,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03651,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03900,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00438,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00077,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00734,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00855,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02436,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02002,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01249,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00013,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00380,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01255,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00209,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02345,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00288,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03652,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00079,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03653,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00539,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00080,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02891,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00289,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01200,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01188,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01243,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01248,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00540,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00563,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00386,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02726,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03657,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01085,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00573,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03658,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01266,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02909,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01972,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02056,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00327,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00774,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00230,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00802,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00084,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02041,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00737,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01285,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00806,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03659,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00085,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00292,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02218,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01292,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00545,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00074,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02877,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01623,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01302,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00295,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00684,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01308,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01309,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01040,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02905,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00052,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00015,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00547,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01313,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01314,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00335,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00393,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00727,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00671,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01317,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01788,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02035,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01112,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00740,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00683,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03663,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02093,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01323,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03666,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00663,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03667,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00296,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01968,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02444,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01666,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00742,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01149,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01316,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00999,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00194,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01214,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03673,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00092,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01333,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01589,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01334,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00016,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01342,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01161,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03674,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01345,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00926,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01348,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01355,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00240,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01357,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00094,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00653,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01267,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00394,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00537,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01153,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00095,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00554,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00097,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00397,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00098,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00670,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00944,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00099,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03677,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00590,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01370,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00167,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03679,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02342,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00857,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01375,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03680,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03903,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03904,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03905,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03906,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00179,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01382,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00399,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01384,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00894,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03907,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03908,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01029,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00018,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01394,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00298,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00101,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03909,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00172,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01580,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01125,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03681,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01398,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01399,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01400,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00658,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01054,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00300,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03684,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01127,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02336,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00528,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00935,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02876,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00952,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01044,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02404,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03902,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03910,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00475,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00402,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01407,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00020,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01084,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00173,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00243,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00302,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00836,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00558,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01100,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00829,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02427,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00405,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01426,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00706,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00559,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01433,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00188,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02026,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00106,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01437,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01156,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02898,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00199,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00974,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03610,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00562,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00107,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00108,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00141,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00022,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01306,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01454,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03911,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00257,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00419,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01005,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01466,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00306,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00200,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00818,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00234,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01475,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03695,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00182,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02665,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02431,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01477,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00859,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00111,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00023,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00204,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00112,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02745,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00886,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00569,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01481,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00493,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02204,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03699,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00113,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03700,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01238,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03701,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00572,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02192,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02019,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01059,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01486,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01488,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02442,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01489,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00752,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01072,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01905,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02412,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02445,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01077,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00783,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01268,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01492,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01776,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02398,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00575,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02087,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01497,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01498,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00181,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01499,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00576,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01240,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02411,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03708,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03709,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02451,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00024,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00640,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03558,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00308,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00781,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00792,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00116,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01514,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00117,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01517,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01908,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00790,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00713,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00822,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01521,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00003,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01525,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00414,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02086,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00841,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00119,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00716,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01532,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00580,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01468,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00026,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01537,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01547,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00787,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00121,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02074,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00570,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00478,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00222,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02072,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01549,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00309,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00584,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00838,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00895,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01553,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01187,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01557,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01558,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00184,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03712,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00992,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01126,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01263,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00416,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00587,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01560,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00588,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01564,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01565,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00950,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00589,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02007,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00905,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02008,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01288,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00910,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01583,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01586,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03716,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03717,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00592,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02121,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00593,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00124,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01233,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01012,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00595,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00465,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00260,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00312,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00313,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02164,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00607,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01600,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03718,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01184,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00125,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01608,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00315,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00738,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02269,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01614,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01615,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00602,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03603,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01618,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00259,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03722,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01102,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00126,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00206,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01619,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03725,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02216,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02085,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02210,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03727,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02880,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01624,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01181,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00845,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00429,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01056,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02084,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00979,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00235,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00808,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00827,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00430,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03729,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03594,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01252,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00867,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00606,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02061,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00128,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00672,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00246,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01644,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00488,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01646,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01648,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00869,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00129,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01650,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01651,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02446,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01065,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01655,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03735,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00826,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01657,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00030,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02082,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00433,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00032,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00780,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03915,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03736,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01672,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01673,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00134,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03550,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01679,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03737,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02340,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00486,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02883,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01254,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00492,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00665,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00186,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00612,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00180,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01154,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00613,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00261,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01699,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00614,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00437,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02219,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00192,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00205,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01705,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00753,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01708,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00083,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00136,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00349,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00848,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03197,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00166,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02081,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01980,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01716,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01721,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00267,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01723,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01725,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00264,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00183,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00642,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01217,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01726,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00138,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01192,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00646,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02433,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03819,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00987,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03744,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01002,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01729,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01730,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03606,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01479,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00139,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00034,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03745,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02352,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01731,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00937,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03746,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02894,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03748,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01735,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01737,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02390,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01016,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01026,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00957,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00619,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03749,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00669,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00990,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00140,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01928,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03752,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01262,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01746,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03753,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00667,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01974,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01749,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03755,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03759,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00625,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03760,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00988,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01033,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00142,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00350,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00443,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01251,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00330,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00880,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00480,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02901,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01191,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03763,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01241,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00143,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00144,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02728,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00145,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01766,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00749,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00920,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03224,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00146,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01933,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00147,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00632,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00148,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00565,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT03766,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00448,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01129,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03576,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00152,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00982,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00664,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03770,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01944,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02063,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00153,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01261,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03773,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01786,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02224,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01787,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00634,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00877,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02397,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00932,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00223,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00450,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00635,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01981,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00452,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00451,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01804,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02413,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00227,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01222,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00998,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00637,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01220,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01037,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00155,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00266,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00156,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01820,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01011,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00661,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00455,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01824,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01827,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02903,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01828,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00923,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01829,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01830,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01833,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00375,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00457,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03777,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01839,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01842,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00798,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00460,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00168,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00516,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00645,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT02356,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03780,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02443,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03782,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03784,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00929,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01971,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01857,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00161,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01242,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00916,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02435,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03786,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00174,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00332,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03787,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03788,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02391,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01861,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00177,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01862,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00162,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT02009,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01516,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03563,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03790,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT01097,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00462,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT02902,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT03791,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03792,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT00647,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01869,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00648,0.0,vNo-DILI-concern,no,0.0,False,,
+DILIrank,LT03600,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00163,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT00649,1.0,vMost-DILI-concern,most,1.0,False,,
+DILIrank,LT01017,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT01088,1.0,vLess-DILI-concern,less,1.0,False,,
+DILIrank,LT00165,1.0,vLess-DILI-concern,less,1.0,False,,
+DICTrank,,1.0,,less,1.0,False,Olanzapine pamoate,less
+DICTrank,,0.0,,no,0.0,False,Trimethobenzamide Hydrochloride,no
+DICTrank,,1.0,,most,1.0,False,paliperidone palmitate,most
+DICTrank,,1.0,,most,1.0,False,TESTOSTERONE UNDECANOATE,most
+DICTrank,,1.0,,less,1.0,False,aripiprazole lauroxil,less
+DICTrank,,1.0,,most,1.0,False,PASIREOTIDE,most
+DICTrank,,1.0,,less,1.0,False,triptorelin,less
+DICTrank,,1.0,,less,1.0,False,naltrexone,less
+DICTrank,,0.0,,no,0.0,False,CABOTEGRAVIR SODIUM,no
+DICTrank,,0.0,,no,0.0,False,Fulvestrant,no
+DICTrank,,1.0,,less,1.0,False,Dimercaprol,less
+DICTrank,,1.0,,less,1.0,False,CARBOPROST TROMETHAMINE,less
+DICTrank,,1.0,,most,1.0,False,ESTRADIOL VALERATE,most
+DICTrank,,1.0,,most,1.0,False,TESTOSTERONE CYPIONATE,most
+DICTrank,,0.0,,no,0.0,False,STREPTOMYCIN SULFATE,no
+DICTrank,,1.0,,less,1.0,False,MEDROXYPROGESTERONE ACETATE,less
+DICTrank,,1.0,,most,1.0,False,HALOPERIDOL DECANOATE,most
+DICTrank,,1.0,,most,1.0,False,ESTRADIOL CYPIONATE,most
+DICTrank,,1.0,,most,1.0,False,Haloperidol Lactate,most
+DICTrank,,1.0,,less,1.0,False,ZIPRASIDONE MESYLATE,less
+DICTrank,,1.0,,less,1.0,False,BLEOMYCIN SULFATE,less
+DICTrank,,1.0,,less,1.0,False,"ESTROGENS, CONJUGATED",less
+DICTrank,,0.0,,no,0.0,False,capreomycin sulfate,no
+DICTrank,,1.0,,less,1.0,False,HYDROCORTISONE SODIUM SUCCINATE,less
+DICTrank,,1.0,,less,1.0,False,EDETATE CALCIUM DISODIUM,less
+DICTrank,,1.0,,less,1.0,False,OXYTOCIN,less
+DICTrank,,1.0,,most,1.0,False,Phentolamine Mesylate,most
+DICTrank,,0.0,,no,0.0,False,Colistimethate Sodium,no
+DICTrank,,1.0,,less,1.0,False,Orphenadrine Citrate,less
+DICTrank,,1.0,,most,1.0,False,Midazolam Hydrochloride,most
+DICTrank,,1.0,,less,1.0,False,METOCLOPRAMIDE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PENTAMIDINE ISETHIONATE,less
+DICTrank,,1.0,,less,1.0,False,DIPHENHYDRAMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,PROCAINAMIDE HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,LEUCOVORIN CALCIUM,no
+DICTrank,,0.0,,no,0.0,False,cefuroxime sodium,no
+DICTrank,,1.0,,less,1.0,False,PROCHLORPERAZINE EDISYLATE,less
+DICTrank,,0.0,,no,0.0,False,CEFAZOLIN SODIUM,no
+DICTrank,,1.0,,most,1.0,False,DROPERIDOL,most
+DICTrank,,1.0,,less,1.0,False,KETAMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,ONDANSETRON HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,Pentobarbital Sodium,less 
+DICTrank,,0.0,,no,0.0,False,AMIKACIN SULFATE,no
+DICTrank,,0.0,,no,0.0,False,THIAMINE HYDROCHLORIDE,no
+DICTrank,,1.0,,less,1.0,False,METHYLPREDNISOLONE SODIUM SUCCINATE,less
+DICTrank,,1.0,,less,1.0,False,Methylergonovine Maleate,less
+DICTrank,,1.0,,most,1.0,False,SUCCINYLCHOLINE CHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,Tobramycin Sulfate,no
+DICTrank,,1.0,,less,1.0,False,AZTREONAM,less
+DICTrank,,1.0,,less,1.0,False,OXACILLIN SODIUM,less
+DICTrank,,1.0,,most,1.0,False,Hydralazine Hydrochloride,most
+DICTrank,,1.0,,most,1.0,False,FOSPHENYTOIN SODIUM,most
+DICTrank,,0.0,,no,0.0,False,PYRIDOXINE HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,CEFOTETAN,no
+DICTrank,,1.0,,less,1.0,False,ERTAPENEM SODIUM,less
+DICTrank,,1.0,,less,1.0,False,bumetanide,less
+DICTrank,,1.0,,most,1.0,False,edrophonium chloride,most
+DICTrank,,0.0,,no,0.0,False,Piperacillin Sodium,no
+DICTrank,,0.0,,no,0.0,False,ceftizoxime sodium,no
+DICTrank,,1.0,,less,1.0,False,Cosyntropin,less 
+DICTrank,,1.0,,less,1.0,False,METHOHEXITAL SODIUM,less
+DICTrank,,1.0,,less,1.0,False,MEPERIDINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PRALIDOXIME CHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,Nalbuphine Hydrochloride,less
+DICTrank,,1.0,,less,1.0,False,DEFEROXAMINE MESYLATE,less
+DICTrank,,1.0,,less,1.0,False,Hydromorphone Hydrochloride,less
+DICTrank,,1.0,,less,1.0,False,nalmefene hydrochloride,less
+DICTrank,,1.0,,less,1.0,False,CORTICOTROPIN,less
+DICTrank,,1.0,,less,1.0,False,CALCITONIN SALMON,less
+DICTrank,,1.0,,less,1.0,False,HYDROXYPROGESTERONE CAPROATE,less
+DICTrank,,1.0,,most,1.0,False,FLUPHENAZINE DECANOATE,most
+DICTrank,,1.0,,less,1.0,False,LEUPROLIDE ACETATE,less
+DICTrank,,1.0,,less,1.0,False,ACETYLCHOLINE CHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,BRILLIANT BLUE G,no
+DICTrank,,0.0,,no,0.0,False,TRYPAN BLUE,no
+DICTrank,,1.0,,less,1.0,False,Procaine Hydrochloride,less
+DICTrank,,1.0,,most,1.0,False,Iohexol,most
+DICTrank,,1.0,,less,1.0,False,cytarabine,less
+DICTrank,,1.0,,most,1.0,False,IOPAMIDOL,most
+DICTrank,,1.0,,most,1.0,False,Iodixanol,most
+DICTrank,,1.0,,less,1.0,False,ALPROSTADIL,less
+DICTrank,,0.0,,no,0.0,False,CYSTEINE HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,GALLIUM GA-68 GOZETOTIDE,no
+DICTrank,,1.0,,less,1.0,False,Etomidate,Less
+DICTrank,,0.0,,no,0.0,False,TECHNETIUM TC-99M MEDRONATE,no
+DICTrank,,0.0,,no,0.0,False,fosdenopterin hydrobromide,no
+DICTrank,,1.0,,less,1.0,False,ERAVACYCLINE DIHYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,COPANLISIB,less
+DICTrank,,1.0,,less,1.0,False,oritavancin diphosphate,less
+DICTrank,,1.0,,less,1.0,False,Ephedrine Sulfate,less
+DICTrank,,1.0,,less,1.0,False,Cefiderocol sulfate tosylate,less
+DICTrank,,0.0,,no,0.0,False,FLORBETABEN F-18,no
+DICTrank,,0.0,,no,0.0,False,FLUOROESTRADIOL F-18,no
+DICTrank,,0.0,,no,0.0,False,Flortaucipir F-18,no
+DICTrank,,1.0,,less,1.0,False,BREXANOLONE,less
+DICTrank,,0.0,,no,0.0,False,peramivir,no
+DICTrank,,1.0,,less,1.0,False,IOBENGUANE I-131,less
+DICTrank,,0.0,,no,0.0,False,ASCORBIC ACID,no
+DICTrank,,1.0,,most,1.0,False,DOXAPRAM HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,DAPTOMYCIN,less
+DICTrank,,1.0,,most,1.0,False,OLICERIDINE,most
+DICTrank,,0.0,,no,0.0,False,CHOLINE C-11,no
+DICTrank,,1.0,,most,1.0,False,AMIFOSTINE,most
+DICTrank,,1.0,,less,1.0,False,ANGIOTENSIN II,less
+DICTrank,,1.0,,less,1.0,False,Sincalide,less
+DICTrank,,1.0,,less,1.0,False,PLAZOMICIN,less
+DICTrank,,1.0,,less,1.0,False,Flutemetamol F-18,less
+DICTrank,,1.0,,most,1.0,False,IXABEPILONE,most
+DICTrank,,1.0,,less,1.0,False,ARGATROBAN,less
+DICTrank,,0.0,,no,0.0,False,indocyanine green,no
+DICTrank,,1.0,,most,1.0,False,Trabectedin,most
+DICTrank,,1.0,,less,1.0,False,GADOXETATE DISODIUM,less
+DICTrank,,1.0,,less,1.0,False,FENOLDOPAM MESYLATE,less
+DICTrank,,0.0,,no,0.0,False,ARGININE HYDROCHLORIDE,no
+DICTrank,,1.0,,less,1.0,False,BELINOSTAT,less
+DICTrank,,1.0,,most,1.0,False,SUGAMMADEX SODIUM,most
+DICTrank,,1.0,,less,1.0,False,epoprostenol,less
+DICTrank,,1.0,,most,1.0,False,CALCIUM GLUCONATE MONOHYDRATE,most
+DICTrank,,1.0,,most,1.0,False,PERFLUTREN,most
+DICTrank,,1.0,,most,1.0,False,ERIBULIN MESYLATE,most
+DICTrank,,1.0,,less,1.0,False,PRALATREXATE,less
+DICTrank,,1.0,,less,1.0,False,Pemetrexed disodium heptahydrate,less
+DICTrank,,1.0,,most,1.0,False,IBUTILIDE FUMARATE,most
+DICTrank,,1.0,,less,1.0,False,ANIDULAFUNGIN,less
+DICTrank,,1.0,,less,1.0,False,BENDAMUSTINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,foscarnet sodium,most
+DICTrank,,1.0,,less,1.0,False,gadodiamide,less
+DICTrank,,1.0,,most,1.0,False,Amisulpride,most
+DICTrank,,1.0,,less,1.0,False,CEFTAROLINE FOSAMIL,less
+DICTrank,,1.0,,most,1.0,False,DOPAMINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,conivaptan hydrochloride,less
+DICTrank,,1.0,,less,1.0,False,SAMARIUM SM-153 LEXIDRONAM PENTASODIUM,less
+DICTrank,,1.0,,most,1.0,False,CARFILZOMIB,most
+DICTrank,,1.0,,most,1.0,False,ETELCALCETIDE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,FLORBETAPIR F-18,less
+DICTrank,,1.0,,most,1.0,False,CYCLOPHOSPHAMIDE ANHYDROUS,most
+DICTrank,,1.0,,less,1.0,False,TIROFIBAN HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,CANGRELOR,no
+DICTrank,,1.0,,less,1.0,False,TEMSIROLIMUS,less
+DICTrank,,0.0,,no,0.0,False,STREPTOZOCIN,no
+DICTrank,,1.0,,less,1.0,False,Remifentanil Hydrochloride,less
+DICTrank,,0.0,,no,0.0,False,etoposide phosphate,no
+DICTrank,,0.0,,no,0.0,False,PAFOLACIANINE SODIUM,no
+DICTrank,,0.0,,no,0.0,False,trilaciclib dihydrochloride,no
+DICTrank,,1.0,,most,1.0,False,gadobenate dimeglumine,most
+DICTrank,,0.0,,no,0.0,False,ioflupane I-123,no
+DICTrank,,1.0,,less,1.0,False,TECHNETIUM TC-99M EXAMETAZIME,less
+DICTrank,,1.0,,less,1.0,False,PENTOSTATIN,less
+DICTrank,,0.0,,no,0.0,False,PIFLUFOLASTAT F-18,no
+DICTrank,,0.0,,no,0.0,False,Fluciclovine F-18,no
+DICTrank,,1.0,,less,1.0,False,ACETAMINOPHEN,less
+DICTrank,,0.0,,no,0.0,False,melphalan flufenamide hydrochloride,no
+DICTrank,,1.0,,most,1.0,False,REGADENOSON,most
+DICTrank,,0.0,,no,0.0,False,LURBINECTEDIN,no
+DICTrank,,0.0,,no,0.0,False,FLUORODOPA F-18,no
+DICTrank,,1.0,,most,1.0,False,remimazolam besylate,most
+DICTrank,,1.0,,most,1.0,False,EPIRUBICIN HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,GADOBUTROL,less
+DICTrank,,1.0,,less,1.0,False,CLEVIDIPINE,less
+DICTrank,,1.0,,less,1.0,False,Alfentanil Hydrochloride,less
+DICTrank,,1.0,,most,1.0,False,DEXMEDETOMIDINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,DIFELIKEFALIN ACETATE,less 
+DICTrank,,1.0,,most,1.0,False,POLIDOCANOL,most
+DICTrank,,1.0,,most,1.0,False,telavancin hydrochloride,most
+DICTrank,,1.0,,most,1.0,False,LEVOTHYROXINE SODIUM ANHYDROUS,most
+DICTrank,,1.0,,less,1.0,False,ATROPINE SULFATE,less
+DICTrank,,1.0,,less,1.0,False,ganciclovir sodium,less
+DICTrank,,0.0,,no,0.0,False,TROMETHAMINE,no
+DICTrank,,1.0,,less,1.0,False,gadoteridol,less
+DICTrank,,1.0,,most,1.0,False,PROPOFOL,most
+DICTrank,,1.0,,less,1.0,False,CASPOFUNGIN ACETATE,less
+DICTrank,,1.0,,most,1.0,False,ESMOLOL HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,IFOSFAMIDE,most
+DICTrank,,1.0,,most,1.0,False,DAUNORUBICIN HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,MITOXANTRONE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,CARMUSTINE,less
+DICTrank,,1.0,,less,1.0,False,GEMCITABINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,CAFFEINE CITRATE,most
+DICTrank,,1.0,,less,1.0,False,BIVALIRUDIN,less
+DICTrank,,1.0,,less,1.0,False,VINCRISTINE SULFATE,less
+DICTrank,,1.0,,less,1.0,False,MICAFUNGIN,less
+DICTrank,,1.0,,less,1.0,False,cefoxitin sodium,less
+DICTrank,,1.0,,most,1.0,False,SODIUM TETRADECYL SULFATE,most
+DICTrank,,1.0,,less,1.0,False,paclitaxel,less
+DICTrank,,1.0,,less,1.0,False,mesna,less
+DICTrank,,1.0,,less,1.0,False,Eptifibatide,less
+DICTrank,,1.0,,less,1.0,False,IBUPROFEN LYSINE,less
+DICTrank,,1.0,,less,1.0,False,VINBLASTINE SULFATE,less
+DICTrank,,0.0,,no,0.0,False,INDIUM IN-111 OXYQUINOLINE,no
+DICTrank,,1.0,,less,1.0,False,gadoterate meglumine,less
+DICTrank,,1.0,,most,1.0,False,Adenosine,most
+DICTrank,,1.0,,most,1.0,False,NICARDIPINE HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,AZITHROMYCIN MONOHYDRATE,most
+DICTrank,,1.0,,less,1.0,False,CIDOFOVIR,less
+DICTrank,,0.0,,no,0.0,False,AMPICILLIN SODIUM,no
+DICTrank,,1.0,,less,1.0,False,NOREPINEPHRINE BITARTRATE,less
+DICTrank,,0.0,,no,0.0,False,CEFEPIME HYDROCHLORIDE,no
+DICTrank,,1.0,,less,1.0,False,ROCURONIUM BROMIDE,less
+DICTrank,,1.0,,less,1.0,False,ENALAPRILAT,less
+DICTrank,,1.0,,less,1.0,False,Busulfan,less
+DICTrank,,1.0,,less,1.0,False,Calcitriol,less
+DICTrank,,1.0,,less,1.0,False,MEROPENEM,less
+DICTrank,,1.0,,less,1.0,False,Clindamycin Phosphate,less
+DICTrank,,0.0,,no,0.0,False,FOSAPREPITANT DIMEGLUMINE,no
+DICTrank,,1.0,,less,1.0,False,ROMIDEPSIN,less
+DICTrank,,1.0,,less,1.0,False,Aminophylline Dihydrate,less
+DICTrank,,1.0,,less,1.0,False,CARBOPLATIN,less
+DICTrank,,0.0,,no,0.0,False,AZATHIOPRINE SODIUM,no
+DICTrank,,0.0,,no,0.0,False,CEFTAZIDIME,no
+DICTrank,,1.0,,most,1.0,False,Milrinone Lactate,most
+DICTrank,,1.0,,less,1.0,False,NEOSTIGMINE METHYLSULFATE,less
+DICTrank,,1.0,,less,1.0,False,AMIODARONE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PAMIDRONATE DISODIUM,less
+DICTrank,,0.0,,no,0.0,False,CHLORAMPHENICOL SODIUM SUCCINATE,no
+DICTrank,,1.0,,less,1.0,False,Fomepizole,less
+DICTrank,,1.0,,less,1.0,False,CISATRACURIUM BESYLATE,less
+DICTrank,,1.0,,less,1.0,False,AMPHOTERICIN B,less
+DICTrank,,0.0,,no,0.0,False,TOPOTECAN,no
+DICTrank,,0.0,,no,0.0,False,DACARBAZINE,no
+DICTrank,,1.0,,less,1.0,False,DECITABINE,less
+DICTrank,,0.0,,no,0.0,False,TIGECYCLINE,no
+DICTrank,,0.0,,no,0.0,False,ETOPOSIDE,no
+DICTrank,,1.0,,less,1.0,False,DOCETAXEL ANHYDROUS,less
+DICTrank,,1.0,,most,1.0,False,Dipyridamole,most
+DICTrank,,0.0,,no,0.0,False,NELARABINE,no
+DICTrank,,1.0,,most,1.0,False,IDARUBICIN HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,VALPROATE SODIUM,less
+DICTrank,,0.0,,no,0.0,False,ACETAZOLAMIDE SODIUM,no
+DICTrank,,1.0,,less,1.0,False,ALLOPURINOL SODIUM,less
+DICTrank,,1.0,,most,1.0,False,FLUMAZENIL,most
+DICTrank,,1.0,,most,1.0,False,ERYTHROMYCIN LACTOBIONATE,most
+DICTrank,,1.0,,most,1.0,False,Granisetron Hydrochloride,most
+DICTrank,,1.0,,less,1.0,False,vinorelbine tartrate,less
+DICTrank,,1.0,,less,1.0,False,FLUDARABINE PHOSPHATE,less
+DICTrank,,0.0,,no,0.0,False,DACTINOMYCIN,no
+DICTrank,,0.0,,no,0.0,False,Fludeoxyglucose F-18,no
+DICTrank,,1.0,,less,1.0,False,DOBUTAMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,INDOMETHACIN SODIUM,less
+DICTrank,,1.0,,most,1.0,False,OXALIPLATIN,most
+DICTrank,,1.0,,less,1.0,False,IRINOTECAN HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,CEFTRIAXONE SODIUM,no
+DICTrank,,0.0,,no,0.0,False,trimetrexate glucuronate,no
+DICTrank,,0.0,,no,0.0,False,Temozolomide,no
+DICTrank,,0.0,,no,0.0,False,brivaracetam,no
+DICTrank,,1.0,,less,1.0,False,tedizolid phosphate,less
+DICTrank,,1.0,,less,1.0,False,delafloxacin meglumine,less
+DICTrank,,0.0,,no,0.0,False,SELEXIPAG,no
+DICTrank,,1.0,,most,1.0,False,LACOSAMIDE,most
+DICTrank,,1.0,,less,1.0,False,LETERMOVIR,less
+DICTrank,,1.0,,less,1.0,False,omadacycline,less
+DICTrank,,1.0,,most,1.0,False,trovafloxacin mesylate,most
+DICTrank,,0.0,,no,0.0,False,HEPARIN SODIUM,no
+DICTrank,,1.0,,most,1.0,False,bortezomib,most
+DICTrank,,1.0,,less,1.0,False,AZACITIDINE,less
+DICTrank,,1.0,,most,1.0,False,OCTREOTIDE ACETATE,most
+DICTrank,,0.0,,no,0.0,False,Dimethyl Sulfoxide,no
+DICTrank,,0.0,,no,0.0,False,HEXAMINOLEVULINATE HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,VALRUBICIN,no
+DICTrank,,1.0,,less,1.0,False,ISAVUCONAZONIUM SULFATE,less
+DICTrank,,0.0,,no,0.0,False,TIPRANAVIR,no
+DICTrank,,1.0,,less,1.0,False,METYRAPONE,less
+DICTrank,,0.0,,no,0.0,False,GLYCEROL PHENYLBUTYRATE,no
+DICTrank,,1.0,,less,1.0,False,macitentan,less
+DICTrank,,1.0,,most,1.0,False,saxagliptin hydrochloride,most
+DICTrank,,0.0,,no,0.0,False,FIDAXOMICIN,no
+DICTrank,,1.0,,most,1.0,False,PITOLISANT HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,SAFINAMIDE MESYLATE,less
+DICTrank,,1.0,,less,1.0,False,PEXIDARTINIB HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,VANDETANIB,most
+DICTrank,,0.0,,no,0.0,False,IDELALISIB,no
+DICTrank,,0.0,,no,0.0,False,BENZNIDAZOLE,no
+DICTrank,,1.0,,less,1.0,False,OLSALAZINE SODIUM,less
+DICTrank,,1.0,,most,1.0,False,OSILODROSTAT PHOSPHATE,most
+DICTrank,,1.0,,less,1.0,False,OPICAPONE,less
+DICTrank,,1.0,,less,1.0,False,RIFAPENTINE,less
+DICTrank,,1.0,,less,1.0,False,PROCARBAZINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,Amlodipine Benzoate,most
+DICTrank,,1.0,,most,1.0,False,GEMIFLOXACIN MESYLATE,most
+DICTrank,,1.0,,less,1.0,False,LOMITAPIDE MESYLATE,less
+DICTrank,,1.0,,less,1.0,False,DAROLUTAMIDE,less
+DICTrank,,0.0,,no,0.0,False,OLAPARIB,no
+DICTrank,,0.0,,no,0.0,False,Urea C-14,no
+DICTrank,,0.0,,no,0.0,False,SONIDEGIB PHOSPHATE,no
+DICTrank,,0.0,,no,0.0,False,Tepotinib Hydrochloride,no
+DICTrank,,1.0,,less,1.0,False,DICHLORPHENAMIDE,less
+DICTrank,,1.0,,most,1.0,False,ILOPERIDONE,most
+DICTrank,,1.0,,most,1.0,False,ANAGRELIDE HYDROCHLORIDE ANHYDROUS,most
+DICTrank,,0.0,,no,0.0,False,maralixibat chloride,no
+DICTrank,,1.0,,most,1.0,False,LOFEXIDINE HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,naldemedine tosylate,no
+DICTrank,,0.0,,no,0.0,False,APREMILAST,no
+DICTrank,,1.0,,most,1.0,False,SAQUINAVIR MESYLATE,most
+DICTrank,,1.0,,most,1.0,False,FEDRATINIB HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,ENASIDENIB MESYLATE,most
+DICTrank,,1.0,,less,1.0,False,VILAZODONE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,adefovir dipivoxil,no
+DICTrank,,1.0,,most,1.0,False,DOLASETRON MESYLATE,most
+DICTrank,,0.0,,no,0.0,False,CAPMATINIB,no
+DICTrank,,1.0,,most,1.0,False,SITAGLIPTIN PHOSPHATE,most
+DICTrank,,1.0,,most,1.0,False,IVABRADINE HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,FOSTAMATINIB,most
+DICTrank,,0.0,,no,0.0,False,NITAZOXANIDE,no
+DICTrank,,1.0,,most,1.0,False,LISDEXAMFETAMINE DIMESYLATE,most
+DICTrank,,0.0,,no,0.0,False,TASIMELTEON,no
+DICTrank,,1.0,,most,1.0,False,DABIGATRAN ETEXILATE MESYLATE,most
+DICTrank,,0.0,,no,0.0,False,TECOVIRIMAT MONOHYDRATE,no
+DICTrank,,0.0,,no,0.0,False,GEFITINIB,no
+DICTrank,,1.0,,less,1.0,False,RIOCIGUAT,less
+DICTrank,,1.0,,less,1.0,False,SIPONIMOD,less
+DICTrank,,1.0,,less,1.0,False,SAPROPTERIN DIHYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,dasatinib,most
+DICTrank,,0.0,,no,0.0,False,SECNIDAZOLE,no
+DICTrank,,0.0,,no,0.0,False,Aspirin,no
+DICTrank,,0.0,,no,0.0,False,Stiripentol,no
+DICTrank,,1.0,,most,1.0,False,ivosidenib,most
+DICTrank,,0.0,,no,0.0,False,MARIBAVIR,no
+DICTrank,,1.0,,less,1.0,False,ALECTINIB HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,CENOBAMATE,most
+DICTrank,,1.0,,less,1.0,False,CEVIMELINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,RELUGOLIX,most
+DICTrank,,1.0,,less,1.0,False,CALCIFEDIOL,less
+DICTrank,,1.0,,most,1.0,False,DEUTETRABENAZINE,most
+DICTrank,,1.0,,most,1.0,False,Bedaquiline Fumarate,most
+DICTrank,,1.0,,most,1.0,False,LORLATINIB,most
+DICTrank,,1.0,,less,1.0,False,VILOXAZINE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,ETHIONAMIDE,no
+DICTrank,,1.0,,less,1.0,False,AVACOPAN,less
+DICTrank,,1.0,,most,1.0,False,TOFACITINIB CITRATE,most
+DICTrank,,1.0,,less,1.0,False,MOXIDECTIN,less
+DICTrank,,1.0,,less,1.0,False,DESVENLAFAXINE,less
+DICTrank,,1.0,,most,1.0,False,pimavanserin tartrate,most
+DICTrank,,0.0,,no,0.0,False,Venetoclax,no
+DICTrank,,0.0,,no,0.0,False,DROSPIRENONE,no
+DICTrank,,1.0,,less,1.0,False,MIRABEGRON,less
+DICTrank,,0.0,,no,0.0,False,ERTUGLIFLOZIN PIDOLATE,no
+DICTrank,,1.0,,most,1.0,False,galantamine hydrobromide,most
+DICTrank,,1.0,,most,1.0,False,OXAPROZIN,most
+DICTrank,,1.0,,most,1.0,False,REGORAFENIB MONOHYDRATE,most
+DICTrank,,0.0,,no,0.0,False,FERRIC MALTOL,no
+DICTrank,,1.0,,less,1.0,False,PAROXETINE MESYLATE,less
+DICTrank,,0.0,,no,0.0,False,vibegron,no
+DICTrank,,0.0,,no,0.0,False,PITAVASTATIN,no
+DICTrank,,0.0,,no,0.0,False,IBREXAFUNGERP CITRATE,no
+DICTrank,,0.0,,no,0.0,False,METHENAMINE HIPPURATE,no
+DICTrank,,0.0,,no,0.0,False,COBICISTAT,no
+DICTrank,,1.0,,less,1.0,False,VERICIGUAT,less
+DICTrank,,1.0,,most,1.0,False,ENTRECTINIB,most
+DICTrank,,0.0,,no,0.0,False,RIFAXIMIN,no
+DICTrank,,1.0,,less,1.0,False,LACTITOL,less
+DICTrank,,1.0,,most,1.0,False,ROSIGLITAZONE MALEATE,most
+DICTrank,,1.0,,less,1.0,False,DEFLAZACORT,less
+DICTrank,,1.0,,most,1.0,False,telithromycin,most
+DICTrank,,1.0,,most,1.0,False,GLASDEGIB,most
+DICTrank,,0.0,,no,0.0,False,NITISINONE,no
+DICTrank,,1.0,,most,1.0,False,CERITINIB,most
+DICTrank,,0.0,,no,0.0,False,diroximel fumarate,no
+DICTrank,,1.0,,most,1.0,False,Dronedarone,most
+DICTrank,,1.0,,most,1.0,False,"ESTROGENS, CONJUGATED SYNTHETIC A",most
+DICTrank,,0.0,,no,0.0,False,QUAZEPAM,no
+DICTrank,,1.0,,most,1.0,False,DROXIDOPA,most
+DICTrank,,1.0,,less,1.0,False,IBANDRONATE SODIUM,less
+DICTrank,,1.0,,most,1.0,False,baricitinib,most
+DICTrank,,1.0,,less,1.0,False,LONAFARNIB,less
+DICTrank,,0.0,,no,0.0,False,VORAPAXAR SULFATE,no
+DICTrank,,1.0,,less,1.0,False,MIDOSTAURIN,less
+DICTrank,,1.0,,less,1.0,False,ACALABRUTINIB,less
+DICTrank,,1.0,,most,1.0,False,CITALOPRAM HYDROBROMIDE,most
+DICTrank,,1.0,,less,1.0,False,brigatinib,less
+DICTrank,,1.0,,most,1.0,False,PANOBINOSTAT LACTATE,most
+DICTrank,,1.0,,less,1.0,False,niraparib,less
+DICTrank,,0.0,,no,0.0,False,empagliflozin,no
+DICTrank,,1.0,,most,1.0,False,TICAGRELOR,most
+DICTrank,,0.0,,no,0.0,False,AVATROMBOPAG MALEATE,no
+DICTrank,,0.0,,no,0.0,False,PALBOCICLIB,no
+DICTrank,,1.0,,most,1.0,False,FINGOLIMOD HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,LAPATINIB DITOSYLATE,most
+DICTrank,,0.0,,no,0.0,False,CHOLIC ACID,no
+DICTrank,,1.0,,less,1.0,False,AMILORIDE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,TENOFOVIR ALAFENAMIDE FUMARATE,no
+DICTrank,,0.0,,no,0.0,False,umbralisib tosylate,no
+DICTrank,,0.0,,no,0.0,False,THIOGUANINE,no
+DICTrank,,1.0,,less,1.0,False,CARIPRAZINE,less
+DICTrank,,1.0,,most,1.0,False,NILOTINIB,most
+DICTrank,,1.0,,most,1.0,False,LENALIDOMIDE,most
+DICTrank,,1.0,,less,1.0,False,FESOTERODINE FUMARATE,less
+DICTrank,,1.0,,most,1.0,False,LENVATINIB,most
+DICTrank,,0.0,,no,0.0,False,MERCAPTOPURINE,no
+DICTrank,,1.0,,less,1.0,False,BUPROPION HYDROBROMIDE,less
+DICTrank,,1.0,,less,1.0,False,SUCCIMER,less
+DICTrank,,0.0,,no,0.0,False,Rifamycin,no
+DICTrank,,1.0,,less,1.0,False,cabozantinib s-malate,less
+DICTrank,,1.0,,less,1.0,False,AVANAFIL,less
+DICTrank,,1.0,,most,1.0,False,eliglustat,most
+DICTrank,,0.0,,no,0.0,False,TAFENOQUINE SUCCINATE,no
+DICTrank,,0.0,,no,0.0,False,FINERENONE,no
+DICTrank,,0.0,,no,0.0,False,PIRFENIDONE,no
+DICTrank,,1.0,,most,1.0,False,POMALIDOMIDE,most
+DICTrank,,0.0,,no,0.0,False,MIGALASTAT HYDROCHLORIDE,no
+DICTrank,,1.0,,most,1.0,False,AMPHETAMINE,most
+DICTrank,,1.0,,less,1.0,False,Tolcapone,less
+DICTrank,,1.0,,most,1.0,False,selpercatinib,most
+DICTrank,,1.0,,less,1.0,False,OXYCODONE,less
+DICTrank,,1.0,,most,1.0,False,AXITINIB,most
+DICTrank,,1.0,,less,1.0,False,TIOPRONIN,less
+DICTrank,,1.0,,most,1.0,False,ASCIMINIB HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,TRAMETINIB DIMETHYL SULFOXIDE,most
+DICTrank,,0.0,,no,0.0,False,Fenofibric Acid,no
+DICTrank,,1.0,,most,1.0,False,RIBOCICLIB SUCCINATE,most
+DICTrank,,1.0,,less,1.0,False,AMANTADINE,less
+DICTrank,,1.0,,most,1.0,False,DABRAFENIB MESYLATE,most
+DICTrank,,1.0,,most,1.0,False,OSPEMIFENE,most
+DICTrank,,1.0,,less,1.0,False,DARIFENACIN,less
+DICTrank,,0.0,,no,0.0,False,TRIMETHOPRIM,no
+DICTrank,,1.0,,less,1.0,False,ZANUBRUTINIB,less
+DICTrank,,0.0,,no,0.0,False,UBROGEPANT,no
+DICTrank,,0.0,,no,0.0,False,INFIGRATINIB,no
+DICTrank,,1.0,,most,1.0,False,SORAFENIB,most
+DICTrank,,1.0,,most,1.0,False,Ripretinib,most
+DICTrank,,0.0,,no,0.0,False,NERATINIB MALEATE,no
+DICTrank,,0.0,,no,0.0,False,rivaroxaban,no
+DICTrank,,1.0,,less,1.0,False,EVEROLIMUS,less
+DICTrank,,0.0,,no,0.0,False,NEVIRAPINE,no
+DICTrank,,1.0,,less,1.0,False,NELFINAVIR MESYLATE,less
+DICTrank,,1.0,,most,1.0,False,ponatinib hydrochloride,most
+DICTrank,,0.0,,no,0.0,False,ORLISTAT,no
+DICTrank,,1.0,,most,1.0,False,ENZALUTAMIDE,most
+DICTrank,,1.0,,less,1.0,False,SOLRIAMFETOL,less
+DICTrank,,0.0,,no,0.0,False,doravirine,no
+DICTrank,,1.0,,most,1.0,False,HYDROXYCHLOROQUINE SULFATE,most
+DICTrank,,1.0,,most,1.0,False,ENCORAFENIB,most
+DICTrank,,0.0,,no,0.0,False,telotristat ethyl,no
+DICTrank,,1.0,,most,1.0,False,tivozanib hydrochloride,most
+DICTrank,,1.0,,less,1.0,False,Erdafitinib,less
+DICTrank,,1.0,,less,1.0,False,Berotralstat hydrochloride,less
+DICTrank,,0.0,,no,0.0,False,DAPAGLIFLOZIN PROPANEDIOL,no
+DICTrank,,1.0,,most,1.0,False,MACIMORELIN,most
+DICTrank,,1.0,,most,1.0,False,BOSUTINIB MONOHYDRATE,most
+DICTrank,,1.0,,less,1.0,False,BELUMOSUDIL,less
+DICTrank,,1.0,,most,1.0,False,RUXOLITINIB,most
+DICTrank,,0.0,,no,0.0,False,mebendazole,no
+DICTrank,,1.0,,less,1.0,False,TRANYLCYPROMINE SULFATE,less
+DICTrank,,1.0,,less,1.0,False,BELZUTIFAN,less
+DICTrank,,0.0,,no,0.0,False,Plecanatide,no
+DICTrank,,0.0,,no,0.0,False,SODIUM OXYBATE,no
+DICTrank,,0.0,,no,0.0,False,ATOGEPANT,no
+DICTrank,,0.0,,no,0.0,False,LOMUSTINE,no
+DICTrank,,1.0,,less,1.0,False,UMECLIDINIUM BROMIDE,less
+DICTrank,,0.0,,no,0.0,False,CEFDITOREN PIVOXIL,no
+DICTrank,,0.0,,no,0.0,False,mitotane,no
+DICTrank,,1.0,,less,1.0,False,CHLOROTHIAZIDE,less
+DICTrank,,1.0,,less,1.0,False,INDINAVIR SULFATE,less
+DICTrank,,0.0,,no,0.0,False,RISDIPLAM,no
+DICTrank,,1.0,,less,1.0,False,lasmiditan,less
+DICTrank,,0.0,,no,0.0,False,gabapentin enacarbil,no
+DICTrank,,1.0,,most,1.0,False,ESTRAMUSTINE PHOSPHATE SODIUM,most
+DICTrank,,1.0,,less,1.0,False,TAPENTADOL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,LUMATEPERONE,less
+DICTrank,,1.0,,most,1.0,False,SELUMETINIB,most
+DICTrank,,0.0,,no,0.0,False,tazemetostat hydrobromide,no
+DICTrank,,0.0,,no,0.0,False,LUSUTROMBOPAG,no
+DICTrank,,1.0,,less,1.0,False,ICOSAPENT ETHYL,less
+DICTrank,,1.0,,most,1.0,False,COBIMETINIB FUMARATE,most
+DICTrank,,0.0,,no,0.0,False,NALOXEGOL OXALATE,no
+DICTrank,,0.0,,no,0.0,False,Ceftibuten dihydrate,no
+DICTrank,,0.0,,no,0.0,False,DUVELISIB,no
+DICTrank,,1.0,,most,1.0,False,VALBENAZINE TOSYLATE,most
+DICTrank,,1.0,,most,1.0,False,GILTERITINIB FUMARATE,most
+DICTrank,,1.0,,less,1.0,False,Ponesimod,less
+DICTrank,,0.0,,no,0.0,False,ELAGOLIX SODIUM,no
+DICTrank,,1.0,,less,1.0,False,VORINOSTAT,less
+DICTrank,,0.0,,no,0.0,False,ROLAPITANT HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,MILTEFOSINE,no
+DICTrank,,1.0,,most,1.0,False,CRIZOTINIB,most
+DICTrank,,1.0,,less,1.0,False,avapritinib,less
+DICTrank,,0.0,,no,0.0,False,DACOMITINIB,no
+DICTrank,,0.0,,no,0.0,False,TENAPANOR HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,BALOXAVIR MARBOXIL,no
+DICTrank,,1.0,,most,1.0,False,THALIDOMIDE,most
+DICTrank,,0.0,,no,0.0,False,PRUCALOPRIDE SUCCINATE,no
+DICTrank,,0.0,,no,0.0,False,ELTROMBOPAG OLAMINE,no
+DICTrank,,1.0,,most,1.0,False,Apalutamide,most
+DICTrank,,1.0,,less,1.0,False,ACETOHYDROXAMIC ACID,less
+DICTrank,,1.0,,most,1.0,False,upadacitinib,most
+DICTrank,,1.0,,less,1.0,False,NISOLDIPINE,less
+DICTrank,,1.0,,most,1.0,False,Cladribine,most
+DICTrank,,1.0,,most,1.0,False,TRICLABENDAZOLE,most
+DICTrank,,0.0,,no,0.0,False,ETHOTOIN,no
+DICTrank,,0.0,,no,0.0,False,ixazomib citrate,no
+DICTrank,,0.0,,no,0.0,False,ELUXADOLINE,no
+DICTrank,,0.0,,no,0.0,False,monomethyl fumarate,no
+DICTrank,,0.0,,no,0.0,False,RALTEGRAVIR POTASSIUM,no
+DICTrank,,1.0,,most,1.0,False,NINTEDANIB ESYLATE,most
+DICTrank,,0.0,,no,0.0,False,AFATINIB,no
+DICTrank,,1.0,,less,1.0,False,rucaparib camsylate,less
+DICTrank,,0.0,,no,0.0,False,Voxelotor,no
+DICTrank,,1.0,,less,1.0,False,APIXABAN,less
+DICTrank,,1.0,,most,1.0,False,LINAGLIPTIN,most
+DICTrank,,1.0,,less,1.0,False,OZANIMOD HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,BETAINE,no
+DICTrank,,0.0,,no,0.0,False,AURANOFIN,no
+DICTrank,,1.0,,most,1.0,False,OSIMERTINIB,most
+DICTrank,,1.0,,most,1.0,False,Mobocertinib,most
+DICTrank,,1.0,,less,1.0,False,Flibanserin,less
+DICTrank,,1.0,,less,1.0,False,ISOCARBOXAZID,less
+DICTrank,,0.0,,no,0.0,False,darunavir ethanolate,no
+DICTrank,,0.0,,no,0.0,False,EDOXABAN TOSYLATE,no
+DICTrank,,1.0,,less,1.0,False,selinexor,less
+DICTrank,,1.0,,most,1.0,False,FEXINIDAZOLE,most
+DICTrank,,1.0,,less,1.0,False,FOSTEMSAVIR TROMETHAMINE,less
+DICTrank,,0.0,,no,0.0,False,uridine triacetate,no
+DICTrank,,0.0,,no,0.0,False,odevixibat,no
+DICTrank,,1.0,,most,1.0,False,VOCLOSPORIN,most
+DICTrank,,0.0,,no,0.0,False,TRIHEPTANOIN,no
+DICTrank,,1.0,,less,1.0,False,NABILONE,less
+DICTrank,,1.0,,less,1.0,False,brexpiprazole,less
+DICTrank,,0.0,,no,0.0,False,istradefylline,no
+DICTrank,,1.0,,most,1.0,False,FENFLURAMINE,most
+DICTrank,,1.0,,most,1.0,False,LEVOKETOCONAZOLE,most
+DICTrank,,1.0,,less,1.0,False,SOTORASIB,less
+DICTrank,,1.0,,less,1.0,False,PHENELZINE SULFATE,less
+DICTrank,,0.0,,no,0.0,False,VISMODEGIB,no
+DICTrank,,0.0,,no,0.0,False,rilpivirine hydrochloride,no
+DICTrank,,1.0,,most,1.0,False,METHYLPHENIDATE,most
+DICTrank,,1.0,,most,1.0,False,VEMURAFENIB,most
+DICTrank,,0.0,,no,0.0,False,ivacaftor,no
+DICTrank,,1.0,,most,1.0,False,IBRUTINIB,most
+DICTrank,,1.0,,less,1.0,False,PRALSETINIB,less
+DICTrank,,0.0,,no,0.0,False,DOLUTEGRAVIR SODIUM,no
+DICTrank,,1.0,,less,1.0,False,Bempedoic Acid,less
+DICTrank,,1.0,,less,1.0,False,TERIFLUNOMIDE,less
+DICTrank,,0.0,,no,0.0,False,CANNABIDIOL,no
+DICTrank,,0.0,,no,0.0,False,CHLORAMBUCIL,no
+DICTrank,,1.0,,most,1.0,False,BINIMETINIB,most
+DICTrank,,1.0,,most,1.0,False,DICLOFENAC,most
+DICTrank,,0.0,,no,0.0,False,RIMEGEPANT SULFATE,no
+DICTrank,,1.0,,less,1.0,False,CODEINE SULFATE,less
+DICTrank,,1.0,,most,1.0,False,FENOPROFEN CALCIUM,most
+DICTrank,,0.0,,no,0.0,False,canagliflozin,no
+DICTrank,,1.0,,less,1.0,False,roflumilast,less
+DICTrank,,0.0,,no,0.0,False,LEMBOREXANT,no
+DICTrank,,0.0,,no,0.0,False,METHSUXIMIDE,no
+DICTrank,,0.0,,no,0.0,False,LEVOCARNITINE,no
+DICTrank,,1.0,,less,1.0,False,suvorexant,less
+DICTrank,,0.0,,no,0.0,False,Obeticholic Acid,no
+DICTrank,,1.0,,less,1.0,False,CARBINOXAMINE MALEATE,less
+DICTrank,,1.0,,most,1.0,False,Erythromycin Ethylsuccinate,most
+DICTrank,,1.0,,less,1.0,False,CEFUROXIME AXETIL,less
+DICTrank,,1.0,,less,1.0,False,PYRIMETHAMINE,less
+DICTrank,,1.0,,less,1.0,False,ALPRAZOLAM,less 
+DICTrank,,0.0,,no,0.0,False,ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE,no
+DICTrank,,1.0,,less,1.0,False,ISRADIPINE,less
+DICTrank,,0.0,,no,0.0,False,ATOVAQUONE,no
+DICTrank,,1.0,,less,1.0,False,BOSENTAN ANHYDROUS,less
+DICTrank,,1.0,,less,1.0,False,COLESTIPOL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,FELBAMATE,less
+DICTrank,,0.0,,no,0.0,False,HYDROXYUREA,no
+DICTrank,,1.0,,less,1.0,False,LOXAPINE SUCCINATE,less
+DICTrank,,1.0,,most,1.0,False,PIOGLITAZONE,most
+DICTrank,,1.0,,less,1.0,False,MORPHINE SULFATE,less
+DICTrank,,1.0,,less,1.0,False,PRAZOSIN HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,ZOLPIDEM TARTRATE,less
+DICTrank,,1.0,,less,1.0,False,MYCOPHENOLATE SODIUM,less
+DICTrank,,0.0,,no,0.0,False,TRIAMTERENE,no
+DICTrank,,1.0,,most,1.0,False,RIZATRIPTAN BENZOATE,most
+DICTrank,,1.0,,less,1.0,False,RUFINAMIDE,less
+DICTrank,,1.0,,less,1.0,False,CIMETIDINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,CLONIDINE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,METHAZOLAMIDE,no
+DICTrank,,1.0,,most,1.0,False,METOPROLOL TARTRATE,most
+DICTrank,,1.0,,less,1.0,False,SIROLIMUS,less
+DICTrank,,1.0,,less,1.0,False,TORSEMIDE,less
+DICTrank,,1.0,,less,1.0,False,OXCARBAZEPINE,less
+DICTrank,,0.0,,no,0.0,False,CLINDAMYCIN PALMITATE HYDROCHLORIDE,no
+DICTrank,,1.0,,most,1.0,False,MELOXICAM,most
+DICTrank,,1.0,,less,1.0,False,METHYLTESTOSTERONE,less
+DICTrank,,1.0,,less,1.0,False,GLYCOPYRROLATE,less
+DICTrank,,0.0,,no,0.0,False,DEFERASIROX,no
+DICTrank,,0.0,,no,0.0,False,ISONIAZID,no
+DICTrank,,1.0,,less,1.0,False,FLUDROCORTISONE ACETATE,less
+DICTrank,,1.0,,most,1.0,False,VERAPAMIL HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,ZILEUTON,no
+DICTrank,,1.0,,less,1.0,False,PROPANTHELINE BROMIDE,less
+DICTrank,,1.0,,most,1.0,False,SERTRALINE HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,BISOPROLOL FUMARATE,most
+DICTrank,,1.0,,most,1.0,False,VARDENAFIL,most
+DICTrank,,1.0,,less,1.0,False,AMINOCAPROIC ACID,less
+DICTrank,,1.0,,less,1.0,False,TELMISARTAN,less
+DICTrank,,1.0,,less,1.0,False,LAMOTRIGINE,less
+DICTrank,,0.0,,no,0.0,False,FENOFIBRATE,no
+DICTrank,,1.0,,less,1.0,False,MONTELUKAST SODIUM,less
+DICTrank,,1.0,,less,1.0,False,METOLAZONE,less
+DICTrank,,0.0,,no,0.0,False,DISULFIRAM,no
+DICTrank,,1.0,,less,1.0,False,MEGESTROL ACETATE,less
+DICTrank,,0.0,,no,0.0,False,ACARBOSE,no
+DICTrank,,0.0,,no,0.0,False,CLINDAMYCIN HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,NORETHINDRONE,no
+DICTrank,,1.0,,less,1.0,False,LEVOCETIRIZINE DIHYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,COLCHICINE,no
+DICTrank,,1.0,,less,1.0,False,PENTOXIFYLLINE,less
+DICTrank,,1.0,,less,1.0,False,ZALEPLON,less
+DICTrank,,1.0,,less,1.0,False,METHSCOPOLAMINE BROMIDE,less
+DICTrank,,1.0,,less,1.0,False,CANDESARTAN CILEXETIL,less
+DICTrank,,1.0,,less,1.0,False,QUINIDINE GLUCONATE,Less
+DICTrank,,1.0,,less,1.0,False,AMOXAPINE,less
+DICTrank,,1.0,,less,1.0,False,PROMETHAZINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,LABETALOL,most
+DICTrank,,1.0,,most,1.0,False,DOFETILIDE,most
+DICTrank,,1.0,,less,1.0,False,FAMCICLOVIR,less
+DICTrank,,1.0,,most,1.0,False,Albuterol,most
+DICTrank,,1.0,,less,1.0,False,GEMFIBROZIL,less
+DICTrank,,1.0,,less,1.0,False,MELPHALAN,less
+DICTrank,,1.0,,less,1.0,False,DIAZEPAM,less
+DICTrank,,1.0,,less,1.0,False,MOEXIPRIL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,CHLORTHALIDONE,less
+DICTrank,,1.0,,less,1.0,False,FLUVASTATIN SODIUM,less
+DICTrank,,0.0,,no,0.0,False,PROBENECID,no
+DICTrank,,1.0,,less,1.0,False,GUANFACINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,almotriptan malate,most
+DICTrank,,1.0,,less,1.0,False,NIZATIDINE,less
+DICTrank,,0.0,,no,0.0,False,TENOFOVIR DISOPROXIL FUMARATE,no
+DICTrank,,1.0,,most,1.0,False,DILTIAZEM HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,FELODIPINE,less
+DICTrank,,1.0,,less,1.0,False,RISEDRONATE SODIUM,less
+DICTrank,,0.0,,no,0.0,False,CEPHALEXIN,no
+DICTrank,,1.0,,less,1.0,False,DIAZOXIDE,less
+DICTrank,,1.0,,most,1.0,False,RITONAVIR,most
+DICTrank,,0.0,,no,0.0,False,ACETAZOLAMIDE,no
+DICTrank,,1.0,,less,1.0,False,LURASIDONE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,DUTASTERIDE,less
+DICTrank,,1.0,,less,1.0,False,Exemestane,less
+DICTrank,,1.0,,less,1.0,False,FOSINOPRIL SODIUM,less
+DICTrank,,1.0,,less,1.0,False,SODIUM PHENYLBUTYRATE,less
+DICTrank,,1.0,,most,1.0,False,HYDROCODONE BITARTRATE,most
+DICTrank,,0.0,,no,0.0,False,ENTECAVIR ANHYDROUS,no
+DICTrank,,1.0,,most,1.0,False,CILOSTAZOL,most
+DICTrank,,1.0,,less,1.0,False,OLANZAPINE,less
+DICTrank,,1.0,,most,1.0,False,DISOPYRAMIDE PHOSPHATE,most
+DICTrank,,1.0,,less,1.0,False,DANAZOL,less
+DICTrank,,1.0,,less,1.0,False,BENAZEPRIL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,Ergotamine Tartrate,less
+DICTrank,,0.0,,no,0.0,False,AZATHIOPRINE,no
+DICTrank,,1.0,,less,1.0,False,CARBIDOPA,less
+DICTrank,,0.0,,no,0.0,False,CHLORDIAZEPOXIDE HYDROCHLORIDE,no
+DICTrank,,1.0,,most,1.0,False,MARAVIROC,most
+DICTrank,,1.0,,most,1.0,False,FLECAINIDE ACETATE,most
+DICTrank,,1.0,,less,1.0,False,ETHACRYNIC ACID,less
+DICTrank,,1.0,,most,1.0,False,ELETRIPTAN HYDROBROMIDE,most
+DICTrank,,1.0,,less,1.0,False,ISOSORBIDE MONONITRATE,less
+DICTrank,,1.0,,most,1.0,False,NABUMETONE,most
+DICTrank,,1.0,,most,1.0,False,SUNITINIB MALATE,most
+DICTrank,,1.0,,most,1.0,False,CABERGOLINE,most
+DICTrank,,1.0,,less,1.0,False,RASAGILINE MESYLATE,less
+DICTrank,,1.0,,less,1.0,False,ACITRETIN,less
+DICTrank,,1.0,,most,1.0,False,OXYBUTYNIN CHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,RISPERIDONE,less
+DICTrank,,1.0,,less,1.0,False,RAMIPRIL,less
+DICTrank,,0.0,,no,0.0,False,PYRIDOSTIGMINE BROMIDE,no
+DICTrank,,1.0,,less,1.0,False,SOLIFENACIN SUCCINATE,less
+DICTrank,,1.0,,less,1.0,False,OMEPRAZOLE,less
+DICTrank,,1.0,,less,1.0,False,MEMANTINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,NEBIVOLOL HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,VORICONAZOLE,most
+DICTrank,,1.0,,less,1.0,False,RIMANTADINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,EFAVIRENZ,most
+DICTrank,,1.0,,most,1.0,False,CELECOXIB,most
+DICTrank,,0.0,,no,0.0,False,CEFADROXIL HEMIHYDRATE,no
+DICTrank,,1.0,,most,1.0,False,SUMATRIPTAN SUCCINATE,most
+DICTrank,,1.0,,most,1.0,False,CLOZAPINE,most
+DICTrank,,1.0,,most,1.0,False,ABACAVIR SULFATE,most
+DICTrank,,1.0,,less,1.0,False,PREDNISOLONE SODIUM PHOSPHATE,less
+DICTrank,,1.0,,less,1.0,False,FOSAMPRENAVIR CALCIUM,less
+DICTrank,,1.0,,less,1.0,False,ISOSORBIDE DINITRATE,less
+DICTrank,,1.0,,less,1.0,False,NIFEDIPINE,less
+DICTrank,,1.0,,most,1.0,False,FLUOXETINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,AMBRISENTAN,less
+DICTrank,,1.0,,most,1.0,False,SOTALOL HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,MECLIZINE HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,TRIENTINE HYDROCHLORIDE,no
+DICTrank,,1.0,,less,1.0,False,BACLOFEN,less
+DICTrank,,1.0,,less,1.0,False,BETHANECHOL CHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,CLARITHROMYCIN,most
+DICTrank,,0.0,,no,0.0,False,CHLORZOXAZONE,no
+DICTrank,,1.0,,less,1.0,False,PRIMAQUINE PHOSPHATE,less
+DICTrank,,1.0,,less,1.0,False,VENLAFAXINE,less
+DICTrank,,0.0,,no,0.0,False,VIGABATRIN,no
+DICTrank,,0.0,,no,0.0,False,PENICILLAMINE,no
+DICTrank,,1.0,,less,1.0,False,METAPROTERENOL SULFATE,less
+DICTrank,,1.0,,less,1.0,False,VALGANCICLOVIR,less
+DICTrank,,1.0,,less,1.0,False,LIOTHYRONINE SODIUM,less
+DICTrank,,1.0,,less,1.0,False,PRASUGREL HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,EMTRICITABINE,no
+DICTrank,,0.0,,no,0.0,False,VALACYCLOVIR HYDROCHLORIDE,no
+DICTrank,,0.0,,no,0.0,False,DESLORATADINE,no
+DICTrank,,1.0,,less,1.0,False,PERPHENAZINE,less
+DICTrank,,0.0,,no,0.0,False,DIMETHYL FUMARATE,no
+DICTrank,,1.0,,most,1.0,False,BROMOCRIPTINE MESYLATE,most
+DICTrank,,1.0,,less,1.0,False,NADOLOL,less
+DICTrank,,1.0,,most,1.0,False,PROPRANOLOL HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,ALBENDAZOLE,no
+DICTrank,,1.0,,less,1.0,False,INDAPAMIDE,less
+DICTrank,,0.0,,no,0.0,False,EZETIMIBE,no
+DICTrank,,1.0,,less,1.0,False,ABIRATERONE ACETATE,less
+DICTrank,,1.0,,less,1.0,False,ISOTRETINOIN,less
+DICTrank,,1.0,,less,1.0,False,LISINOPRIL,less
+DICTrank,,1.0,,less,1.0,False,TIAGABINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,ROPINIROLE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,TERAZOSIN HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,FROVATRIPTAN SUCCINATE,most
+DICTrank,,1.0,,less,1.0,False,SILODOSIN,less
+DICTrank,,1.0,,less,1.0,False,DICYCLOMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,CEFDINIR,less
+DICTrank,,1.0,,less,1.0,False,TEMAZEPAM,less
+DICTrank,,1.0,,less,1.0,False,PROPOXYPHENE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,MOXIFLOXACIN HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,PHENTERMINE,less
+DICTrank,,1.0,,less,1.0,False,SILDENAFIL CITRATE,less
+DICTrank,,0.0,,no,0.0,False,STAVUDINE,no
+DICTrank,,1.0,,less,1.0,False,IMIPRAMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,RANITIDINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PINDOLOL,less
+DICTrank,,0.0,,no,0.0,False,DALFAMPRIDINE,no
+DICTrank,,1.0,,less,1.0,False,TIZANIDINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,ACEBUTOLOL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,TRIHEXYPHENIDYL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,SIMVASTATIN,less
+DICTrank,,0.0,,no,0.0,False,MIGLUSTAT,no
+DICTrank,,1.0,,most,1.0,False,RANOLAZINE,most
+DICTrank,,1.0,,less,1.0,False,BEXAROTENE,less
+DICTrank,,0.0,,no,0.0,False,TICLOPIDINE HYDROCHLORIDE,no
+DICTrank,,1.0,,less,1.0,False,BICALUTAMIDE,less
+DICTrank,,1.0,,most,1.0,False,MIRTAZAPINE,most
+DICTrank,,1.0,,less,1.0,False,CHLORPROMAZINE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,LACTULOSE,no
+DICTrank,,1.0,,most,1.0,False,NAPROXEN SODIUM,most
+DICTrank,,1.0,,less,1.0,False,PREDNISOLONE,less
+DICTrank,,1.0,,less,1.0,False,TRAMADOL HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,LOVASTATIN,no
+DICTrank,,1.0,,less,1.0,False,RIVASTIGMINE TARTRATE,less
+DICTrank,,1.0,,less,1.0,False,MEPROBAMATE,less
+DICTrank,,1.0,,less,1.0,False,CAPTOPRIL,less
+DICTrank,,1.0,,less,1.0,False,FLAVOXATE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,METHAMPHETAMINE HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,CEFIXIME,no
+DICTrank,,1.0,,less,1.0,False,CYCLOSERINE,less
+DICTrank,,1.0,,most,1.0,False,MECLOFENAMATE SODIUM,most
+DICTrank,,0.0,,no,0.0,False,FOLIC ACID,no
+DICTrank,,1.0,,less,1.0,False,NITROFURANTOIN,less
+DICTrank,,1.0,,less,1.0,False,MYCOPHENOLATE MOFETIL,less
+DICTrank,,1.0,,most,1.0,False,KETOPROFEN,most
+DICTrank,,1.0,,less,1.0,False,DULOXETINE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,RAMELTEON,no
+DICTrank,,1.0,,most,1.0,False,FLUCONAZOLE,most
+DICTrank,,1.0,,most,1.0,False,IMATINIB MESYLATE,most
+DICTrank,,1.0,,less,1.0,False,CORTISONE ACETATE,less
+DICTrank,,0.0,,no,0.0,False,PAROMOMYCIN SULFATE,no
+DICTrank,,0.0,,no,0.0,False,ROSUVASTATIN CALCIUM,no
+DICTrank,,1.0,,most,1.0,False,PALIPERIDONE,most
+DICTrank,,1.0,,less,1.0,False,ARIPIPRAZOLE,less
+DICTrank,,1.0,,less,1.0,False,VARENICLINE TARTRATE,less
+DICTrank,,1.0,,less,1.0,False,VALSARTAN,less
+DICTrank,,0.0,,no,0.0,False,AMOXICILLIN,no
+DICTrank,,1.0,,less,1.0,False,DEXAMETHASONE,less
+DICTrank,,1.0,,less,1.0,False,FUROSEMIDE,less
+DICTrank,,1.0,,less,1.0,False,LETROZOLE,less
+DICTrank,,1.0,,less,1.0,False,RILUZOLE,less
+DICTrank,,1.0,,less,1.0,False,Dronabinol,less
+DICTrank,,0.0,,no,0.0,False,OXANDROLONE,no
+DICTrank,,0.0,,no,0.0,False,FOSFOMYCIN TROMETHAMINE,no
+DICTrank,,1.0,,less,1.0,False,TAMOXIFEN CITRATE,less
+DICTrank,,1.0,,most,1.0,False,DIFLUNISAL,most
+DICTrank,,0.0,,no,0.0,False,LORATADINE,no
+DICTrank,,1.0,,most,1.0,False,METFORMIN HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,LOPERAMIDE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,FLUTAMIDE,less
+DICTrank,,1.0,,most,1.0,False,HYDROXYZINE DIHYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,LUBIPROSTONE,less
+DICTrank,,1.0,,less,1.0,False,FLURAZEPAM HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,ALFUZOSIN HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,TADALAFIL,less
+DICTrank,,1.0,,most,1.0,False,DIGOXIN,most
+DICTrank,,1.0,,less,1.0,False,THIOTHIXENE,less
+DICTrank,,0.0,,no,0.0,False,URSODIOL,no
+DICTrank,,0.0,,no,0.0,False,PROPYLTHIOURACIL,no
+DICTrank,,1.0,,less,1.0,False,SELEGILINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,TRIFLUOPERAZINE HYDROCHLORIDE,less
+DICTrank,,1.0,,most,1.0,False,LEVOFLOXACIN,most
+DICTrank,,1.0,,most,1.0,False,TRAZODONE HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,CHLOROQUINE PHOSPHATE,most
+DICTrank,,1.0,,less,1.0,False,EPLERENONE,less
+DICTrank,,1.0,,less,1.0,False,PHENDIMETRAZINE TARTRATE,less
+DICTrank,,1.0,,most,1.0,False,PROPAFENONE,most
+DICTrank,,0.0,,no,0.0,False,PANTOPRAZOLE SODIUM,no
+DICTrank,,1.0,,most,1.0,False,CAPECITABINE,most
+DICTrank,,1.0,,most,1.0,False,ALVIMOPAN,most
+DICTrank,,1.0,,less,1.0,False,PARICALCITOL,less
+DICTrank,,1.0,,less,1.0,False,REPAGLINIDE,less
+DICTrank,,1.0,,most,1.0,False,PRAZIQUANTEL,most
+DICTrank,,0.0,,no,0.0,False,CLORAZEPATE DIPOTASSIUM,no
+DICTrank,,1.0,,most,1.0,False,PHENYTOIN,most
+DICTrank,,0.0,,no,0.0,False,WARFARIN SODIUM,no
+DICTrank,,1.0,,most,1.0,False,MEXILETINE HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,MEFLOQUINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,OXYMORPHONE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,LEVONORGESTREL,no
+DICTrank,,1.0,,less,1.0,False,TOLTERODINE TARTRATE,less
+DICTrank,,0.0,,no,0.0,False,ETHOSUXIMIDE,no
+DICTrank,,1.0,,less,1.0,False,FAMOTIDINE,less
+DICTrank,,1.0,,less,1.0,False,CLONAZEPAM,less
+DICTrank,,0.0,,no,0.0,False,BENZONATATE,no
+DICTrank,,1.0,,less,1.0,False,FLUVOXAMINE MALEATE,less
+DICTrank,,1.0,,most,1.0,False,FLURBIPROFEN,most
+DICTrank,,1.0,,most,1.0,False,MIDODRINE HYDROCHLORIDE,most
+DICTrank,,1.0,,most,1.0,False,ATOMOXETINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,NIMODIPINE,less
+DICTrank,,1.0,,most,1.0,False,ESTRADIOL,most
+DICTrank,,1.0,,most,1.0,False,ATAZANAVIR SULFATE,most
+DICTrank,,1.0,,most,1.0,False,KETOROLAC TROMETHAMINE,most
+DICTrank,,1.0,,less,1.0,False,ZONISAMIDE,less
+DICTrank,,1.0,,less,1.0,False,LEVETIRACETAM,less
+DICTrank,,1.0,,less,1.0,False,BENZPHETAMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,LOSARTAN POTASSIUM,less
+DICTrank,,1.0,,less,1.0,False,DONEPEZIL HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PRAVASTATIN SODIUM,less 
+DICTrank,,1.0,,less,1.0,False,METHOTREXATE SODIUM,less
+DICTrank,,1.0,,most,1.0,False,CARBAMAZEPINE,most
+DICTrank,,0.0,,no,0.0,False,GRISEOFULVIN,no
+DICTrank,,1.0,,less,1.0,False,ITRACONAZOLE,less
+DICTrank,,1.0,,less,1.0,False,ANASTROZOLE,less
+DICTrank,,1.0,,less,1.0,False,CYPROHEPTADINE,less
+DICTrank,,0.0,,no,0.0,False,ALENDRONATE SODIUM,no
+DICTrank,,1.0,,less,1.0,False,QUETIAPINE FUMARATE,less
+DICTrank,,0.0,,no,0.0,False,FEXOFENADINE HYDROCHLORIDE,no
+DICTrank,,1.0,,most,1.0,False,ETODOLAC,most
+DICTrank,,0.0,,no,0.0,False,PYRAZINAMIDE,no
+DICTrank,,1.0,,most,1.0,False,ZOLMITRIPTAN,most
+DICTrank,,1.0,,less,1.0,False,NEFAZODONE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,SPIRONOLACTONE,less
+DICTrank,,1.0,,most,1.0,False,AMITRIPTYLINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,TRIMIPRAMINE MALEATE,less
+DICTrank,,1.0,,less,1.0,False,niacin,less
+DICTrank,,1.0,,most,1.0,False,TOREMIFENE CITRATE,most
+DICTrank,,1.0,,most,1.0,False,METHADONE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,TOLVAPTAN,less
+DICTrank,,1.0,,less,1.0,False,CARISOPRODOL,less
+DICTrank,,1.0,,less,1.0,False,BUSPIRONE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,DESIPRAMINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,BALSALAZIDE DISODIUM,less
+DICTrank,,1.0,,less,1.0,False,RIFABUTIN,less
+DICTrank,,1.0,,less,1.0,False,TRANDOLAPRIL,less
+DICTrank,,0.0,,no,0.0,False,METAXALONE,no
+DICTrank,,1.0,,less,1.0,False,APREPITANT,less
+DICTrank,,1.0,,most,1.0,False,CINACALCET HYDROCHLORIDE,most
+DICTrank,,0.0,,no,0.0,False,TRIAZOLAM,no
+DICTrank,,1.0,,less,1.0,False,PIMOZIDE,less
+DICTrank,,1.0,,less,1.0,False,TROSPIUM CHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,MOLINDONE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,CLOMIPHENE CITRATE,less
+DICTrank,,1.0,,most,1.0,False,DIETHYLPROPION HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,PERINDOPRIL ERBUMINE,less
+DICTrank,,1.0,,less,1.0,False,CLEMASTINE FUMARATE,less
+DICTrank,,1.0,,most,1.0,False,SULINDAC,most
+DICTrank,,1.0,,most,1.0,False,PIROXICAM,most
+DICTrank,,0.0,,no,0.0,False,PRIMIDONE,no
+DICTrank,,1.0,,less,1.0,False,METHOCARBAMOL,less
+DICTrank,,1.0,,most,1.0,False,NARATRIPTAN HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,CYCLOBENZAPRINE HYDROCHLORIDE,less
+DICTrank,,0.0,,no,0.0,False,MIGLITOL,no
+DICTrank,,1.0,,less,1.0,False,LANSOPRAZOLE,less
+DICTrank,,1.0,,most,1.0,False,CARVEDILOL,most
+DICTrank,,1.0,,less,1.0,False,HYDROCHLOROTHIAZIDE,less
+DICTrank,,1.0,,less,1.0,False,MISOPROSTOL,less
+DICTrank,,1.0,,less,1.0,False,ETRAVIRINE,less
+DICTrank,,1.0,,less,1.0,False,CLOPIDOGREL BISULFATE,less
+DICTrank,,0.0,,no,0.0,False,NEOMYCIN SULFATE,no
+DICTrank,,1.0,,less,1.0,False,LEVORPHANOL TARTRATE,less
+DICTrank,,1.0,,less,1.0,False,TINIDAZOLE,less
+DICTrank,,1.0,,most,1.0,False,TOLMETIN SODIUM,most
+DICTrank,,1.0,,most,1.0,False,NORTRIPTYLINE HYDROCHLORIDE,most
+DICTrank,,1.0,,less,1.0,False,secobarbital sodium,less
+DICTrank,,0.0,,no,0.0,False,isosorbide,no
+DICTrank,,1.0,,most,1.0,False,lomefloxacin hydrochloride,most
+DICTrank,,1.0,,most,1.0,False,pergolide,most
+DICTrank,,0.0,,no,0.0,False,LAROTRECTINIB,no
+DICTrank,,1.0,,less,1.0,False,METHYLNALTREXONE BROMIDE,less
+DICTrank,,1.0,,less,1.0,False,ESZOPICLONE,less
+DICTrank,,1.0,,less,1.0,False,NALOXONE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PHYTONADIONE,less
+DICTrank,,1.0,,most,1.0,False,ALCOHOL,most
+DICTrank,,1.0,,most,1.0,False,DEGARELIX,most
+DICTrank,,1.0,,most,1.0,False,HISTRELIN ACETATE,most
+DICTrank,,1.0,,less,1.0,False,bremelanotide acetate,less
+DICTrank,,0.0,,no,0.0,False,SETMELANOTIDE,no
+DICTrank,,1.0,,less,1.0,False,LANREOTIDE ACETATE,less
+DICTrank,,1.0,,less,1.0,False,ABALOPARATIDE,less
+DICTrank,,1.0,,less,1.0,False,DASIGLUCAGON,less
+DICTrank,,0.0,,no,0.0,False,exenatide,no
+DICTrank,,1.0,,less,1.0,False,LIRAGLUTIDE,less
+DICTrank,,1.0,,most,1.0,False,TESTOSTERONE ENANTHATE,most
+DICTrank,,1.0,,less,1.0,False,VOSORITIDE,less
+DICTrank,,0.0,,no,0.0,False,pramlintide acetate,no
+DICTrank,,1.0,,most,1.0,False,goserelin acetate,most
+DICTrank,,1.0,,less,1.0,False,OMACETAXINE MEPESUCCINATE,less
+DICTrank,,1.0,,less,1.0,False,SEMAGLUTIDE,less
+DICTrank,,1.0,,most,1.0,False,etonogestrel,most
+DICTrank,,1.0,,less,1.0,False,Enfuvirtide,less
+DICTrank,,0.0,,no,0.0,False,MIPOMERSEN SODIUM,no
+DICTrank,,1.0,,less,1.0,False,Teriparatide,less
+DICTrank,,1.0,,less,1.0,False,DEOXYCHOLIC ACID,less
+DICTrank,,0.0,,no,0.0,False,FONDAPARINUX SODIUM,no
+DICTrank,,1.0,,most,1.0,False,terbutaline sulfate,most
+DICTrank,,0.0,,no,0.0,False,ganirelix acetate,no
+DICTrank,,0.0,,no,0.0,False,ISOSULFAN BLUE,no
+DICTrank,,0.0,,no,0.0,False,ICATIBANT ACETATE,no
+DICTrank,,1.0,,most,1.0,False,apomorphine hydrochloride,most
+DICTrank,,1.0,,less,1.0,False,SUFENTANIL,less
+DICTrank,,1.0,,most,1.0,False,NITROGLYCERIN,most
+DICTrank,,1.0,,most,1.0,False,ASENAPINE MALEATE,most
+DICTrank,,1.0,,less,1.0,False,BUPRENORPHINE HYDROCHLORIDE,less
+DICTrank,,1.0,,less,1.0,False,PRILOCAINE HYDROCHLORIDE,less

@@ -1,0 +1,8 @@
+{
+  "cutoff": 2010,
+  "n": 796,
+  "n_folds": 5,
+  "n_post": 156,
+  "seed": 42,
+  "smiles_sha1": "aba3136fb1e789ae934fca2404e6221af70d4783"
+}

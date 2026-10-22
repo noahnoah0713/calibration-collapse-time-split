@@ -1,0 +1,3073 @@
+# -*- coding: utf-8 -*-
+"""투고용 LaTeX 표 생성기.
+
+모든 수치를 results/ 의 CSV·TXT 에서 직접 읽어 manuscript/ 의 .tex 표를 만든다.
+make_report.py 와 같은 원칙이다 — 문장만 이 파일에 있고 숫자는 전부 데이터에서 온다.
+손으로 옮겨 적는 단계가 없으므로 전사 오류가 원리적으로 생기지 않는다.
+
+    python src/make_tables.py
+
+저널 규칙 (Journal of Cheminformatics / Springer Nature sn-jnl):
+  * 표 제목(캡션)은 표 위, 15단어 이내
+  * 범례(legend)는 표 아래 \\footnotetext
+  * 색·음영 없음
+  * 천 단위 구분기호 없음
+  * 그림 제목·범례는 이미지 파일 안이 아니라 .tex 에 둔다
+"""
+
+import io, math, os, re, sys
+import pandas as pd
+
+
+def _find_root():
+    import glob as _g, os as _o
+
+    cands = []
+    cands += _g.glob(_o.path.expanduser("~/mnt/FDA"))
+    cands += _g.glob(_o.path.expanduser("~/mnt/*/FDA"))
+    cands.append(_o.path.dirname(_o.path.dirname(_o.path.abspath(__file__))))
+    for c in cands:
+        if _o.path.isdir(_o.path.join(c, "results")) and _o.path.isdir(_o.path.join(c, "src")):
+            return c
+    raise SystemExit("프로젝트 루트를 찾지 못했다: %s" % cands)
+
+
+ROOT = _find_root()
+RES = os.path.join(ROOT, "results")
+MAN = os.path.join(ROOT, "manuscript")
+DS = ["DILIrank", "DICTrank"]
+
+
+def cv(n):
+    return pd.read_csv(os.path.join(RES, n))
+
+
+def txt(n):
+    return io.open(os.path.join(RES, n), encoding="utf-8").read()
+
+
+# ---------------------------------------------------------------- 서식 도우미
+def f4(x):
+    return "%.4f" % float(x)
+
+
+def f3(x):
+    return "%.3f" % float(x)
+
+
+def f2(x):
+    return "%.2f" % float(x)
+
+
+def p1(x):
+    return "%.1f\\%%" % float(x)
+
+
+def p0(x):
+    return "%.0f\\%%" % float(x)
+
+
+def sg(x):
+    return "%+.4f" % float(x)
+
+
+def ci3(lo, hi):
+    """저널 관행대로 신뢰구간은 세 자리로 줄여 적는다.
+
+    하한이나 상한이 음수면 "--" 구분자가 음부호와 섞여
+    "[-0.079--0.253]" 처럼 읽히므로 쉼표로 가른다.
+    """
+    sep = ", " if (lo < 0 or hi < 0) else "--"
+    return "[%s%s%s]" % (f3(lo), sep, f3(hi))
+
+
+def pm(m, s):
+    return "%s $\\pm$ %s" % (f4(m), f4(s))
+
+
+def tex(s):
+    """셀에 들어가는 문자열의 LaTeX 특수문자를 막는다."""
+    s = str(s)
+    for a, b in [
+        ("\\", r"\textbackslash{}"),
+        ("&", r"\&"),
+        ("%", r"\%"),
+        ("$", r"\$"),
+        ("#", r"\#"),
+        ("_", r"\_"),
+        ("{", r"\{"),
+        ("}", r"\}"),
+        ("~", r"\textasciitilde{}"),
+        ("^", r"\textasciicircum{}"),
+    ]:
+        s = s.replace(a, b)
+    return s
+
+
+# ---------------------------------------------------------------- 데이터 적재
+bc = cv("baseline_cv_per_fold.csv")
+cal = cv("calibration_results.csv")
+bd = cv("brier_decomposition.csv")
+r3 = cv("brier_decomposition_r3.csv")
+pc = cv("prevalence_control.csv")
+rec = cv("recalibration_results.csv")
+recs = cv("recalibration_sensitivity.csv")
+conf = cv("conformal_prediction.csv")
+ys = cv("year_sensitivity.csv")
+avs = cv("atc_v_sensitivity.csv")
+ster = cv("stereo_sensitivity.csv")
+mc = cv("multiple_comparison_correction.csv")
+pe = cv("prior_estimation.csv")
+rv = cv("reverse_split.csv")
+sm = cv("shift_matched_split.csv")
+ep = cv("era_permutation.csv")
+sqd = cv("shift_quantification_descriptors.csv")
+sq = cv("shift_quantification.csv")
+cs = cv("concept_shift.csv")
+cso = cv("concept_shift_overlap.csv")
+sw = cv("prevalence_sweep.csv")
+swf = cv("prevalence_sweep_fit.csv")
+rw = cv("recency_weighting.csv")
+ad = cv("applicability_domain.csv")
+adf = cv("applicability_domain_filter.csv")
+SQ = {d: sq[sq.dataset == d].iloc[0] for d in DS}
+
+T = {d: bc[(bc.dataset == d) & (bc.split == "temporal")].iloc[0] for d in DS}
+CT = {d: cal[(cal.dataset.str.startswith(d)) & (cal.setting == "temporal")].iloc[0] for d in DS}
+BD = {d: bd[bd.dataset == d].iloc[0] for d in DS}
+R3 = {
+    (d, b): r3[(r3.dataset == d) & (r3.baseline.str.startswith(b))].iloc[0]
+    for d in DS
+    for b in ("R1", "R2", "R3")
+}
+PCT = {d: pc[(pc.dataset.str.startswith(d)) & (pc.setting.str.startswith("T"))].iloc[0] for d in DS}
+PCR = {
+    (d, b): pc[(pc.dataset.str.startswith(d)) & (pc.setting.str.startswith(b))].iloc[0]
+    for d in DS
+    for b in ("R1", "R2", "R3")
+}
+EP = {d: ep[ep.dataset == d].iloc[0] for d in DS}
+NANA = {d: int(T[d].n_train + T[d].n_test) for d in DS}
+
+# 공집합 비율은 CSV 에 열이 없고 요약 txt 에만 있다. 줄 단위로 읽는다.
+EMPTY, _cd, _ca = [], None, None
+for _ln in txt("conformal_prediction_summary.txt").split("\n"):
+    m = re.match(r"^(DILIrank|DICTrank)\s", _ln)
+    if m:
+        _cd = m.group(1)
+        continue
+    m = re.search(r"목표 커버리지 (\d+)%", _ln)
+    if m:
+        _ca = int(m.group(1))
+        continue
+    m = re.search(r"공집합 비율\s+([\d.]+)\s+([\d.]+)", _ln)
+    if m and _cd and _ca:
+        EMPTY.append((_cd, _ca, float(m.group(1)), float(m.group(2))))
+assert len(EMPTY) == 4, "공집합 블록 %d개" % len(EMPTY)
+
+
+# ---------------------------------------------------------------- 출력 버퍼
+class Doc(object):
+    def __init__(self, title):
+        self.L = []
+        self.n = 0
+        self.w("%" + "=" * 68 + "%")
+        self.w("%% %-66s %%" % title)
+        self.w(
+            "%% %-66s %%" % "Generated by src/make_tables.py from results/. Do not edit by hand."
+        )
+        self.w("%% %-66s %%" % "To change a number, re-run the analysis and then this script.")
+        self.w(
+            "%% %-66s %%" % "Journal rules: caption above (<=15 words), legend below, no colour,"
+        )
+        self.w("%% %-66s %%" % "no thousands separators.")
+        self.w("%" + "=" * 68 + "%")
+
+    def w(self, s=""):
+        self.L.append(s)
+
+    def table(self, caption, label, colspec, body, legend, placement="h"):
+        assert len(caption.split()) <= 15, "캡션 %d단어: %s" % (len(caption.split()), caption)
+        self.n += 1
+        self.w()
+        self.w("\\begin{table}[%s]" % placement)
+        self.w("\\caption{%s}\\label{%s}" % (caption, label))
+        self.w("\\begin{tabular}{@{}%s@{}}" % colspec)
+        self.w("\\toprule")
+        for ln in body:
+            self.w(ln)
+        self.w("\\botrule")
+        self.w("\\end{tabular}")
+        self.w("\\footnotetext{%s}" % legend)
+        self.w("\\end{table}")
+
+    def save(self, path):
+        io.open(path, "w", encoding="utf-8").write("\n".join(self.L) + "\n")
+        return len(self.L)
+
+
+def row(*cells):
+    return " & ".join(str(c) for c in cells) + " \\\\"
+
+
+def head(*cells):
+    return row(*cells) + "\n\\midrule"
+
+
+MAIN = Doc("Main-text tables")
+SUPP = Doc("Supplementary tables")
+
+# ================================================================ T1 분할 설계
+_b = []
+_b.append(head("Dataset", "Validation design", "AUROC", "ECE"))
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = bc[bc.dataset == d]
+    for j, (key, lab) in enumerate(
+        [
+            ("random_cv", "Stratified five-fold CV"),
+            ("scaffold_cv", "Bemis--Murcko scaffold five-fold CV"),
+        ]
+    ):
+        k = g[g.split == key]
+        _b.append(
+            row(
+                d if j == 0 else "",
+                lab,
+                pm(k.AUROC.mean(), k.AUROC.std(ddof=1)),
+                pm(k.ECE.mean(), k.ECE.std(ddof=1)),
+            )
+        )
+    _b.append(
+        row(
+            "",
+            "Temporal split at 2010",
+            "%s %s" % (f4(T[d].AUROC), ci3(T[d].auroc_lo, T[d].auroc_hi)),
+            f4(CT[d].ECE),
+        )
+    )
+_sc = {d: bc[(bc.dataset == d) & (bc.split == "scaffold_cv")] for d in DS}
+_rc = {d: bc[(bc.dataset == d) & (bc.split == "random_cv")] for d in DS}
+MAIN.table(
+    "Discrimination and calibration under three validation designs",
+    "tab:split",
+    "llcc",
+    _b,
+    "All three designs use the same compounds, model and features within each dataset "
+    "(%d DILIrank, %d DICTrank). Cross-validation entries are the mean and standard deviation "
+    "across five folds; the temporal entry gives the 95\\%% bootstrap interval for AUROC and a "
+    "single value for ECE on the %d and %d held-out compounds. Scaffold cross-validation changes "
+    "AUROC by %s in DILIrank and %s in DICTrank, that is in opposite directions, and leaves ECE "
+    "within one standard deviation of stratified cross-validation in both."
+    % (
+        NANA["DILIrank"],
+        NANA["DICTrank"],
+        int(T["DILIrank"].n_test),
+        int(T["DICTrank"].n_test),
+        sg(_sc["DILIrank"].AUROC.mean() - _rc["DILIrank"].AUROC.mean()),
+        sg(_sc["DICTrank"].AUROC.mean() - _rc["DICTrank"].AUROC.mean()),
+    ),
+)
+
+# ================================================================ T2 Murphy 분해
+_b = []
+_b.append(
+    row("", "\\multicolumn{2}{c}{DILIrank}", "\\multicolumn{2}{c}{DICTrank}").replace(
+        " & \\multicolumn{2}{c}{DICTrank} \\\\",
+        " & \\multicolumn{2}{c}{DICTrank} \\\\\n\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}",
+    )
+)
+_b.append(head("Term", "Random", "Temporal", "Random", "Temporal"))
+_u = {d: R3[(d, "R1")] for d in DS}
+_b.append(
+    row(
+        "Uncertainty",
+        f4(_u["DILIrank"].unc_random),
+        f4(_u["DILIrank"].unc_temporal),
+        f4(_u["DICTrank"].unc_random),
+        f4(_u["DICTrank"].unc_temporal),
+    )
+)
+for lab, kr, kt in [
+    ("Resolution (higher is better)", "resolution_random_mean", "resolution_temporal"),
+    ("Reliability (lower is better)", "reliability_random_mean", "reliability_temporal"),
+    ("Brier score", "brier_random_mean", "brier_temporal"),
+]:
+    _b.append(
+        row(
+            lab,
+            f4(BD["DILIrank"][kr]),
+            f4(BD["DILIrank"][kt]),
+            f4(BD["DICTrank"][kr]),
+            f4(BD["DICTrank"][kt]),
+        )
+    )
+_b.append("\\midrule")
+_b.append(
+    row(
+        "Reliability share of degradation",
+        "\\multicolumn{2}{c}{%s [%.1f--%.1f]}"
+        % (
+            p1(BD["DILIrank"].pct_from_reliability_A),
+            BD["DILIrank"].pct_reliability_A_lo,
+            BD["DILIrank"].pct_reliability_A_hi,
+        ),
+        "\\multicolumn{2}{c}{%s [%.1f--%.1f]}"
+        % (
+            p1(BD["DICTrank"].pct_from_reliability_A),
+            BD["DICTrank"].pct_reliability_A_lo,
+            BD["DICTrank"].pct_reliability_A_hi,
+        ),
+    )
+)
+_b.append(
+    row(
+        "Resolution share of degradation",
+        "\\multicolumn{2}{c}{%s}" % p1(BD["DILIrank"].pct_from_resolution_A),
+        "\\multicolumn{2}{c}{%s}" % p1(BD["DICTrank"].pct_from_resolution_A),
+    )
+)
+_b.append(
+    row(
+        "Reliability-to-resolution ratio",
+        "\\multicolumn{2}{c}{%s}"
+        % f2(BD["DILIrank"].pct_from_reliability_A / BD["DILIrank"].pct_from_resolution_A),
+        "\\multicolumn{2}{c}{%s}"
+        % f2(BD["DICTrank"].pct_from_reliability_A / BD["DICTrank"].pct_from_resolution_A),
+    )
+)
+_b.append("\\midrule")
+_b.append(
+    row("\\multicolumn{5}{@{}l}{\\textit{Sensitivity: random partitions pooled before binning}}")
+)
+_b.append(
+    row(
+        "Reliability share of degradation",
+        "\\multicolumn{2}{c}{%s}" % p1(BD["DILIrank"].pct_from_reliability_B),
+        "\\multicolumn{2}{c}{%s}" % p1(BD["DICTrank"].pct_from_reliability_B),
+    )
+)
+MAIN.table(
+    "Murphy decomposition of the Brier score under random and temporal validation",
+    "tab:brier",
+    "lcccc",
+    _b,
+    "The random reference decomposes each of %d same-sized partitions separately and averages the "
+    "terms, so both columns rest on the same held-out size (%d and %d). The standard deviation "
+    "across those partitions is %s and %s for reliability and %s and %s for resolution. "
+    "\\textbf{The uncertainty row comes from a separate %d-partition run} (the R1 control of "
+    "Table~\\ref{tab:prev}), because the %d-partition output does not retain it; the random column "
+    "of the identity therefore closes only to %s and %s rather than exactly. Shares are the change "
+    "in each model-dependent term divided by the sum of both changes; intervals are %d-fold "
+    "bootstrap percentiles. An upper bound above 100\\%% arises in resamples where resolution "
+    "improves rather than deteriorates, which occurred in %s of DILIrank and %s of DICTrank "
+    "resamples. Uncertainty is fixed by the held-out class balance and is not attributed. In the "
+    "temporal columns, where an exact Brier score on the same predictions is available, the binned "
+    "reconstruction and the exact score agree to within %s (%s against %s and %s against %s). The "
+    "pooled row gives the random reference twenty times the sample of the temporal column and is "
+    "reported only to show the direction of that bias."
+    % (
+        int(BD["DILIrank"].n_repeats),
+        int(BD["DILIrank"].N_temporal),
+        int(BD["DICTrank"].N_temporal),
+        f4(BD["DILIrank"].reliability_random_sd),
+        f4(BD["DICTrank"].reliability_random_sd),
+        f4(BD["DILIrank"].resolution_random_sd),
+        f4(BD["DICTrank"].resolution_random_sd),
+        int(R3[("DILIrank", "R1")].n_rep_valid),
+        int(BD["DILIrank"].n_repeats),
+        f4(
+            BD["DILIrank"].reliability_random_mean
+            - BD["DILIrank"].resolution_random_mean
+            + R3[("DILIrank", "R1")].unc_random
+        ),
+        f4(
+            BD["DICTrank"].reliability_random_mean
+            - BD["DICTrank"].resolution_random_mean
+            + R3[("DICTrank", "R1")].unc_random
+        ),
+        int(BD["DILIrank"].n_boot_ok),
+        p1(BD["DILIrank"].frac_boot_over_100 * 100),
+        p1(BD["DICTrank"].frac_boot_over_100 * 100),
+        f3(math.ceil(max(abs(CT[d].Brier - BD[d].brier_temporal) for d in DS) * 1000.0) / 1000.0),
+        f4(CT["DILIrank"].Brier),
+        f4(BD["DILIrank"].brier_temporal),
+        f4(CT["DICTrank"].Brier),
+        f4(BD["DICTrank"].brier_temporal),
+    ),
+)
+
+# ================================================================ T3 유병률 통제
+_lab = {
+    "R1": "(R1) Unconstrained random",
+    "R2": "(R2) Held-out rate matched",
+    "R3": "(R3) Both rates matched",
+}
+_b = [head("Dataset", "Control", "ECE", "Ratio", "$p$")]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    _b.append(
+        row(
+            d,
+            "Temporal split at 2010",
+            "%s %s" % (f4(PCT[d].ECE), ci3(PCT[d].ECE_lo, PCT[d].ECE_hi)),
+            "---",
+            "---",
+        )
+    )
+    for b in ("R1", "R2", "R3"):
+        r = PCR[(d, b)]
+        _b.append(row("", _lab[b], pm(r.ECE, r.ECE_sd), f2(r.ece_ratio), f4(r.p_perm)))
+_nge = {(d, b): int(PCR[(d, b)].n_ge_observed) for d in DS for b in ("R1", "R2", "R3")}
+_zero = sum(1 for k in _nge if _nge[k] == 0)
+_nz = [(k, v) for k, v in sorted(_nge.items()) if v > 0]
+MAIN.table(
+    "Prevalence-matched random controls for expected calibration error",
+    "tab:prev",
+    "llccc",
+    _b,
+    "Each control is averaged over %d partitions. R2 matches the held-out positive rate to the "
+    "temporal held-out set; R3 matches the training rate as well, at the cost of a smaller "
+    "held-out set (%d and %d compounds against %d and %d). Ratio is temporal ECE divided by "
+    "control ECE. One-sided $p$ uses the bias-corrected estimator $(1+r)/(1+N)$, where $r$ is the "
+    "number of partitions with ECE at or above the temporal value; $r$ was 0 in %d of the six "
+    "comparisons and %s in the remaining one. The value %s is the lower bound available at %d repeats, so %d of these "
+    "$p$ values are at that bound and the true values are smaller. All six survive "
+    "Benjamini--Hochberg correction within this family, the largest $q$ being %s."
+    % (
+        int(PCR[("DILIrank", "R1")].n_rep_valid),
+        int(PCR[("DILIrank", "R2")].n),
+        int(PCR[("DICTrank", "R2")].n),
+        int(PCT["DILIrank"].n),
+        int(PCT["DICTrank"].n),
+        _zero,
+        " and ".join("%d (%s %s)" % (v, k[0], k[1]) for k, v in _nz),
+        f4(1.0 / (int(PCR[("DILIrank", "R1")].n_rep_valid) + 1)),
+        int(PCR[("DILIrank", "R1")].n_rep_valid),
+        _zero,
+        f4(mc[mc.family == "2_prevalence_control"].q_BH.max()),
+    ),
+)
+
+# ================================================================ T4 재보정
+# §10 본표의 적합셋·보정셋 크기와 보정셋 연도 범위는 CSV 에 없고 요약 txt 에만 있다.
+# 비율을 추측하지 않고 거기서 직접 읽는다.
+RCAL = {}
+_cd = None
+for _ln in txt("recalibration_summary.txt").split("\n"):
+    m = re.match(r"^(DILIrank|DICTrank)\s", _ln)
+    if m:
+        _cd = m.group(1)
+        RCAL.setdefault(_cd, {})
+        continue
+    if _cd is None:
+        continue
+    m = re.search(r"학습\(적합\)\s*n=(\d+)", _ln)
+    if m:
+        RCAL[_cd].setdefault("n_fit", int(m.group(1)))
+        continue
+    m = re.search(r"보정셋\s+n=(\d+)\s*\(승인\s*([\d~]+)\)", _ln)
+    if m:
+        RCAL[_cd].setdefault("n_calib", int(m.group(1)))
+        RCAL[_cd].setdefault("span", m.group(2).replace("~", "--"))
+        continue
+for d in DS:
+    assert {"n_fit", "n_calib", "span"} <= set(RCAL[d]), "재보정 요약 파싱 실패: %s" % d
+_MAINFRAC = float(RCAL["DILIrank"]["n_calib"]) / (
+    RCAL["DILIrank"]["n_fit"] + RCAL["DILIrank"]["n_calib"]
+)
+
+_m = {d: {r.method[:2]: r for _, r in rec[rec.dataset.str.startswith(d)].iterrows()} for d in DS}
+_A = {d: _m[d]["A."] for d in DS}
+_E = {d: _m[d]["E."] for d in DS}
+
+
+def gap(d, k):
+    return (_A[d].ECE - _m[d][k].ECE) / (_A[d].ECE - _E[d].ECE) * 100
+
+
+_rl = [
+    ("A.", "(A) No recalibration"),
+    ("B.", "(B) Platt scaling, internal"),
+    ("C.", "(C) Isotonic regression, internal"),
+    ("D.", "(D) Prior-probability correction"),
+    ("E.", "(E) Oracle Platt scaling"),
+]
+_b = [
+    row("", "\\multicolumn{2}{c}{DILIrank}", "\\multicolumn{2}{c}{DICTrank}"),
+    "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}",
+    head("Strategy", "ECE", "Gap closed", "ECE", "Gap closed"),
+]
+for k, lab in _rl:
+    _b.append(
+        row(
+            lab,
+            f4(_m["DILIrank"][k].ECE),
+            "---" if k == "A." else p0(gap("DILIrank", k)),
+            f4(_m["DICTrank"][k].ECE),
+            "---" if k == "A." else p0(gap("DICTrank", k)),
+        )
+    )
+_b.append("\\midrule")
+_bc2 = {d: recs[(recs.dataset == d) & (recs.method.str.startswith(("B.", "C.")))] for d in DS}
+_b.append(
+    row(
+        "(B)--(C) across calibration fractions",
+        "\\multicolumn{2}{c}{%s--%s}"
+        % (p1(_bc2["DILIrank"].recovery.min()), p1(_bc2["DILIrank"].recovery.max())),
+        "\\multicolumn{2}{c}{%s--%s}"
+        % (p1(_bc2["DICTrank"].recovery.min()), p1(_bc2["DICTrank"].recovery.max())),
+    )
+)
+_fr = sorted(float(x) for x in recs.calib_frac.dropna().unique())
+# isotonic 이 판별력을 흔드는 폭은 '같은 보정셋 비율의 무보정(A\')' 과의 차이로 잰다.
+_ISOMAX = 0.0
+for _d in DS:
+    for _f in _fr:
+        _g = recs[(recs.dataset == _d) & (recs.calib_frac == _f)]
+        _a = _g[_g.method.str.startswith("A'")]
+        _c = _g[_g.method.str.startswith("C.")]
+        if len(_a) and len(_c):
+            _ISOMAX = max(_ISOMAX, abs(float(_c.auroc.iloc[0]) - float(_a.auroc.iloc[0])))
+MAIN.table(
+    "Recalibration strategies evaluated on the temporal held-out set",
+    "tab:recal",
+    "lcccc",
+    _b,
+    "Strategies (B) and (C) fit on the most recent %d\\%% of training compounds by approval year "
+    "(%d and %d compounds, spanning %s and %s) and use no held-out information. Strategy (D) rescales the intercept of "
+    "the full-training model using the held-out positive rate; it is not prospective and is "
+    "reported to isolate the pure base-rate component. Table~\\ref{tab:prior} shows that "
+    "estimating that rate without held-out labels does not work, so (D) belongs with (E) as a "
+    "ceiling. Strategy (E) is fitted on the held-out labels. Gap closed is the fraction of the "
+    "distance between (A) and (E) that a strategy recovers. \\textbf{The last row is the range "
+    "over calibration fractions %s--%s and is the quantity to quote}; the single-fraction values "
+    "above are one point in that range. (D) and (E) are monotone transformations of (A) and leave "
+    "its AUROC unchanged at %s and %s; (B) and (C) are applied to a model refitted without the "
+    "calibration set, so their AUROC differs (%s and %s; %s and %s), and isotonic regression can "
+    "move AUROC by as much as %s at the smallest calibration fraction. Row (A) differs from the "
+    "primary split because this pipeline sorts by approval year before fitting, which changes the "
+    "rows drawn under subsampling."
+    % (
+        int(round(100 * _MAINFRAC)),
+        RCAL["DILIrank"]["n_calib"],
+        RCAL["DICTrank"]["n_calib"],
+        RCAL["DILIrank"]["span"],
+        RCAL["DICTrank"]["span"],
+        f2(min(_fr)),
+        f2(max(_fr)),
+        f4(_A["DILIrank"].AUROC),
+        f4(_A["DICTrank"].AUROC),
+        f4(_m["DILIrank"]["B."].AUROC),
+        f4(_m["DILIrank"]["C."].AUROC),
+        f4(_m["DICTrank"]["B."].AUROC),
+        f4(_m["DICTrank"]["C."].AUROC),
+        f4(_ISOMAX),
+    ),
+)
+
+# ================================================================ T5 conformal
+_b = [
+    row("", "", "\\multicolumn{2}{c}{DILIrank}", "\\multicolumn{2}{c}{DICTrank}"),
+    "\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}",
+    head("Nominal", "Coverage", "Random", "Temporal", "Random", "Temporal"),
+]
+for i, a in enumerate(sorted(conf.alpha.unique())):
+    if i:
+        _b.append("\\midrule")
+    _c = {d: conf[(conf.dataset == d) & (conf.alpha == a)].iloc[0] for d in DS}
+    _nom = "%d\\%%" % int(round(100 * (1 - a)))
+    for j, (lab, kr, kt) in enumerate(
+        [
+            ("Marginal", "marginal_coverage_random", "marginal_coverage_temporal"),
+            ("Positive class", "coverage_positive_random", "coverage_positive_temporal"),
+            ("Negative class", "coverage_negative_random", "coverage_negative_temporal"),
+        ]
+    ):
+        _b.append(
+            row(
+                _nom if j == 0 else "",
+                lab,
+                f3(_c["DILIrank"][kr]),
+                f3(_c["DILIrank"][kt]),
+                f3(_c["DICTrank"][kr]),
+                f3(_c["DICTrank"][kt]),
+            )
+        )
+_enz = [e for e in EMPTY if e[2] > 0 or e[3] > 0]
+_empsent = (
+    "Empty prediction sets never occurred."
+    if not _enz
+    else "Empty prediction sets occurred in %d of the eight conditions, all on the random side: "
+    "%s. Every temporal condition gave none."
+    % (
+        len(_enz),
+        "; ".join("%s at nominal %d\\%% at a rate of %s" % (e[0], e[1], f3(e[2])) for e in _enz),
+    )
+)
+MAIN.table(
+    "Split conformal coverage under random and temporal validation",
+    "tab:conformal",
+    "llcccc",
+    _b,
+    "The random reference is averaged over partitions with identical fitting, calibration and "
+    "held-out sizes (calibration sets of %d and %d, held-out sets of %d and %d). %s Split conformal "
+    "guarantees marginal coverage only; the class-conditional rows are descriptive, which is why "
+    "the random reference can itself fall below nominal within a class. The marginal shortfall "
+    "under the temporal split is %s and %s at nominal 90\\%% and %s and %s at nominal 80\\%%, and "
+    "in every case it falls on the negative class."
+    % (
+        RCAL["DILIrank"]["n_calib"],
+        RCAL["DICTrank"]["n_calib"],
+        int(T["DILIrank"].n_test),
+        int(T["DICTrank"].n_test),
+        _empsent,
+        f3(
+            0.90
+            - conf[
+                (conf.dataset == "DILIrank") & (conf.alpha == 0.1)
+            ].marginal_coverage_temporal.iloc[0]
+        ),
+        f3(
+            0.90
+            - conf[
+                (conf.dataset == "DICTrank") & (conf.alpha == 0.1)
+            ].marginal_coverage_temporal.iloc[0]
+        ),
+        f3(
+            0.80
+            - conf[
+                (conf.dataset == "DILIrank") & (conf.alpha == 0.2)
+            ].marginal_coverage_temporal.iloc[0]
+        ),
+        f3(
+            0.80
+            - conf[
+                (conf.dataset == "DICTrank") & (conf.alpha == 0.2)
+            ].marginal_coverage_temporal.iloc[0]
+        ),
+    ),
+)
+
+# ================================================================ T6 큐레이션 민감도
+_b = [head("Dataset", "Condition", "$n$", "ECE", "Control ECE", "Ratio", "Reliability share")]
+_SC = {
+    "S0": "Primary analysis",
+    "S1": "Corrected approval years",
+    "S2": "Corrected years, one exclusion",
+}
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for _, r in ys[ys.dataset == d].iterrows():
+        _b.append(
+            row(
+                d if first else "",
+                _SC[r.scenario.split()[0]],
+                int(r.n),
+                f4(r.ECE),
+                f4(r.ECE_random_mean),
+                f2(r.ece_ratio),
+                p1(r.pct_from_reliability),
+            )
+        )
+        first = False
+    r = avs[(avs.dataset == d) & (avs.scenario.str.startswith("ATC V"))].iloc[0]
+    _b.append(
+        row(
+            "",
+            "ATC class V removed",
+            int(r.n),
+            f4(r.ECE),
+            f4(r.ECE_random_mean),
+            f2(r.ece_ratio),
+            p1(r.pct_from_reliability),
+        )
+    )
+    for _, r in ster[ster.dataset == d].iterrows():
+        lab = (
+            "Stereoisomers merged (primary key)"
+            if r.variant.startswith("14")
+            else "Stereoisomers separated"
+        )
+        _b.append(
+            row(
+                "",
+                lab,
+                int(r.n),
+                f4(r.ece),
+                f4(r.ece_random_pm),
+                f2(r.ece_ratio_pm),
+                p1(r.share_reliability),
+            )
+        )
+_avx = avs[avs.scenario.str.startswith("ATC V")]
+_allr = (
+    [float(x) for x in ys.ece_ratio]
+    + [float(x) for x in _avx.ece_ratio]
+    + [float(x) for x in ster.ece_ratio_pm]
+)
+_alls = (
+    [float(x) for x in ys.pct_from_reliability]
+    + [float(x) for x in _avx.pct_from_reliability]
+    + [float(x) for x in ster.share_reliability]
+)
+_nrows = len([l for l in _b if l.endswith("\\\\") and "multicolumn" not in l])
+assert len(_allr) == _nrows, "각주 범위 %d 과 표 행 %d 이 어긋난다" % (len(_allr), _nrows)
+SUPP.table(
+    "Sensitivity of the primary result to three data-curation decisions",
+    "tab:curation",
+    "llccccc",
+    _b,
+    "\\textbf{The control ECE column is the denominator of the ratio in the same row and differs "
+    "between rows}: the approval-year and ATC rows use a size-matched random control re-drawn for "
+    "each analysis set, while the stereoisomer rows use the prevalence-matched control of "
+    "Table~\\ref{tab:prev}, so ratios are comparable within a block and not across blocks. "
+    "The corrected-years row applies the seven approval-year corrections identified by the audit, "
+    "one of which the manual review judged insufficiently supported; the next row additionally "
+    "excludes phenobarbital sodium. "
+    "Reliability share is the Murphy decomposition share of Table~\\ref{tab:brier}. Across all "
+    "%d conditions the ratio stays above 1 (range %s--%s) and the reliability share above half "
+    "(range %s--%s); the lowest share, %s, is the DICTrank primary key, which is why no claim of "
+    "a dominant calibration component is made for that dataset."
+    % (len(_allr), f2(min(_allr)), f2(max(_allr)), p1(min(_alls)), p1(max(_alls)), p1(min(_alls))),
+)
+
+# ================================================================ T7 역방향 분할 (§12.2)
+_REPS = int(rv.n_rep_valid.max())
+_b = [
+    head(
+        "Dataset",
+        "Direction and control",
+        "Train $n$",
+        "Test $n$",
+        "ECE",
+        "Slope",
+        "Ratio",
+        "Reliability share",
+        "Valid reps",
+        "$p$",
+    )
+]
+_RL = {
+    "T": "temporal split",
+    "R1": "(R1) unconstrained random",
+    "R2": "(R2) held-out rate matched",
+    "R3": "(R3) both rates matched",
+}
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    _ntr = {"정방향(참고)": int(T[d].n_train), "역방향": int(T[d].n_test)}
+    first = True
+    for _, r in rv[rv.dataset == d].iterrows():
+        key = r.setting.split(".")[0].strip()
+        dirn = "Forward" if str(r.direction).startswith("정") else "Reverse"
+        isT = key == "T"
+        _b.append(
+            row(
+                d if first else "",
+                "%s, %s" % (dirn, _RL.get(key, r.setting)),
+                _ntr[r.direction],
+                int(r.n_test),
+                f4(r.ece),
+                f4(r.slope),
+                "---" if isT else f2(r.ece_ratio),
+                "---" if isT else p1(r.share_rel),
+                "---" if isT else "%d/%d" % (int(r.n_rep_valid), _REPS),
+                "---" if isT else f4(r.p_phipson_smyth),
+            )
+        )
+        first = False
+_rvT = {
+    d: rv[(rv.dataset == d) & (rv.direction == "역방향") & (rv.setting.str.startswith("T"))].iloc[0]
+    for d in DS
+}
+_rvR = {
+    (d, b): rv[
+        (rv.dataset == d) & (rv.direction == "역방향") & (rv.setting.str.startswith(b))
+    ].iloc[0]
+    for d in DS
+    for b in ("R1", "R2", "R3")
+}
+MAIN.table(
+    "Reversed temporal split as a control against label censoring",
+    "tab:reverse",
+    "llcccccccc",
+    _b,
+    "Training on compounds approved from 2010 onwards and testing on earlier ones makes the "
+    "held-out labels the mature ones, so label immaturity cannot explain a collapse in this "
+    "direction. Calibration still degrades: against a size-matched random control the ratio is "
+    "%s and %s ($p$ = %s and %s), and the reliability share, %s and %s, is higher than in the "
+    "forward direction. \\textbf{Three caveats belong with this table.} Under the strictest "
+    "control (R3) the two datasets part company, DILIrank at %s ($p$ = %s) against DICTrank at "
+    "%s ($p$ = %s, not significant), so the reversed evidence is weaker than the forward evidence "
+    "of Table~\\ref{tab:prev}. The DILIrank R3 control retains only %d of %d repeats, because "
+    "matching its training positive rate of %s forces a subsample that usually fails the "
+    "minimum-size guard; its $p$ therefore sits at the %s bound of %d valid repeats rather than "
+    "the %s bound used elsewhere, and the repeat count must be quoted with it. Absolute AUROC is "
+    "not comparable with the forward direction because the reversed training set holds only %d "
+    "and %d compounds, whereas the ECE ratio is comparable because each control uses the same "
+    "training size. This is a control experiment, not a deployment scenario."
+    % (
+        f2(_rvR[("DILIrank", "R1")].ece_ratio),
+        f2(_rvR[("DICTrank", "R1")].ece_ratio),
+        f4(_rvR[("DILIrank", "R1")].p_phipson_smyth),
+        f4(_rvR[("DICTrank", "R1")].p_phipson_smyth),
+        p1(_rvR[("DILIrank", "R1")].share_rel),
+        p1(_rvR[("DICTrank", "R1")].share_rel),
+        f2(_rvR[("DILIrank", "R3")].ece_ratio),
+        f4(_rvR[("DILIrank", "R3")].p_phipson_smyth),
+        f2(_rvR[("DICTrank", "R3")].ece_ratio),
+        f4(_rvR[("DICTrank", "R3")].p_phipson_smyth),
+        int(_rvR[("DILIrank", "R3")].n_rep_valid),
+        _REPS,
+        f4(PCT["DILIrank"].pos_rate),
+        f4(1.0 / (int(_rvR[("DILIrank", "R3")].n_rep_valid) + 1)),
+        int(_rvR[("DILIrank", "R3")].n_rep_valid),
+        f4(1.0 / (_REPS + 1)),
+        int(T["DILIrank"].n_test),
+        int(T["DICTrank"].n_test),
+    ),
+)
+
+# ================================================================ T8 비시간 분할 (§13.5)
+_b = [
+    head(
+        "Dataset",
+        "Split",
+        "Test $n$",
+        "Prevalence shift",
+        "Membership AUC",
+        "AUROC",
+        "ECE",
+        "Control ECE",
+        "Ratio",
+        "$p$",
+    )
+]
+_SL = {
+    "T": "Temporal at 2010",
+    "X1": "Molecular weight, upper half",
+    "X2": "Calculated logP, upper half",
+    "X3": "Fingerprint cluster hold-out",
+    "R": "Random",
+}
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for _, r in sm[sm.dataset == d].iterrows():
+        key = r.split.split(".")[0].strip()
+        _b.append(
+            row(
+                d if first else "",
+                _SL.get(key, r.split),
+                int(r.n_test),
+                sg(r.pos_rate_test - r.pos_rate_train),
+                f4(r.shift_auc),
+                f4(r.auroc),
+                f4(r.ece),
+                f4(r.ctrl_ece),
+                f2(r.ece_ratio),
+                f4(r.p_phipson_smyth),
+            )
+        )
+        first = False
+
+
+def _spearman(a, b):
+    a = pd.Series(list(a)).rank().to_numpy(dtype=float)
+    b = pd.Series(list(b)).rank().to_numpy(dtype=float)
+    a = a - a.mean()
+    b = b - b.mean()
+    den = ((a * a).sum() * (b * b).sum()) ** 0.5
+    return float((a * b).sum() / den)
+
+
+_rho_auc = _spearman(sm.shift_auc, sm.ece_ratio)
+_rho_prev = _spearman((sm.pos_rate_test - sm.pos_rate_train).abs(), sm.ece_ratio)
+_x = sm[sm.split.str.startswith("X")]
+_nt = sm[~sm.split.str.startswith("T")]
+assert sm.n_rep_valid.nunique() == 1, "분할별 반복 수가 다르다"
+_SMREP = int(sm.n_rep_valid.iloc[0])
+_tt = {d: sm[(sm.dataset == d) & (sm.split.str.startswith("T"))].iloc[0] for d in DS}
+MAIN.table(
+    "Non-temporal splits that saturate covariate shift",
+    "tab:nontemporal",
+    "llcccccccc"[:10],
+    _b,
+    "Each split keeps the held-out size of the temporal split and carries its own random control "
+    "matched to that split's held-out prevalence (%d repeats, the R2 design of "
+    "Table~\\ref{tab:prev}). Membership AUC is a five-fold cross-validated classifier for which "
+    "half a compound belongs to, computed by the same procedure as the era classifier described "
+    "in Methods. \\textbf{The design did not achieve matched shift and is reported as an "
+    "upper-bound contrast instead.} Molecular weight and logP are model inputs, so splitting on "
+    "them drives membership AUC to %s, and the fingerprint-cluster split reaches %s and %s, "
+    "against %s and %s for the temporal split. Even with shift saturated, no non-temporal ratio "
+    "reaches the temporal one: the six shift-saturated ratios span %s--%s, and including the two "
+    "random splits the eight non-temporal ratios span %s--%s, while the temporal split gives %s "
+    "and %s. The random split, with membership AUC near chance, gives %s and %s, which confirms the "
+    "measurement behaves. Across the ten rows the ratio tracks the absolute prevalence shift "
+    "(Spearman rho = %s) more closely than membership AUC (rho = %s); \\textbf{with ten rows no "
+    "significance is claimed for either correlation and they are to be read as an ordering only}. "
+    "The row T reproduces the R2 ratio of Table~\\ref{tab:prev} exactly, which cross-checks the "
+    "new script against the existing pipeline."
+    % (
+        _SMREP,
+        f4(_x.shift_auc.max()),
+        f4(sm[(sm.dataset == "DILIrank") & (sm.split.str.startswith("X3"))].shift_auc.iloc[0]),
+        f4(sm[(sm.dataset == "DICTrank") & (sm.split.str.startswith("X3"))].shift_auc.iloc[0]),
+        f4(_tt["DILIrank"].shift_auc),
+        f4(_tt["DICTrank"].shift_auc),
+        f2(_x.ece_ratio.min()),
+        f2(_x.ece_ratio.max()),
+        f2(_nt.ece_ratio.min()),
+        f2(_nt.ece_ratio.max()),
+        f2(_tt["DILIrank"].ece_ratio),
+        f2(_tt["DICTrank"].ece_ratio),
+        f2(sm[(sm.dataset == "DILIrank") & (sm.split.str.startswith("R"))].ece_ratio.iloc[0]),
+        f2(sm[(sm.dataset == "DICTrank") & (sm.split.str.startswith("R"))].ece_ratio.iloc[0]),
+        "%+.3f" % _rho_prev,
+        "%+.3f" % _rho_auc,
+    ),
+)
+
+# ================================================================ T9 사전확률 추정 (§10.2)
+_PL = {
+    "P0": "(P0) Assume no shift: training rate",
+    "P1": "(P1) Mean predicted probability",
+    "P2": "(P2) Expectation--maximisation",
+    "P3": "(P3) Black-box shift estimation",
+    "P4": "(P4) Oracle: held-out rate",
+}
+_IL = {
+    "학습군 라벨만": "training labels only",
+    "라벨 없음": "none",
+    "**검증군 라벨**": "held-out labels",
+    "검증군 라벨": "held-out labels",
+}
+_b = [
+    head(
+        "Dataset",
+        "Prior estimator",
+        "Information used",
+        "$\\hat{\\pi}$",
+        "Error",
+        "ECE",
+        "Gap closed",
+    )
+]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    _pg = pe[(pe.dataset == d) & (pe.estimator.str.match(r"^P\d"))]
+    assert len(_pg) == 5, "사전확률 추정량 %d개" % len(_pg)
+    for _, r in _pg.iterrows():
+        key = str(r.estimator).split()[0]
+        _b.append(
+            row(
+                d if first else "",
+                _PL.get(key, tex(r.estimator)),
+                _IL.get(str(r.info_used).strip(), tex(str(r.info_used).replace("**", ""))),
+                f4(r.pi_hat),
+                sg(r.pi_err),
+                f4(r.ECE),
+                p1(r.recovery),
+            )
+        )
+        first = False
+_P = {
+    (d, k): pe[(pe.dataset == d) & (pe.estimator.str.startswith(k))].iloc[0]
+    for d in DS
+    for k in ("P0", "P1", "P2", "P3", "P4")
+}
+_nolab = [_P[(d, k)] for d in DS for k in ("P0", "P1", "P2", "P3")]
+_neg = [r for r in _nolab if float(r.recovery) < 0]
+_best = {d: max(float(_P[(d, k)].recovery) for k in ("P0", "P1", "P2", "P3")) for d in DS}
+MAIN.table(
+    "Estimating the held-out prior without held-out labels",
+    "tab:prior",
+    "lllcccc",
+    _b,
+    "Only the prior estimate changes between rows; the correction applied to the intercept is the "
+    "one of strategy (D) in Table~\\ref{tab:recal}, and (P4) is that strategy. Gap closed is "
+    "measured against the same uncorrected and oracle endpoints as Table~\\ref{tab:recal}. "
+    "\\textbf{The result is a clear negative.} Every estimator that does not see held-out labels "
+    "errs upward, by %s to %s, and %d of the %d estimates make calibration worse rather than "
+    "better. The best label-free result is %s for DILIrank and %s for DICTrank, against %s and %s "
+    "for the oracle; for DICTrank the best available action is to do nothing. The common direction "
+    "of the error is the point: all four estimators start from the model's own scores or hard "
+    "predictions, and the temporal split has already pushed those upward (mean predicted "
+    "probability %s and %s), so a score-based estimate reads more positives while the true "
+    "prevalence has fallen. Estimating a prior from a model whose calibration has collapsed is "
+    "circular. In DICTrank the black-box confusion matrix becomes near-singular (determinant %s) "
+    "and the estimate saturates at %s. Deployable recalibration is therefore limited to "
+    "strategies (B) and (C) of Table~\\ref{tab:recal}."
+    % (
+        sg(min(float(r.pi_err) for r in _nolab)),
+        sg(max(float(r.pi_err) for r in _nolab)),
+        len(_neg),
+        len(_nolab),
+        p1(_best["DILIrank"]),
+        p1(_best["DICTrank"]),
+        p1(_P[("DILIrank", "P4")].recovery),
+        p1(_P[("DICTrank", "P4")].recovery),
+        f4(CT["DILIrank"].mean_pred),
+        f4(CT["DICTrank"].mean_pred),
+        f4(pe[pe.dataset == "DICTrank"].bbse_det.iloc[0]),
+        f4(_P[("DICTrank", "P3")].pi_hat),
+    ),
+)
+
+# ================================================================ S1 시대 분류기 (§13.1-13.2)
+_b = [
+    head(
+        "Dataset",
+        "$n$ (post-2010)",
+        "Era AUC",
+        "Null mean (SD)",
+        "Null 2.5--97.5\\%",
+        "At or above",
+        "$p$",
+        "$z$",
+    )
+]
+for d in DS:
+    r = EP[d]
+    _b.append(
+        row(
+            d,
+            "%d (%d)" % (int(r.n), int(r.n_post)),
+            f4(r.era_auc),
+            "%s (%s)" % (f4(r.null_mean), f4(r.null_sd)),
+            "%s--%s" % (f4(r.null_p025), f4(r.null_p975)),
+            "%d/%d" % (int(r.n_ge), int(r.n_perm)),
+            f4(r.p_phipson_smyth),
+            f2(r.z),
+        )
+    )
+SUPP.table(
+    "Structure alone separates pre- and post-2010 approvals",
+    "tab:era",
+    "lccccccc",
+    _b,
+    "A classifier trained on the same representation and learner to predict whether a compound "
+    "was approved from 2010 onwards, scored by five-fold cross-validated AUC. The null "
+    "distribution randomises the era label %d times. An AUC of 0.5 would mean the two halves are "
+    "structurally indistinguishable. No permutation reached the observed value in either dataset, "
+    "so $p$ sits at the %s bound and the true value is smaller. \\textbf{The $z$ column is not a "
+    "test}: the null distribution is not known to be normal, so it must not be converted into a "
+    "$p$ value; it is given only because the bounded $p$ cannot show how far the observation lies "
+    "from the null. Applying the identical procedure to random split labels of the same sizes "
+    "gives %s and %s, that is chance, which rules out the objection that the classifier would "
+    "separate any partition. The six RDKit descriptors alone, without fingerprints, still separate "
+    "the eras (%s and %s), so the shift is not an artefact of fingerprint sparsity "
+    "(Table~\\ref{tab:desc})."
+    % (
+        int(EP["DILIrank"].n_perm),
+        f4(1.0 / (int(EP["DILIrank"].n_perm) + 1)),
+        f4(SQ["DILIrank"].random_split_era_auc),
+        f4(SQ["DICTrank"].random_split_era_auc),
+        f4(SQ["DILIrank"].era_auc_desc_only),
+        f4(SQ["DICTrank"].era_auc_desc_only),
+    ),
+)
+
+# ================================================================ S2 기술자 이동 (§13.2)
+_DL = {
+    "MolWt": "Molecular weight",
+    "MolLogP": "Calculated logP",
+    "TPSA": "Topological polar surface area",
+    "NumHAcceptors": "H-bond acceptors",
+    "NumRotatableBonds": "Rotatable bonds",
+    "NumHDonors": "H-bond donors",
+}
+_b = [head("Descriptor", "DILIrank train", "DILIrank test", "DICTrank train", "DICTrank test")]
+for k in ["MolWt", "MolLogP", "TPSA", "NumHAcceptors", "NumRotatableBonds", "NumHDonors"]:
+    cells = [_DL[k]]
+    for d in DS:
+        r = sqd[(sqd.dataset == d) & (sqd.descriptor == k)].iloc[0]
+        fm = (
+            (lambda x: "%.0f" % x)
+            if k.startswith("Num")
+            else (lambda x: "%.1f" % x) if k in ("MolWt", "TPSA") else (lambda x: "%.2f" % x)
+        )
+        cells += [
+            fm(r.median_train),
+            "%s (%s)"
+            % (
+                fm(r.median_test),
+                (
+                    "%+" + fm(abs(r["diff"]))[1:]
+                    if False
+                    else ("+" if r["diff"] >= 0 else "-") + fm(abs(r["diff"]))
+                ),
+            ),
+        ]
+    _b.append(row(*cells))
+SUPP.table(
+    "Median RDKit descriptors in the training and held-out halves",
+    "tab:desc",
+    "lcccc",
+    _b,
+    "Medians of the six descriptors used by the primary model, with the signed change from "
+    "training to held-out in parentheses. Compounds approved from 2010 onwards are larger, more "
+    "lipophilic and have greater polar surface area in both datasets. The distribution shift the "
+    "temporal split creates is therefore real at the level of structure, which is what "
+    "Table~\\ref{tab:era} measures as a single number. \\textbf{Existence of shift is not "
+    "evidence that its magnitude drives the calibration collapse}; "
+    "Table~\\ref{tab:nontemporal} tests that and does not support it.",
+)
+
+
+# ================================================================ T10 개념 이동 (§17.3)
+# 팔 이름은 한글 원본 -> 논문 영문 라벨로 옮긴다. 키는 접두사다.
+_ARM = {
+    "A.": ("A", "Era-matched, random 5-fold CV"),
+    "A2": ("A2", "Era-matched, scaffold 5-fold CV"),
+    "B.": ("B", "Forward, full pre-2010 training set"),
+    "C.": ("C", "Forward, training size matched to A"),
+    "D.": ("D", "Forward, size and prevalence matched to A"),
+}
+
+
+def _armkey(name):
+    return "A2" if name.startswith("A2") else name[:2]
+
+
+CS = {(r.dataset, _armkey(r.arm)): r for _, r in cs.iterrows()}
+_b = [
+    head(
+        "Dataset",
+        "Arm",
+        "Train era",
+        "Train $n$",
+        "Train rate",
+        "AUROC",
+        "ECE",
+        "Slope",
+        "Reliability",
+        "Ratio to A",
+        "$p$",
+    )
+]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for k in ("A.", "A2", "B.", "C.", "D."):
+        if (d, k) not in CS:
+            continue
+        r = CS[(d, k)]
+        tag, lab = _ARM[k]
+        _b.append(
+            row(
+                d if first else "",
+                "(%s) %s" % (tag, lab),
+                "post-2010" if k in ("A.", "A2") else "pre-2010",
+                int(round(r.train_n)),
+                f4(r.train_rate),
+                f4(r.auroc),
+                f4(r.ece),
+                f4(r.slope),
+                f4(r.rel),
+                "---" if r.ece_ratio != r.ece_ratio else f2(r.ece_ratio),
+                "---" if r.p_phipson_smyth != r.p_phipson_smyth else f4(r.p_phipson_smyth),
+            )
+        )
+        first = False
+
+# 3분해는 표 안이 아니라 각주에 쓴다. 합이 정확히 B-A 임을 보여야 한다.
+_dec = {}
+for d in DS:
+    a, b_, c_, dd = (CS[(d, "A.")], CS[(d, "B.")], CS[(d, "C.")], CS[(d, "D.")])
+    _dec[d] = dict(
+        era=dd.ece - a.ece, rate=c_.ece - dd.ece, size=b_.ece - c_.ece, tot=b_.ece - a.ece
+    )
+    _chk = _dec[d]["era"] + _dec[d]["rate"] + _dec[d]["size"]
+    assert abs(_chk - _dec[d]["tot"]) < 1e-9, "3분해 합 불일치 %s" % d
+_nrep = int(cs.n_rep_valid.max())
+MAIN.table(
+    "Concept shift isolated by holding training size and prevalence fixed",
+    "tab:concept",
+    "llccccccccc",
+    _b,
+    "Every arm is scored on the same held-out compounds, the %d and %d approved from 2010 "
+    "onwards; arms A and A2 use out-of-fold predictions so no compound is scored by a model "
+    "trained on it. Arms A and D differ only in the era the training compounds come from, "
+    "their size and positive rate being matched, so the gap between them is the concept-shift "
+    "term. It is %s for DILIrank ($p$ = %s, %d of %d controls matched arm A) and %s for "
+    "DICTrank ($p$ = %s, %d of %d), so \\textbf{concept shift is demonstrated for "
+    "hepatotoxicity and not for cardiotoxicity}. Arm A2 separates Bemis--Murcko scaffolds "
+    "across folds and costs only %s and %s of ECE, which rules out analogue leakage as the "
+    "explanation for arm A. Arm B reproduces the temporal split of Table~\\ref{tab:split} to "
+    "four decimals, which fixes this experiment on the same pipeline. Along the path A to D to "
+    "C to B the three increments sum exactly to %s and %s: era %s and %s, training prevalence "
+    "%s and %s, training size %s and %s. \\textbf{The increments depend on the path order}, "
+    "which distributes the interactions, and the negative size term means that enlarging the "
+    "training set from the matched size to the full pre-2010 set slightly improved calibration, "
+    "so small training sets do not explain the collapse. The $p$ values compare each control "
+    "against a reference distribution of %d resamples and are not exchangeable permutation "
+    "tests; read the ECE differences first."
+    % (
+        int(CS[("DILIrank", "A.")].n_test),
+        int(CS[("DICTrank", "A.")].n_test),
+        sg(_dec["DILIrank"]["era"]),
+        f4(CS[("DILIrank", "D.")].p_phipson_smyth),
+        int(CS[("DILIrank", "D.")].n_better),
+        _nrep,
+        sg(_dec["DICTrank"]["era"]),
+        f4(CS[("DICTrank", "D.")].p_phipson_smyth),
+        int(CS[("DICTrank", "D.")].n_better),
+        _nrep,
+        sg(CS[("DILIrank", "A2")].ece - CS[("DILIrank", "A.")].ece),
+        sg(CS[("DICTrank", "A2")].ece - CS[("DICTrank", "A.")].ece),
+        sg(_dec["DILIrank"]["tot"]),
+        sg(_dec["DICTrank"]["tot"]),
+        sg(_dec["DILIrank"]["era"]),
+        sg(_dec["DICTrank"]["era"]),
+        sg(_dec["DILIrank"]["rate"]),
+        sg(_dec["DICTrank"]["rate"]),
+        sg(_dec["DILIrank"]["size"]),
+        sg(_dec["DICTrank"]["size"]),
+        _nrep,
+    ),
+)
+
+# ================================================================ T11 유병률 스윕 (§17.4)
+SWF = {r.dataset: r for _, r in swf.iterrows()}
+_b = [
+    head(
+        "Dataset",
+        "Training rate",
+        "Gap",
+        "Train $n$",
+        "AUROC",
+        "ECE",
+        "ECE SD",
+        "Slope",
+        "Reliability",
+    )
+]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = sw[sw.dataset == d].sort_values("level")
+    first = True
+    for _, r in g.iterrows():
+        mark = ""
+        if bool(r.is_test_rate):
+            mark = "$^{a}$"
+        elif bool(r.is_pre2010_rate):
+            mark = "$^{b}$"
+        _g = 0.0 if abs(float(r.gap)) < 5e-5 else float(r.gap)  # 반올림 잡음 스냅
+        _b.append(
+            row(
+                d if first else "",
+                f4(r.level) + mark,
+                sg(_g),
+                int(r.train_n),
+                f4(r.auroc),
+                f4(r.ece),
+                f4(r.ece_sd),
+                f4(r.slope),
+                f4(r.rel),
+            )
+        )
+        first = False
+
+_aur = {d: (sw[sw.dataset == d].auroc.min(), sw[sw.dataset == d].auroc.max()) for d in DS}
+_ecr = {d: sw[sw.dataset == d].ece.max() / sw[sw.dataset == d].ece.min() for d in DS}
+_nrw = int(sw.n_rep.max())
+MAIN.table(
+    "Calibration tracks the training prevalence gap while discrimination does not",
+    "tab:sweep",
+    "lcccccccc",
+    _b,
+    "Random splits only; no temporal information enters this experiment. The held-out set is "
+    "fixed at the size and positive rate of the temporal test set, marked $^{a}$, and the "
+    "training set is held at a fixed size while only its positive rate is varied; $^{b}$ marks "
+    "the pre-2010 rate, so that row carries the gap the temporal split actually imposes. Each "
+    "row averages %d repeats. \\textbf{ECE varies by a factor of %s and %s across the sweep "
+    "while AUROC stays within %s and %s}, which is the paper's central claim reproduced in a "
+    "single controlled experiment. ECE is minimised at a gap of %s and %s, that is at zero "
+    "within one grid step, in both datasets. Regressed on the absolute gap, ECE rises by %s "
+    "%s and %s %s per 0.10 of gap. The two sides are not symmetric: for DILIrank the slopes are "
+    "%s below and %s above the held-out rate, against %s and %s for DICTrank, so overstating "
+    "the training prevalence is the more damaging error for hepatotoxicity only. The "
+    "calibration slope stays near %s and %s throughout while reliability rises %s-fold and "
+    "%s-fold, which locates the damage in the intercept rather than the spread of the "
+    "predictions. \\textbf{This sweep should be read for shape and slope, not for shares}: its "
+    "training set is held at %d and %d compounds, far below the %d and %d of the temporal "
+    "split, which raises the zero-gap baseline and compresses the range. The shares belong to "
+    "Table~\\ref{tab:prev} and Table~\\ref{tab:concept}."
+    % (
+        _nrw,
+        f2(_ecr["DILIrank"]),
+        f2(_ecr["DICTrank"]),
+        f4(_aur["DILIrank"][1] - _aur["DILIrank"][0]),
+        f4(_aur["DICTrank"][1] - _aur["DICTrank"][0]),
+        sg(0.0 if abs(float(SWF["DILIrank"].min_gap)) < 5e-5 else float(SWF["DILIrank"].min_gap)),
+        sg(0.0 if abs(float(SWF["DICTrank"].min_gap)) < 5e-5 else float(SWF["DICTrank"].min_gap)),
+        f4(SWF["DILIrank"]["slope_per_0.10"]),
+        ci3(SWF["DILIrank"].slope_lo, SWF["DILIrank"].slope_hi),
+        f4(SWF["DICTrank"]["slope_per_0.10"]),
+        ci3(SWF["DICTrank"].slope_lo, SWF["DICTrank"].slope_hi),
+        f4(SWF["DILIrank"]["slope_neg_side_per_0.10"]),
+        f4(SWF["DILIrank"]["slope_pos_side_per_0.10"]),
+        f4(SWF["DICTrank"]["slope_neg_side_per_0.10"]),
+        f4(SWF["DICTrank"]["slope_pos_side_per_0.10"]),
+        f2(sw[sw.dataset == "DILIrank"].slope.mean()),
+        f2(sw[sw.dataset == "DICTrank"].slope.mean()),
+        f2(sw[sw.dataset == "DILIrank"].rel.max() / sw[sw.dataset == "DILIrank"].rel.min()),
+        f2(sw[sw.dataset == "DICTrank"].rel.max() / sw[sw.dataset == "DICTrank"].rel.min()),
+        int(sw[sw.dataset == "DILIrank"].train_n.iloc[0]),
+        int(sw[sw.dataset == "DICTrank"].train_n.iloc[0]),
+        int(T["DILIrank"].n_train),
+        int(T["DICTrank"].n_train),
+    ),
+)
+
+# ================================================================ S3 두 데이터셋 상관 (§13.6)
+_QL = {
+    "잔차 y-p (부호 있음)": "Signed residual $y-p$",
+    "절대잔차 |y-p|": "Absolute residual $|y-p|$",
+    "라벨 y (phi)": "Label $y$ (phi coefficient)",
+    "예측 p": "Predicted probability $p$",
+}
+_b = [head("Quantity", "$n$", "Pearson $r$", "95\\% CI", "Spearman")]
+for _, r in cso.iterrows():
+    _b.append(
+        row(
+            _QL.get(r.quantity, tex(str(r.quantity))),
+            int(r.n),
+            sg(r.pearson),
+            ci3(r.ci_lo, r.ci_hi),
+            sg(r.spearman),
+        )
+    )
+_sgn = cso.iloc[0]
+_neff = 2.0 / (1.0 + float(_sgn.pearson))
+_nlo = 2.0 / (1.0 + float(_sgn.ci_hi))
+SUPP.table(
+    "Dependence between the two datasets on their shared held-out compounds",
+    "tab:overlap",
+    "lcccc",
+    _b,
+    "The two datasets share compounds, so a reviewer may ask whether they constitute "
+    "independent replication. Of the held-out sets, %d compounds appear in both. The signed "
+    "residual is the quantity that matters, because ECE is built from signed mean residuals "
+    "within bins; its correlation is %s %s, which excludes zero. Averaging the two estimates "
+    "therefore reduces variance to %s of one estimate, equivalent to %s independent datasets, "
+    "or %s if the upper confidence bound is used. The error magnitudes are a weaker "
+    "signal, %s %s, and the labels themselves are nearly independent, phi = %s on these same "
+    "compounds. \\textbf{The two results are not fully independent replication and this "
+    "table quantifies by how much}; Table~\\ref{tab:nontemporal} reports the disjoint-subset "
+    "replication separately. The equal-variance approximation behind the effective count is "
+    "stated rather than tested."
+    % (
+        int(_sgn.n),
+        sg(_sgn.pearson),
+        ci3(_sgn.ci_lo, _sgn.ci_hi),
+        f2((1.0 + float(_sgn.pearson)) / 2.0),
+        f2(_neff),
+        f2(_nlo),
+        sg(cso.iloc[1].pearson),
+        ci3(cso.iloc[1].ci_lo, cso.iloc[1].ci_hi),
+        sg(cso.iloc[2].pearson),
+    ),
+)
+
+
+# ================================================================ T12 최신성 가중 (§20)
+_TL = {}
+for _, r in rw.iterrows():
+    _TL[(r.dataset, r.tag)] = r
+_LAB = {}
+for _, r in rw[rw.kind == "weight"].iterrows():
+    _LAB[r.tag] = (
+        "Uniform weights (= temporal split)"
+        if r.tau != r.tau
+        else "Half-life %g years" % float(r.tau)
+    )
+for _, r in rw[rw.kind == "window"].iterrows():
+    _LAB[r.tag] = "Truncated to last %g years" % float(r.tau)
+
+_b = [
+    head(
+        "Dataset",
+        "Training scheme",
+        "Train $n$",
+        "Effective $n$",
+        "Train rate",
+        "Gap",
+        "AUROC",
+        "ECE",
+        "95\\% CI",
+        "Slope",
+        "Reliability",
+        "Resolution",
+    )
+]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = rw[(rw.dataset == d) & (rw.kind.isin(["weight", "window"]))]
+    first = True
+    for _, r in g.iterrows():
+        _b.append(
+            row(
+                d if first else "",
+                _LAB[r.tag],
+                int(r.n_train),
+                "%.1f" % float(r.n_eff),
+                f4(r.train_rate_weighted),
+                sg(r.gap),
+                f4(r.auroc),
+                f4(r.ece),
+                ci3(r.ece_lo, r.ece_hi),
+                f4(r.slope),
+                f4(r.rel),
+                f4(r.res),
+            )
+        )
+        first = False
+
+_BB, _HH, _SS = {}, {}, {}
+for d in DS:
+    _BB[d] = rw[(rw.dataset == d) & (rw.kind == "weight") & (rw.tau.isna())].iloc[0]
+    _HH[d] = rw[(rw.dataset == d) & (rw.kind == "honest")].iloc[0]
+    _g = rw[(rw.dataset == d) & (rw.kind == "weight")]
+    _SS[d] = _g.loc[_g.ece.idxmin()]
+assert (
+    abs(float(_SS["DILIrank"].ece) - float(_BB["DILIrank"].ece)) < 1e-12
+), "DILIrank sweep 최솟값이 균등이 아니다 — 본문 서술을 고쳐야 한다"
+
+MAIN.table(
+    "Recency weighting of the training set does not repair calibration",
+    "tab:recency",
+    "llcccccccccc",
+    _b,  # 12열
+    "Weights are $0.5^{(2010-\\mathrm{year})/\\tau}$, so a smaller half-life $\\tau$ "
+    "concentrates the training set on recent approvals; uniform weights reproduce the "
+    "temporal split of Table~\\ref{tab:split}. Truncation keeps only the last $K$ years and "
+    "is the simpler alternative a practitioner would try first. Effective $n$ is "
+    "$(\\sum w)^2/\\sum w^2$ and shows what the weighting costs. \\textbf{For DILIrank no "
+    "half-life beats uniform weighting}: the best ECE over the whole sweep, %s, is the "
+    "uniform value itself, and truncation is worse at every window. \\textbf{For DICTrank "
+    "the apparent gain is bought by destroying resolution}: at $\\tau$ = %g years ECE falls "
+    "from %s to %s, but Murphy resolution falls from %s to %s, roughly a fifth of its value, "
+    "AUROC falls from %s to %s and the calibration slope from %s to %s, on an effective "
+    "sample of %d rather than %d. Flattening the predictions lowers ECE and leaves a model "
+    "that no longer separates the classes, which is the very error this paper argues "
+    "against. Half-lives were chosen without looking at the held-out set, by an inner split "
+    "of the training era (fit before 2000, select on 2000--2009); that selection rule did "
+    "find the sweep optimum for DICTrank, so the procedure works even though what it selects "
+    "is not useful. Read with Table~\\ref{tab:recal}: the only intervention that recovers a "
+    "large share of the lost calibration uses labelled recent compounds."
+    % (
+        f4(_SS["DILIrank"].ece),
+        float(_HH["DICTrank"].tau),
+        f4(_BB["DICTrank"].ece),
+        f4(_HH["DICTrank"].ece),
+        f4(_BB["DICTrank"].res),
+        f4(_HH["DICTrank"].res),
+        f4(_BB["DICTrank"].auroc),
+        f4(_HH["DICTrank"].auroc),
+        f4(_BB["DICTrank"].slope),
+        f4(_HH["DICTrank"].slope),
+        int(round(float(_HH["DICTrank"].n_eff))),
+        int(round(float(_BB["DICTrank"].n_eff))),
+    ),
+)
+
+
+# ================================================================ T13 적용범위 (§21)
+_SL = {
+    "Tanimoto ㅏ위 1/3": "Nearest-neighbour Tanimoto, lowest third",
+    "Tanimoto 중위 1/3": "Nearest-neighbour Tanimoto, middle third",
+    "Tanimoto 상위 1/3": "Nearest-neighbour Tanimoto, highest third",
+    "스캐폴드 기존": "Scaffold seen in training set",
+    "스캐폴드 신규": "Scaffold unseen in training set",
+}
+_SL["Tanimoto 하위 1/3"] = "Nearest-neighbour Tanimoto, lowest third"
+_strat = ad[~ad.stratum.str.contains("기울기")]
+_b = [
+    head(
+        "Dataset",
+        "Stratum",
+        "$n$",
+        "Prevalence",
+        "AUROC",
+        "ECE",
+        "Control ECE",
+        "Ratio",
+        "95\\% CI",
+        "$p$",
+    )
+]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for _, r in _strat[_strat.dataset == d].iterrows():
+        lab = _SL.get(str(r.stratum), tex(str(r.stratum)))
+        if bool(r.underpowered):
+            _b.append(
+                row(
+                    d if first else "",
+                    lab,
+                    int(r.n),
+                    "---",
+                    "---",
+                    "---",
+                    "---",
+                    "---",
+                    "---",
+                    "underpowered",
+                )
+            )
+        else:
+            _b.append(
+                row(
+                    d if first else "",
+                    lab,
+                    int(r.n),
+                    f4(r.pos_rate),
+                    f4(r.auroc),
+                    f4(r.ece),
+                    f4(r.ctrl_ece),
+                    f2(r.ece_ratio),
+                    ci3(r.ratio_lo, r.ratio_hi),
+                    f4(r.p_phipson_smyth),
+                )
+            )
+        first = False
+
+_ok = _strat[(~_strat.underpowered)]
+_n_over = int((_ok.ratio_lo > 1.0).sum())
+_GR = {}
+for d in DS:
+    for k, nm in (("유사도 기울기(하위−상위)", "cal"), ("판별 기울기(상위−하위 AUROC)", "dis")):
+        r = ad[(ad.dataset == d) & (ad.stratum == k)]
+        if len(r):
+            r = r.iloc[0]
+            _GR[(d, nm)] = (float(r.ece_ratio), float(r.ratio_lo), float(r.ratio_hi))
+_calmax = max(max(abs(v[1]), abs(v[2])) for (dd, kk), v in _GR.items() if kk == "cal")
+MAIN.table(
+    "Calibration degrades across the whole chemical space, not only unfamiliar compounds",
+    "tab:applicability",
+    "llcccccccc",
+    _b,
+    "Each stratum is compared against random splits matched to its own size and positive "
+    "rate, because the prevalence differences documented in Table~\\ref{tab:sweep} confound "
+    "a raw comparison across strata; "
+    "underpowered strata follow the rule used for the disjoint subsets ($n<40$ or minority "
+    "class $<10$). \\textbf{Of the %d strata that could be computed, %d have a ratio whose "
+    "confidence interval lies entirely above one}, so the time split is worse than a matched "
+    "random split whether the held-out compounds are chemically familiar or not. The "
+    "similarity gradient, lowest third minus highest third of the ratio, is %s %s for "
+    "DILIrank and %s %s for DICTrank, both intervals covering zero, while the discrimination "
+    "gradient, highest third minus lowest third of AUROC, is %s %s and %s %s, neither "
+    "covering zero. \\textbf{This pair of results must not be read as proof that the two "
+    "measures behave differently}: contrasting a significant with a non-significant interval "
+    "is not a test of their difference, the two quantities are on different scales, and the "
+    "calibration interval still admits a gradient as large as %s. What the data support is "
+    "narrower: discrimination varies with similarity, and no variation in the calibration "
+    "ratio was detectable at these stratum sizes. The calibration intervals resample only the "
+    "held-out compounds and hold the control mean fixed, so they are narrower than the true "
+    "intervals."
+    % (
+        len(_ok),
+        _n_over,
+        f2(_GR[("DILIrank", "cal")][0]),
+        ci3(_GR[("DILIrank", "cal")][1], _GR[("DILIrank", "cal")][2]),
+        f2(_GR[("DICTrank", "cal")][0]),
+        ci3(_GR[("DICTrank", "cal")][1], _GR[("DICTrank", "cal")][2]),
+        f4(_GR[("DILIrank", "dis")][0]),
+        ci3(_GR[("DILIrank", "dis")][1], _GR[("DILIrank", "dis")][2]),
+        f4(_GR[("DICTrank", "dis")][0]),
+        ci3(_GR[("DICTrank", "dis")][1], _GR[("DICTrank", "dis")][2]),
+        f2(_calmax),
+    ),
+)
+
+# ---------------------------------------------- S4 AD 필터 (보충)
+_b = [
+    head(
+        "Dataset",
+        "Fraction dropped",
+        "Coverage",
+        "$n$ kept",
+        "ECE",
+        "AUROC",
+        "ECE, random drop",
+        "Difference",
+    )
+]
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for _, r in adf[adf.dataset == d].iterrows():
+        _b.append(
+            row(
+                d if first else "",
+                p0(r.drop_frac * 100),
+                f3(r.coverage),
+                int(r.n_keep),
+                f4(r.ece_ad),
+                f4(r.auroc_ad),
+                f4(r.ece_random_drop),
+                sg(r.delta),
+            )
+        )
+        first = False
+_npos = int((adf[adf.drop_frac > 0].delta > 0).sum())
+_nset = int(len(adf[adf.drop_frac > 0]))
+SUPP.table(
+    "Refusing to predict on the least familiar compounds does not help",
+    "tab:adfilter",
+    "lccccccc",
+    _b,
+    "Compounds are dropped in order of increasing nearest-neighbour similarity to the "
+    "training set, which is the applicability-domain filter a reviewer would propose. The "
+    "control drops the same number at random, and because the predictions are fixed neither "
+    "arm refits a model. The difference column must be negative for the filter to be doing "
+    "anything beyond shrinking the sample. \\textbf{It is positive in %d of the %d non-zero "
+    "settings}, and where negative it is small, so the sign is not stable. An "
+    "applicability-domain filter is therefore not a remedy for the calibration loss reported "
+    "in Table~\\ref{tab:split}." % (_npos, _nset),
+)
+
+# ================================================================ T13 상수 예측기
+tb = cv("trivial_baseline.csv")
+_TBL = [
+    ("M.", "Trained model (XGBoost)"),
+    ("C0.", "Constant = training prevalence"),
+    ("C1.", "Constant = 0.5"),
+    ("C2.", "Constant = validation prevalence (oracle)"),
+]
+
+
+def _tbr(d, sp, pref):
+    g = tb[(tb.dataset == d) & (tb.split == sp) & (tb.predictor.str.startswith(pref))]
+    assert len(g) == 1, ("trivial_baseline row", d, sp, pref)
+    return g.iloc[0]
+
+
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Predictor",
+        "Brier (temporal)",
+        "BSS (temporal)",
+        "Brier (random)",
+        "BSS (random)",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    for j, (pref, lab) in enumerate(_TBL):
+        t = _tbr(d, "시간분할", pref)
+        r = _tbr(d, "무작위분할", pref)
+        _b.append(
+            row(
+                d if j == 0 else "", lab, f4(t.brier), sg(t.bss_vs_C0), f4(r.brier), sg(r.bss_vs_C0)
+            )
+        )
+_nw = sum(
+    1
+    for d in DS
+    for c in ("C0.", "C1.", "C2.")
+    if _tbr(d, "시간분할", "M.").brier > _tbr(d, "시간분할", c).brier
+)
+_nb = sum(
+    1
+    for d in DS
+    for c in ("C0.", "C1.", "C2.")
+    if _tbr(d, "무작위분할", "M.").brier < _tbr(d, "무작위분할", c).brier
+)
+MAIN.table(
+    "Under temporal validation the model is outscored by a constant",
+    "tab:trivial",
+    "llcccc",
+    _b,
+    "Brier score, lower is better. The Brier Skill Score is $1-\\mathrm{BS}_{\\mathrm{model}}/"
+    "\\mathrm{BS}_{\\mathrm{C0}}$, so a negative value means the model is worse than predicting "
+    "the training prevalence for every compound. C0 is the only one of the three constants that "
+    "can be computed at deployment time; C2 uses the validation labels and is an unreachable "
+    "reference. \\textbf{Under the temporal split the model is beaten by %d of the 6 "
+    "dataset-constant pairs, and under a random split of the same compounds it beats %d of 6}, "
+    "with features, model, hyperparameters and seed held fixed. AUROC on the same temporal "
+    "split is %s and %s, so ranking survives while the probabilities do not. Constants have no "
+    "ranking and no AUROC."
+    % (_nw, _nb, f4(_tbr(DS[0], "시간분할", "M.").auroc), f4(_tbr(DS[1], "시간분할", "M.").auroc)),
+)
+
+# ================================================================ T14 배율 신뢰구간
+ri = cv("ratio_intervals.csv")
+_RIL = {
+    "R1": "Random (standard)",
+    "R2": "Random, validation prevalence matched",
+    "R3": "Random, both prevalences matched",
+}
+_b = []
+_b.append(
+    head("Dataset", "Control design", "Control ECE", "Ratio", "95\\% CI", "ECE difference 95\\% CI")
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    for j, (_, r) in enumerate(ri[ri.dataset == d].iterrows()):
+        _b.append(
+            row(
+                d if j == 0 else "",
+                _RIL[str(r.control)[:2]],
+                f4(r.ece_control_mean),
+                f2(r.ece_ratio),
+                ci3(r.ratio_lo, r.ratio_hi),
+                ci3(r.diff_lo, r.diff_hi),
+            )
+        )
+_rlo = ri.ratio_lo.min()
+_rmin = ri.loc[ri.ratio_lo.idxmin()]
+MAIN.table(
+    "Calibration-error ratios exclude one in every control design",
+    "tab:ratioci",
+    "llcccc",
+    _b,
+    "The ratio is the temporal-split ECE divided by the mean ECE of %d matched random-split "
+    "controls. Intervals are 2.5--97.5 percentiles of %s bootstrap resamples of the validation "
+    "set; within each resample the control repetitions are resampled as well, so both the "
+    "numerator and the denominator contribute sampling error. \\textbf{All six lower bounds "
+    "exceed one}, the smallest being %s for %s under the design that matches training and "
+    "validation prevalence simultaneously. The ECE differences likewise exclude zero. Including "
+    "the denominator's variability widens the intervals by a factor of at most %s, so the width "
+    "is set almost entirely by the validation sample size (%d and %d compounds)."
+    % (
+        int(ri.n_rep_valid.max()),
+        "{:,}".format(
+            int(re.search(r"부트스트랩 (\d+)회", txt("ratio_intervals_summary.txt")).group(1))
+        ),
+        f3(_rlo),
+        _rmin.dataset,
+        f3((ri.ci_width_full / ri.ci_width_numonly).max()),
+        int(ri[ri.dataset == DS[0]].n_test.iloc[0]),
+        int(ri[ri.dataset == DS[1]].n_test.iloc[0]),
+    ),
+)
+
+# ================================================================ T15 지표 비의존성
+cm = cv("calibration_metrics.csv")
+cmr = cv("calibration_metrics_ratio.csv")
+_RIL2 = {
+    "R1": "Random (standard)",
+    "R2": "Random, validation prevalence matched",
+    "R3": "Random, both prevalences matched",
+}
+_b = []
+_b.append(head("Dataset", "Control design", "ECE", "Debiased ECE", "ICI", "E90"))
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    for j, (_, r) in enumerate(cmr[cmr.dataset == d].iterrows()):
+        _b.append(
+            row(
+                d if j == 0 else "",
+                _RIL2[str(r.control)[:2]],
+                f2(r.ece_ratio),
+                f2(r.ece_debiased_ratio),
+                f2(r.ici_ratio),
+                f2(r.e90_ratio),
+            )
+        )
+_n4 = sum(
+    int((cmr[c] > 1).sum()) for c in ("ece_ratio", "ece_debiased_ratio", "ici_ratio", "e90_ratio")
+)
+_nbig = sum(1 for _, r in cmr.iterrows() if r.ece_debiased_ratio > r.ece_ratio)
+_T = {d: cm[(cm.dataset == d) & (cm.arm.str.startswith("T"))].iloc[0] for d in DS}
+MAIN.table(
+    "Binning-free metrics give the same ordering as expected calibration error",
+    "tab:metrics",
+    "llcccc",
+    _b,
+    "Each entry is the temporal-split value divided by the mean of %d matched "
+    "random-split controls. ECE uses ten equal-width bins. The debiased ECE subtracts "
+    "the mean ECE of %s null samples drawn as $y^{*}\\sim\\mathrm{Bernoulli}(p)$ with the "
+    "predictions held fixed, which are perfectly calibrated by construction, so the "
+    "subtracted quantity is the finite-sample bias of ECE. ICI and E90 are the mean and "
+    "the 90th percentile of $|p-f(p)|$ from a loess calibration curve and use no bins at "
+    "all. \\textbf{All %d entries exceed one}, and the debiased ratio is the larger of the "
+    "two in %d of %d designs, because the bias is a larger share of the small control "
+    "error than of the large temporal error. The bias is %s of the temporal ECE for "
+    "%s and %s for %s, and the observed values exceed the 97.5th percentile of their null "
+    "distributions in both, so the loss is not a small-sample artefact. A Spiegelhalter "
+    "test rejects calibration for the controls as well ($z=%s$ to $%s$): the claim is a "
+    "difference in degree, not a contrast between calibrated and uncalibrated."
+    % (
+        int(cmr.n_rep.max()),
+        "{:,}".format(1000),
+        _n4,
+        _nbig,
+        len(cmr),
+        p1(100.0 * _T[DS[0]].ece_null_mean / _T[DS[0]].ece),
+        DS[0],
+        p1(100.0 * _T[DS[1]].ece_null_mean / _T[DS[1]].ece),
+        DS[1],
+        f2(cm[~cm.arm.str.startswith("T")].sh_z.min()),
+        f2(cm[~cm.arm.str.startswith("T")].sh_z.max()),
+    ),
+)
+
+# ================================================================ T16 하이퍼파라미터
+hp = cv("hparam_sensitivity.csv")
+hpc = cv("hparam_sensitivity_ctrl.csv")
+_HPA = {
+    "고정 설정": "Fixed (as used throughout)",
+    "내부 log loss 선택": "Selected on training era, log loss",
+}
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Configuration",
+        "Temporal ECE",
+        "Control ECE (R1)",
+        "Ratio (R1)",
+        "Control ECE (R3)",
+        "Ratio (R3)",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    for j, (_, r) in enumerate(hpc[hpc.dataset == d].iterrows()):
+        _b.append(
+            row(
+                d if j == 0 else "",
+                _HPA.get(str(r.arm), str(r.arm)),
+                f4(r.temporal_ece),
+                f4(r.ctrl_R1_ece),
+                f2(r.ratio_R1),
+                f4(r.ctrl_R3_ece),
+                f2(r.ratio_R3),
+            )
+        )
+_hpf = {d: hp[(hp.dataset == d) & (hp.is_fixed)].iloc[0] for d in DS}
+_hpg = {d: hp[hp.dataset == d] for d in DS}
+_rk = {d: int((_hpg[d].temporal_ece < _hpf[d].temporal_ece).sum()) + 1 for d in DS}
+_nb = {
+    d: int(
+        (
+            _hpg[d].temporal_ece
+            <= float(hpc[(hpc.dataset == d) & (hpc.arm == "고정 설정")].ctrl_R1_ece.iloc[0])
+        ).sum()
+    )
+    for d in DS
+}
+MAIN.table(
+    "Tuning lowers calibration error but leaves the split-design gap",
+    "tab:hparam",
+    "llccccc",
+    _b,
+    "A grid of %d configurations crossing tree depth, number of trees, learning rate and "
+    "minimum child weight was evaluated in full. Configurations were selected on the most "
+    "recent quarter of the training era, never on the validation set. The fixed "
+    "configuration used throughout this work ranks %d of %d for %s and %d of %d for %s by "
+    "temporal ECE, so the absolute values reported elsewhere are not the best attainable "
+    "and the grid spans %s--%s and %s--%s. \\textbf{The ratio to matched random-split "
+    "controls nevertheless survives tuning} and widens against the standard control, "
+    "because tuning lowers the control error more than the temporal error. Choosing with "
+    "hindsight on the validation set itself, %d and %d of %d configurations reach the "
+    "control level, so the failure is not an artefact of how configurations were chosen. "
+    "Temporal ECE rises monotonically with depth, number of trees and learning rate in "
+    "both datasets."
+    % (
+        len(_hpg[DS[0]]),
+        _rk[DS[0]],
+        len(_hpg[DS[0]]),
+        DS[0],
+        _rk[DS[1]],
+        len(_hpg[DS[1]]),
+        DS[1],
+        f4(_hpg[DS[0]].temporal_ece.min()),
+        f4(_hpg[DS[0]].temporal_ece.max()),
+        f4(_hpg[DS[1]].temporal_ece.min()),
+        f4(_hpg[DS[1]].temporal_ece.max()),
+        _nb[DS[0]],
+        _nb[DS[1]],
+        len(_hpg[DS[0]]),
+    ),
+)
+
+# ================================================================ T17 처방 검정력
+rp = cv("remedy_power.csv")
+_DEP = {
+    "배포 가능": "deployable",
+    "검증군 양성률 가정": "needs test prevalence",
+    "참고": "reference",
+}
+_RM = {
+    "A'": "Uncalibrated (calibration set withheld)",
+    "B.": "Platt, training-era calibration set",
+    "C.": "Isotonic, training-era calibration set",
+    "D.": "Prior-shift correction",
+    "R.": "Recency weighting at selected half-life",
+    "W1": "Class weighting to validation prevalence",
+}
+_VD = {"(가)": "improves", "(나)": "no useful gain", "(다)": "undecided"}
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Remedy",
+        "Availability",
+        "$\\Delta$ECE",
+        "95\\% CI",
+        "MDE",
+        "MDE / gap",
+        "Verdict",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = rp[rp.dataset == d]
+    for j, (_, r) in enumerate(g.iterrows()):
+        _b.append(
+            row(
+                d if j == 0 else "",
+                _RM.get(str(r.remedy)[:2], str(r.remedy)),
+                _DEP.get(str(r.deployable), str(r.deployable)),
+                sg(r.delta),
+                ci3(r.delta_lo, r.delta_hi),
+                f4(r.mde80),
+                p1(100 * r.mde_over_gap),
+                _VD.get(str(r.verdict)[:3], ""),
+            )
+        )
+_npow = int((rp.mde_over_gap <= 0.25).sum())
+_nhold = int(rp.verdict.str.startswith("(다)").sum())
+_dep = rp[rp.deployable == "배포 가능"]
+MAIN.table(
+    "Minimum detectable improvement for each proposed remedy",
+    "tab:power",
+    "lllccccc",
+    _b,
+    "Each remedy is compared with the uncalibrated model on the same validation set by a "
+    "paired bootstrap of %s resamples in which the predictions are held fixed, so the two "
+    "arms remain correlated. The gap a remedy must close is the uncalibrated ECE minus the "
+    "mean ECE of matched random-split controls (%s for %s, %s for %s). MDE is "
+    "$2.80\\times\\mathrm{SE}(\\Delta\\mathrm{ECE})$, the smallest improvement that would "
+    "have reached significance at two-sided $\\alpha=0.05$ with 80\\%% power. "
+    "\\textbf{%d of the %d arms were powered to detect an improvement of a quarter of the "
+    "gap}, so the negative findings are not an artefact of sample size; %d arm remains "
+    "undecided and it is the one with the largest MDE. Of the %d remedies that need no "
+    "knowledge of the validation set, %d improve calibration significantly, both in %s; "
+    "none does in %s."
+    % (
+        "{:,}".format(4000),
+        f4(rp[rp.dataset == DS[0]].gap_to_control.iloc[0]),
+        DS[0],
+        f4(rp[rp.dataset == DS[1]].gap_to_control.iloc[0]),
+        DS[1],
+        _npow,
+        len(rp),
+        _nhold,
+        len(_dep),
+        int(_dep.verdict.str.startswith("(가)").sum()),
+        DS[1],
+        DS[0],
+    ),
+)
+
+# ================================================================ T18 공변량이동 가중
+csw = cv("covariate_shift_weighting.csv")
+cswc = cv("covariate_shift_weighting_ctrl.csv")
+_CA = {"W0": "No weighting (as used throughout)"}
+
+
+def _cwlab(a, cap):
+    if str(a).startswith("W0"):
+        return "No weighting (as used throughout)"
+    return "Density ratio, uncapped" if cap != cap else "Density ratio, capped at %g" % cap
+
+
+_b = []
+_b.append(
+    head("Dataset", "Training weights", "Effective $n$", "Max $w$", "AUROC", "ECE", "Resolution")
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = csw[(csw.dataset == d) & (csw.kind == "outer")]
+    for j, (_, r) in enumerate(g.iterrows()):
+        _b.append(
+            row(
+                d if j == 0 else "",
+                _cwlab(r.arm, r.cap),
+                "%.1f" % r.n_eff,
+                f2(r.w_max),
+                f4(r.auroc),
+                f4(r.ece),
+                f4(r.res),
+            )
+        )
+_w0 = {
+    d: csw[(csw.dataset == d) & (csw.kind == "outer") & (csw.arm.str.startswith("W0"))].iloc[0]
+    for d in DS
+}
+_iw = {
+    d: csw[(csw.dataset == d) & (csw.kind == "outer") & (csw.arm.str.startswith("IW"))] for d in DS
+}
+_nup = sum(int((_iw[d].ece > float(_w0[d].ece)).sum()) for d in DS)
+_nall = sum(len(_iw[d]) for d in DS)
+_r3 = {d: cswc[(cswc.dataset == d) & (cswc.control == "R3")].iloc[0] for d in DS}
+MAIN.table(
+    "Importance weighting by a domain classifier does not restore calibration",
+    "tab:covshift",
+    "llcccccc"[:8],
+    _b,
+    "Training compounds are weighted by $w(x)=P(\\mathrm{post}|x)/(1-P(\\mathrm{post}|x))$, "
+    "where the probability comes from out-of-fold predictions of a classifier trained to "
+    "separate the two eras by structure alone (area under the curve %s and %s). The "
+    "weighting uses no outcome labels from the validation era, so unlike prior-shift "
+    "correction it is in principle deployable, provided the structures of the future "
+    "compounds are available. Effective sample size is $(\\sum w)^2/\\sum w^2$. "
+    "\\textbf{ECE rises in all %d of the %d weighted arms in both datasets}, at every cap, "
+    "while the effective sample size collapses by up to %s; the density ratio has a heavy "
+    "tail and spends the sample. AUROC rises slightly, so the manipulation improves "
+    "ranking and degrades probabilities. Applying the same weighting to the matched "
+    "controls as well leaves the ratio at %s and %s, against %s and %s unweighted."
+    % (
+        f4(cv("era_permutation.csv").set_index("dataset").loc[DS[0], "era_auc"]),
+        f4(cv("era_permutation.csv").set_index("dataset").loc[DS[1], "era_auc"]),
+        _nup,
+        _nall,
+        p1(100 * max(1 - _iw[d].n_eff.min() / float(_w0[d].n_eff) for d in DS)),
+        f2(_r3[DS[0]].ratio),
+        f2(_r3[DS[1]].ratio),
+        f2(PCR[(DS[0], "R3")].ece_ratio),
+        f2(PCR[(DS[1], "R3")].ece_ratio),
+    ),
+)
+
+# ================================================================ S6 격자 R3
+g3 = cv("grid_r3.csv")
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Representation",
+        "Model",
+        "Temporal ECE",
+        "Control ECE",
+        "Ratio",
+        "$\\Delta$reliability",
+        "$\\Delta$resolution",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = g3[g3.dataset == d]
+    first = True
+    for _, r in g.iterrows():
+        _b.append(
+            row(
+                d if first else "",
+                str(r.rep),
+                str(r.model),
+                f4(r.ece_temporal),
+                f4(r.r3_ece_random),
+                f2(r.r3_ece_ratio),
+                sg(r.r3_d_reliability),
+                sg(r.r3_d_resolution),
+            )
+        )
+        first = False
+_nover = int((g3.r3_ece_ratio > 1).sum())
+_pos = int((g3.r3_d_reliability > 0).sum())
+_gta = int((g3.r3_d_reliability > g3.r3_d_resolution.abs()).sum())
+SUPP.table(
+    "The headline ratio holds across every model and representation",
+    "tab:gridr3",
+    "lllccccc"[:8],
+    _b,
+    "The control matches the prevalence of both the training and the validation set, "
+    "which is the most conservative of the three designs used in this work. Each entry "
+    "averages %d control repetitions. Temporal ECE was verified to reproduce the grid "
+    "reported elsewhere to within $10^{-6}$ in all %d cells. \\textbf{All %d ratios exceed "
+    "one}, spanning %s to %s with a median of %s, and the medians by model (%s--%s) and by "
+    "representation (%s--%s) lie in a narrow band, so no family is immune. The share of "
+    "the Brier increase attributable to reliability is not reported here: its denominator "
+    "passes through zero at this number of repetitions and the percentage is therefore "
+    "uninterpretable. The sign comparison is reported instead, and reliability worsens in "
+    "%d of %d cells, exceeding the absolute change in resolution in %d."
+    % (
+        int(g3.r3_n_rep_valid.max()),
+        len(g3),
+        _nover,
+        f2(g3.r3_ece_ratio.min()),
+        f2(g3.r3_ece_ratio.max()),
+        f2(g3.r3_ece_ratio.median()),
+        f2(g3.groupby("model").r3_ece_ratio.median().min()),
+        f2(g3.groupby("model").r3_ece_ratio.median().max()),
+        f2(g3.groupby("rep").r3_ece_ratio.median().min()),
+        f2(g3.groupby("rep").r3_ece_ratio.median().max()),
+        _pos,
+        len(g3),
+        _gta,
+    ),
+)
+
+# ================================================================ S7 지평별 배율
+hz = cv("horizon_ratio.csv")
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Approval window",
+        "$n$",
+        "Prevalence",
+        "ECE",
+        "Ratio (R1)",
+        "Ratio (R3)",
+        "95\\% CI",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = hz[hz.dataset == d].sort_values("year_from")
+    first = True
+    for _, r in g.iterrows():
+        _b.append(
+            row(
+                d if first else "",
+                str(r.window),
+                int(r.n),
+                f4(r.pos_rate),
+                f4(r.ece),
+                f2(r.r1_ratio),
+                f2(r.r3_ratio),
+                ci3(r.r3_ratio_lo, r.r3_ratio_hi),
+            )
+        )
+        first = False
+_nover = int((hz.r3_ratio > 1).sum())
+_nex = int(hz.r3_excludes_one.astype(bool).sum())
+_g0 = {d: hz[hz.dataset == d].sort_values("year_from") for d in DS}
+SUPP.table(
+    "Calibration loss appears in every approval window after control",
+    "tab:horizon",
+    "llcccccc"[:8],
+    _b,
+    "The validation set is split by approval window and each window is compared with "
+    "controls of the same size and prevalence; the R3 control matches the prevalence of "
+    "both the training and the validation side, so the only remaining difference from the "
+    "temporal split is the axis. Intervals are 2.5--97.5 percentiles of a bootstrap of the "
+    "window, with the predictions held fixed. \\textbf{All %d window ratios exceed one}, "
+    "but only %d interval excludes one, because windows hold %d to %d compounds. Absolute "
+    "ECE rises across windows in both datasets and so does the uncontrolled R1 ratio, yet "
+    "the change in the R3 ratio from the first window to the last is %s and %s, smaller "
+    "than the mean half-width of the intervals at the two ends (%s and %s). The rising "
+    "absolute trend therefore tracks the falling prevalence rather than the prediction "
+    "horizon, and a horizon effect can be neither claimed nor ruled out at this sample "
+    "size."
+    % (
+        _nover,
+        _nex,
+        int(hz.n.min()),
+        int(hz.n.max()),
+        sg(_g0[DS[0]].r3_ratio.iloc[-1] - _g0[DS[0]].r3_ratio.iloc[0]),
+        sg(_g0[DS[1]].r3_ratio.iloc[-1] - _g0[DS[1]].r3_ratio.iloc[0]),
+        f3(
+            0.5
+            * (
+                (_g0[DS[0]].r3_ratio_hi.iloc[0] - _g0[DS[0]].r3_ratio_lo.iloc[0])
+                + (_g0[DS[0]].r3_ratio_hi.iloc[-1] - _g0[DS[0]].r3_ratio_lo.iloc[-1])
+            )
+            / 2
+        ),
+        f3(
+            0.5
+            * (
+                (_g0[DS[1]].r3_ratio_hi.iloc[0] - _g0[DS[1]].r3_ratio_lo.iloc[0])
+                + (_g0[DS[1]].r3_ratio_hi.iloc[-1] - _g0[DS[1]].r3_ratio_lo.iloc[-1])
+            )
+            / 2
+        ),
+    ),
+)
+
+# ================================================================ T19 이동량 맞춤
+sm2 = cv("shift_matched_v2.csv")
+sm2m = cv("shift_matched_v2_matched.csv")
+_AXL = {"A1": "Molecular weight", "A2": "logP", "A3": "Random direction"}
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Split axis",
+        "$\\alpha^{*}$",
+        "Shift AUC",
+        "Target",
+        "ECE (matched)",
+        "ECE (temporal)",
+        "Ratio",
+        "SE units",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = sm2m[sm2m.dataset == d].sort_values("axis")
+    first = True
+    for _, r in g.iterrows():
+        _b.append(
+            row(
+                d if first else "",
+                _AXL.get(str(r.axis)[:2], str(r.axis)),
+                f2(r.alpha_star),
+                f4(r.shift_auc_matched),
+                f4(r.shift_auc_temporal),
+                f4(r.ece_matched),
+                f4(r.ece_temporal),
+                f2(r.ece_ratio_T_over_matched),
+                "%.1f" % r.diff_se_units,
+            )
+        )
+        first = False
+_win = int((sm2m.diff_se_units > 2).sum())
+_tie = int((sm2m.diff_se_units.abs() <= 2).sum())
+MAIN.table(
+    "At equal shift the temporal split still loses more calibration",
+    "tab:shiftmatched",
+    "lllcccccc"[:9],
+    _b,
+    "Non-temporal splits are built by blending the rank along a chemical axis with a random "
+    "rank, so the amount of shift can be tuned continuously; $\\alpha^{*}$ is the blend "
+    "whose shift matches the temporal split. Shift is measured as the cross-validated area "
+    "under the curve of a classifier separating the two sides from structure alone, the "
+    "same quantity reported for the temporal split elsewhere. Every split matches the "
+    "temporal target to within %s. The size and prevalence of both sides are matched to the "
+    "temporal split, so the axis is the only remaining difference. \\textbf{In %d of the %d "
+    "comparisons the temporal split has the larger ECE}, by %s to %s times the "
+    "repetition-level standard error; %d comparison is a tie and none is reversed. The "
+    "matched splits hold fewer compounds than the temporal validation set, which inflates "
+    "the small-sample bias of ECE on their side, so the comparison is conservative. "
+    "Calibration loss under temporal validation therefore does not reduce to the amount of "
+    "distribution shift."
+    % (
+        f4(sm2m.shift_auc_gap.abs().max()),
+        _win,
+        len(sm2m),
+        "%.1f" % sm2m[sm2m.diff_se_units > 2].diff_se_units.min(),
+        "%.1f" % sm2m[sm2m.diff_se_units > 2].diff_se_units.max(),
+        _tie,
+    ),
+)
+
+# ================================================================ S8 추정량 9종
+pe2 = cv("prior_estimation_v2.csv")
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Estimator",
+        "Information used",
+        "$\\hat{\\pi}$",
+        "Error",
+        "95\\% CI",
+        "ECE after",
+        "Recovery",
+    )
+)
+_INFO = {
+    "라벨 없음": "none",
+    "학습군 라벨만": "training labels only",
+    "**검증군 라벨**": "validation labels",
+}
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = pe2[pe2.dataset == d]
+    first = True
+    for _, r in g.iterrows():
+        if r.pi_hat != r.pi_hat:
+            continue
+        _nm = str(r.estimator).split(" (")[0]
+        _b.append(
+            row(
+                d if first else "",
+                _nm,
+                _INFO.get(str(r.info_used), str(r.info_used)),
+                f4(r.pi_hat),
+                sg(r.pi_err),
+                ci3(r.pi_lo, r.pi_hi),
+                f4(r.ece_corrected),
+                p1(r.recovery),
+            )
+        )
+        first = False
+_g = pe2[~pe2.estimator.str.startswith("Q0")].dropna(subset=["pi_hat"])
+_gl = _g[_g.dataset == DS[0]]
+_gc = _g[_g.dataset == DS[1]]
+_cpos = _gc[_gc.recovery > 0]
+SUPP.table(
+    "Nine quantification estimators do not recover the validation prevalence",
+    "tab:prior2",
+    "lllccccc"[:8],
+    _b,
+    "Sensitivities, specificities and score distributions are estimated on a held-out "
+    "slice of the training era, so no estimator uses validation labels except the oracle "
+    "row. Intervals are 2.5--97.5 percentiles of a bootstrap of the validation set with "
+    "the predictions held fixed. Recovery is defined as elsewhere in this work, relative "
+    "to an oracle Platt upper bound. \\textbf{For %s every estimator overshoots, every "
+    "recovery is negative, and no interval covers the truth.} The published remedy of "
+    "calibrating the classifier before running expectation maximisation does not help in "
+    "either dataset. For %s, %d estimators do give a positive recovery, but all of them "
+    "undershoot the prevalence, and undershooting is already known to lower ECE below "
+    "the oracle value, so the gain is plausibly a by-product of the error rather than a "
+    "successful estimate; their intervals are too wide to identify the prevalence at all. "
+    "Probabilistic adjusted count and soft black-box shift estimation are algebraically "
+    "the same estimator for a binary outcome, so their agreement is a check rather than "
+    "independent evidence." % (DS[0], DS[1], len(_cpos)),
+)
+
+# ================================================================ S9 임의성 제거
+tba = cv("tiebreak_averaged.csv")
+_rc9 = cv("recalibration_results.csv")
+_cf9 = cv("conformal_prediction.csv")
+_TBN = int(tba.groupby("dataset").size().min())
+
+
+def _rr9(d, pref):
+    g = _rc9[_rc9.dataset.str.startswith(d)]
+    return g[g.method.str.startswith(pref)].iloc[0]
+
+
+def _rrec9(d, pref):
+    a, e, x = _rr9(d, "A."), _rr9(d, "E."), _rr9(d, pref)
+    return (a.ECE - x.ECE) / (a.ECE - e.ECE) * 100
+
+
+def _ccf9(d, al):
+    q = _cf9[(_cf9.dataset == d) & ((_cf9.alpha - al).abs() < 1e-9)]
+    return float(q.marginal_coverage_temporal.iloc[0])
+
+
+_QTY9 = [
+    ("Uncalibrated ECE", "ece_A", lambda d: float(_rr9(d, "A.").ECE), f4),
+    (
+        "Uncalibrated ECE, calibration set held out",
+        "ece_Ap",
+        lambda d: float(_rr9(d, "A'.").ECE),
+        f4,
+    ),
+    ("Oracle Platt ECE (upper bound)", "ece_E", lambda d: float(_rr9(d, "E.").ECE), f4),
+    ("Platt ECE", "ece_B", lambda d: float(_rr9(d, "B.").ECE), f4),
+    ("Isotonic ECE", "ece_C", lambda d: float(_rr9(d, "C.").ECE), f4),
+    ("Prior-shift ECE", "ece_D", lambda d: float(_rr9(d, "D.").ECE), f4),
+    ("Platt recovery (\\%)", "rec_B", lambda d: _rrec9(d, "B."), f2),
+    ("Isotonic recovery (\\%)", "rec_C", lambda d: _rrec9(d, "C."), f2),
+    ("Prior-shift recovery (\\%)", "rec_D", lambda d: _rrec9(d, "D."), f2),
+    ("Conformal 90\\% coverage", "conf90_marginal", lambda d: _ccf9(d, 0.1), f4),
+    ("Conformal 80\\% coverage", "conf80_marginal", lambda d: _ccf9(d, 0.2), f4),
+    ("AUROC", "auroc_A", lambda d: float(_rr9(d, "A.").AUROC), f4),
+]
+_b = []
+_b.append(
+    head("Dataset", "Quantity", "Mean", "SD", "2.5--97.5 pct", "Min--max", "Reported", "Distance")
+)
+_nout9 = 0
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    g = tba[tba.dataset == d]
+    first = True
+    for lab, col, ref_f, fmt in _QTY9:
+        ref = ref_f(d)
+        m, sd = float(g[col].mean()), float(g[col].std(ddof=1))
+        lo = float(g[col].quantile(0.025))
+        hi = float(g[col].quantile(0.975))
+        mn, mx = float(g[col].min()), float(g[col].max())
+        if not (mn <= ref <= mx):
+            _nout9 += 1
+        _b.append(
+            row(
+                d if first else "",
+                lab,
+                fmt(m),
+                fmt(sd),
+                "%s--%s" % (fmt(lo), fmt(hi)),
+                "%s--%s" % (fmt(mn), fmt(mx)),
+                fmt(ref),
+                "%+.1f\\,SD" % ((ref - m) / sd),
+            )
+        )
+        first = False
+_c1_9 = min(int((tba[tba.dataset == d].conf90_marginal < 0.90).sum()) for d in DS)
+_c2_9 = min(int((tba[tba.dataset == d].rec_B < 100).sum()) for d in DS)
+_pv9 = tba.pivot_table(index="rep", columns="dataset", values="best_any", aggfunc="first")
+_c3_9 = int((_pv9[DS[0]] == _pv9[DS[1]]).sum())
+SUPP.table(
+    "Removing the arbitrariness from the point estimates of the recalibration "
+    "and conformal analyses",
+    "tab:tieavg",
+    "llcccccc",
+    _b,
+    "Three arbitrary implementation choices are randomised jointly over %d "
+    "repetitions: the assignment of boundary-year ties to the internal "
+    "calibration set, the row order of the fitting set, and the row order of "
+    "the full-training model. The last matters because the denominator of the "
+    "recovery rate comes from the full-training model, so randomising only the "
+    "numerator would measure half of the arbitrariness. The mean does not "
+    "depend on any of those choices and is therefore the estimate to read; "
+    "\\emph{Reported} is the single realisation printed in the main tables, and "
+    "\\emph{Distance} expresses its offset from the mean in repetition standard "
+    "deviations. %d of %d reported values fall inside the min--max range of the "
+    "%d repetitions. Every conclusion holds in all repetitions: nominal "
+    "coverage is missed in %d/%d, within-era recalibration recovers less than "
+    "the oracle in %d/%d, and the best-performing method differs between the "
+    "two datasets in %d/%d."
+    % (
+        _TBN,
+        2 * len(_QTY9) - _nout9,
+        2 * len(_QTY9),
+        _TBN,
+        _c1_9,
+        _TBN,
+        _c2_9,
+        _TBN,
+        _TBN - _c3_9,
+        _TBN,
+    ),
+)
+
+# ================================================================ S10 Mondrian
+mdc = cv("mondrian_conformal.csv")
+_MA10 = ["A. 시간분할", "B. 무작위", "C. 무작위+양성률 맞춤"]
+_MAEN = {
+    "A. 시간분할": "Temporal",
+    "B. 무작위": "Random",
+    "C. 무작위+양성률 맞춤": "Random, prevalence matched",
+}
+_MM10 = ["주변형", "Mondrian"]
+_MMEN = {"주변형": "Marginal", "Mondrian": "Mondrian"}
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Target",
+        "Split",
+        "Procedure",
+        "Coverage",
+        "Positive",
+        "Negative",
+        "Set size",
+        "$z_{+}$",
+        "$z_{-}$",
+    )
+)
+_nbad10 = []
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    for al in sorted(mdc.alpha.unique()):
+        tgt = 1 - al
+        for arm in _MA10:
+            for met in _MM10:
+                g = mdc[
+                    (mdc.dataset == d)
+                    & ((mdc.alpha - al).abs() < 1e-9)
+                    & (mdc.arm == arm)
+                    & (mdc.method == met)
+                ]
+                if not len(g):
+                    continue
+                r = g.iloc[0]
+                _sd = r.get("cov_all_sd")
+                _c = (
+                    f4(r["cov_all"]) if _sd != _sd else "%s $\\pm$ %s" % (f4(r["cov_all"]), f4(_sd))
+                )
+                _one = int(r["reps"]) == 1
+
+                def _z(ck, nk):
+                    se = (tgt * (1 - tgt) / float(r[nk])) ** 0.5
+                    return (float(r[ck]) - tgt) / se
+
+                if _one and met == "Mondrian":
+                    for _ck, _nk in (("cov_pos", "n_pos"), ("cov_neg", "n_neg")):
+                        if _z(_ck, _nk) < -1.645:
+                            _nbad10.append((d, tgt, _ck))
+                _b.append(
+                    row(
+                        d,
+                        "%.0f\\%%" % (tgt * 100),
+                        _MAEN[arm],
+                        _MMEN[met],
+                        _c,
+                        f4(r["cov_pos"]),
+                        f4(r["cov_neg"]),
+                        f2(r["set_size"]),
+                        ("%+.2f" % _z("cov_pos", "n_pos")) if _one else "---",
+                        ("%+.2f" % _z("cov_neg", "n_neg")) if _one else "---",
+                    )
+                )
+_dsbad10 = sorted(set(x[0] for x in _nbad10))
+_dsok10 = [d for d in DS if d not in _dsbad10]
+SUPP.table(
+    "A per-class conformal guarantee recovers coverage in one dataset only",
+    "tab:mondrian",
+    "llllccccc"[:10],
+    _b,
+    "Marginal split conformal calibrates one quantile on the whole calibration "
+    "set and guarantees only overall coverage, so the per-class figures of the "
+    "main conformal analysis are descriptive. Mondrian conformal calibrates a "
+    "separate quantile on each true-label stratum of the calibration set, which "
+    "guarantees coverage within each class and needs no knowledge of the test "
+    "label. Because it relies only on exchangeability within a class, it stays "
+    "valid under arbitrary label shift, which makes it a diagnostic as well as a "
+    "remedy: whatever coverage deficit survives it cannot be attributed to the "
+    "change in prevalence. The random split is a size-matched control over %d "
+    "repetitions, and the prevalence-matched control subsamples each repetition's "
+    "evaluation set to the positive rate of the temporal validation set, which "
+    "changes the label marginal and nothing else. Two checks confirm the "
+    "implementation: under the exchangeable control Mondrian attains nominal "
+    "coverage in both classes, and moving to the prevalence-matched control moves "
+    "overall coverage by %s--%s for the marginal procedure but by at most %s for "
+    "Mondrian. $z$ is a one-sided binomial statistic against the nominal level and "
+    "is reported only for the single temporal split. %s The cost is set size, "
+    "which rises by %s--%s under the temporal split; no prediction set is empty."
+    % (
+        int(mdc[mdc.arm == _MA10[1]].reps.iloc[0]),
+        f4(
+            min(
+                abs(
+                    float(
+                        mdc[
+                            (mdc.dataset == d)
+                            & (mdc.method == "주변형")
+                            & (mdc.arm == _MA10[2])
+                            & ((mdc.alpha - al).abs() < 1e-9)
+                        ].cov_all.iloc[0]
+                    )
+                    - float(
+                        mdc[
+                            (mdc.dataset == d)
+                            & (mdc.method == "주변형")
+                            & (mdc.arm == _MA10[1])
+                            & ((mdc.alpha - al).abs() < 1e-9)
+                        ].cov_all.iloc[0]
+                    )
+                )
+                for d in DS
+                for al in sorted(mdc.alpha.unique())
+            )
+        ),
+        f4(
+            max(
+                abs(
+                    float(
+                        mdc[
+                            (mdc.dataset == d)
+                            & (mdc.method == "주변형")
+                            & (mdc.arm == _MA10[2])
+                            & ((mdc.alpha - al).abs() < 1e-9)
+                        ].cov_all.iloc[0]
+                    )
+                    - float(
+                        mdc[
+                            (mdc.dataset == d)
+                            & (mdc.method == "주변형")
+                            & (mdc.arm == _MA10[1])
+                            & ((mdc.alpha - al).abs() < 1e-9)
+                        ].cov_all.iloc[0]
+                    )
+                )
+                for d in DS
+                for al in sorted(mdc.alpha.unique())
+            )
+        ),
+        f4(
+            max(
+                abs(
+                    float(
+                        mdc[
+                            (mdc.dataset == d)
+                            & (mdc.method == "Mondrian")
+                            & (mdc.arm == _MA10[2])
+                            & ((mdc.alpha - al).abs() < 1e-9)
+                        ].cov_all.iloc[0]
+                    )
+                    - float(
+                        mdc[
+                            (mdc.dataset == d)
+                            & (mdc.method == "Mondrian")
+                            & (mdc.arm == _MA10[1])
+                            & ((mdc.alpha - al).abs() < 1e-9)
+                        ].cov_all.iloc[0]
+                    )
+                )
+                for d in DS
+                for al in sorted(mdc.alpha.unique())
+            )
+        ),
+        (
+            (
+                "Under the temporal split Mondrian attains nominal coverage in both "
+                "classes for %s, while %s still falls significantly short in the "
+                "negative class, so that dataset carries a coverage deficit that label "
+                "shift does not explain." % (" and ".join(_dsok10), " and ".join(_dsbad10))
+            )
+            if (_nbad10 and _dsok10)
+            else (
+                "Under the temporal split Mondrian attains nominal coverage in every " "cell."
+                if not _nbad10
+                else "Under the temporal split Mondrian still falls significantly short in "
+                "%d of 8 cells." % len(_nbad10)
+            )
+        ),
+        f2(
+            min(
+                float(
+                    mdc[
+                        (mdc.dataset == d)
+                        & (mdc.method == "Mondrian")
+                        & (mdc.arm == _MA10[0])
+                        & ((mdc.alpha - al).abs() < 1e-9)
+                    ].set_size.iloc[0]
+                )
+                - float(
+                    mdc[
+                        (mdc.dataset == d)
+                        & (mdc.method == "주변형")
+                        & (mdc.arm == _MA10[0])
+                        & ((mdc.alpha - al).abs() < 1e-9)
+                    ].set_size.iloc[0]
+                )
+                for d in DS
+                for al in sorted(mdc.alpha.unique())
+            )
+        ),
+        f2(
+            max(
+                float(
+                    mdc[
+                        (mdc.dataset == d)
+                        & (mdc.method == "Mondrian")
+                        & (mdc.arm == _MA10[0])
+                        & ((mdc.alpha - al).abs() < 1e-9)
+                    ].set_size.iloc[0]
+                )
+                - float(
+                    mdc[
+                        (mdc.dataset == d)
+                        & (mdc.method == "주변형")
+                        & (mdc.arm == _MA10[0])
+                        & ((mdc.alpha - al).abs() < 1e-9)
+                    ].set_size.iloc[0]
+                )
+                for d in DS
+                for al in sorted(mdc.alpha.unique())
+            )
+        ),
+    ),
+)
+
+# ================================================================ S11 전수 FDR
+fat = cv("fdr_all_tests.csv")
+_fnew = fat[fat.newly_included]
+_fold = fat[~fat.newly_included].copy()
+_fold["sig_existing"] = _fold.sig_existing.astype(bool)
+_fold["sig_F0"] = _fold.sig_F0.astype(bool)
+_fflipT = _fold[_fold.sig_existing & ~_fold.sig_F0]
+_SECEN = {
+    "§11.1": "Label-conditional conformal coverage",
+    "§12.2": "Reversed temporal split",
+    "§13.5": "Non-temporal axis splits",
+    "§18": "Concept shift",
+    "§21": "Applicability domain",
+    "§24": "Label binarisation",
+}
+
+
+def _q(x):
+    return "$<$0.0001" if float(x) < 1e-4 else f4(x)
+
+
+_b = []
+_b.append(head("Analysis", "Tests", "Significant in F4", "Smallest $q$ (F4)", "Smallest $q$ (F0)"))
+for sec in ("§11.1", "§12.2", "§13.5", "§18", "§21", "§24"):
+    g = _fnew[_fnew.source == sec]
+    if not len(g):
+        continue
+    _b.append(
+        row(
+            _SECEN[sec],
+            "%d" % len(g),
+            "%d" % int(g.sig_F4.astype(bool).sum()),
+            _q(g.q_F4.min()),
+            _q(g.q_F0.min()),
+        )
+    )
+_b.append("\\midrule")
+_b.append(
+    row(
+        "\\textbf{All newly included}",
+        "\\textbf{%d}" % len(_fnew),
+        "\\textbf{%d}" % int(_fnew.sig_F4.astype(bool).sum()),
+        _q(_fnew.q_F4.min()),
+        _q(_fnew.q_F0.min()),
+    )
+)
+_b.append(
+    row(
+        "Pre-existing families",
+        "%d" % len(_fold),
+        "%d (unchanged families)" % int(_fold.sig_existing.sum()),
+        "---",
+        _q(_fold.q_F0.min()),
+    )
+)
+SUPP.table(
+    "Every test previously outside a correction family, folded back in",
+    "tab:fdrall",
+    "lcccc",
+    _b,
+    "The main multiple-comparison analysis corrects within three pre-specified "
+    "families and leaves the tests of several later sections outside any of them, "
+    "on the stated grounds that no confirmatory claim rests on those p-values. "
+    "That is a weak position to defend, so the %d excluded tests are folded back "
+    "in here: F4 applies Benjamini--Hochberg to those tests as a single family, "
+    "and F0 applies it to all %d tests in the paper at once, which is the most "
+    "conservative construction available. Negative-control rows are kept rather "
+    "than dropped, since a larger family makes the correction stricter. "
+    "Coverage $z$ statistics are converted to one-sided p-values under a normal "
+    "approximation. %d of the %d newly included tests survive F4. Under F0, %d of "
+    "the %d previously significant results loses significance%s, and that result "
+    "was already flagged as resting on its effect size rather than its p-value. "
+    "The one claim that does not survive correction is the residual coverage "
+    "deficit of label-conditional conformal prediction, which is therefore "
+    "reported as an effect size throughout."
+    % (
+        len(_fnew),
+        len(fat),
+        int(_fnew.sig_F4.astype(bool).sum()),
+        len(_fnew),
+        len(_fflipT),
+        int(_fold.sig_existing.sum()),
+        (
+            (
+                " (%s)"
+                % ", ".join(
+                    "%s, %s" % (r.dataset, str(r.test).split(" (")[0])
+                    for _, r in _fflipT.iterrows()
+                )
+            )
+            if len(_fflipT)
+            else ""
+        ),
+    ),
+)
+
+# ================================================================ S12 하위집단 보정
+sgc = cv("subgroup_calibration.csv")
+_sgok = sgc[~sgc.underpowered.astype(bool)]
+_sgup = sgc[sgc.underpowered.astype(bool)]
+_dupS = set(zip(_sgok.dataset, _sgok.stratum))
+_SGEN = {
+    "ATC L": "ATC class L (antineoplastic and immunomodulating)",
+    "ATC L 대 그외: 그외": "ATC classes other than L",
+    "구조 MW>500 참": "Molecular weight $>$ 500",
+    "구조 MW>500 거짓": "Molecular weight $\\leq$ 500",
+    "구조 방향환>=4 참": "At least four aromatic rings",
+    "구조 방향환>=4 거짓": "Fewer than four aromatic rings",
+    "구조 N>=6 참": "At least six nitrogen atoms",
+    "구조 N>=6 거짓": "Fewer than six nitrogen atoms",
+    "구조 logP>=3 참": "logP $\\geq$ 3",
+    "구조 logP>=3 거짓": "logP $<$ 3",
+}
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Stratum",
+        "$n$",
+        "Positive rate",
+        "AUROC",
+        "ECE",
+        "Control ECE",
+        "ECE ratio",
+        "95\\% CI",
+    )
+)
+_nexS = 0
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for _, r in _sgok[_sgok.dataset == d].iterrows():
+        if r.stratum == "ATC L 대 그외: L" and (d, "ATC L") in _dupS:
+            continue
+        ex = (r.ratio_lo > 1) or (r.ratio_hi < 1)
+        if ex:
+            _nexS += 1
+        _b.append(
+            row(
+                d if first else "",
+                _SGEN.get(str(r.stratum), str(r.stratum)),
+                "%d" % int(r.n),
+                f4(r.pos_rate),
+                f4(r.auroc),
+                f4(r.ece),
+                f4(r.ctrl_ece),
+                ("\\textbf{%s}" % f2(r.ece_ratio)) if ex else f2(r.ece_ratio),
+                ci3(r.ratio_lo, r.ratio_hi),
+            )
+        )
+        first = False
+_ntotS = sum(
+    1
+    for d in DS
+    for _, r in _sgok[_sgok.dataset == d].iterrows()
+    if not (r.stratum == "ATC L 대 그외: L" and (d, "ATC L") in _dupS)
+)
+SUPP.table(
+    "Calibration loss is present in every subgroup that could be measured",
+    "tab:subcalib",
+    "llccccccc",
+    _b,
+    "The subgroup analyses in the main text report discrimination only, which "
+    "leaves open whether the calibration loss is concentrated in a therapeutic "
+    "or structural class; if it were, the practical remedy would be to withhold "
+    "probabilities for that class. Each stratum is therefore paired with random "
+    "splits matched on both stratum size and positive rate, over %d repetitions, "
+    "following the design used for the applicability-domain analysis. Intervals "
+    "are percentiles of a within-stratum bootstrap and do not include the "
+    "variation of the control mean, so they are narrower than the true "
+    "intervals. The underpowered rule used elsewhere in this work (fewer than 40 "
+    "compounds, or fewer than ten in the minority class) removes %d of %d "
+    "strata, which excludes almost every individual ATC class: the largest class "
+    "in the DILIrank validation set holds %d compounds. Of the %d strata that "
+    "remain, %d show a ratio above one whose interval excludes one, with ratios "
+    "from %s to %s. The loss is therefore not concentrated anywhere, and no "
+    "subgroup-based rule for withholding probabilities follows from it."
+    % (
+        int(_sgok.n_rep_valid.max()),
+        len(_sgup),
+        len(sgc),
+        int(sgc[(sgc.dataset == "DILIrank") & (sgc.stratum == "ATC L")].n.iloc[0]),
+        _ntotS,
+        _nexS,
+        f2(_sgok[(_sgok.ratio_lo > 1) | (_sgok.ratio_hi < 1)].ece_ratio.min()),
+        f2(_sgok[(_sgok.ratio_lo > 1) | (_sgok.ratio_hi < 1)].ece_ratio.max()),
+    ),
+)
+
+# ================================================================ M20 배포 시뮬레이션
+pq = cv("prequential_retraining.csv")
+pqd = cv("prequential_retraining_delta.csv")
+_PQEN = {
+    "P0. 고정 모델": "Fixed model (trained once, pre-2010)",
+    "P1. 해마다 재학습": "Annual retraining",
+    "P2. 재학습+재보정": "Annual retraining and recalibration",
+    "C1. 연도 무작위": "Shuffled years",
+    "C2. 연도 무작위+양성률 맞춤": "Shuffled years, prevalence matched",
+    "C1r. 연도 무작위+재보정": "Shuffled years, recalibrated",
+    "C2r. 연도 무작위+양성률 맞춤+재보정": "Shuffled years, prevalence matched, recalibrated",
+}
+_b = []
+_b.append(
+    head("Dataset", "Design", "$n$", "ECE", "SD", "AUROC", "Calibration slope", "Mean prediction")
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    first = True
+    for arm in [
+        "P0. 고정 모델",
+        "P1. 해마다 재학습",
+        "P2. 재학습+재보정",
+        "C1. 연도 무작위",
+        "C2. 연도 무작위+양성률 맞춤",
+        "C1r. 연도 무작위+재보정",
+        "C2r. 연도 무작위+양성률 맞춤+재보정",
+    ]:
+        g = pq[(pq.dataset == d) & (pq.arm == arm)]
+        if not len(g):
+            continue
+        _b.append(
+            row(
+                d if first else "",
+                _PQEN[arm],
+                "%d" % int(g.n.mean()),
+                ("\\textbf{%s}" % f4(g.ece.mean())) if arm.startswith("P2") else f4(g.ece.mean()),
+                (f4(g.ece.std(ddof=1)) if len(g) > 1 else "---"),
+                f4(g.auroc.mean()),
+                f4(g.slope.mean()),
+                f4(g.mean_pred.mean()),
+            )
+        )
+        first = False
+_p2 = {d: float(pq[(pq.dataset == d) & pq.arm.str.startswith("P2")].ece.iloc[0]) for d in DS}
+_c2r = {d: float(pq[(pq.dataset == d) & pq.arm.str.startswith("C2r")].ece.mean()) for d in DS}
+_dl = {(r.dataset, str(r.arm)[:2]): r for _, r in pqd.iterrows()}
+# 정적 설계의 가장 엄한 대조군 배율 (§8 의 R3)
+_pcR = cv("prevalence_control.csv")
+_r3rat = {
+    d: float(
+        _pcR[_pcR.dataset.str.startswith(d) & _pcR.setting.str.startswith("R3")].ece_ratio.iloc[0]
+    )
+    for d in DS
+}
+MAIN.table(
+    "Annual retraining with recalibration is the one remedy that works",
+    "tab:prequential",
+    "llcccccc",
+    _b,
+    "Each validation year is predicted by a model trained only on compounds "
+    "approved before it, and the predictions of all years are pooled into a "
+    "single evaluation set, which is the same set of compounds used throughout "
+    "this work. Recalibration uses Platt scaling fitted on the most recent "
+    "quarter of each training window, the same procedure as the static "
+    "recalibration analysis but on a window that moves. The shuffled-year rows "
+    "are controls in which the approval years are permuted, so the window sizes "
+    "are preserved and the time ordering is destroyed; they are reported with "
+    "and without prevalence matching and with and without recalibration, so that "
+    "every arm can be read against a control that matches it on both. Paired "
+    "bootstrap differences against the fixed model are %s and %s for retraining "
+    "alone and %s and %s with recalibration (%s and %s datasets); retraining "
+    "alone is not significant in %s. After retraining and recalibration the "
+    "error is %s times the matched control for %s and %s times for %s, against "
+    "%s and %s for the static design. These figures assume that a toxicity label "
+    "is available in the year of approval, which is optimistic, so they bound "
+    "what periodic retraining can achieve rather than estimate it."
+    % (
+        sg(_dl[(DS[0], "P1")].delta),
+        sg(_dl[(DS[1], "P1")].delta),
+        sg(_dl[(DS[0], "P2")].delta),
+        sg(_dl[(DS[1], "P2")].delta),
+        DS[0],
+        DS[1],
+        " and ".join([d for d in DS if _dl[(d, "P1")].delta_hi >= 0]) or "neither dataset",
+        f2(_p2[DS[0]] / _c2r[DS[0]]),
+        DS[0],
+        f2(_p2[DS[1]] / _c2r[DS[1]]),
+        DS[1],
+        f2(_r3rat[DS[0]]),
+        f2(_r3rat[DS[1]]),
+    ),
+)
+
+# ================================================================ S13 재학습 주기
+rin = cv("retrain_interval.csv")
+rind = cv("retrain_interval_delta.csv")
+_b = []
+_b.append(
+    head(
+        "Dataset",
+        "Recalibrated",
+        "Interval",
+        "Refits",
+        "Mean staleness",
+        "ECE",
+        "AUROC",
+        "$\\Delta$ECE vs annual",
+        "95\\% CI",
+    )
+)
+for i, d in enumerate(DS):
+    if i:
+        _b.append("\\midrule")
+    for rc in (True, False):
+        for k in [1, 2, 3, 5, 0]:
+            g = rin[(rin.dataset == d) & (rin.interval == k) & (rin.recal == rc)]
+            if not len(g):
+                continue
+            r = g.iloc[0]
+            q = rind[(rind.dataset == d) & (rind.interval == k) & (rind.recal == rc)]
+            _sig = len(q) and float(q.delta_lo.iloc[0]) > 0
+            _b.append(
+                row(
+                    d if (rc and k == 1) else "",
+                    "yes" if rc else "no",
+                    ("%d years" % k) if k else "never (fixed)",
+                    "%d" % int(r.n_refit),
+                    f2(r.mean_age),
+                    f4(r.ece),
+                    f4(r.auroc),
+                    (
+                        "reference"
+                        if not len(q)
+                        else (
+                            ("\\textbf{%s}" % sg(q.delta.iloc[0])) if _sig else sg(q.delta.iloc[0])
+                        )
+                    ),
+                    "---" if not len(q) else ci3(q.delta_lo.iloc[0], q.delta_hi.iloc[0]),
+                )
+            )
+
+
+def _rd(d, k, rc=True):
+    q = rind[(rind.dataset == d) & (rind.interval == k) & (rind.recal == rc)]
+    return q.iloc[0]
+
+
+_sig5 = [d for d in DS if float(_rd(d, 5).delta_lo) > 0]
+SUPP.table(
+    "Retraining at all matters more than how often",
+    "tab:interval",
+    "lllcccccc",
+    _b,
+    "Each row predicts every validation compound with the model from the most "
+    "recent refit at or before its approval year, so the evaluation set is the "
+    "same in every row and the differences are paired on the same compounds. "
+    "Mean staleness is the average number of years between a compound's "
+    "approval and the close of the training window that produced its "
+    "prediction; a five-year interval gives a mean staleness of about two "
+    "years, not five, because compounds are spread across the cycle. "
+    "Recalibration repeats the Platt step of the static analysis at each refit, "
+    "on the most recent quarter of the training window. Differences are paired "
+    "bootstrap estimates against annual retraining. With recalibration, never "
+    "refitting is worse than refitting annually by %s and %s, both significant, "
+    "while stretching the interval to five years costs only %s and %s -- "
+    "%s and %s times less. The staleness gradient is significant in %s but in "
+    "%s no interval up to five years is distinguishable from annual. Without "
+    "recalibration no gradient is detectable at all, which is the same "
+    "conclusion the single-interval analysis reached: the recalibration step is "
+    "what does the work. These rows assume a label is available in the year of "
+    "approval and therefore bound rather than estimate the benefit."
+    % (
+        sg(_rd(DS[0], 0).delta),
+        sg(_rd(DS[1], 0).delta),
+        sg(_rd(DS[0], 5).delta),
+        sg(_rd(DS[1], 5).delta),
+        "%.1f" % (float(_rd(DS[0], 0).delta) / float(_rd(DS[0], 5).delta)),
+        "%.1f" % (float(_rd(DS[1], 0).delta) / float(_rd(DS[1], 5).delta)),
+        " and ".join(_sig5) if _sig5 else "neither dataset",
+        " and ".join([d for d in DS if d not in _sig5]) if _sig5 else "both datasets",
+    ),
+)
+
+# ================================================================ 저장
+if not os.path.isdir(MAN):
+    os.makedirs(MAN)
+_pm = os.path.join(MAN, "tables_main.tex")
+_ps = os.path.join(MAN, "tables_supp.tex")
+nm = MAIN.save(_pm)
+ns = SUPP.save(_ps)
+print("저장: %s" % _pm)
+print("  표 %d개 / %d 행" % (MAIN.n, nm))
+print("저장: %s" % _ps)
+print("  표 %d개 / %d 행" % (SUPP.n, ns))

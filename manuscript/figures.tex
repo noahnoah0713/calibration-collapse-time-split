@@ -1,0 +1,58 @@
+%====================================================================%
+% Figure environments                                               %
+% PDF 파일은 src/make_figures.py 가 figures/ 에 만든다.               %
+% 범례에 **반복 횟수나 판정어를 손으로 적지 말 것.** 설정이 바뀌면      %
+% 조용히 거짓이 된다 — Fig1 각주의 '200 random partitions' 가 실제로   %
+% 그랬다(2026-10-22). 횟수는 Methods 와 본문 표가 결과 파일에서 읽어   %
+% 쓴다. 각주에는 설계 상수(구간 10개, 절단 2005/2010/2015, 95%% CI)만   %
+% 적는다. 수치를 적어야 하면 verify12 에 등록할 것.                     %
+%====================================================================%
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig1_split_strategies.pdf}
+\caption{Discrimination and calibration under five validation designs}\label{fig:split}
+\footnotetext{(a) AUROC under stratified five-fold cross-validation, Bemis--Murcko scaffold five-fold cross-validation and the 2010 temporal split, all on the same compounds. Error bars are the fold-to-fold standard deviation for the cross-validation bars and the 95\% bootstrap interval for the temporal bar. (b) Expected calibration error under the temporal split and the three prevalence-matched random controls R1--R3; error bars are the standard deviation across the prevalence-matched random partitions, whose number is given in Methods.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig2_calibration_curves.pdf}
+\caption{Reliability curves under random and temporal validation}\label{fig:calib}
+\footnotetext{Observed positive fraction against mean predicted probability over ten equal-width bins. The diagonal marks perfect calibration. Points below the diagonal indicate over-confident predictions.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig3_robustness.pdf}
+\caption{Calibration degradation across models, representations and cut-off years}\label{fig:robust}
+\footnotetext{(a) Ratio of temporal to random expected calibration error for all 32 combinations of four learners and four molecular representations, in both datasets. (b) Change in AUROC and ratio of expected calibration error at cut-off years 2005, 2010 and 2015.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig4_prevalence_sweep.pdf}
+\caption{Calibration error against the held-out positive rate}\label{fig:prev}
+\footnotetext{Expected calibration error of random partitions resampled to a range of held-out positive rates, against the temporal value. The temporal point lies above the curve at its own positive rate.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig5_recalibration_conformal.pdf}
+\caption{What post hoc remedies recover, and where the coverage guarantee breaks}\label{fig:remedy}
+\footnotetext{(a) Expected calibration error along the recalibration ladder: no recalibration, Platt scaling and isotonic regression fitted inside the training period, a prior-shift correction, and an oracle Platt fit that uses held-out labels. The oracle is an upper bound, not a deployable method; the shaded band is therefore the most that any in-period remedy could recover. (b) Empirical coverage of split conformal prediction at the two nominal levels, under random and temporal validation, together with coverage on the negative class alone under temporal validation. Dashed lines mark the nominal level.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig6_retraining_delay.pdf}
+\caption{Periodic retraining with recalibration, and its sensitivity to label delay}\label{fig:retrain}
+\footnotetext{(a) Expected calibration error in the expanding-window deployment simulation: a model fitted once before the split, a model refitted every year, and a model refitted and recalibrated every year. (b) Paired change in expected calibration error of the refit-and-recalibrate arm relative to the fixed model, as a function of the assumed number of years a label takes to mature. Shaded bands are 95\% paired bootstrap intervals; values below zero indicate improvement.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{FigS1_atc_stratified.pdf}
+\caption{Held-out performance stratified by first-level ATC class}\label{fig:atc}
+\footnotetext{Classes with at least ten held-out compounds are shown. No subgroup difference remains significant after Benjamini--Hochberg correction within the exploratory family.}
+\end{figure}

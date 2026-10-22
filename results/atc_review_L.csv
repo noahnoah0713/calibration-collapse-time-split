@@ -1,0 +1,284 @@
+dataset,compound,ikey14,atc,atc1,atc1_name,match_type,matched_key,norm_name,salt_stripped,approval_year,y
+DICTrank,ABIRATERONE ACETATE,UVIQSJCZCSLXRZ,L02BX03,L,항종양·면역조절,exact,abiraterone acetate,abiraterone acetate,abiraterone,2011,1
+DICTrank,ACALABRUTINIB,WDENQIQQYWYTPO,L01EL02,L,항종양·면역조절,exact,acalabrutinib,acalabrutinib,acalabrutinib,2017,1
+DICTrank,AFATINIB,ULXXDDBFHOBEHA,L01EB03,L,항종양·면역조절,exact,afatinib,afatinib,afatinib,2013,0
+DICTrank,ALECTINIB HYDROCHLORIDE,KDGFLJKFZUIJMX,L01ED03,L,항종양·면역조절,exact,alectinib hydrochloride,alectinib hydrochloride,alectinib,2015,1
+DICTrank,ANAGRELIDE HYDROCHLORIDE ANHYDROUS,OTBXOEAOVRKTNQ,L01XX35,L,항종양·면역조절,salt_stripped,anagrelide,anagrelide hydrochloride anhydrous,anagrelide,1997,1
+DICTrank,ANASTROZOLE,YBBLVLTVTVSKRW,L02BG03,L,항종양·면역조절,exact,anastrozole,anastrozole,anastrozole,1995,1
+DICTrank,APREMILAST,IMOZEMNVLZVGJZ,L04AA32,L,항종양·면역조절,exact,apremilast,apremilast,apremilast,2014,0
+DICTrank,ASCIMINIB HYDROCHLORIDE,VOVZXURTCKPRDQ,L01EA06,L,항종양·면역조절,exact,asciminib hydrochloride,asciminib hydrochloride,asciminib,2021,1
+DICTrank,AVACOPAN,PUKBOVABABRILL,L04AJ05,L,항종양·면역조절,exact,avacopan,avacopan,avacopan,2021,1
+DICTrank,AXITINIB,RITAVMQDGBJQJZ,L01EK01,L,항종양·면역조절,exact,axitinib,axitinib,axitinib,2012,1
+DICTrank,AZACITIDINE,NMUSYJAQQFHJEW,L01BC07,L,항종양·면역조절,exact,azacitidine,azacitidine,azacitidine,2004,1
+DICTrank,AZATHIOPRINE,LMEKQMALGUDUQG,L04AX01,L,항종양·면역조절,exact,azathioprine,azathioprine,azathioprine,1968,0
+DICTrank,AZATHIOPRINE SODIUM,KTAPWKXZMODIJZ,L04AX01,L,항종양·면역조절,exact,azathioprine sodium,azathioprine sodium,azathioprine,1974,0
+DICTrank,Apalutamide,HJBWBFZLDZWPHF,L02BB05,L,항종양·면역조절,exact,apalutamide,apalutamide,apalutamide,2018,1
+DICTrank,BELINOSTAT,NCNRHFGMJRPRSK,L01XH04,L,항종양·면역조절,exact,belinostat,belinostat,belinostat,2014,1
+DICTrank,BELUMOSUDIL,GKHIVNAUVKXIIY,L04AA48,L,항종양·면역조절,exact,belumosudil,belumosudil,belumosudil,2021,1
+DICTrank,BELZUTIFAN,LOMMPXLFBTZENJ,L01XX74,L,항종양·면역조절,exact,belzutifan,belzutifan,belzutifan,2021,1
+DICTrank,BENDAMUSTINE HYDROCHLORIDE,YTKUWDBFDASYHO,L01AA09,L,항종양·면역조절,exact,bendamustine hydrochloride,bendamustine hydrochloride,bendamustine,2008,1
+DICTrank,BEXAROTENE,NAVMQTYZDKMPEU,L01XF03,L,항종양·면역조절,exact,bexarotene,bexarotene,bexarotene,1999,1
+DICTrank,BICALUTAMIDE,LKJPYSCBVHEWIU,L02BB03,L,항종양·면역조절,exact,bicalutamide,bicalutamide,bicalutamide,1995,1
+DICTrank,BINIMETINIB,ACWZRVQXLIRSDF,L01EE03,L,항종양·면역조절,exact,binimetinib,binimetinib,binimetinib,2018,1
+DICTrank,BLEOMYCIN SULFATE,OYVAGSVQBOHSSS,L01DC01,L,항종양·면역조절,exact,bleomycin sulfate,bleomycin sulfate,bleomycin,1973,1
+DICTrank,BOSUTINIB MONOHYDRATE,UBPYILGKFZZVDX,L01EA04,L,항종양·면역조절,exact,bosutinib monohydrate,bosutinib monohydrate,bosutinib,2012,1
+DICTrank,Busulfan,COVZYZSDYWQREU,L01AB01,L,항종양·면역조절,exact,busulfan,busulfan,busulfan,1954,1
+DICTrank,CAPECITABINE,GAGWJHPBXLXJQN,L01BC06,L,항종양·면역조절,exact,capecitabine,capecitabine,capecitabine,1998,1
+DICTrank,CAPMATINIB,LIOLIMKSCNQPLV,L01EP01,L,항종양·면역조절,exact,capmatinib,capmatinib,capmatinib,2020,0
+DICTrank,CARBOPLATIN,CCQPAEQGAVNNIA,L01XA02,L,항종양·면역조절,exact,carboplatin,carboplatin,carboplatin,1989,1
+DICTrank,CARFILZOMIB,BLMPQMFVWMYDKT,L01XG02,L,항종양·면역조절,exact,carfilzomib,carfilzomib,carfilzomib,2012,1
+DICTrank,CARMUSTINE,DLGOEMSEDOSKAD,L01AD01,L,항종양·면역조절,exact,carmustine,carmustine,carmustine,1977,1
+DICTrank,CELECOXIB,RZEKVGVHFLEQIL,L01XX33,L,항종양·면역조절,exact,celecoxib,celecoxib,celecoxib,1998,1
+DICTrank,CERITINIB,VERWOWGGCGHDQE,L01ED02,L,항종양·면역조절,exact,ceritinib,ceritinib,ceritinib,2014,1
+DICTrank,CHLORAMBUCIL,JCKYGMPEJWAADB,L01AA02,L,항종양·면역조절,exact,chlorambucil,chlorambucil,chlorambucil,1957,0
+DICTrank,COBIMETINIB FUMARATE,BSMCAPRUBJMWDF,L01EE02,L,항종양·면역조절,exact,cobimetinib fumarate,cobimetinib fumarate,cobimetinib,2015,1
+DICTrank,COPANLISIB,MWYDSXOGIBMAET,L01EM02,L,항종양·면역조절,exact,copanlisib,copanlisib,copanlisib,2017,1
+DICTrank,CRIZOTINIB,KTEIFNKAUNYNJU,L01ED01,L,항종양·면역조절,exact,crizotinib,crizotinib,crizotinib,2011,1
+DICTrank,CYCLOPHOSPHAMIDE ANHYDROUS,CMSMOCZEIVJLDB,L01AA01,L,항종양·면역조절,salt_stripped,cyclophosphamide,cyclophosphamide anhydrous,cyclophosphamide,1959,1
+DICTrank,Cladribine,PTOAARAWEBMLNO,L01BB04,L,항종양·면역조절,exact,cladribine,cladribine,cladribine,1993,1
+DICTrank,DABRAFENIB MESYLATE,BFSMGDJOXZAERB,L01EC02,L,항종양·면역조절,exact,dabrafenib mesylate,dabrafenib mesylate,dabrafenib,2013,1
+DICTrank,DACARBAZINE,FDKXTQMXEQVLRF,L01AX04,L,항종양·면역조절,exact,dacarbazine,dacarbazine,dacarbazine,1975,0
+DICTrank,DACOMITINIB,LVXJQMNHJWSHET,L01EB07,L,항종양·면역조절,exact,dacomitinib,dacomitinib,dacomitinib,2018,0
+DICTrank,DACTINOMYCIN,RJURFGZVJUQBHK,L01DA01,L,항종양·면역조절,exact,dactinomycin,dactinomycin,dactinomycin,1964,0
+DICTrank,DAROLUTAMIDE,BLIJXOOIHRSQRB,L02BB06,L,항종양·면역조절,exact,darolutamide,darolutamide,darolutamide,2019,1
+DICTrank,DAUNORUBICIN HYDROCHLORIDE,STQGQHZAVUOBTE,L01DB02,L,항종양·면역조절,exact,daunorubicin hydrochloride,daunorubicin hydrochloride,daunorubicin,1979,1
+DICTrank,DECITABINE,XAUDJQYHKZQPEU,L01BC08,L,항종양·면역조절,exact,decitabine,decitabine,decitabine,2006,1
+DICTrank,DEGARELIX,MEUCPCLKGZSHTA,L02BX02,L,항종양·면역조절,exact,degarelix,degarelix,degarelix,2008,1
+DICTrank,DIMETHYL FUMARATE,LDCRTTXIJACKKU,L04AX07,L,항종양·면역조절,exact,dimethyl fumarate,dimethyl fumarate,dimethyl,2013,0
+DICTrank,DOCETAXEL ANHYDROUS,ZDZOTLJHXYCWBA,L01CD02,L,항종양·면역조절,salt_stripped,docetaxel,docetaxel anhydrous,docetaxel,1996,1
+DICTrank,DUVELISIB,SJVQHLPISAIATJ,L01EM04,L,항종양·면역조절,exact,duvelisib,duvelisib,duvelisib,2018,0
+DICTrank,ENASIDENIB MESYLATE,DYLUUSLLRIQKOE,L01XX59,L,항종양·면역조절,exact,enasidenib mesylate,enasidenib mesylate,enasidenib,2017,1
+DICTrank,ENCORAFENIB,CMJCXYNUCSMDBY,L01EC03,L,항종양·면역조절,exact,encorafenib,encorafenib,encorafenib,2018,1
+DICTrank,ENTRECTINIB,HAYYBYPASCDWEQ,L01EX14,L,항종양·면역조절,exact,entrectinib,entrectinib,entrectinib,2019,1
+DICTrank,ENZALUTAMIDE,WXCXUHSOUPDCQV,L02BB04,L,항종양·면역조절,exact,enzalutamide,enzalutamide,enzalutamide,2012,1
+DICTrank,EPIRUBICIN HYDROCHLORIDE,AOJJSUZBOXZQNB,L01DB03,L,항종양·면역조절,exact,epirubicin hydrochloride,epirubicin hydrochloride,epirubicin,1999,1
+DICTrank,ERIBULIN MESYLATE,UFNVPOGXISZXJD,L01XX41,L,항종양·면역조절,exact,eribulin mesylate,eribulin mesylate,eribulin,2010,1
+DICTrank,ESTRAMUSTINE PHOSPHATE SODIUM,ADFOJJHRTBFFOF,L01XX11,L,항종양·면역조절,exact,estramustine phosphate sodium,estramustine phosphate sodium,estramustine,1981,1
+DICTrank,ETOPOSIDE,VJJPUSNTGOMMGY,L01CB01,L,항종양·면역조절,exact,etoposide,etoposide,etoposide,1983,0
+DICTrank,EVEROLIMUS,HKVAMNSJSFKALM,L01EG02,L,항종양·면역조절,exact,everolimus,everolimus,everolimus,2009,1
+DICTrank,Erdafitinib,OLAHOMJCDNXHFI,L01EN01,L,항종양·면역조절,exact,erdafitinib,erdafitinib,erdafitinib,2019,1
+DICTrank,Exemestane,BFYIZQONLCFLEV,L02BG06,L,항종양·면역조절,exact,exemestane,exemestane,exemestane,1999,1
+DICTrank,FEDRATINIB HYDROCHLORIDE,JOOXLOJCABQBSG,L01EJ02,L,항종양·면역조절,exact,fedratinib hydrochloride,fedratinib hydrochloride,fedratinib,2019,1
+DICTrank,FINGOLIMOD HYDROCHLORIDE,KKGQTZUTZRNORY,L04AE01,L,항종양·면역조절,exact,fingolimod hydrochloride,fingolimod hydrochloride,fingolimod,2010,1
+DICTrank,FLUDARABINE PHOSPHATE,GIUYCYHIANZCFB,L01BB05,L,항종양·면역조절,exact,fludarabine phosphate,fludarabine phosphate,fludarabine,1991,1
+DICTrank,FLUTAMIDE,MKXKFYHWDHIYRV,L02BB01,L,항종양·면역조절,exact,flutamide,flutamide,flutamide,1989,1
+DICTrank,Fulvestrant,VWUXBMIQPBEWFH,L02BA03,L,항종양·면역조절,exact,fulvestrant,fulvestrant,fulvestrant,2002,0
+DICTrank,GEFITINIB,XGALLCVXEZPNRQ,L01EB01,L,항종양·면역조절,exact,gefitinib,gefitinib,gefitinib,2003,0
+DICTrank,GEMCITABINE HYDROCHLORIDE,SDUQYLNIPVEERB,L01BC05,L,항종양·면역조절,exact,gemcitabine hydrochloride,gemcitabine hydrochloride,gemcitabine,1996,1
+DICTrank,GILTERITINIB FUMARATE,GYQYAJJFPNQOOW,L01EX13,L,항종양·면역조절,exact,gilteritinib fumarate,gilteritinib fumarate,gilteritinib,2018,1
+DICTrank,GLASDEGIB,SFNSLLSYNZWZQG,L01XJ03,L,항종양·면역조절,exact,glasdegib,glasdegib,glasdegib,2018,1
+DICTrank,HISTRELIN ACETATE,HHXHVIJIIXKSOE,L02AE05,L,항종양·면역조절,exact,histrelin acetate,histrelin acetate,histrelin,1991,1
+DICTrank,HYDROXYUREA,VSNHCAURESNICA,L01XX05,L,항종양·면역조절,exact,hydroxyurea,hydroxyurea,hydroxyurea,1967,0
+DICTrank,IBRUTINIB,XYFPWWZEPKGCCK,L01EL01,L,항종양·면역조절,exact,ibrutinib,ibrutinib,ibrutinib,2013,1
+DICTrank,IDARUBICIN HYDROCHLORIDE,XDXDZDZNSLXDNA,L01DB06,L,항종양·면역조절,exact,idarubicin hydrochloride,idarubicin hydrochloride,idarubicin,1990,1
+DICTrank,IDELALISIB,IFSDAJWBUCMOAH,L01EM01,L,항종양·면역조절,exact,idelalisib,idelalisib,idelalisib,2014,0
+DICTrank,IFOSFAMIDE,HOMGKSMUEGBAAB,L01AA06,L,항종양·면역조절,exact,ifosfamide,ifosfamide,ifosfamide,1987,1
+DICTrank,IMATINIB MESYLATE,KTUFNOKKBVMGRW,L01EA01,L,항종양·면역조절,exact,imatinib mesylate,imatinib mesylate,imatinib,2001,1
+DICTrank,INFIGRATINIB,QADPYRIHXKWUSV,L01EN03,L,항종양·면역조절,exact,infigratinib,infigratinib,infigratinib,2021,0
+DICTrank,IRINOTECAN HYDROCHLORIDE,UWKQSNNFCGGAFS,L01CE02,L,항종양·면역조절,exact,irinotecan hydrochloride,irinotecan hydrochloride,irinotecan,1996,1
+DICTrank,IXABEPILONE,FABUFPQFXZVHFB,L01DC04,L,항종양·면역조절,exact,ixabepilone,ixabepilone,ixabepilone,2007,1
+DICTrank,LAPATINIB DITOSYLATE,BCFGMOOMADDAQU,L01EH01,L,항종양·면역조절,exact,lapatinib ditosylate,lapatinib ditosylate,lapatinib ditosylate,2007,1
+DICTrank,LAROTRECTINIB,NYNZQNWKBKUAII,L01EX12,L,항종양·면역조절,exact,larotrectinib,larotrectinib,larotrectinib,2018,0
+DICTrank,LENALIDOMIDE,GOTYRUGSSMKFNF,L04AX04,L,항종양·면역조절,exact,lenalidomide,lenalidomide,lenalidomide,2005,1
+DICTrank,LENVATINIB,WOSKHXYHFSIKNG,L01EX08,L,항종양·면역조절,exact,lenvatinib,lenvatinib,lenvatinib,2015,1
+DICTrank,LETROZOLE,HPJKCIUCZWXJDR,L02BG04,L,항종양·면역조절,exact,letrozole,letrozole,letrozole,1997,1
+DICTrank,LEUPROLIDE ACETATE,GFIJNRVAKGFPGQ,L02AE02,L,항종양·면역조절,exact,leuprolide acetate,leuprolide acetate,leuprolide,1985,1
+DICTrank,LOMUSTINE,GQYIWUVLTXOXAJ,L01AD02,L,항종양·면역조절,exact,lomustine,lomustine,lomustine,1976,0
+DICTrank,LORLATINIB,IIXWYSCJSQVBQM,L01ED05,L,항종양·면역조절,exact,lorlatinib,lorlatinib,lorlatinib,2018,1
+DICTrank,LURBINECTEDIN,YDDMIZRDDREKEP,L01XX69,L,항종양·면역조절,exact,lurbinectedin,lurbinectedin,lurbinectedin,2020,0
+DICTrank,MELPHALAN,SGDBTWWWUNNDEQ,L01AA03,L,항종양·면역조절,exact,melphalan,melphalan,melphalan,1964,1
+DICTrank,MERCAPTOPURINE,GLVAUDGFNGKCSF,L01BB02,L,항종양·면역조절,exact,mercaptopurine,mercaptopurine,mercaptopurine,1953,0
+DICTrank,METHOTREXATE SODIUM,FBOZXECLQNJBKD,L01BA01,L,항종양·면역조절,exact,methotrexate sodium,methotrexate sodium,methotrexate,1953,1
+DICTrank,MIDOSTAURIN,BMGQWWVMWDBQGC,L01EX10,L,항종양·면역조절,exact,midostaurin,midostaurin,midostaurin,2017,1
+DICTrank,MITOXANTRONE HYDROCHLORIDE,KKZJGLLVHKMTCM,L01DB07,L,항종양·면역조절,exact,mitoxantrone hydrochloride,mitoxantrone hydrochloride,mitoxantrone,1987,1
+DICTrank,MYCOPHENOLATE MOFETIL,RTGDFNSFWBGLEC,L04AA06,L,항종양·면역조절,exact,mycophenolate mofetil,mycophenolate mofetil,mycophenolate mofetil,1995,1
+DICTrank,MYCOPHENOLATE SODIUM,HPNSFSBZBAHARI,L04AA06,L,항종양·면역조절,exact,mycophenolate sodium,mycophenolate sodium,mycophenolate,2004,1
+DICTrank,Mobocertinib,AZSRSNUQCUDCGG,L01EB10,L,항종양·면역조절,exact,mobocertinib,mobocertinib,mobocertinib,2021,1
+DICTrank,NELARABINE,IXOXBSCIXZEQEQ,L01BB07,L,항종양·면역조절,exact,nelarabine,nelarabine,nelarabine,2005,0
+DICTrank,NERATINIB MALEATE,JWNPDZNEKVCWMY,L01EH02,L,항종양·면역조절,exact,neratinib maleate,neratinib maleate,neratinib,2017,0
+DICTrank,NILOTINIB,HHZIURLSWUIHRB,L01EA03,L,항종양·면역조절,exact,nilotinib,nilotinib,nilotinib,2025,1
+DICTrank,NINTEDANIB ESYLATE,CPMDPSXJELVGJG,L01EX09,L,항종양·면역조절,exact,nintedanib esylate,nintedanib esylate,nintedanib esylate,2014,1
+DICTrank,OLAPARIB,FDLYAMZZIXQODN,L01XK01,L,항종양·면역조절,exact,olaparib,olaparib,olaparib,2014,0
+DICTrank,OMACETAXINE MEPESUCCINATE,HYFHYPWGAURHIV,L01XX40,L,항종양·면역조절,exact,omacetaxine mepesuccinate,omacetaxine mepesuccinate,omacetaxine mepesuccinate,2012,1
+DICTrank,OSIMERTINIB,DUYJMQONPNNFPI,L01EB04,L,항종양·면역조절,exact,osimertinib,osimertinib,osimertinib,2015,1
+DICTrank,OXALIPLATIN,SBDHODHEVRCXGI,L01XA03,L,항종양·면역조절,exact,oxaliplatin,oxaliplatin,oxaliplatin,2002,1
+DICTrank,OZANIMOD HYDROCHLORIDE,XRVDGNKRPOAQTN,L04AE02,L,항종양·면역조절,exact,ozanimod hydrochloride,ozanimod hydrochloride,ozanimod,2020,1
+DICTrank,PALBOCICLIB,AHJRHEGDXFFMBM,L01EF01,L,항종양·면역조절,exact,palbociclib,palbociclib,palbociclib,2015,0
+DICTrank,PANOBINOSTAT LACTATE,FPOHNWQLNRZRFC,L01XH03,L,항종양·면역조절,exact,panobinostat lactate,panobinostat lactate,panobinostat,2015,1
+DICTrank,PENTOSTATIN,FPVKHBSQESCIEP,L01XX08,L,항종양·면역조절,exact,pentostatin,pentostatin,pentostatin,1991,1
+DICTrank,PEXIDARTINIB HYDROCHLORIDE,JGWRKYUXBBNENE,L01EX15,L,항종양·면역조절,exact,pexidartinib hydrochloride,pexidartinib hydrochloride,pexidartinib,2019,1
+DICTrank,PIRFENIDONE,ISWRGOKTTBVCFA,L04AX05,L,항종양·면역조절,exact,pirfenidone,pirfenidone,pirfenidone,2014,0
+DICTrank,POMALIDOMIDE,UVSMNLNDYGZFPF,L04AX06,L,항종양·면역조절,exact,pomalidomide,pomalidomide,pomalidomide,2013,1
+DICTrank,PRALATREXATE,OGSBUKJUDHAQEA,L01BA05,L,항종양·면역조절,exact,pralatrexate,pralatrexate,pralatrexate,2009,1
+DICTrank,PRALSETINIB,GBLBJPZSROAGMF,L01EX23,L,항종양·면역조절,exact,pralsetinib,pralsetinib,pralsetinib,2020,1
+DICTrank,PROCARBAZINE HYDROCHLORIDE,CPTBDICYNRMXFX,L01XB01,L,항종양·면역조절,exact,procarbazine hydrochloride,procarbazine hydrochloride,procarbazine,1969,1
+DICTrank,Pemetrexed disodium heptahydrate,WBXPDJSOTKVWSJ,L01BA04,L,항종양·면역조절,exact,pemetrexed disodium heptahydrate,pemetrexed disodium heptahydrate,pemetrexed disodium heptahydrate,2004,1
+DICTrank,Ponesimod,LPAUOXUZGSBGDU,L04AE04,L,항종양·면역조절,exact,ponesimod,ponesimod,ponesimod,2021,1
+DICTrank,REGORAFENIB MONOHYDRATE,FNHKPVJBJVTLMP,L01EX05,L,항종양·면역조절,salt_stripped,regorafenib,regorafenib monohydrate,regorafenib,2012,1
+DICTrank,RELUGOLIX,AOMXMOCNKJTRQP,L02BX04,L,항종양·면역조절,exact,relugolix,relugolix,relugolix,2020,1
+DICTrank,RIBOCICLIB SUCCINATE,RHXHGRAEPCAFML,L01EF02,L,항종양·면역조절,exact,ribociclib succinate,ribociclib succinate,ribociclib,2017,1
+DICTrank,ROMIDEPSIN,OHRURASPPZQGQM,L01XH02,L,항종양·면역조절,exact,romidepsin,romidepsin,romidepsin,2009,1
+DICTrank,Ripretinib,CEFJVGZHQAGLHS,L01EX19,L,항종양·면역조절,exact,ripretinib,ripretinib,ripretinib,2020,1
+DICTrank,SELUMETINIB,CYOHGALHFOKKQC,L01EE04,L,항종양·면역조절,exact,selumetinib,selumetinib,selumetinib,2025,1
+DICTrank,SIPONIMOD,KIHYPELVXPAIDH,L04AE03,L,항종양·면역조절,exact,siponimod,siponimod,siponimod,2019,1
+DICTrank,SIROLIMUS,QFJCIRLUMZQUOT,L01EG04,L,항종양·면역조절,exact,sirolimus,sirolimus,sirolimus,1999,1
+DICTrank,SONIDEGIB PHOSPHATE,VZZJRYRQSPEMTK,L01XJ02,L,항종양·면역조절,exact,sonidegib phosphate,sonidegib phosphate,sonidegib,2015,0
+DICTrank,SORAFENIB,MLDQJTXFUGDVEO,L01EX02,L,항종양·면역조절,exact,sorafenib,sorafenib,sorafenib,2005,1
+DICTrank,SOTORASIB,NXQKSXLFSAEQCZ,L01XX73,L,항종양·면역조절,exact,sotorasib,sotorasib,sotorasib,2021,1
+DICTrank,STREPTOZOCIN,ZSJLQEPLLKMAKR,L01AD04,L,항종양·면역조절,exact,streptozocin,streptozocin,streptozocin,1982,0
+DICTrank,SUNITINIB MALATE,WINHZLLDWRZWRT,L01EX01,L,항종양·면역조절,exact,sunitinib malate,sunitinib malate,sunitinib,2006,1
+DICTrank,TAMOXIFEN CITRATE,NKANXQFJJICGDU,L02BA01,L,항종양·면역조절,exact,tamoxifen citrate,tamoxifen citrate,tamoxifen,1977,1
+DICTrank,TEMSIROLIMUS,CBPNZQVSJQDFBE,L01EG01,L,항종양·면역조절,exact,temsirolimus,temsirolimus,temsirolimus,2007,1
+DICTrank,TERIFLUNOMIDE,UTNUDOFZCWSZMS,L04AK02,L,항종양·면역조절,exact,teriflunomide,teriflunomide,teriflunomide,2012,1
+DICTrank,THALIDOMIDE,UEJJHQNACJXSKW,L04AX02,L,항종양·면역조절,exact,thalidomide,thalidomide,thalidomide,1998,1
+DICTrank,THIOGUANINE,WYWHKKSPHMUBEB,L01BB03,L,항종양·면역조절,exact,thioguanine,thioguanine,thioguanine,1966,0
+DICTrank,TOFACITINIB CITRATE,UJLAWZDWDVHWOW,L04AF01,L,항종양·면역조절,exact,tofacitinib citrate,tofacitinib citrate,tofacitinib,2012,1
+DICTrank,TOPOTECAN,UCFGDBYHRUNTLO,L01CE01,L,항종양·면역조절,exact,topotecan,topotecan,topotecan,1996,0
+DICTrank,TOREMIFENE CITRATE,XFCLJVABOIYOMF,L02BA02,L,항종양·면역조절,exact,toremifene citrate,toremifene citrate,toremifene,1997,1
+DICTrank,TRAMETINIB DIMETHYL SULFOXIDE,LIRYPHYGHXZJBZ,L01EE01,L,항종양·면역조절,exact,trametinib dimethyl sulfoxide,trametinib dimethyl sulfoxide,trametinib dimethyl sulfoxide,2013,1
+DICTrank,Temozolomide,BPEGJWRSRHCHSN,L01AX03,L,항종양·면역조절,exact,temozolomide,temozolomide,temozolomide,1999,0
+DICTrank,Tepotinib Hydrochloride,AHYMHWXQRWRBKT,L01EP02,L,항종양·면역조절,exact,tepotinib hydrochloride,tepotinib hydrochloride,tepotinib,2021,0
+DICTrank,Trabectedin,PKVRCIRHQMSYJX,L01CX01,L,항종양·면역조절,exact,trabectedin,trabectedin,trabectedin,2015,1
+DICTrank,VALRUBICIN,ZOCKGBMQLCSHFP,L01DB09,L,항종양·면역조절,exact,valrubicin,valrubicin,valrubicin,1998,0
+DICTrank,VANDETANIB,UHTHHESEBZOYNR,L01EX04,L,항종양·면역조절,exact,vandetanib,vandetanib,vandetanib,2011,1
+DICTrank,VEMURAFENIB,GPXBXXGIAQBQNI,L01EC01,L,항종양·면역조절,exact,vemurafenib,vemurafenib,vemurafenib,2011,1
+DICTrank,VINBLASTINE SULFATE,JXLYSJRDGCGARV,L01CA01,L,항종양·면역조절,exact,vinblastine sulfate,vinblastine sulfate,vinblastine,1965,1
+DICTrank,VINCRISTINE SULFATE,OGWKCGZFUXNPDA,L01CA02,L,항종양·면역조절,exact,vincristine sulfate,vincristine sulfate,vincristine,1963,1
+DICTrank,VISMODEGIB,BPQMGSKTAYIVFO,L01XJ01,L,항종양·면역조절,exact,vismodegib,vismodegib,vismodegib,2012,0
+DICTrank,VOCLOSPORIN,BICRTLVBTLFLRD,L04AD03,L,항종양·면역조절,exact,voclosporin,voclosporin,voclosporin,2021,1
+DICTrank,VORINOSTAT,WAEXFXRVDQXREF,L01XH01,L,항종양·면역조절,exact,vorinostat,vorinostat,vorinostat,2006,1
+DICTrank,Venetoclax,LQBVNQSMGBZMKD,L01XX52,L,항종양·면역조절,exact,venetoclax,venetoclax,venetoclax,2016,0
+DICTrank,ZANUBRUTINIB,RNOAOAWBMHREKO,L01EL03,L,항종양·면역조절,exact,zanubrutinib,zanubrutinib,zanubrutinib,2019,1
+DICTrank,avapritinib,DWYRIWUZIJHQKQ,L01EX18,L,항종양·면역조절,exact,avapritinib,avapritinib,avapritinib,2020,1
+DICTrank,baricitinib,XUZMWHLSFXCVMG,L04AF02,L,항종양·면역조절,exact,baricitinib,baricitinib,baricitinib,2018,1
+DICTrank,bortezomib,GXJABQQUPOEUTA,L01XG01,L,항종양·면역조절,exact,bortezomib,bortezomib,bortezomib,2003,1
+DICTrank,brigatinib,AILRADAXUVEEIR,L01ED04,L,항종양·면역조절,exact,brigatinib,brigatinib,brigatinib,2017,1
+DICTrank,cabozantinib s-malate,ONIQOQHATWINJY,L01EX07,L,항종양·면역조절,exact,cabozantinib s malate,cabozantinib s malate,cabozantinib s,2012,1
+DICTrank,cytarabine,UHDGCWIWMRVCDJ,L01BC01,L,항종양·면역조절,exact,cytarabine,cytarabine,cytarabine,1969,1
+DICTrank,dasatinib,ZBNZXTGUTAYRHI,L01EA02,L,항종양·면역조절,exact,dasatinib,dasatinib,dasatinib,2006,1
+DICTrank,diroximel fumarate,YIMYDTCOUQIDMT,L04AX09,L,항종양·면역조절,exact,diroximel fumarate,diroximel fumarate,diroximel,2019,0
+DICTrank,etoposide phosphate,LIQODXNTTZAGID,L01CB01,L,항종양·면역조절,exact,etoposide phosphate,etoposide phosphate,etoposide,1996,0
+DICTrank,goserelin acetate,BLCLNMBMMGCOAS,L02AE03,L,항종양·면역조절,exact,goserelin acetate,goserelin acetate,goserelin,1989,1
+DICTrank,ivosidenib,WIJZXSAJMHAVGX,L01XX62,L,항종양·면역조절,exact,ivosidenib,ivosidenib,ivosidenib,2018,1
+DICTrank,ixazomib citrate,MBOMYENWWXQSNW,L01XG03,L,항종양·면역조절,exact,ixazomib citrate,ixazomib citrate,ixazomib,2015,0
+DICTrank,melphalan flufenamide hydrochloride,YQZNKYXGZSVEHI,L01AA10,L,항종양·면역조절,exact,melphalan flufenamide hydrochloride,melphalan flufenamide hydrochloride,melphalan flufenamide,1964,0
+DICTrank,mitotane,JWBOIMRXGHLCPP,L01XX23,L,항종양·면역조절,exact,mitotane,mitotane,mitotane,1970,0
+DICTrank,monomethyl fumarate,NKHAVTQWNUWKEO,L04AX11,L,항종양·면역조절,exact,monomethyl fumarate,monomethyl fumarate,monomethyl,2020,0
+DICTrank,niraparib,PCHKPVIQAHNQLW,L01XK02,L,항종양·면역조절,exact,niraparib,niraparib,niraparib,2017,1
+DICTrank,paclitaxel,RCINICONZNJXQF,L01CD01,L,항종양·면역조절,exact,paclitaxel,paclitaxel,paclitaxel,1992,1
+DICTrank,ponatinib hydrochloride,PHXJVRSECIGDHY,L01EA05,L,항종양·면역조절,exact,ponatinib hydrochloride,ponatinib hydrochloride,ponatinib,2012,1
+DICTrank,rucaparib camsylate,HMABYWSNWIZPAG,L01XK03,L,항종양·면역조절,exact,rucaparib camsylate,rucaparib camsylate,rucaparib,2016,1
+DICTrank,selinexor,DEVSOMFAQLZNKR,L01XX66,L,항종양·면역조절,exact,selinexor,selinexor,selinexor,2019,1
+DICTrank,selpercatinib,XIIOFHFUYBLOLW,L01EX22,L,항종양·면역조절,exact,selpercatinib,selpercatinib,selpercatinib,2020,1
+DICTrank,tazemetostat hydrobromide,NSQSAUGJQHDYNO,L01XX72,L,항종양·면역조절,exact,tazemetostat hydrobromide,tazemetostat hydrobromide,tazemetostat,2020,0
+DICTrank,tivozanib hydrochloride,SPMVMDHWKHCIDT,L01EK03,L,항종양·면역조절,exact,tivozanib hydrochloride,tivozanib hydrochloride,tivozanib,2021,1
+DICTrank,triptorelin,VXKHXGOKWPXYNA,L02AE04,L,항종양·면역조절,exact,triptorelin,triptorelin,triptorelin,2000,1
+DICTrank,umbralisib tosylate,IUVCFHHAEHNCFT,L01EX25,L,항종양·면역조절,exact,umbralisib tosylate,umbralisib tosylate,umbralisib,2021,0
+DICTrank,upadacitinib,WYQFJHHDOKWSHR,L04AF03,L,항종양·면역조절,exact,upadacitinib,upadacitinib,upadacitinib,2019,1
+DICTrank,vinorelbine tartrate,GBABOYUKABKIAF,L01CA04,L,항종양·면역조절,exact,vinorelbine tartrate,vinorelbine tartrate,vinorelbine,1994,1
+DILIrank,Abemaciclib,UZWDCWONPYILKI,L01EF03,L,항종양·면역조절,exact,abemaciclib,abemaciclib,abemaciclib,2017,1
+DILIrank,Abiraterone acetate,UVIQSJCZCSLXRZ,L02BX03,L,항종양·면역조절,exact,abiraterone acetate,abiraterone acetate,abiraterone,2011,1
+DILIrank,Alpelisib,STUWGJZDJHPWGZ,L01EM03,L,항종양·면역조절,exact,alpelisib,alpelisib,alpelisib,2019,1
+DILIrank,Anastrozole,YBBLVLTVTVSKRW,L02BG03,L,항종양·면역조절,exact,anastrozole,anastrozole,anastrozole,1995,1
+DILIrank,Apalutamide,HJBWBFZLDZWPHF,L02BB05,L,항종양·면역조절,exact,apalutamide,apalutamide,apalutamide,2018,0
+DILIrank,Apremilast,IMOZEMNVLZVGJZ,L04AA32,L,항종양·면역조절,exact,apremilast,apremilast,apremilast,2014,0
+DILIrank,Azathioprine,LMEKQMALGUDUQG,L04AX01,L,항종양·면역조절,exact,azathioprine,azathioprine,azathioprine,1968,1
+DILIrank,Bendamustine hydrochloride,YTKUWDBFDASYHO,L01AA09,L,항종양·면역조절,exact,bendamustine hydrochloride,bendamustine hydrochloride,bendamustine,2008,0
+DILIrank,Bexarotene,NAVMQTYZDKMPEU,L01XF03,L,항종양·면역조절,exact,bexarotene,bexarotene,bexarotene,1999,1
+DILIrank,Bicalutamide,LKJPYSCBVHEWIU,L02BB03,L,항종양·면역조절,exact,bicalutamide,bicalutamide,bicalutamide,1995,1
+DILIrank,Bortezomib,GXJABQQUPOEUTA,L01XG01,L,항종양·면역조절,exact,bortezomib,bortezomib,bortezomib,2003,1
+DILIrank,Bosutinib monohydrate,UBPYILGKFZZVDX,L01EA04,L,항종양·면역조절,exact,bosutinib monohydrate,bosutinib monohydrate,bosutinib,2012,1
+DILIrank,Busulfan,COVZYZSDYWQREU,L01AB01,L,항종양·면역조절,exact,busulfan,busulfan,busulfan,1954,1
+DILIrank,Capecitabine,GAGWJHPBXLXJQN,L01BC06,L,항종양·면역조절,exact,capecitabine,capecitabine,capecitabine,1998,1
+DILIrank,Capmatinib hydrochloride,LIOLIMKSCNQPLV,L01EP01,L,항종양·면역조절,exact,capmatinib hydrochloride,capmatinib hydrochloride,capmatinib,2020,1
+DILIrank,Carboplatin,CCQPAEQGAVNNIA,L01XA02,L,항종양·면역조절,exact,carboplatin,carboplatin,carboplatin,1989,1
+DILIrank,Carfilzomib,BLMPQMFVWMYDKT,L01XG02,L,항종양·면역조절,exact,carfilzomib,carfilzomib,carfilzomib,2012,1
+DILIrank,Celecoxib,RZEKVGVHFLEQIL,L01XX33,L,항종양·면역조절,exact,celecoxib,celecoxib,celecoxib,1998,1
+DILIrank,Ceritinib,VERWOWGGCGHDQE,L01ED02,L,항종양·면역조절,exact,ceritinib,ceritinib,ceritinib,2014,1
+DILIrank,Chlorambucil,JCKYGMPEJWAADB,L01AA02,L,항종양·면역조절,exact,chlorambucil,chlorambucil,chlorambucil,1957,1
+DILIrank,Cladribine,PTOAARAWEBMLNO,L01BB04,L,항종양·면역조절,exact,cladribine,cladribine,cladribine,1993,1
+DILIrank,Copanlisib dihydrochloride,MWYDSXOGIBMAET,L01EM02,L,항종양·면역조절,salt_stripped,copanlisib,copanlisib dihydrochloride,copanlisib,2017,0
+DILIrank,Crizotinib,KTEIFNKAUNYNJU,L01ED01,L,항종양·면역조절,exact,crizotinib,crizotinib,crizotinib,2011,1
+DILIrank,Cyclophosphamide,CMSMOCZEIVJLDB,L01AA01,L,항종양·면역조절,exact,cyclophosphamide,cyclophosphamide,cyclophosphamide,1959,1
+DILIrank,Cyclosporine,PMATZTZNYRCHOR,L04AD01,L,항종양·면역조절,exact,cyclosporine,cyclosporine,cyclosporine,1983,1
+DILIrank,Cytarabine,UHDGCWIWMRVCDJ,L01BC01,L,항종양·면역조절,exact,cytarabine,cytarabine,cytarabine,1969,1
+DILIrank,Dacarbazine,FDKXTQMXEQVLRF,L01AX04,L,항종양·면역조절,exact,dacarbazine,dacarbazine,dacarbazine,1975,1
+DILIrank,Dacomitinib,LVXJQMNHJWSHET,L01EB07,L,항종양·면역조절,exact,dacomitinib,dacomitinib,dacomitinib,2018,1
+DILIrank,Dactinomycin,RJURFGZVJUQBHK,L01DA01,L,항종양·면역조절,exact,dactinomycin,dactinomycin,dactinomycin,1964,1
+DILIrank,Dasatinib,ZBNZXTGUTAYRHI,L01EA02,L,항종양·면역조절,exact,dasatinib,dasatinib,dasatinib,2006,1
+DILIrank,Daunorubicin hydrochloride,STQGQHZAVUOBTE,L01DB02,L,항종양·면역조절,exact,daunorubicin hydrochloride,daunorubicin hydrochloride,daunorubicin,1979,0
+DILIrank,Dimethyl fumarate,LDCRTTXIJACKKU,L04AX07,L,항종양·면역조절,exact,dimethyl fumarate,dimethyl fumarate,dimethyl,2013,1
+DILIrank,Docetaxel,ZDZOTLJHXYCWBA,L01CD02,L,항종양·면역조절,exact,docetaxel,docetaxel,docetaxel,1996,1
+DILIrank,Doxorubicin hydrochloride,AOJJSUZBOXZQNB,L01DB01,L,항종양·면역조절,exact,doxorubicin hydrochloride,doxorubicin hydrochloride,doxorubicin,1974,1
+DILIrank,Enzalutamide,WXCXUHSOUPDCQV,L02BB04,L,항종양·면역조절,exact,enzalutamide,enzalutamide,enzalutamide,2012,0
+DILIrank,Erlotinib hydrochloride,AAKJLRGGTJKAMG,L01EB02,L,항종양·면역조절,exact,erlotinib hydrochloride,erlotinib hydrochloride,erlotinib,2004,1
+DILIrank,Estramustine phosphate sodium,ADFOJJHRTBFFOF,L01XX11,L,항종양·면역조절,exact,estramustine phosphate sodium,estramustine phosphate sodium,estramustine,1981,1
+DILIrank,Etoposide,VJJPUSNTGOMMGY,L01CB01,L,항종양·면역조절,exact,etoposide,etoposide,etoposide,1983,1
+DILIrank,Everolimus,HKVAMNSJSFKALM,L01EG02,L,항종양·면역조절,exact,everolimus,everolimus,everolimus,2009,1
+DILIrank,Exemestane,BFYIZQONLCFLEV,L02BG06,L,항종양·면역조절,exact,exemestane,exemestane,exemestane,1999,1
+DILIrank,Fingolimod hydrochloride,KKGQTZUTZRNORY,L04AE01,L,항종양·면역조절,exact,fingolimod hydrochloride,fingolimod hydrochloride,fingolimod,2010,1
+DILIrank,Fludarabine phosphate,GIUYCYHIANZCFB,L01BB05,L,항종양·면역조절,exact,fludarabine phosphate,fludarabine phosphate,fludarabine,1991,0
+DILIrank,Fluorouracil,GHASVSINZRGABV,L01BC02,L,항종양·면역조절,exact,fluorouracil,fluorouracil,fluorouracil,1962,1
+DILIrank,Flutamide,MKXKFYHWDHIYRV,L02BB01,L,항종양·면역조절,exact,flutamide,flutamide,flutamide,1989,1
+DILIrank,Gefitinib,XGALLCVXEZPNRQ,L01EB01,L,항종양·면역조절,exact,gefitinib,gefitinib,gefitinib,2003,1
+DILIrank,Gemcitabine hydrochloride,SDUQYLNIPVEERB,L01BC05,L,항종양·면역조절,exact,gemcitabine hydrochloride,gemcitabine hydrochloride,gemcitabine,1996,1
+DILIrank,Hydroxyurea,VSNHCAURESNICA,L01XX05,L,항종양·면역조절,exact,hydroxyurea,hydroxyurea,hydroxyurea,1967,1
+DILIrank,Ibrutinib,XYFPWWZEPKGCCK,L01EL01,L,항종양·면역조절,exact,ibrutinib,ibrutinib,ibrutinib,2013,1
+DILIrank,Idelalisib,IFSDAJWBUCMOAH,L01EM01,L,항종양·면역조절,exact,idelalisib,idelalisib,idelalisib,2014,1
+DILIrank,Ifosfamide,HOMGKSMUEGBAAB,L01AA06,L,항종양·면역조절,exact,ifosfamide,ifosfamide,ifosfamide,1987,1
+DILIrank,Imatinib mesylate,KTUFNOKKBVMGRW,L01EA01,L,항종양·면역조절,exact,imatinib mesylate,imatinib mesylate,imatinib,2001,1
+DILIrank,Interferon alfa-2b,TVLSRXXIMLFWEO,L03AB05,L,항종양·면역조절,exact,interferon alfa 2b,interferon alfa 2b,interferon alfa 2b,1986,1
+DILIrank,Irinotecan hydrochloride,UWKQSNNFCGGAFS,L01CE02,L,항종양·면역조절,exact,irinotecan hydrochloride,irinotecan hydrochloride,irinotecan,1996,1
+DILIrank,Lapatinib ditosylate,BCFGMOOMADDAQU,L01EH01,L,항종양·면역조절,exact,lapatinib ditosylate,lapatinib ditosylate,lapatinib ditosylate,2007,1
+DILIrank,Leflunomide,VHOGYURTWQBHIL,L04AK01,L,항종양·면역조절,exact,leflunomide,leflunomide,leflunomide,1998,1
+DILIrank,Lenalidomide,GOTYRUGSSMKFNF,L04AX04,L,항종양·면역조절,exact,lenalidomide,lenalidomide,lenalidomide,2005,1
+DILIrank,Letrozole,HPJKCIUCZWXJDR,L02BG04,L,항종양·면역조절,exact,letrozole,letrozole,letrozole,1997,1
+DILIrank,Leuprolide acetate,GFIJNRVAKGFPGQ,L02AE02,L,항종양·면역조절,exact,leuprolide acetate,leuprolide acetate,leuprolide,1985,1
+DILIrank,Lomustine,GQYIWUVLTXOXAJ,L01AD02,L,항종양·면역조절,exact,lomustine,lomustine,lomustine,1976,1
+DILIrank,Melphalan,SGDBTWWWUNNDEQ,L01AA03,L,항종양·면역조절,exact,melphalan,melphalan,melphalan,1964,1
+DILIrank,Mercaptopurine,GLVAUDGFNGKCSF,L01BB02,L,항종양·면역조절,exact,mercaptopurine,mercaptopurine,mercaptopurine,1953,1
+DILIrank,Methotrexate sodium,FBOZXECLQNJBKD,L01BA01,L,항종양·면역조절,exact,methotrexate sodium,methotrexate sodium,methotrexate,1953,1
+DILIrank,Mitomycin,NWIBSHFKIJFRCO,L01DC03,L,항종양·면역조절,exact,mitomycin,mitomycin,mitomycin,1981,1
+DILIrank,Mitotane,JWBOIMRXGHLCPP,L01XX23,L,항종양·면역조절,exact,mitotane,mitotane,mitotane,1970,0
+DILIrank,Mitoxantrone hydrochloride,KKZJGLLVHKMTCM,L01DB07,L,항종양·면역조절,exact,mitoxantrone hydrochloride,mitoxantrone hydrochloride,mitoxantrone,1987,1
+DILIrank,Mycophenolate mofetil,RTGDFNSFWBGLEC,L04AA06,L,항종양·면역조절,exact,mycophenolate mofetil,mycophenolate mofetil,mycophenolate mofetil,1995,1
+DILIrank,Nelarabine,IXOXBSCIXZEQEQ,L01BB07,L,항종양·면역조절,exact,nelarabine,nelarabine,nelarabine,2005,1
+DILIrank,Nilotinib hydrochloride,HHZIURLSWUIHRB,L01EA03,L,항종양·면역조절,salt_stripped,nilotinib,nilotinib hydrochloride,nilotinib,2007,1
+DILIrank,Nilutamide,XWXYUMMDTVBTOU,L02BB02,L,항종양·면역조절,exact,nilutamide,nilutamide,nilutamide,1996,1
+DILIrank,Nintedanib esylate,CPMDPSXJELVGJG,L01EX09,L,항종양·면역조절,exact,nintedanib esylate,nintedanib esylate,nintedanib esylate,2014,1
+DILIrank,Olaparib,FDLYAMZZIXQODN,L01XK01,L,항종양·면역조절,exact,olaparib,olaparib,olaparib,2014,1
+DILIrank,Osimertinib mesylate,DUYJMQONPNNFPI,L01EB04,L,항종양·면역조절,exact,osimertinib mesylate,osimertinib mesylate,osimertinib,2015,1
+DILIrank,Oxaliplatin,SBDHODHEVRCXGI,L01XA03,L,항종양·면역조절,exact,oxaliplatin,oxaliplatin,oxaliplatin,2002,1
+DILIrank,Paclitaxel,RCINICONZNJXQF,L01CD01,L,항종양·면역조절,exact,paclitaxel,paclitaxel,paclitaxel,1992,1
+DILIrank,Palbociclib,AHJRHEGDXFFMBM,L01EF01,L,항종양·면역조절,exact,palbociclib,palbociclib,palbociclib,2015,1
+DILIrank,Pazopanib hydrochloride,CUIHSIWYWATEQL,L01EX03,L,항종양·면역조절,exact,pazopanib hydrochloride,pazopanib hydrochloride,pazopanib,2009,1
+DILIrank,Pentostatin,FPVKHBSQESCIEP,L01XX08,L,항종양·면역조절,exact,pentostatin,pentostatin,pentostatin,1991,1
+DILIrank,Pexidartinib hydrochloride,JGWRKYUXBBNENE,L01EX15,L,항종양·면역조절,exact,pexidartinib hydrochloride,pexidartinib hydrochloride,pexidartinib,2019,1
+DILIrank,Pirfenidone,ISWRGOKTTBVCFA,L04AX05,L,항종양·면역조절,exact,pirfenidone,pirfenidone,pirfenidone,2014,1
+DILIrank,Plerixafor,YIQPUIGJQJDJOS,L03AX16,L,항종양·면역조절,exact,plerixafor,plerixafor,plerixafor,2008,0
+DILIrank,Pomalidomide,UVSMNLNDYGZFPF,L04AX06,L,항종양·면역조절,exact,pomalidomide,pomalidomide,pomalidomide,2013,1
+DILIrank,Procarbazine hydrochloride,CPTBDICYNRMXFX,L01XB01,L,항종양·면역조절,exact,procarbazine hydrochloride,procarbazine hydrochloride,procarbazine,1969,1
+DILIrank,Regorafenib,FNHKPVJBJVTLMP,L01EX05,L,항종양·면역조절,exact,regorafenib,regorafenib,regorafenib,2012,1
+DILIrank,Ribociclib succinate,RHXHGRAEPCAFML,L01EF02,L,항종양·면역조절,exact,ribociclib succinate,ribociclib succinate,ribociclib,2017,1
+DILIrank,Romidepsin,OHRURASPPZQGQM,L01XH02,L,항종양·면역조절,exact,romidepsin,romidepsin,romidepsin,2009,0
+DILIrank,Sirolimus,QFJCIRLUMZQUOT,L01EG04,L,항종양·면역조절,exact,sirolimus,sirolimus,sirolimus,1999,1
+DILIrank,Sorafenib tosylate,MLDQJTXFUGDVEO,L01EX02,L,항종양·면역조절,exact,sorafenib tosylate,sorafenib tosylate,sorafenib,2005,1
+DILIrank,Sunitinib malate,WINHZLLDWRZWRT,L01EX01,L,항종양·면역조절,exact,sunitinib malate,sunitinib malate,sunitinib,2006,1
+DILIrank,Tamoxifen citrate,NKANXQFJJICGDU,L02BA01,L,항종양·면역조절,exact,tamoxifen citrate,tamoxifen citrate,tamoxifen,1977,1
+DILIrank,Temozolomide,BPEGJWRSRHCHSN,L01AX03,L,항종양·면역조절,exact,temozolomide,temozolomide,temozolomide,1999,1
+DILIrank,Temsirolimus,CBPNZQVSJQDFBE,L01EG01,L,항종양·면역조절,exact,temsirolimus,temsirolimus,temsirolimus,2007,0
+DILIrank,Teniposide,NRUKOCRGYNPUPR,L01CB02,L,항종양·면역조절,exact,teniposide,teniposide,teniposide,1992,1
+DILIrank,Teriflunomide,UTNUDOFZCWSZMS,L04AK02,L,항종양·면역조절,exact,teriflunomide,teriflunomide,teriflunomide,2012,1
+DILIrank,Thalidomide,UEJJHQNACJXSKW,L04AX02,L,항종양·면역조절,exact,thalidomide,thalidomide,thalidomide,1998,1
+DILIrank,Thioguanine,WYWHKKSPHMUBEB,L01BB03,L,항종양·면역조절,exact,thioguanine,thioguanine,thioguanine,1966,1
+DILIrank,Thiotepa,FOCVUCIESVLUNU,L01AC01,L,항종양·면역조절,exact,thiotepa,thiotepa,thiotepa,1959,1
+DILIrank,Topotecan hydrochloride,UCFGDBYHRUNTLO,L01CE01,L,항종양·면역조절,exact,topotecan hydrochloride,topotecan hydrochloride,topotecan,1996,0
+DILIrank,Trametinib dimethyl sulfoxide,LIRYPHYGHXZJBZ,L01EE01,L,항종양·면역조절,exact,trametinib dimethyl sulfoxide,trametinib dimethyl sulfoxide,trametinib dimethyl sulfoxide,2013,1
+DILIrank,Triptorelin pamoate,VXKHXGOKWPXYNA,L02AE04,L,항종양·면역조절,exact,triptorelin pamoate,triptorelin pamoate,triptorelin,2000,1
+DILIrank,Vemurafenib,GPXBXXGIAQBQNI,L01EC01,L,항종양·면역조절,exact,vemurafenib,vemurafenib,vemurafenib,2011,1
+DILIrank,Venetoclax,LQBVNQSMGBZMKD,L01XX52,L,항종양·면역조절,exact,venetoclax,venetoclax,venetoclax,2016,1
+DILIrank,Vinblastine sulfate,JXLYSJRDGCGARV,L01CA01,L,항종양·면역조절,exact,vinblastine sulfate,vinblastine sulfate,vinblastine,1965,1
+DILIrank,Vincristine sulfate,OGWKCGZFUXNPDA,L01CA02,L,항종양·면역조절,exact,vincristine sulfate,vincristine sulfate,vincristine,1963,1
+DILIrank,Voclosporin,BICRTLVBTLFLRD,L04AD03,L,항종양·면역조절,exact,voclosporin,voclosporin,voclosporin,2021,0
+DILIrank,Vorinostat,WAEXFXRVDQXREF,L01XH01,L,항종양·면역조절,exact,vorinostat,vorinostat,vorinostat,2006,0
+DILIrank,Zanubrutinib,RNOAOAWBMHREKO,L01EL03,L,항종양·면역조절,exact,zanubrutinib,zanubrutinib,zanubrutinib,2019,1

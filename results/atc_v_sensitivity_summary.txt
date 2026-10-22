@@ -1,0 +1,57 @@
+==========================================================================
+ATC V(진단·조영·방사성의약품) 제외 민감도 분석
+==========================================================================
+절단 2010년 | 무작위 기준 20회 평균 | seed 42
+
+--------------------------------------------------------------------------
+DILIrank  n=796  ->  V 제외 후 752  (제외 44건)
+--------------------------------------------------------------------------
+  제외: 학습군 29건, 검증군 15건
+  Amifostine, Aminohippurate sodium, Calcium acetate, Copper cu-64 dotatate, Corticorelin ovine triflutate, Deferasirox, Deferoxamine mesylate, Diatrizoate sodium, Difelikefalin acetate, Dimercaprol, Edrophonium chloride, Florbetapir f-18, Flortaucipir f-18, Fluciclovine f-18, Flumazenil, Fluorodopa f-18, Flutemetamol f-18, Gadobenate dimeglumine, Gadobutrol, Gadofosveset trisodium, Gadopentetate dimeglumine, Gadoterate meglumine, Gadoteridol, Gadoversetamide, Gadoxetate disodium
+
+  무작위 기준 계산 중 (전체 집합, 20회) ...
+  무작위 기준 계산 중 (V 제외 집합, 20회) ...
+
+  전체 (주 분석)      n= 796 검증군 156 양성 30.8%
+                 AUROC 0.6476 | ECE 0.4384 (무작위 0.1300, 배율 3.37)
+                 보정 기여율 86.1% (판별력 13.9%)
+
+  ATC V 제외       n= 752 검증군 141 양성 34.0%
+                 AUROC 0.6335 | ECE 0.4574 (무작위 0.1329, 배율 3.44)
+                 보정 기여율 91.2% (판별력 8.8%)
+
+--------------------------------------------------------------------------
+DICTrank  n=919  ->  V 제외 후 875  (제외 44건)
+--------------------------------------------------------------------------
+  제외: 학습군 26건, 검증군 18건
+  Dimercaprol, EDETATE CALCIUM DISODIUM, LEUCOVORIN CALCIUM, edrophonium chloride, PRALIDOXIME CHLORIDE, DEFEROXAMINE MESYLATE, Iohexol, IOPAMIDOL, Iodixanol, GALLIUM GA-68 GOZETOTIDE, TECHNETIUM TC-99M MEDRONATE, Flortaucipir F-18, IOBENGUANE I-131, AMIFOSTINE, Sincalide, Flutemetamol F-18, indocyanine green, GADOXETATE DISODIUM, SUGAMMADEX SODIUM, CALCIUM GLUCONATE MONOHYDRATE, PERFLUTREN, gadodiamide, SAMARIUM SM-153 LEXIDRONAM PENTASODIUM, FLORBETAPIR F-18, PAFOLACIANINE SODIUM
+
+  무작위 기준 계산 중 (전체 집합, 20회) ...
+  무작위 기준 계산 중 (V 제외 집합, 20회) ...
+
+  전체 (주 분석)      n= 919 검증군 267 양성 61.4%
+                 AUROC 0.6198 | ECE 0.2702 (무작위 0.1377, 배율 1.96)
+                 보정 기여율 82.5% (판별력 17.5%)
+
+  ATC V 제외       n= 875 검증군 249 양성 62.7%
+                 AUROC 0.6178 | ECE 0.2547 (무작위 0.1375, 배율 1.85)
+                 보정 기여율 86.7% (판별력 13.3%)
+
+==========================================================================
+판정
+==========================================================================
+
+  DILIrank
+    ECE 배율      3.37 -> 3.44 (+0.07)
+    보정 기여율   86.1% -> 91.2% (+5.1pp)
+    AUROC         0.6476 -> 0.6335
+
+  DICTrank
+    ECE 배율      1.96 -> 1.85 (-0.11)
+    보정 기여율   82.5% -> 86.7% (+4.2pp)
+    AUROC         0.6198 -> 0.6178
+
+  => 진단·조영제를 빼도 (ECE 배율 > 1, 보정 기여율 > 50%) 유지.
+     보정 붕괴가 이 계열 때문에 생긴 착시가 아니다.
+
+주의: 본문 주 분석 수치는 '전체' 행이다. 이 표는 강건성 근거다.

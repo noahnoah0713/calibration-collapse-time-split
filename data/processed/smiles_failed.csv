@@ -1,0 +1,114 @@
+LTKBID,CompoundName,label,Comment
+LT01402,Abatacept,vLess,Unchanged
+LT01330,Abciximab,vNo,Unchanged
+LT01387,Adalimumab,vLess,Unchanged
+LT02385,Agalsidase beta,vNo,Unchanged
+LT01319,Aldesleukin,Ambiguous,Unchanged
+LT01364,Alemtuzumab,vLess,Revised
+LT01404,Alglucosidase alfa,vNo,Unchanged
+LT01315,Alteplase,vNo,Unchanged
+LT01373,Anakinra,vLess,Unchanged
+LT01442,Antithymocyte globulin,Ambiguous,Unchanged
+LT01303,Asparaginase,vMost,Unchanged
+LT01346,Basiliximab,vNo,Unchanged
+LT01276,Benzylpenicilloyl polylysine,vNo,Unchanged
+LT01390,Bevacizumab,vNo,Unchanged
+LT01305,Botulinum toxin type a,vNo,Unchanged
+LT01356,Botulinum toxin type b,vNo,Unchanged
+LT02432,Canakinumab,vLess,Unchanged
+LT03648,Casimersen,vNo,New
+LT01412,Certolizumab pegol,vLess,Revised
+LT01389,Cetuximab,vNo,Unchanged
+LT00328,Cholestyramine,Ambiguous,Unchanged
+LT01082,Choriogonadotropin alfa,Ambiguous,Unchanged
+LT01080,Colesevelam hydrochloride,Ambiguous,Unchanged
+LT02430,Crofelemer,Ambiguous,New
+LT03562,Dalbavancin hydrochloride,Ambiguous,New
+LT00961,Dalteparin sodium,vLess,Unchanged
+LT01374,Darbepoetin alfa,vLess,Unchanged
+LT03655,Dasiglucagon hydrochloride,vNo,New
+LT01774,Defibrotide sodium,vNo,New
+LT01347,Denileukin diftitox,Ambiguous,Unchanged
+LT00695,Dermatan,vMost,Unchanged
+LT01414,Eculizumab,vLess,Revised
+LT00954,Enoxaparin sodium,vLess,Unchanged
+LT01353,Etanercept,vLess,Unchanged
+LT03675,Eteplirsen,vNo,New
+LT00967,Ferumoxides,vNo,Unchanged
+LT00966,Ferumoxsil,vNo,Unchanged
+LT01320,Filgrastim,vLess,Revised
+LT01953,Follitropin alfa/beta,Ambiguous,Unchanged
+LT01401,Galsulfase,vNo,Unchanged
+LT00477,Gemtuzumab ozogamicin,vMost,Unchanged
+LT03686,Givosiran sodium,vLess,New
+LT00985,Glatiramer acetate,vLess,Revised
+LT01419,Golimumab,Ambiguous,Unchanged
+LT03688,Golodirsen,vNo,New
+LT02382,Hetastarch,vNo,Unchanged
+LT00725,Hyaluronidase,vNo,Unchanged
+LT02913,Hyaluronidase recombinant human,vNo,Unchanged
+LT01378,Ibritumomab tiuxetan,vNo,Unchanged
+LT01409,Idursulfase,vNo,Unchanged
+LT02384,Imiglucerase,vNo,Unchanged
+LT03691,Inclisiran sodium,vLess,New
+LT01350,Infliximab,vMost,Unchanged
+LT03693,Inotersen sodium,Ambiguous,New
+LT01311,"Interferon alfa-2a, recombinant",vMost,Unchanged
+LT01336,Interferon alfacon-1,vMost,Unchanged
+LT01332,Interferon beta-1a,vMost,Unchanged
+LT01328,Interferon beta-1b,vMost,Unchanged
+LT01354,Interferon gamma-1b,Ambiguous,Unchanged
+LT00568,Ivermectin,vLess,Unchanged
+LT02907,Laronidase,Ambiguous,Unchanged
+LT03705,Lumasiran sodium,vNo,New
+LT01227,Mecasermin recombinant,Ambiguous,Unchanged
+LT01326,Muromonab-cd3,Ambiguous,Unchanged
+LT01393,Natalizumab,vMost,Unchanged
+LT03720,Nusinersen sodium,vNo,New
+LT01421,Ofatumumab,vNo,Unchanged
+LT01377,Omalizumab,vNo,Unchanged
+LT01339,Oprelvekin,vNo,Unchanged
+LT00702,Pafuraidine,vMost,Unchanged
+LT01392,Palifermin,vNo,Unchanged
+LT01349,Palivizumab,vNo,Unchanged
+LT00674,Pancrelipase,vNo,Unchanged
+LT01408,Panitumumab,vNo,Unchanged
+LT03730,Patiromer sorbitex calcium,vNo,New
+LT03731,Patisiran sodium,vNo,New
+LT00941,Pegademase bovine,vNo,Unchanged
+LT01322,Pegaspargase,vLess,Unchanged
+LT03732,Pegcetacoplan,vNo,New
+LT01380,Pegfilgrastim,vNo,Unchanged
+LT01376,Peginterferon alfa-2a,Ambiguous,Unchanged
+LT01367,Peginterferon alfa-2b,vMost,Unchanged
+LT01069,Pegvisomant,Ambiguous,Unchanged
+LT00956,Pentosan polysulfate sodium,Ambiguous,Unchanged
+LT00805,Phentermine resin complex,vLess,Unchanged
+LT00995,Polyethylene glycol 3350,vNo,Unchanged
+LT01291,Polymyxin b sulfate,vNo,Unchanged
+LT01688,Polythiazide,Ambiguous,Unchanged
+LT00972,Porfimer sodium,vNo,Unchanged
+LT00728,Protamine sulfate,vNo,Unchanged
+LT03913,Radium ra-223 dichloride,vNo,New
+LT01363,Rasburicase,vNo,Unchanged
+LT01351,Reteplase,vNo,Unchanged
+LT01415,Rilonacept,vNo,Unchanged
+LT01417,Romiplostim,vNo,Unchanged
+LT00463,Sacrosidase,Ambiguous,Unchanged
+LT01321,Sargramostim,vNo,Unchanged
+LT00355,Secretin synthetic human,vNo,Unchanged
+LT01039,Sevelamer hydrochloride,vNo,Unchanged
+LT02171,Simethicone-cellulose,vNo,Unchanged
+LT00801,Sodium polystyrene sulfonate,vNo,Unchanged
+LT00888,Somatropin,vNo,Unchanged
+LT00358,Sucralfate,vNo,Unchanged
+LT02329,Technetium tc-99m exametazime kit,vNo,Unchanged
+LT01360,Tenecteplase,vNo,Unchanged
+LT00036,Tetracycline phosphate complex,vLess,Unchanged
+LT00751,Thyrotropin alfa,vNo,Unchanged
+LT00973,Tinzaparin sodium,Ambiguous,Unchanged
+LT01352,Trastuzumab,vLess,Unchanged
+LT01229,Urokinase,vNo,Unchanged
+LT01416,Ustekinumab,vLess,Revised
+LT01075,Verteporfin,Ambiguous,Unchanged
+LT03789,Viltolarsen,vNo,New
