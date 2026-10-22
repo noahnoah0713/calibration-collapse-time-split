@@ -10,7 +10,7 @@
     DILIrank  경계 1997년  그 해 학습군 16개 중 2개만 보정셋에 들어간다
     DICTrank  경계 1998년  그 해 학습군 20개 중 3개만 보정셋에 들어간다
 
-나머지 14개 / 17개를 누가 대신할지는 **정렬 함수의 동점 처리**가 정한다.
+나머지 14개 / 17개를 누가 대신할지는 정렬 함수의 동점 처리가 정한다.
 
     conformal_prediction.py : np.argsort(yr[train_idx])   -> quicksort (불안정)
     recalibration.py        : df.sort_values("approval_year")  -> quicksort (불안정)
@@ -21,7 +21,7 @@
 계산한 §9.6 은 0.705 다. 이 0.032 차이가 결론을 위협하는지 재야 한다.
 
 게다가 행 순서가 바뀌면 XGBoost 의 subsample/colsample 이 다른 행을
-뽑으므로 **모델 자체가 달라진다**. 두 효과를 분리한다.
+뽑으므로 모델 자체가 달라진다. 두 효과를 분리한다.
 
 실험 3종
 --------

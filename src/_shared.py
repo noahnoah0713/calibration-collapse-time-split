@@ -83,7 +83,7 @@ class DeterministicRF(RandomForestClassifier):
     2026-09-30 결정성 검사에서 같은 데이터·같은 시드로 두 번 적합했을 때
     예측확률이 실행마다 마지막 비트에서 달라졌다 (DILIrank 최대차 1.1e-16,
     DICTrank 2.2e-16). 원인은 sklearn 의 predict_proba 가 나무별 예측을
-    joblib 스레드로 **공유 배열에 덧셈 누적**하기 때문이다. 부동소수 덧셈은
+    joblib 스레드로 공유 배열에 덧셈 누적하기 때문이다. 부동소수 덧셈은
     순서에 따라 마지막 비트가 달라지고, 스레드 완료 순서는 매번 다르다.
 
     적합(fit)은 나무마다 난수 시드가 정해져 있어 스레드 수와 무관하게 같다.
@@ -142,7 +142,7 @@ def grid_reps():
     """모델×표현 격자에서 쓰는 분자 표현 4종. 이름 -> mols 를 받는 함수.
 
     2026-10-01: robustness.py 와 grid_calibration.py 가 같은 이름의 표현을
-    각자 정의하면서 **dtype 이 달랐다**. robustness 는 지문·기술자 모두
+    각자 정의하면서 dtype 이 달랐다. robustness 는 지문·기술자 모두
     float32 였고, grid_calibration 은 지문 int8 + 기술자 float64 (hstack 뒤
     float64) 였다. 값은 같고 정밀도만 달랐으므로 트리 모델(XGBoost,
     RandomForest)은 같은 결과를 냈지만, 스케일링과 최적화를 거치는
@@ -200,7 +200,7 @@ def ece(y, p, n_bins=N_BINS):
 
 def calib_slope(y, p):
     # 2026-10-20: XGBoost 의 predict_proba 는 float32 를 돌려준다.
-    # 캐스팅하지 않으면 로짓과 그 뒤의 로지스틱 적합이 **단정밀도**로
+    # 캐스팅하지 않으면 로짓과 그 뒤의 로지스틱 적합이 단정밀도로
     # 일어나고, 같은 지표가 어디서 왔는지에 따라 정밀도가 달라진다
     # (§10 Platt 계수가 §10.5 와 2.1e-04 어긋난 원인이다,
     # src/diff_ladder.py 단계 10). float64 로 올려 통일한다.

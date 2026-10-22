@@ -90,7 +90,7 @@ def load(path):
 
 
 def ece(y, p, n_bins=N_BINS):
-    """_shared.ece 와 **식까지 같아야 한다**.
+    """_shared.ece 와 식까지 같아야 한다.
 
     2026-10-20: 이 파일만 구간별 가중을 마지막에 n 으로 나누고 있었다
     (다른 여섯 정의는 구간마다 m.sum()/len(p) 로 나눈다). 수학적으로는

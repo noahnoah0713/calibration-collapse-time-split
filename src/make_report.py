@@ -8119,7 +8119,7 @@ w()
 # 판정 열은 여섯 행 모두 "맞춤 실패" 였다. 그래서 판정도 파일에서 읽는다.
 _mt = sm2m["matched"].astype(str).str.strip().str.lower().isin(("true", "1"))
 _nmt, _nall = int(_mt.sum()), len(sm2m)
-# 추가로 **탐색한** alpha (거친 격자 0.0·0.2·…·1.0 밖의 값)를 적는다.
+# 추가로 탐색한 alpha (거친 격자 0.0·0.2·…·1.0 밖의 값)를 적는다.
 # 선택된 alpha_star 만 적으면 "추가로 돌렸다" 와 어긋난다.
 _coarse = {0.0, 0.2, 0.4, 0.6, 0.8, 1.0}
 _fine = sorted(v for v in set(sm2.alpha_num.round(2)) if round(v, 2) not in _coarse)
