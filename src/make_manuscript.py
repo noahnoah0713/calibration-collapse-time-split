@@ -34,6 +34,14 @@ MAN = os.path.join(ROOT, "manuscript")
 SRC = os.path.join(MAN, "main.tex")
 OUT = os.path.join(MAN, "submission.tex")
 
+if not os.path.exists(SRC):
+    # 2026-10-22: 공개 저장소에는 원고를 넣지 않는다 (재현과 무관하고
+    # 게재 전이다). 원고가 없으면 조립할 것이 없으므로 실패가 아니라
+    # 건너뛴다. rerun_all.sh 의 run() 은 0 이 아닌 종료코드를 받으면
+    # 전체를 중단시키므로, 그대로 두면 받은 사람의 재현이 여기서 멈춘다.
+    print("건너뜀 — %s 가 없다 (원고는 이 저장소에 포함하지 않는다)." % SRC)
+    raise SystemExit(0)
+
 
 def expand(path, seen, depth=0):
     if depth > 8:

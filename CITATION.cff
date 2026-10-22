@@ -9,7 +9,7 @@ authors:
     given-names: Noah
     alias: 이노아
 license: MIT
-repository-code: "https://github.com/<계정>/<저장소>"
+repository-code: "https://github.com/noahnoah0713/calibration-collapse-time-split"
 abstract: >-
   DILIrank 와 DICTrank 에서 시간 분할 검증이 판별력보다 확률 보정을
   훨씬 크게 무너뜨린다는 것을 정량화하고, 그 원인을 유병률 이동과
