@@ -11,7 +11,14 @@
     python src/verify9.py
 """
 
-import glob, hashlib, io, json, os, re, subprocess, sys
+import glob
+import hashlib
+import io
+import json
+import os
+import re
+import subprocess
+import sys
 import pandas as pd
 
 

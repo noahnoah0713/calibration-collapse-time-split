@@ -58,7 +58,7 @@ def cv(n):
 
 
 def _strip(path, seen=None):
-    """표 환경과 주석을 뺀 산문. \input 은 펼친다."""
+    r"""표 환경과 주석을 뺀 산문. \input 은 펼친다."""
     seen = seen or set()
     if path in seen or not os.path.exists(path):
         return ""
