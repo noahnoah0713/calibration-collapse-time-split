@@ -278,7 +278,7 @@ def analyse(name, df, kmap, rows_strat, rows_tests):
     )
 
     # ---------------------------------------------------- ATC 계열별
-    log(f"\n  --- ATC 1단계별 성능 (검증군, n>=10) ---")
+    log("\n  --- ATC 1단계별 성능 (검증군, n>=10) ---")
     for code, g in test.dropna(subset=["atc1"]).groupby("atc1"):
         if len(g) < 10:
             continue
@@ -300,7 +300,7 @@ def analyse(name, df, kmap, rows_strat, rows_tests):
         )
 
     # ---------------------------------------------------- L vs 그 외
-    log(f"\n  --- 항종양·면역조절(L) vs 그 외 ---")
+    log("\n  --- 항종양·면역조절(L) vs 그 외 ---")
     sub = test.dropna(subset=["atc1"])
     L, O = sub[sub.atc1 == "L"], sub[sub.atc1 != "L"]
     if len(L) >= 10 and L["y"].nunique() == 2 and O["y"].nunique() == 2:
@@ -330,7 +330,7 @@ def analyse(name, df, kmap, rows_strat, rows_tests):
         log(f"    L n={len(L)} - 표본 부족으로 검정 불가")
 
     # ---------------------------------------------------- 구조 기반
-    log(f"\n  --- 구조 기반 층화 (부트스트랩 검정) ---")
+    log("\n  --- 구조 기반 층화 (부트스트랩 검정) ---")
     F = pd.DataFrame([struct_feats(s) for s in test["smiles"]], index=test.index)
     for col in F.columns:
         a, b = test[F[col]], test[~F[col]]

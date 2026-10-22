@@ -250,7 +250,7 @@ def run_dataset(name, path):
         log(f"  {label:34s} {dr_mean[k]:>10.4f} {dt[k]:>14.4f} {dt[k]-dr_mean[k]:>+12.4f}")
     log(f"  (무작위 분할 간 SD: reliability {rel_sd:.4f}, resolution {res_sd:.4f})")
 
-    log(f"\n  [A] 주 분석 - 분할별 평균 기준")
+    log("\n  [A] 주 분석 - 분할별 평균 기준")
     ci = f"[95% CI {lo:.1f}-{hi:.1f}]" if np.isfinite(lo) else "[CI 계산 불가]"
     log(f"      보정(reliability) 기여   {pct_rel_A:.1f}%  {ci}")
     log(f"      판별력(resolution) 기여  {pct_res_A:.1f}%")

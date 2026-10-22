@@ -230,9 +230,9 @@ def run(name, path):
         red = (base["ECE"] - r["ECE"]) / base["ECE"] * 100
         log(f"  {r['method']:32s} ECE {r['ECE']:.4f}  ({red:+.0f}%)")
 
-    log(f"\n[AUROC 불변 확인]")
-    log(f"  Platt/사전확률 보정은 단조변환이므로 AUROC 유지가 정상")
-    log(f"  Isotonic은 동점 처리로 미세하게 달라질 수 있음")
+    log("\n[AUROC 불변 확인]")
+    log("  Platt/사전확률 보정은 단조변환이므로 AUROC 유지가 정상")
+    log("  Isotonic은 동점 처리로 미세하게 달라질 수 있음")
 
     log("\n[임계값 성능]")
     for _, r in out.iterrows():

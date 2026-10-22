@@ -185,7 +185,7 @@ def run(name, path):
     e_t, a_t, s_t = ece(yte, p_t), roc_auc_score(yte, p_t), calib_slope(yte, p_t)
     lo_e, hi_e = boot_ci(ece, yte, p_t)
 
-    log(f"\n[T] 시간분할")
+    log("\n[T] 시간분할")
     log(f"    ECE {e_t:.4f} [95% CI {lo_e:.4f}-{hi_e:.4f}]")
     log(f"    AUROC {a_t:.4f} | 보정기울기 {s_t:.4f}")
 
@@ -284,7 +284,7 @@ def run(name, path):
     out.insert(0, "dataset", name)
 
     # ---------------------------------------------------- 판정
-    log(f"\n[판정]")
+    log("\n[판정]")
     r3 = out[out.setting.str.startswith("R3")]
     r1 = out[out.setting.str.startswith("R1")]
     if len(r3) and len(r1):
@@ -294,9 +294,9 @@ def run(name, path):
         )
         log(f"  시간분할 ECE {e_t:.4f}는 그 {r3.iloc[0]['ece_ratio']:.2f}배")
         if r3.iloc[0]["p_perm"] < 0.05:
-            log(f"  => 보정 붕괴는 유병률 차이가 아니라 " f"시간에 따른 분포 이동에서 기인함")
+            log("  => 보정 붕괴는 유병률 차이가 아니라 " "시간에 따른 분포 이동에서 기인함")
         else:
-            log(f"  => 유병률 교란을 배제할 수 없음 (재검토 필요)")
+            log("  => 유병률 교란을 배제할 수 없음 (재검토 필요)")
     log()
     return out
 

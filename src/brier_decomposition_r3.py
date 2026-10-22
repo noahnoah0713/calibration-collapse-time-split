@@ -124,7 +124,7 @@ def run(name, path, n_rep):
             f"res {mean['resolution']:.4f}  unc {mean['uncertainty']:.4f}  "
             f"Brier {mean['brier_approx']:.4f}"
         )
-        log(f"    차이(시간분할 − 무작위):")
+        log("    차이(시간분할 − 무작위):")
         log(f"      Δreliability  {d_rel:+.4f}")
         log(f"      Δresolution   {d_res:+.4f}   (손실 방향을 양수로)")
         log(f"      Δuncertainty  {d_unc:+.4f}   <-- R3 에서 0 이어야 한다")

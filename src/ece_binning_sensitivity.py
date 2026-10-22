@@ -174,7 +174,7 @@ def run_dataset(name, path):
     )
     rel_ratio = d["reliability"].max() / max(d["reliability"].min(), 1e-6)
     log(
-        f"  reliability가 resolution을 압도한다는 결론 유지 여부: "
+        "  reliability가 resolution을 압도한다는 결론 유지 여부: "
         + (
             "유지됨 (reliability >> resolution, 모든 구간화 방식에서)"
             if d["reliability"].min() > d["resolution"].max()

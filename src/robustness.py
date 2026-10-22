@@ -24,8 +24,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from rdkit import Chem, RDLogger
-from rdkit.Chem import AllChem, Descriptors, MACCSkeys
-from sklearn.ensemble import RandomForestClassifier
+from rdkit.Chem import Descriptors
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     balanced_accuracy_score,
@@ -33,9 +32,6 @@ from sklearn.metrics import (
     matthews_corrcoef,
     roc_auc_score,
 )
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
-from xgboost import XGBClassifier
 
 import sys
 import os

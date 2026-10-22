@@ -39,7 +39,6 @@ import pandas as pd
 from matplotlib.lines import Line2D
 from rdkit import Chem, RDLogger
 from rdkit.Chem import AllChem, Descriptors
-from sklearn.metrics import roc_auc_score
 from xgboost import XGBClassifier
 
 warnings.filterwarnings("ignore")

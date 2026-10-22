@@ -66,7 +66,7 @@ def run(name, path, n_perm):
     log("=" * 80)
 
     auc_era, oof = cv_auc(X, z)
-    log(f"\n[1] 시대 분류기 ('2010년 이후인가' 를 구조로 예측)")
+    log("\n[1] 시대 분류기 ('2010년 이후인가' 를 구조로 예측)")
     log(f"    5-fold CV AUC = {auc_era:.4f}")
     log("    0.5 = 구별 불가(이동 없음) / 1.0 = 완전 분리")
 
@@ -106,7 +106,7 @@ def run(name, path, n_perm):
         )
 
     # 이동 없음 기준선: 무작위 분할 라벨로 같은 절차
-    log(f"\n[4] 대조군 — 같은 크기의 무작위 분할 라벨로 같은 분류기")
+    log("\n[4] 대조군 — 같은 크기의 무작위 분할 라벨로 같은 분류기")
     ctrl = []
     for i in range(5):
         r = np.random.default_rng(S.SEED + i)
