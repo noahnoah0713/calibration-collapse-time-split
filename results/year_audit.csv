@@ -1,0 +1,1716 @@
+dataset,compound,assigned_year,min_year_tight,gap,after_label_freeze,in_heldout
+DILIrank,Abacavir sulfate,1998,1998.0,0.0,False,False
+DILIrank,Abaloparatide,2017,2017.0,0.0,False,True
+DILIrank,Abemaciclib,2017,2017.0,0.0,False,True
+DILIrank,Abiraterone acetate,2011,2011.0,0.0,False,True
+DILIrank,Acamprosate calcium,2004,2004.0,0.0,False,False
+DILIrank,Acarbose,1995,1995.0,0.0,False,False
+DILIrank,Acebutolol hydrochloride,1984,1984.0,0.0,False,False
+DILIrank,Acetaminophen,1968,1968.0,0.0,False,False
+DILIrank,Acetazolamide,1953,1953.0,0.0,False,False
+DILIrank,Acetylcholine chloride,1973,1973.0,0.0,False,False
+DILIrank,Acetylcysteine,1963,1963.0,0.0,False,False
+DILIrank,Acitretin,1996,1996.0,0.0,False,False
+DILIrank,Acyclovir,1982,1982.0,0.0,False,False
+DILIrank,Adefovir dipivoxil,2002,2002.0,0.0,False,False
+DILIrank,Adenosine,1989,1989.0,0.0,False,False
+DILIrank,Alatrofloxacin mesylate,1997,1997.0,0.0,False,False
+DILIrank,Albendazole,1996,1996.0,0.0,False,False
+DILIrank,Albuterol,1981,1981.0,0.0,False,False
+DILIrank,Alendronate sodium,1995,1995.0,0.0,False,False
+DILIrank,Alfentanil hydrochloride,1986,1986.0,0.0,False,False
+DILIrank,Alfuzosin hydrochloride,2003,2003.0,0.0,False,False
+DILIrank,Aliskiren hemifumarate,2007,2007.0,0.0,False,False
+DILIrank,Allopurinol,1966,1966.0,0.0,False,False
+DILIrank,Almotriptan malate,2001,2001.0,0.0,False,False
+DILIrank,Alosetron hydrochloride,2000,2000.0,0.0,False,False
+DILIrank,Alpelisib,2019,2019.0,0.0,False,True
+DILIrank,Alprazolam,1981,1981.0,0.0,False,False
+DILIrank,Alvimopan,2008,2008.0,0.0,False,False
+DILIrank,Ambenonium chloride,1956,1956.0,0.0,False,False
+DILIrank,Amifampridine,2018,2018.0,0.0,False,True
+DILIrank,Amifostine,1995,1995.0,0.0,False,False
+DILIrank,Amikacin sulfate,1981,1981.0,0.0,False,False
+DILIrank,Amiloride hydrochloride,1981,1981.0,0.0,False,False
+DILIrank,Aminocaproic acid,1964,1964.0,0.0,False,False
+DILIrank,Aminohippurate sodium,1944,1944.0,0.0,False,False
+DILIrank,Aminophylline,1940,1940.0,0.0,False,False
+DILIrank,Aminosalicylic acid ,1975,1975.0,0.0,False,False
+DILIrank,Amiodarone hydrochloride,1985,1985.0,0.0,False,False
+DILIrank,Amisulpride,2020,2020.0,0.0,False,True
+DILIrank,Amitriptyline hydrochloride,1961,1961.0,0.0,False,False
+DILIrank,Amlodipine besylate,1992,1992.0,0.0,False,False
+DILIrank,Amoxicillin,1974,1974.0,0.0,False,False
+DILIrank,Amphotericin B,1964,1964.0,0.0,False,False
+DILIrank,Ampicillin sodium,1966,1966.0,0.0,False,False
+DILIrank,Anastrozole,1995,1995.0,0.0,False,False
+DILIrank,Angiotensin ii acetate,2017,2017.0,0.0,False,True
+DILIrank,Anidulafungin,2006,2006.0,0.0,False,False
+DILIrank,Apalutamide,2018,2018.0,0.0,False,True
+DILIrank,Apixaban,2012,2012.0,0.0,False,True
+DILIrank,Apomorphine hydrochloride,2004,2004.0,0.0,False,False
+DILIrank,Apremilast,2014,2014.0,0.0,False,True
+DILIrank,Argatroban,2000,2000.0,0.0,False,False
+DILIrank,Arginine hydrochloride,1973,1973.0,0.0,False,False
+DILIrank,Aripiprazole,2002,2002.0,0.0,False,False
+DILIrank,Aripiprazole lauroxil,2015,2015.0,0.0,False,True
+DILIrank,Aspirin,1950,1950.0,0.0,False,False
+DILIrank,Atazanavir sulfate,2003,2003.0,0.0,False,False
+DILIrank,Atenolol,1981,1981.0,0.0,False,False
+DILIrank,Atomoxetine hydrochloride,2002,2002.0,0.0,False,False
+DILIrank,Atorvastatin calcium,1996,1996.0,0.0,False,False
+DILIrank,Atracurium,1983,1983.0,0.0,False,False
+DILIrank,Atropine,1973,1960.0,13.0,False,False
+DILIrank,Auranofin,1985,1985.0,0.0,False,False
+DILIrank,Avanafil,2012,2012.0,0.0,False,True
+DILIrank,Avatrombopag maleate,2018,2018.0,0.0,False,True
+DILIrank,Azathioprine,1968,1968.0,0.0,False,False
+DILIrank,Azilsartan kamedoxomil,2011,2011.0,0.0,False,True
+DILIrank,Azithromycin,1991,1991.0,0.0,False,False
+DILIrank,Bacitracin,1948,1948.0,0.0,False,False
+DILIrank,Baclofen,1977,1977.0,0.0,False,False
+DILIrank,Baloxavir marboxil,2018,2018.0,0.0,False,True
+DILIrank,Benazepril hydrochloride,1991,1991.0,0.0,False,False
+DILIrank,Bendamustine hydrochloride,2008,2008.0,0.0,False,False
+DILIrank,Bendroflumethiazide,1959,1959.0,0.0,False,False
+DILIrank,Benzonatate,1958,1958.0,0.0,False,False
+DILIrank,Benzphetamine hydrochloride,1960,1960.0,0.0,False,False
+DILIrank,Benztropine mesylate,1954,1954.0,0.0,False,False
+DILIrank,Betaine,1996,1996.0,0.0,False,False
+DILIrank,Bethanechol chloride,1948,1948.0,0.0,False,False
+DILIrank,Betrixaban,2017,2017.0,0.0,False,True
+DILIrank,Bexarotene,1999,1999.0,0.0,False,False
+DILIrank,Bicalutamide,1995,1995.0,0.0,False,False
+DILIrank,Biperiden hydrochloride,1959,1959.0,0.0,False,False
+DILIrank,Bisacodyl,2004,2004.0,0.0,False,False
+DILIrank,Bivalirudin,2000,2000.0,0.0,False,False
+DILIrank,Bortezomib,2003,2003.0,0.0,False,False
+DILIrank,Bosentan,2001,2001.0,0.0,False,False
+DILIrank,Bosutinib monohydrate,2012,2012.0,0.0,False,True
+DILIrank,Brexanolone,2019,2019.0,0.0,False,True
+DILIrank,Brexpiprazole,2015,2015.0,0.0,False,True
+DILIrank,Brilliant blue g,2019,2019.0,0.0,False,True
+DILIrank,Brivaracetam,2016,2016.0,0.0,False,True
+DILIrank,Bromfenac sodium,2005,2005.0,0.0,False,False
+DILIrank,Bromocriptine mesylate,1978,1978.0,0.0,False,False
+DILIrank,Brompheniramine maleate,1957,1957.0,0.0,False,False
+DILIrank,Budesonide,1994,1994.0,0.0,False,False
+DILIrank,Bupropion hydrochloride,1985,1985.0,0.0,False,False
+DILIrank,Busulfan,1954,1954.0,0.0,False,False
+DILIrank,Butorphanol tartrate,1978,1978.0,0.0,False,False
+DILIrank,Cabergoline,1996,1996.0,0.0,False,False
+DILIrank,Caffeine citrate,1999,1948.0,51.0,False,False
+DILIrank,Calcitonin salmon,1978,1978.0,0.0,False,False
+DILIrank,Calcitriol,1978,1978.0,0.0,False,False
+DILIrank,Calcium acetate,1982,1971.0,11.0,False,False
+DILIrank,Canagliflozin,2013,2013.0,0.0,False,True
+DILIrank,Candesartan cilexetil,1998,1998.0,0.0,False,False
+DILIrank,Cangrelor,2015,2015.0,0.0,False,True
+DILIrank,Capecitabine,1998,1998.0,0.0,False,False
+DILIrank,Capmatinib hydrochloride,2020,2020.0,0.0,False,True
+DILIrank,Captopril,1981,1981.0,0.0,False,False
+DILIrank,Carbamazepine,1968,1968.0,0.0,False,False
+DILIrank,Carbenicillin disodium,1972,,,False,False
+DILIrank,Carbinoxamine maleate,1974,1974.0,0.0,False,False
+DILIrank,Carboplatin,1989,1989.0,0.0,False,False
+DILIrank,Carboprost tromethamine,1979,1979.0,0.0,False,False
+DILIrank,Carfilzomib,2012,2012.0,0.0,False,True
+DILIrank,Carglumic acid,2010,2010.0,0.0,False,True
+DILIrank,Carisoprodol,1959,1959.0,0.0,False,False
+DILIrank,Carvedilol,1995,1995.0,0.0,False,False
+DILIrank,Cefaclor,1979,1979.0,0.0,False,False
+DILIrank,Cefadroxil hemihydrate,1978,,,False,False
+DILIrank,Cefazolin sodium,1973,1973.0,0.0,False,False
+DILIrank,Cefdinir,1997,1997.0,0.0,False,False
+DILIrank,Cefditoren pivoxil,2001,2001.0,0.0,False,False
+DILIrank,Cefepime hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Cefixime,1989,1989.0,0.0,False,False
+DILIrank,Cefoperazone sodium,1982,1982.0,0.0,False,False
+DILIrank,Cefotaxime sodium,1981,1981.0,0.0,False,False
+DILIrank,Cefprozil,1991,1991.0,0.0,False,False
+DILIrank,Ceftaroline fosamil,2010,2010.0,0.0,False,True
+DILIrank,Ceftazidime,1985,1985.0,0.0,False,False
+DILIrank,Ceftriaxone sodium,1984,1984.0,0.0,False,False
+DILIrank,Cefuroxime sodium,1983,1983.0,0.0,False,False
+DILIrank,Celecoxib,1998,1998.0,0.0,False,False
+DILIrank,Cephalexin,1971,1971.0,0.0,False,False
+DILIrank,Ceritinib,2014,2014.0,0.0,False,True
+DILIrank,Cetirizine hydrochloride,1995,1995.0,0.0,False,False
+DILIrank,Chlorambucil,1957,1957.0,0.0,False,False
+DILIrank,Chloramphenicol,1951,1951.0,0.0,False,False
+DILIrank,Chlordiazepoxide hydrochloride,1960,1960.0,0.0,False,False
+DILIrank,Chlormezanone,1960,1960.0,0.0,False,False
+DILIrank,Chloroquine phosphate,1949,1949.0,0.0,False,False
+DILIrank,Chlorothiazide,1958,1958.0,0.0,False,False
+DILIrank,Chlorpheniramine maleate,1949,1949.0,0.0,False,False
+DILIrank,Chlorpromazine hydrochloride,1957,1957.0,0.0,False,False
+DILIrank,Chlorpropamide,1958,1958.0,0.0,False,False
+DILIrank,Chlorzoxazone,1958,1958.0,0.0,False,False
+DILIrank,Choline c-11,2012,2012.0,0.0,False,True
+DILIrank,Cimetidine,1977,1977.0,0.0,False,False
+DILIrank,Cinacalcet hydrochloride,2004,2004.0,0.0,False,False
+DILIrank,Ciprofloxacin hydrochloride,1987,1987.0,0.0,False,False
+DILIrank,Citalopram hydrobromide,1998,1998.0,0.0,False,False
+DILIrank,Cladribine,1993,1993.0,0.0,False,False
+DILIrank,Clarithromycin,1991,1991.0,0.0,False,False
+DILIrank,Clemastine fumarate,1977,1977.0,0.0,False,False
+DILIrank,Clevidipine,2008,2008.0,0.0,False,False
+DILIrank,Clindamycin hydrochloride,1970,1970.0,0.0,False,False
+DILIrank,Clindamycin phosphate,1972,1970.0,2.0,False,False
+DILIrank,Clofibrate,1967,1967.0,0.0,False,False
+DILIrank,Clomiphene citrate,1967,1967.0,0.0,False,False
+DILIrank,Clomipramine hydrochloride,1989,1989.0,0.0,False,False
+DILIrank,Clonazepam,1975,1975.0,0.0,False,False
+DILIrank,Clopidogrel bisulfate,1997,1997.0,0.0,False,False
+DILIrank,Clotrimazole,1975,1975.0,0.0,False,False
+DILIrank,Cloxacillin sodium,1971,1971.0,0.0,False,False
+DILIrank,Clozapine,1989,1989.0,0.0,False,False
+DILIrank,Codeine sulfate,2009,1952.0,57.0,False,False
+DILIrank,Colestipol hydrochloride,1977,1977.0,0.0,False,False
+DILIrank,Colistimethate sodium,1970,1970.0,0.0,False,False
+DILIrank,Conivaptan hydrochloride,2005,2005.0,0.0,False,False
+DILIrank,Copanlisib dihydrochloride,2017,2017.0,0.0,False,True
+DILIrank,Copper cu-64 dotatate,2020,2020.0,0.0,False,True
+DILIrank,Corticorelin ovine triflutate,1996,1996.0,0.0,False,False
+DILIrank,Corticotropin,1950,1950.0,0.0,False,False
+DILIrank,Cortisone acetate,1950,1950.0,0.0,False,False
+DILIrank,Cosyntropin,1970,1970.0,0.0,False,False
+DILIrank,Crizotinib,2011,2011.0,0.0,False,True
+DILIrank,Cyanocobalamin,1947,1947.0,0.0,False,False
+DILIrank,Cyclobenzaprine hydrochloride,1977,1977.0,0.0,False,False
+DILIrank,Cyclophosphamide,1959,1959.0,0.0,False,False
+DILIrank,Cyclosporine,1983,1983.0,0.0,False,False
+DILIrank,Cyproheptadine hydrochloride,1961,1961.0,0.0,False,False
+DILIrank,Cytarabine,1969,1969.0,0.0,False,False
+DILIrank,Dabigatran etexilate mesylate,2010,2010.0,0.0,False,True
+DILIrank,Dacarbazine,1975,1975.0,0.0,False,False
+DILIrank,Dacomitinib,2018,2018.0,0.0,False,True
+DILIrank,Dactinomycin,1964,1964.0,0.0,False,False
+DILIrank,Dalfampridine,2010,2010.0,0.0,False,True
+DILIrank,Danazol,1976,1976.0,0.0,False,False
+DILIrank,Dantrolene sodium,1974,1974.0,0.0,False,False
+DILIrank,Dapagliflozin,2014,2014.0,0.0,False,True
+DILIrank,Dapsone,1979,1979.0,0.0,False,False
+DILIrank,Daptomycin,2003,2003.0,0.0,False,False
+DILIrank,Darifenacin hydrobromide,2004,2004.0,0.0,False,False
+DILIrank,Darunavir,2006,2006.0,0.0,False,False
+DILIrank,Dasatinib,2006,2006.0,0.0,False,False
+DILIrank,Daunorubicin hydrochloride,1979,1979.0,0.0,False,False
+DILIrank,Deferasirox,2005,2005.0,0.0,False,False
+DILIrank,Deferoxamine mesylate,1968,1968.0,0.0,False,False
+DILIrank,Deflazacort,2017,2017.0,0.0,False,True
+DILIrank,Deoxycholic acid,2015,2015.0,0.0,False,True
+DILIrank,Desloratadine,2001,2001.0,0.0,False,False
+DILIrank,Desvenlafaxine succinate,2008,2008.0,0.0,False,False
+DILIrank,Deutetrabenazine,2017,2017.0,0.0,False,True
+DILIrank,Dexlansoprazole,2009,2009.0,0.0,False,False
+DILIrank,Dexmethylphenidate hydrochloride,2001,2001.0,0.0,False,False
+DILIrank,Dexpanthenol,1947,1947.0,0.0,False,False
+DILIrank,Dextromethorphan polistirex,1982,1982.0,0.0,False,False
+DILIrank,Dextrose,1946,1946.0,0.0,False,False
+DILIrank,Diatrizoate sodium,1954,1954.0,0.0,False,False
+DILIrank,Diazepam,1963,1963.0,0.0,False,False
+DILIrank,Dichlorphenamide,1958,1958.0,0.0,False,False
+DILIrank,Diclofenac sodium,1988,1988.0,0.0,False,False
+DILIrank,Dicloxacillin sodium,1968,1968.0,0.0,False,False
+DILIrank,Dicyclomine hydrochloride,1950,1950.0,0.0,False,False
+DILIrank,Didanosine,1991,1991.0,0.0,False,False
+DILIrank,Diethylpropion hydrochloride,1959,1959.0,0.0,False,False
+DILIrank,Difelikefalin acetate,2021,2021.0,0.0,False,True
+DILIrank,Diflunisal,1982,1982.0,0.0,False,False
+DILIrank,Digoxin,1954,1954.0,0.0,False,False
+DILIrank,Dihydroergotamine mesylate,1946,1946.0,0.0,False,False
+DILIrank,Diltiazem hydrochloride,1982,1982.0,0.0,False,False
+DILIrank,Dimenhydrinate,1972,1972.0,0.0,False,False
+DILIrank,Dimercaprol,1946,1946.0,0.0,False,False
+DILIrank,Dimethyl fumarate,2013,2013.0,0.0,False,True
+DILIrank,Diphenoxylate,1960,1960.0,0.0,False,False
+DILIrank,Disopyramide phosphate,1977,1977.0,0.0,False,False
+DILIrank,Disulfiram,1951,1951.0,0.0,False,False
+DILIrank,Divalproex sodium,1983,1983.0,0.0,False,False
+DILIrank,Dobutamine hydrochloride,1978,1978.0,0.0,False,False
+DILIrank,Docetaxel,1996,1996.0,0.0,False,False
+DILIrank,Dofetilide,1999,1999.0,0.0,False,False
+DILIrank,Dolutegravir sodium,2013,2013.0,0.0,False,True
+DILIrank,Donepezil hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Dopamine hydrochloride,1974,1974.0,0.0,False,False
+DILIrank,Doxapram hydrochloride,1965,1965.0,0.0,False,False
+DILIrank,Doxazosin mesylate,1990,1990.0,0.0,False,False
+DILIrank,Doxepin hydrochloride,1969,1969.0,0.0,False,False
+DILIrank,Doxorubicin hydrochloride,1974,1974.0,0.0,False,False
+DILIrank,Doxycycline,1967,1967.0,0.0,False,False
+DILIrank,Doxylamine succinate,1948,1948.0,0.0,False,False
+DILIrank,Dronedarone hydrochloride,2009,2009.0,0.0,False,False
+DILIrank,Droperidol,1970,1970.0,0.0,False,False
+DILIrank,Droxidopa,2014,2014.0,0.0,False,True
+DILIrank,Duloxetine hydrochloride,2004,2004.0,0.0,False,False
+DILIrank,Dutasteride,2001,2001.0,0.0,False,False
+DILIrank,Dyphylline,1951,1951.0,0.0,False,False
+DILIrank,Ecallantide,2009,2009.0,0.0,False,False
+DILIrank,Edaravone,2017,2017.0,0.0,False,True
+DILIrank,Edrophonium chloride,1951,1951.0,0.0,False,False
+DILIrank,Efavirenz,1998,1998.0,0.0,False,False
+DILIrank,Eliglustat tartrate,2014,2014.0,0.0,False,True
+DILIrank,Eltrombopag olamine,2008,2008.0,0.0,False,False
+DILIrank,Empagliflozin,2014,2014.0,0.0,False,True
+DILIrank,Enalapril maleate,1985,1985.0,0.0,False,False
+DILIrank,Entacapone,1999,1999.0,0.0,False,False
+DILIrank,Enzalutamide,2012,2012.0,0.0,False,True
+DILIrank,Ephedrine sulfate,2016,2016.0,0.0,False,True
+DILIrank,Epinephrine,1948,1948.0,0.0,False,False
+DILIrank,Eplerenone,2002,2002.0,0.0,False,False
+DILIrank,Epoetin alfa,1989,1989.0,0.0,False,False
+DILIrank,Eptifibatide,1998,1998.0,0.0,False,False
+DILIrank,Ergocalciferol,1941,1941.0,0.0,False,False
+DILIrank,Erlotinib hydrochloride,2004,2004.0,0.0,False,False
+DILIrank,Ertugliflozin,2017,2017.0,0.0,False,True
+DILIrank,Erythromycin estolate,1967,1967.0,0.0,False,False
+DILIrank,Esmolol hydrochloride,1986,1986.0,0.0,False,False
+DILIrank,Esomeprazole sodium,2005,2001.0,4.0,False,False
+DILIrank,Estazolam,1990,1990.0,0.0,False,False
+DILIrank,Estradiol valerate,1954,1954.0,0.0,False,False
+DILIrank,Estramustine phosphate sodium,1981,1981.0,0.0,False,False
+DILIrank,Eszopiclone,2004,2004.0,0.0,False,False
+DILIrank,Etelcalcetide,2017,2017.0,0.0,False,True
+DILIrank,Ethambutol hydrochloride,1967,1967.0,0.0,False,False
+DILIrank,Ethanolamine oleate,1988,1988.0,0.0,False,False
+DILIrank,Ethionamide,1965,1965.0,0.0,False,False
+DILIrank,Etidronate disodium,1977,1977.0,0.0,False,False
+DILIrank,Etodolac,1991,1991.0,0.0,False,False
+DILIrank,Etomidate,1982,1982.0,0.0,False,False
+DILIrank,Etoposide,1983,1983.0,0.0,False,False
+DILIrank,Etravirine,2008,2008.0,0.0,False,False
+DILIrank,Everolimus,2009,2009.0,0.0,False,False
+DILIrank,Exemestane,1999,1999.0,0.0,False,False
+DILIrank,Exenatide synthetic,2005,2005.0,0.0,False,False
+DILIrank,Ezetimibe,2002,2002.0,0.0,False,False
+DILIrank,Famotidine,1986,1986.0,0.0,False,False
+DILIrank,Febuxostat,2009,2009.0,0.0,False,False
+DILIrank,Felbamate,1993,1993.0,0.0,False,False
+DILIrank,Felodipine,1991,1991.0,0.0,False,False
+DILIrank,Fenofibrate,1993,1993.0,0.0,False,False
+DILIrank,Fenofibric acid,2009,2009.0,0.0,False,False
+DILIrank,Fenoldopam mesylate,1997,1997.0,0.0,False,False
+DILIrank,Fenoprofen calcium,1976,1976.0,0.0,False,False
+DILIrank,Ferric maltol,2019,2019.0,0.0,False,True
+DILIrank,Fesoterodine fumarate,2008,2008.0,0.0,False,False
+DILIrank,Fexofenadine hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Finasteride,1992,1992.0,0.0,False,False
+DILIrank,Finerenone,2021,2021.0,0.0,False,True
+DILIrank,Fingolimod hydrochloride,2010,2010.0,0.0,False,True
+DILIrank,Flavoxate hydrochloride,1970,1970.0,0.0,False,False
+DILIrank,Flecainide acetate,1985,1985.0,0.0,False,False
+DILIrank,Flibanserin,2015,2015.0,0.0,False,True
+DILIrank,Florbetaben f-18,2014,2014.0,0.0,False,True
+DILIrank,Florbetapir f-18,2012,2012.0,0.0,False,True
+DILIrank,Flortaucipir f-18,2020,2020.0,0.0,False,True
+DILIrank,Fluciclovine f-18,2016,2016.0,0.0,False,True
+DILIrank,Fluconazole,1990,1990.0,0.0,False,False
+DILIrank,Fludarabine phosphate,1991,1991.0,0.0,False,False
+DILIrank,Fludrocortisone acetate,1955,1955.0,0.0,False,False
+DILIrank,Flumazenil,1991,1991.0,0.0,False,False
+DILIrank,Fluorescein sodium,1976,1976.0,0.0,False,False
+DILIrank,Fluorodopa f-18,2019,2019.0,0.0,False,True
+DILIrank,Fluoroestradiol f-18,2020,2020.0,0.0,False,True
+DILIrank,Fluorouracil,1962,1962.0,0.0,False,False
+DILIrank,Fluoxetine hydrochloride,1987,1987.0,0.0,False,False
+DILIrank,Flurazepam hydrochloride,1970,1970.0,0.0,False,False
+DILIrank,Flurbiprofen sodium,1986,1986.0,0.0,False,False
+DILIrank,Flutamide,1989,1989.0,0.0,False,False
+DILIrank,Flutemetamol f-18,2013,2013.0,0.0,False,True
+DILIrank,Fluvastatin sodium,1993,1993.0,0.0,False,False
+DILIrank,Folic acid,1946,1946.0,0.0,False,False
+DILIrank,Fondaparinux sodium,2001,2001.0,0.0,False,False
+DILIrank,Fosdenopterin hydrobromide,2021,2021.0,0.0,False,True
+DILIrank,Fosfomycin tromethamine,1996,1996.0,0.0,False,False
+DILIrank,Fosinopril sodium,1991,1991.0,0.0,False,False
+DILIrank,Fosphenytoin sodium,1996,1996.0,0.0,False,False
+DILIrank,Fospropofol disodium,2008,2008.0,0.0,False,False
+DILIrank,Frovatriptan succinate,2001,2001.0,0.0,False,False
+DILIrank,Gabapentin,1993,1993.0,0.0,False,False
+DILIrank,Gabapentin enacarbil,2011,2011.0,0.0,False,True
+DILIrank,Gadobenate dimeglumine,2004,2004.0,0.0,False,False
+DILIrank,Gadobutrol,2011,2011.0,0.0,False,True
+DILIrank,Gadofosveset trisodium,2008,2008.0,0.0,False,False
+DILIrank,Gadopentetate dimeglumine,1988,1988.0,0.0,False,False
+DILIrank,Gadoterate meglumine,2013,2013.0,0.0,False,True
+DILIrank,Gadoteridol,1992,1992.0,0.0,False,False
+DILIrank,Gadoversetamide,1999,1999.0,0.0,False,False
+DILIrank,Gadoxetate disodium,2008,2008.0,0.0,False,False
+DILIrank,Gallium ga-68 edotreotide,2019,2019.0,0.0,False,True
+DILIrank,Gallium ga-68 gozetotide,2020,2020.0,0.0,False,True
+DILIrank,Ganirelix acetate,1999,1999.0,0.0,False,False
+DILIrank,Gefitinib,2003,2003.0,0.0,False,False
+DILIrank,Gemcitabine hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Gemfibrozil,1981,1981.0,0.0,False,False
+DILIrank,Gemifloxacin mesylate,2003,2003.0,0.0,False,False
+DILIrank,Glimepiride,1995,1995.0,0.0,False,False
+DILIrank,Glipizide,1984,1984.0,0.0,False,False
+DILIrank,Glyburide,1984,1984.0,0.0,False,False
+DILIrank,Glycopyrrolate,1961,1961.0,0.0,False,False
+DILIrank,Griseofulvin,1962,,,False,False
+DILIrank,Guaifenesin,2002,2002.0,0.0,False,False
+DILIrank,Guanethidine monosulfate,1960,1960.0,0.0,False,False
+DILIrank,Haloperidol decanoate,1986,1986.0,0.0,False,False
+DILIrank,Haloperidol lactate,1967,1967.0,0.0,False,False
+DILIrank,Heparin sodium,1939,1939.0,0.0,False,False
+DILIrank,Histamine phosphate,1939,1939.0,0.0,False,False
+DILIrank,Hydralazine hydrochloride,1953,1953.0,0.0,False,False
+DILIrank,Hydrochlorothiazide,1959,1959.0,0.0,False,False
+DILIrank,Hydrocortisone acetate,1951,1951.0,0.0,False,False
+DILIrank,Hydroxychloroquine sulfate,1955,1955.0,0.0,False,False
+DILIrank,Hydroxyurea,1967,1967.0,0.0,False,False
+DILIrank,Hydroxyzine hydrochloride,1956,1956.0,0.0,False,False
+DILIrank,Ibandronate sodium,2003,2003.0,0.0,False,False
+DILIrank,Ibrutinib,2013,2013.0,0.0,False,True
+DILIrank,Ibuprofen,1974,1974.0,0.0,False,False
+DILIrank,Ibutilide fumarate,1995,1995.0,0.0,False,False
+DILIrank,Idelalisib,2014,2014.0,0.0,False,True
+DILIrank,Ifosfamide,1987,1987.0,0.0,False,False
+DILIrank,Imatinib mesylate,2001,2001.0,0.0,False,False
+DILIrank,Imipramine hydrochloride,1959,1959.0,0.0,False,False
+DILIrank,Indocyanine green,1959,1959.0,0.0,False,False
+DILIrank,Indomethacin,1965,1965.0,0.0,False,False
+DILIrank,Interferon alfa-2b,1986,1986.0,0.0,False,False
+DILIrank,Iodipamide sodium,1954,1954.0,0.0,False,False
+DILIrank,Ioflupane i-123,2011,2011.0,0.0,False,True
+DILIrank,Iothalamate meglumine,1962,1962.0,0.0,False,False
+DILIrank,Ioversol,1988,1988.0,0.0,False,False
+DILIrank,Irbesartan,1997,1997.0,0.0,False,False
+DILIrank,Irinotecan hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Isoniazid,1952,1952.0,0.0,False,False
+DILIrank,Isoproterenol hydrochloride,1948,1948.0,0.0,False,False
+DILIrank,Isosorbide dinitrate,1959,1959.0,0.0,False,False
+DILIrank,Isotretinoin,1982,1982.0,0.0,False,False
+DILIrank,Isradipine,1990,1990.0,0.0,False,False
+DILIrank,Istradefylline,2019,2019.0,0.0,False,True
+DILIrank,Itraconazole,1992,1992.0,0.0,False,False
+DILIrank,Ivabradine hydrochloride,2015,2015.0,0.0,False,True
+DILIrank,Ivacaftor,2012,2012.0,0.0,False,True
+DILIrank,Kanamycin,1973,1973.0,0.0,False,False
+DILIrank,Ketamine hydrochloride,1970,1970.0,0.0,False,False
+DILIrank,Ketoconazole,1981,1981.0,0.0,False,False
+DILIrank,Ketoprofen,1986,1986.0,0.0,False,False
+DILIrank,Ketorolac tromethamine,1989,1989.0,0.0,False,False
+DILIrank,Labetalol hydrochloride,1984,1984.0,0.0,False,False
+DILIrank,Lactitol,2020,2020.0,0.0,False,True
+DILIrank,Lactulose,1976,1976.0,0.0,False,False
+DILIrank,Lamivudine,1995,1995.0,0.0,False,False
+DILIrank,Lamotrigine,1994,1994.0,0.0,False,False
+DILIrank,Lanthanum carbonate,2004,2004.0,0.0,False,False
+DILIrank,Lapatinib ditosylate,2007,2007.0,0.0,False,False
+DILIrank,Lasmiditan succinate,2019,2019.0,0.0,False,True
+DILIrank,Leflunomide,1998,1998.0,0.0,False,False
+DILIrank,Lemborexant,2019,2019.0,0.0,False,True
+DILIrank,Lenalidomide,2005,2005.0,0.0,False,False
+DILIrank,Letermovir,2017,2017.0,0.0,False,True
+DILIrank,Letrozole,1997,1997.0,0.0,False,False
+DILIrank,Leucovorin calcium,1952,1952.0,0.0,False,False
+DILIrank,Leuprolide acetate,1985,1985.0,0.0,False,False
+DILIrank,Levetiracetam,1999,1999.0,0.0,False,False
+DILIrank,Levocarnitine,1985,1985.0,0.0,False,False
+DILIrank,Levofloxacin,1996,1996.0,0.0,False,False
+DILIrank,Levomefolate calcium,2010,2010.0,0.0,False,True
+DILIrank,Levonorgestrel,1979,1979.0,0.0,False,False
+DILIrank,Levorphanol tartrate,1953,1953.0,0.0,False,False
+DILIrank,Levothyroxine sodium,2000,2000.0,0.0,False,False
+DILIrank,Lidocaine,1951,1948.0,3.0,False,False
+DILIrank,Linaclotide,2012,2012.0,0.0,False,True
+DILIrank,Linagliptin,2011,2011.0,0.0,False,True
+DILIrank,Linezolid,2000,2000.0,0.0,False,False
+DILIrank,Liothyronine sodium,1956,1956.0,0.0,False,False
+DILIrank,Liraglutide,2010,2010.0,0.0,False,True
+DILIrank,Lisinopril,1987,1987.0,0.0,False,False
+DILIrank,Lofexidine hydrochloride,2018,2018.0,0.0,False,True
+DILIrank,Lomitapide mesylate,2012,2012.0,0.0,False,True
+DILIrank,Lomustine,1976,1976.0,0.0,False,False
+DILIrank,Loperamide hydrochloride,1976,1976.0,0.0,False,False
+DILIrank,Loracarbef,1991,1991.0,0.0,False,False
+DILIrank,Loratadine,1993,1993.0,0.0,False,False
+DILIrank,Lorazepam,1977,1977.0,0.0,False,False
+DILIrank,Losartan potassium,1995,1995.0,0.0,False,False
+DILIrank,Lovastatin,1987,1987.0,0.0,False,False
+DILIrank,Lubiprostone,2006,2006.0,0.0,False,False
+DILIrank,Lurasidone hydrochloride,2010,2010.0,0.0,False,True
+DILIrank,Lusutrombopag,2018,2018.0,0.0,False,True
+DILIrank,Macimorelin acetate,2017,2017.0,0.0,False,True
+DILIrank,Macitentan,2013,2013.0,0.0,False,True
+DILIrank,Mannitol,1964,1964.0,0.0,False,False
+DILIrank,Maraviroc,2007,2007.0,0.0,False,False
+DILIrank,Maribavir,2021,2021.0,0.0,False,True
+DILIrank,Mebendazole,1974,1974.0,0.0,False,False
+DILIrank,Mecamylamine hydrochloride,1956,1956.0,0.0,False,False
+DILIrank,Meclizine hydrochloride,1957,1957.0,0.0,False,False
+DILIrank,Mefenamic acid,1967,1967.0,0.0,False,False
+DILIrank,Mefloquine hydrochloride,1989,1989.0,0.0,False,False
+DILIrank,Meloxicam,2000,2000.0,0.0,False,False
+DILIrank,Melphalan,1964,1964.0,0.0,False,False
+DILIrank,Memantine hydrochloride,2003,2003.0,0.0,False,False
+DILIrank,Mepenzolate bromide,1956,1956.0,0.0,False,False
+DILIrank,Meperidine hydrochloride,1942,1942.0,0.0,False,False
+DILIrank,Mepivacaine hydrochloride,1960,1960.0,0.0,False,False
+DILIrank,Meprobamate,1955,1955.0,0.0,False,False
+DILIrank,Mercaptopurine,1953,1953.0,0.0,False,False
+DILIrank,Meropenem,1996,1996.0,0.0,False,False
+DILIrank,Mesalamine,1987,1987.0,0.0,False,False
+DILIrank,Metaproterenol sulfate,1973,1973.0,0.0,False,False
+DILIrank,Metaxalone,1962,1962.0,0.0,False,False
+DILIrank,Metformin hydrochloride,1995,1995.0,0.0,False,False
+DILIrank,Methamphetamine hydrochloride,1943,1943.0,0.0,False,False
+DILIrank,Methazolamide,1959,1959.0,0.0,False,False
+DILIrank,Methimazole,1950,1950.0,0.0,False,False
+DILIrank,Methionine,1973,,,False,False
+DILIrank,Methotrexate sodium,1953,1953.0,0.0,False,False
+DILIrank,Methoxsalen,1954,1954.0,0.0,False,False
+DILIrank,Methscopolamine bromide,1953,1953.0,0.0,False,False
+DILIrank,Methsuximide,1957,1957.0,0.0,False,False
+DILIrank,Methyldopa,1962,1962.0,0.0,False,False
+DILIrank,Methylergonovine maleate,1946,1946.0,0.0,False,False
+DILIrank,Methylnaltrexone bromide,2008,2008.0,0.0,False,False
+DILIrank,Methylprednisolone,1957,1957.0,0.0,False,False
+DILIrank,Methyltestosterone,1971,1971.0,0.0,False,False
+DILIrank,Methysergide maleate,1962,1962.0,0.0,False,False
+DILIrank,Metoclopramide hydrochloride,1979,1979.0,0.0,False,False
+DILIrank,Metoprolol tartrate,1978,1978.0,0.0,False,False
+DILIrank,Metronidazole,1963,1963.0,0.0,False,False
+DILIrank,Metyrapone,1961,1961.0,0.0,False,False
+DILIrank,Metyrosine,1979,1979.0,0.0,False,False
+DILIrank,Mexiletine hydrochloride,1985,1985.0,0.0,False,False
+DILIrank,Micafungin sodium,2005,2005.0,0.0,False,False
+DILIrank,Midazolam hydrochloride,1985,1985.0,0.0,False,False
+DILIrank,Midodrine hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Mifepristone,2000,2000.0,0.0,False,False
+DILIrank,Migalastat hydrochloride,2018,2018.0,0.0,False,True
+DILIrank,Miglitol,1996,1996.0,0.0,False,False
+DILIrank,Miglustat,2003,2003.0,0.0,False,False
+DILIrank,Milnacipran hydrochloride,2009,2009.0,0.0,False,False
+DILIrank,Minocycline hydrochloride,1971,1971.0,0.0,False,False
+DILIrank,Minoxidil,1979,1979.0,0.0,False,False
+DILIrank,Mirtazapine,1996,1996.0,0.0,False,False
+DILIrank,Mitomycin,1981,1981.0,0.0,False,False
+DILIrank,Mitotane,1970,1970.0,0.0,False,False
+DILIrank,Mitoxantrone hydrochloride,1987,1987.0,0.0,False,False
+DILIrank,Mivacurium chloride,1992,1992.0,0.0,False,False
+DILIrank,Modafinil,1998,1998.0,0.0,False,False
+DILIrank,Montelukast sodium,1998,1998.0,0.0,False,False
+DILIrank,Morphine sulfate,1984,1984.0,0.0,False,False
+DILIrank,Moxifloxacin hydrochloride,1999,1999.0,0.0,False,False
+DILIrank,Mycophenolate mofetil,1995,1995.0,0.0,False,False
+DILIrank,Nabilone,1985,1985.0,0.0,False,False
+DILIrank,Nafcillin sodium,1965,1965.0,0.0,False,False
+DILIrank,Nalbuphine hydrochloride,1979,1979.0,0.0,False,False
+DILIrank,Naldemedine tosylate,2017,2017.0,0.0,False,True
+DILIrank,Naloxegol oxalate,2014,2014.0,0.0,False,True
+DILIrank,Naloxone hydrochloride,1971,1971.0,0.0,False,False
+DILIrank,Nandrolone phenpropionate,1959,1959.0,0.0,False,False
+DILIrank,Naproxen,1976,1976.0,0.0,False,False
+DILIrank,Nefazodone hydrochloride,1994,1994.0,0.0,False,False
+DILIrank,Nelarabine,2005,2005.0,0.0,False,False
+DILIrank,Nelfinavir mesylate,1997,1997.0,0.0,False,False
+DILIrank,Neomycin sulfate,1954,1954.0,0.0,False,False
+DILIrank,Nesiritide,2001,2001.0,0.0,False,False
+DILIrank,Nevirapine,1996,1996.0,0.0,False,False
+DILIrank,Niacin,1957,1957.0,0.0,False,False
+DILIrank,Nifedipine,1981,1981.0,0.0,False,False
+DILIrank,Nifurtimox,2020,2020.0,0.0,False,True
+DILIrank,Nilotinib hydrochloride,2007,2007.0,0.0,False,False
+DILIrank,Nilutamide,1996,1996.0,0.0,False,False
+DILIrank,Nintedanib esylate,2014,2014.0,0.0,False,True
+DILIrank,Nitazoxanide,2002,2002.0,0.0,False,False
+DILIrank,Nitrofurantoin,1953,1953.0,0.0,False,False
+DILIrank,Nitroglycerin,1981,1981.0,0.0,False,False
+DILIrank,Nizatidine,1988,1988.0,0.0,False,False
+DILIrank,Norepinephrine bitartrate,1950,1950.0,0.0,False,False
+DILIrank,Norethindrone acetate,1973,1962.0,11.0,False,False
+DILIrank,Norfloxacin,1986,1986.0,0.0,False,False
+DILIrank,Nortriptyline hydrochloride,1964,1964.0,0.0,False,False
+DILIrank,Nystatin,1964,1964.0,0.0,False,False
+DILIrank,Obeticholic acid,2016,2016.0,0.0,False,True
+DILIrank,Octreotide acetate,1988,1988.0,0.0,False,False
+DILIrank,Olanzapine,1996,1996.0,0.0,False,False
+DILIrank,Olaparib,2014,2014.0,0.0,False,True
+DILIrank,Olmesartan medoxomil,2002,2002.0,0.0,False,False
+DILIrank,Olsalazine sodium,1990,1990.0,0.0,False,False
+DILIrank,Omeprazole,1989,1989.0,0.0,False,False
+DILIrank,Ondansetron hydrochloride,1991,1991.0,0.0,False,False
+DILIrank,Opicapone,2020,2020.0,0.0,False,True
+DILIrank,Orlistat,1999,1999.0,0.0,False,False
+DILIrank,Orphenadrine hydrochloride,1957,1957.0,0.0,False,False
+DILIrank,Oseltamivir phosphate,1999,1999.0,0.0,False,False
+DILIrank,Osimertinib mesylate,2015,2015.0,0.0,False,True
+DILIrank,Ospemifene,2013,2013.0,0.0,False,True
+DILIrank,Oxacillin sodium,1971,1971.0,0.0,False,False
+DILIrank,Oxaliplatin,2002,2002.0,0.0,False,False
+DILIrank,Oxandrolone,2006,2006.0,0.0,False,False
+DILIrank,Oxaprozin,1992,1992.0,0.0,False,False
+DILIrank,Oxcarbazepine,2000,2000.0,0.0,False,False
+DILIrank,Oxybutynin chloride,1975,1975.0,0.0,False,False
+DILIrank,Oxycodone hydrochloride,1950,1950.0,0.0,False,False
+DILIrank,Oxymetholone,1972,1972.0,0.0,False,False
+DILIrank,Oxymorphone hydrochloride,1959,1959.0,0.0,False,False
+DILIrank,Oxytocin,1980,1980.0,0.0,False,False
+DILIrank,Paclitaxel,1992,1992.0,0.0,False,False
+DILIrank,Pafolacianine sodium,2021,2021.0,0.0,False,True
+DILIrank,Palbociclib,2015,2015.0,0.0,False,True
+DILIrank,Paliperidone,2006,2006.0,0.0,False,False
+DILIrank,Pancuronium bromide,1972,1972.0,0.0,False,False
+DILIrank,Pantoprazole sodium,2000,2000.0,0.0,False,False
+DILIrank,Paromomycin sulfate,1969,1969.0,0.0,False,False
+DILIrank,Paroxetine hydrochloride,1992,1992.0,0.0,False,False
+DILIrank,Pazopanib hydrochloride,2009,2009.0,0.0,False,False
+DILIrank,Pemoline,1975,1975.0,0.0,False,False
+DILIrank,Penbutolol sulfate,1987,1987.0,0.0,False,False
+DILIrank,Penicillamine,1970,1970.0,0.0,False,False
+DILIrank,Penicillin g benzathine,1951,1951.0,0.0,False,False
+DILIrank,Penicillin v potassium,1958,1958.0,0.0,False,False
+DILIrank,Pentagastrin,1974,1974.0,0.0,False,False
+DILIrank,Pentamidine isethionate,1984,1984.0,0.0,False,False
+DILIrank,Pentazocine lactate,1967,1967.0,0.0,False,False
+DILIrank,Pentostatin,1991,1991.0,0.0,False,False
+DILIrank,Perampanel,2012,2012.0,0.0,False,True
+DILIrank,Perflutren,2001,2001.0,0.0,False,False
+DILIrank,Perphenazine,1957,1957.0,0.0,False,False
+DILIrank,Pexidartinib hydrochloride,2019,2019.0,0.0,False,True
+DILIrank,Phendimetrazine tartrate,1975,1975.0,0.0,False,False
+DILIrank,Phenelzine sulfate,1961,1961.0,0.0,False,False
+DILIrank,Phenobarbital sodium,2022,2022.0,0.0,False,True
+DILIrank,Phenoxybenzamine hydrochloride,1953,1953.0,0.0,False,False
+DILIrank,Phentolamine mesylate,1952,1952.0,0.0,False,False
+DILIrank,Phenytoin,1953,1953.0,0.0,False,False
+DILIrank,Phytonadione,1955,1955.0,0.0,False,False
+DILIrank,Piflufolastat f-18,2021,2021.0,0.0,False,True
+DILIrank,Pimavanserin tartrate,2016,2016.0,0.0,False,True
+DILIrank,Pimozide,1984,1984.0,0.0,False,False
+DILIrank,Pindolol,1982,1982.0,0.0,False,False
+DILIrank,Pioglitazone hydrochloride,1999,1999.0,0.0,False,False
+DILIrank,Pirfenidone,2014,2014.0,0.0,False,True
+DILIrank,Piroxicam,1982,1982.0,0.0,False,False
+DILIrank,Pitolisant hydrochloride,2019,2019.0,0.0,False,True
+DILIrank,Plerixafor,2008,2008.0,0.0,False,False
+DILIrank,Polidocanol,2010,2010.0,0.0,False,True
+DILIrank,Pomalidomide,2013,2013.0,0.0,False,True
+DILIrank,Posaconazole,2006,2006.0,0.0,False,False
+DILIrank,Pramlintide acetate,2005,2005.0,0.0,False,False
+DILIrank,Prasugrel hydrochloride,2009,2009.0,0.0,False,False
+DILIrank,Pravastatin sodium,1991,1991.0,0.0,False,False
+DILIrank,Prednisolone,1955,1955.0,0.0,False,False
+DILIrank,Prednisone,1955,1955.0,0.0,False,False
+DILIrank,Pregabalin,2004,2004.0,0.0,False,False
+DILIrank,Primaquine phosphate,1952,1952.0,0.0,False,False
+DILIrank,Primidone,1954,1954.0,0.0,False,False
+DILIrank,Procainamide hydrochloride,1950,1950.0,0.0,False,False
+DILIrank,Procarbazine hydrochloride,1969,1969.0,0.0,False,False
+DILIrank,Prochlorperazine maleate,1956,1956.0,0.0,False,False
+DILIrank,Procyclidine hydrochloride,1955,1955.0,0.0,False,False
+DILIrank,Progesterone,1974,1974.0,0.0,False,False
+DILIrank,Promethazine hydrochloride,1951,1951.0,0.0,False,False
+DILIrank,Propafenone hydrochloride,1989,1989.0,0.0,False,False
+DILIrank,Propantheline bromide,1953,1953.0,0.0,False,False
+DILIrank,Propofol,1989,1989.0,0.0,False,False
+DILIrank,Propoxyphene hydrochloride,1957,1957.0,0.0,False,False
+DILIrank,Propylthiouracil,1947,1947.0,0.0,False,False
+DILIrank,Protirelin,1976,1976.0,0.0,False,False
+DILIrank,Protriptyline hydrochloride,1967,1967.0,0.0,False,False
+DILIrank,Prucalopride succinate,2018,2018.0,0.0,False,True
+DILIrank,Pyrazinamide,1971,1971.0,0.0,False,False
+DILIrank,Pyridostigmine bromide,1955,1955.0,0.0,False,False
+DILIrank,Pyridoxine hydrochloride,1947,1947.0,0.0,False,False
+DILIrank,Pyrimethamine,1953,1953.0,0.0,False,False
+DILIrank,Quazepam,1985,1985.0,0.0,False,False
+DILIrank,Quetiapine fumarate,1997,1997.0,0.0,False,False
+DILIrank,Quinapril hydrochloride,1991,1991.0,0.0,False,False
+DILIrank,Quinidine gluconate,1950,1950.0,0.0,False,False
+DILIrank,Rabeprazole sodium,1999,1999.0,0.0,False,False
+DILIrank,Raloxifene hydrochloride,1997,1997.0,0.0,False,False
+DILIrank,Raltegravir potassium,2007,2007.0,0.0,False,False
+DILIrank,Ramelteon,2005,2005.0,0.0,False,False
+DILIrank,Ramipril,1991,1991.0,0.0,False,False
+DILIrank,Ranitidine hydrochloride,1983,1983.0,0.0,False,False
+DILIrank,Ranolazine,2006,2006.0,0.0,False,False
+DILIrank,Regadenoson,2008,2008.0,0.0,False,False
+DILIrank,Regorafenib,2012,2012.0,0.0,False,True
+DILIrank,Remdesivir,2020,2020.0,0.0,False,True
+DILIrank,Remifentanil hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Remimazolam besylate,2020,2020.0,0.0,False,True
+DILIrank,Repaglinide,1997,1997.0,0.0,False,False
+DILIrank,Reserpine,1954,1954.0,0.0,False,False
+DILIrank,Ribavirin,1985,1985.0,0.0,False,False
+DILIrank,Ribociclib succinate,2017,2017.0,0.0,False,True
+DILIrank,Riboflavin 5'-phosphate,2016,1947.0,69.0,False,True
+DILIrank,Rifabutin,1992,1992.0,0.0,False,False
+DILIrank,Rifampin,1971,1971.0,0.0,False,False
+DILIrank,Rifamycin sodium,2018,2018.0,0.0,False,True
+DILIrank,Rilpivirine hydrochloride,2011,2011.0,0.0,False,True
+DILIrank,Riluzole,1995,1995.0,0.0,False,False
+DILIrank,Rimantadine hydrochloride,1993,1993.0,0.0,False,False
+DILIrank,Rimegepant sulfate,2020,2020.0,0.0,False,True
+DILIrank,Riociguat,2013,2013.0,0.0,False,True
+DILIrank,Risdiplam,2020,2020.0,0.0,False,True
+DILIrank,Risperidone,1993,1993.0,0.0,False,False
+DILIrank,Ritonavir,1996,1996.0,0.0,False,False
+DILIrank,Rivaroxaban,2011,2011.0,0.0,False,True
+DILIrank,Rivastigmine tartrate,2000,2000.0,0.0,False,False
+DILIrank,Rizatriptan benzoate,1998,1998.0,0.0,False,False
+DILIrank,Rocuronium bromide,1994,1994.0,0.0,False,False
+DILIrank,Roflumilast,2011,2011.0,0.0,False,True
+DILIrank,Rolapitant hydrochloride,2015,2015.0,0.0,False,True
+DILIrank,Romidepsin,2009,2009.0,0.0,False,False
+DILIrank,Ropinirole hydrochloride,1997,1997.0,0.0,False,False
+DILIrank,Rosiglitazone maleate,1999,1999.0,0.0,False,False
+DILIrank,Rosuvastatin calcium,2003,2003.0,0.0,False,False
+DILIrank,Safinamide mesylate,2017,2017.0,0.0,False,True
+DILIrank,Sapropterin dihydrochloride,2007,2007.0,0.0,False,False
+DILIrank,Saquinavir mesylate,1995,1995.0,0.0,False,False
+DILIrank,Sarecycline hydrochloride,2018,2018.0,0.0,False,True
+DILIrank,Saxagliptin hydrochloride,2009,2009.0,0.0,False,False
+DILIrank,Scopolamine,1979,1979.0,0.0,False,False
+DILIrank,Selegiline hydrochloride,1989,1989.0,0.0,False,False
+DILIrank,Selexipag,2015,2015.0,0.0,False,True
+DILIrank,Semaglutide,2017,2017.0,0.0,False,True
+DILIrank,Sertraline hydrochloride,1991,1991.0,0.0,False,False
+DILIrank,Setmelanotide acetate,2020,2020.0,0.0,False,True
+DILIrank,Sibutramine hydrochloride,1997,1997.0,0.0,False,False
+DILIrank,Sildenafil citrate,1998,1998.0,0.0,False,False
+DILIrank,Simvastatin,1991,1991.0,0.0,False,False
+DILIrank,Sincalide,1976,1976.0,0.0,False,False
+DILIrank,Sirolimus,1999,1999.0,0.0,False,False
+DILIrank,Sitagliptin phosphate,2006,2006.0,0.0,False,False
+DILIrank,Sodium lactate,1971,1965.0,6.0,False,False
+DILIrank,Sodium nitroprusside,1974,1974.0,0.0,False,False
+DILIrank,Sodium oxybate,2002,2002.0,0.0,False,False
+DILIrank,Sofosbuvir,2013,2013.0,0.0,False,True
+DILIrank,Solifenacin succinate,2004,2004.0,0.0,False,False
+DILIrank,Solriamfetol hydrochloride,2019,2019.0,0.0,False,True
+DILIrank,Sorafenib tosylate,2005,2005.0,0.0,False,False
+DILIrank,Spironolactone,1960,1960.0,0.0,False,False
+DILIrank,Stavudine,1994,1994.0,0.0,False,False
+DILIrank,Stiripentol,2018,2018.0,0.0,False,True
+DILIrank,Streptomycin sulfate,1946,1946.0,0.0,False,False
+DILIrank,Succimer,1991,1991.0,0.0,False,False
+DILIrank,Succinylcholine chloride,1952,1952.0,0.0,False,False
+DILIrank,Sufentanil citrate,1984,1984.0,0.0,False,False
+DILIrank,Sugammadex sodium,2015,2015.0,0.0,False,True
+DILIrank,Sulfadiazine,1941,1941.0,0.0,False,False
+DILIrank,Sulfamethizole,1953,1953.0,0.0,False,False
+DILIrank,Sulfasalazine,1950,1950.0,0.0,False,False
+DILIrank,Sulfathiazole,1945,1945.0,0.0,False,False
+DILIrank,Sulindac,1978,1978.0,0.0,False,False
+DILIrank,Sunitinib malate,2006,2006.0,0.0,False,False
+DILIrank,Suvorexant,2014,2014.0,0.0,False,True
+DILIrank,Tacrolimus,1994,1994.0,0.0,False,False
+DILIrank,Tadalafil,2003,2003.0,0.0,False,False
+DILIrank,Tafamidis meglumine,2019,2019.0,0.0,False,True
+DILIrank,Tamoxifen citrate,1977,1977.0,0.0,False,False
+DILIrank,Tamsulosin hydrochloride,1997,1997.0,0.0,False,False
+DILIrank,Tapentadol hydrochloride,2008,2008.0,0.0,False,False
+DILIrank,Tecovirimat,2018,2018.0,0.0,False,True
+DILIrank,Telithromycin,2004,2004.0,0.0,False,False
+DILIrank,Telmisartan,1998,1998.0,0.0,False,False
+DILIrank,Temozolomide,1999,1999.0,0.0,False,False
+DILIrank,Temsirolimus,2007,2007.0,0.0,False,False
+DILIrank,Tenapanor hydrochloride,2019,2019.0,0.0,False,True
+DILIrank,Teniposide,1992,1992.0,0.0,False,False
+DILIrank,Tenofovir disoproxil fumarate,2001,2001.0,0.0,False,False
+DILIrank,Terazosin hydrochloride,1987,1987.0,0.0,False,False
+DILIrank,Terbinafine hydrochloride,1992,1992.0,0.0,False,False
+DILIrank,Terbutaline sulfate,1974,1974.0,0.0,False,False
+DILIrank,Teriflunomide,2012,2012.0,0.0,False,True
+DILIrank,Teriparatide acetate,2002,2002.0,0.0,False,False
+DILIrank,Testosterone enanthate,1953,1953.0,0.0,False,False
+DILIrank,Thalidomide,1998,1998.0,0.0,False,False
+DILIrank,Thiabendazole,1967,1967.0,0.0,False,False
+DILIrank,Thiamine hydrochloride,1947,1947.0,0.0,False,False
+DILIrank,Thioguanine,1966,1966.0,0.0,False,False
+DILIrank,Thioridazine hydrochloride,1962,1962.0,0.0,False,False
+DILIrank,Thiotepa,1959,1959.0,0.0,False,False
+DILIrank,Ticagrelor,2011,2011.0,0.0,False,True
+DILIrank,Ticlopidine hydrochloride,1991,1991.0,0.0,False,False
+DILIrank,Tigecycline,2005,2005.0,0.0,False,False
+DILIrank,Tiludronate disodium,1997,1997.0,0.0,False,False
+DILIrank,Tinidazole,2004,2004.0,0.0,False,False
+DILIrank,Tipranavir,2005,2005.0,0.0,False,False
+DILIrank,Tirofiban hydrochloride,1998,1998.0,0.0,False,False
+DILIrank,Tizanidine hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Tolazamide,1966,1966.0,0.0,False,False
+DILIrank,Tolcapone,1998,1998.0,0.0,False,False
+DILIrank,Tolmetin sodium,1976,1976.0,0.0,False,False
+DILIrank,Tolterodine tartrate,1998,1998.0,0.0,False,False
+DILIrank,Tolvaptan,2009,2009.0,0.0,False,False
+DILIrank,Topiramate,1996,1996.0,0.0,False,False
+DILIrank,Topotecan hydrochloride,1996,1996.0,0.0,False,False
+DILIrank,Tramadol hydrochloride,1995,1995.0,0.0,False,False
+DILIrank,Trametinib dimethyl sulfoxide,2013,2013.0,0.0,False,True
+DILIrank,Trandolapril,1996,1996.0,0.0,False,False
+DILIrank,Tranexamic acid,1986,1986.0,0.0,False,False
+DILIrank,Tranylcypromine sulfate,1961,1961.0,0.0,False,False
+DILIrank,Trazodone hydrochloride,1981,1981.0,0.0,False,False
+DILIrank,Triamterene,1964,1964.0,0.0,False,False
+DILIrank,Trientine hydrochloride,1985,1985.0,0.0,False,False
+DILIrank,Trifluoperazine hydrochloride,1959,1959.0,0.0,False,False
+DILIrank,Triheptanoin,2020,2020.0,0.0,False,True
+DILIrank,Trihexyphenidyl hydrochloride,1949,1949.0,0.0,False,False
+DILIrank,Trimethoprim,1973,1973.0,0.0,False,False
+DILIrank,Triprolidine hydrochloride,1977,1977.0,0.0,False,False
+DILIrank,Triptorelin pamoate,2000,2000.0,0.0,False,False
+DILIrank,Troglitazone,1997,1997.0,0.0,False,False
+DILIrank,Trospium chloride,2004,2004.0,0.0,False,False
+DILIrank,Trovafloxacin mesylate,1997,1997.0,0.0,False,False
+DILIrank,Tyramine,1973,,,False,False
+DILIrank,Ubrogepant,2019,2019.0,0.0,False,True
+DILIrank,Ulipristal acetate,2010,2010.0,0.0,False,True
+DILIrank,Umeclidinium bromide,2013,2013.0,0.0,False,True
+DILIrank,Uridine triacetate,2015,2015.0,0.0,False,True
+DILIrank,Urofollitropin,1986,1986.0,0.0,False,False
+DILIrank,Valdecoxib,2001,2001.0,0.0,False,False
+DILIrank,Valsartan,1996,1996.0,0.0,False,False
+DILIrank,Vancomycin hydrochloride,1964,1964.0,0.0,False,False
+DILIrank,Varenicline tartrate,2006,2006.0,0.0,False,False
+DILIrank,Vecuronium bromide,1984,1984.0,0.0,False,False
+DILIrank,Vemurafenib,2011,2011.0,0.0,False,True
+DILIrank,Venetoclax,2016,2016.0,0.0,False,True
+DILIrank,Venlafaxine hydrochloride,1993,1993.0,0.0,False,False
+DILIrank,Verapamil hydrochloride,1981,1981.0,0.0,False,False
+DILIrank,Vericiguat,2021,2021.0,0.0,False,True
+DILIrank,Vibegron,2020,2020.0,0.0,False,True
+DILIrank,Vilazodone hydrochloride,2011,2011.0,0.0,False,True
+DILIrank,Viloxazine hydrochloride,2021,2021.0,0.0,False,True
+DILIrank,Vinblastine sulfate,1965,1965.0,0.0,False,False
+DILIrank,Vincristine sulfate,1963,1963.0,0.0,False,False
+DILIrank,Vitamin A palmitate,1947,1947.0,0.0,False,False
+DILIrank,Vitamin C,1947,,,False,False
+DILIrank,Vitamin E,1947,1947.0,0.0,False,False
+DILIrank,Voclosporin,2021,2021.0,0.0,False,True
+DILIrank,Vorapaxar sulfate,2014,2014.0,0.0,False,True
+DILIrank,Voriconazole,2002,2002.0,0.0,False,False
+DILIrank,Vorinostat,2006,2006.0,0.0,False,False
+DILIrank,Vortioxetine hydrobromide,2013,2013.0,0.0,False,True
+DILIrank,Vosoritide,2021,2021.0,0.0,False,True
+DILIrank,Voxelotor,2019,2019.0,0.0,False,True
+DILIrank,Warfarin sodium,1954,1954.0,0.0,False,False
+DILIrank,Zafirlukast,1996,1996.0,0.0,False,False
+DILIrank,Zaleplon,1999,1999.0,0.0,False,False
+DILIrank,Zanubrutinib,2019,2019.0,0.0,False,True
+DILIrank,Zidovudine,1987,1987.0,0.0,False,False
+DILIrank,Zileuton,1996,1996.0,0.0,False,False
+DILIrank,Ziprasidone hydrochloride,2001,2001.0,0.0,False,False
+DILIrank,Zoledronic acid,2001,2001.0,0.0,False,False
+DILIrank,Zonisamide,2000,2000.0,0.0,False,False
+DICTrank,Olanzapine pamoate,2009,1996.0,13.0,False,False
+DICTrank,Trimethobenzamide Hydrochloride,1974,1974.0,0.0,False,False
+DICTrank,paliperidone palmitate,2009,2006.0,3.0,False,False
+DICTrank,TESTOSTERONE UNDECANOATE,2014,2014.0,0.0,False,True
+DICTrank,aripiprazole lauroxil,2015,2015.0,0.0,False,True
+DICTrank,PASIREOTIDE,2014,2014.0,0.0,False,True
+DICTrank,triptorelin,2000,2000.0,0.0,False,False
+DICTrank,naltrexone,2006,1984.0,22.0,False,False
+DICTrank,CABOTEGRAVIR SODIUM,2021,2021.0,0.0,False,True
+DICTrank,Fulvestrant,2002,2002.0,0.0,False,False
+DICTrank,Dimercaprol,1946,1946.0,0.0,False,False
+DICTrank,CARBOPROST TROMETHAMINE,1979,1979.0,0.0,False,False
+DICTrank,ESTRADIOL VALERATE,1954,1954.0,0.0,False,False
+DICTrank,TESTOSTERONE CYPIONATE,1978,1978.0,0.0,False,False
+DICTrank,STREPTOMYCIN SULFATE,1946,1946.0,0.0,False,False
+DICTrank,MEDROXYPROGESTERONE ACETATE,1959,1959.0,0.0,False,False
+DICTrank,HALOPERIDOL DECANOATE,1986,1986.0,0.0,False,False
+DICTrank,ESTRADIOL CYPIONATE,1979,1979.0,0.0,False,False
+DICTrank,Haloperidol Lactate,1967,1967.0,0.0,False,False
+DICTrank,ZIPRASIDONE MESYLATE,2002,2001.0,1.0,False,False
+DICTrank,BLEOMYCIN SULFATE,1973,1973.0,0.0,False,False
+DICTrank,"ESTROGENS, CONJUGATED",1942,1942.0,0.0,False,False
+DICTrank,capreomycin sulfate,1971,1971.0,0.0,False,False
+DICTrank,HYDROCORTISONE SODIUM SUCCINATE,1955,1951.0,4.0,False,False
+DICTrank,EDETATE CALCIUM DISODIUM,1953,1953.0,0.0,False,False
+DICTrank,OXYTOCIN,1980,1980.0,0.0,False,False
+DICTrank,Phentolamine Mesylate,1952,1952.0,0.0,False,False
+DICTrank,Colistimethate Sodium,1970,1970.0,0.0,False,False
+DICTrank,Orphenadrine Citrate,1959,1957.0,2.0,False,False
+DICTrank,Midazolam Hydrochloride,1985,1985.0,0.0,False,False
+DICTrank,METOCLOPRAMIDE HYDROCHLORIDE,1979,1979.0,0.0,False,False
+DICTrank,PENTAMIDINE ISETHIONATE,1984,1984.0,0.0,False,False
+DICTrank,DIPHENHYDRAMINE HYDROCHLORIDE,1946,1946.0,0.0,False,False
+DICTrank,PROCAINAMIDE HYDROCHLORIDE,1950,1950.0,0.0,False,False
+DICTrank,LEUCOVORIN CALCIUM,1952,1952.0,0.0,False,False
+DICTrank,cefuroxime sodium,1983,1983.0,0.0,False,False
+DICTrank,PROCHLORPERAZINE EDISYLATE,1957,1957.0,0.0,False,False
+DICTrank,CEFAZOLIN SODIUM,1973,1973.0,0.0,False,False
+DICTrank,DROPERIDOL,1970,1970.0,0.0,False,False
+DICTrank,KETAMINE HYDROCHLORIDE,1970,1970.0,0.0,False,False
+DICTrank,ONDANSETRON HYDROCHLORIDE,1991,1991.0,0.0,False,False
+DICTrank,Pentobarbital Sodium,1973,1973.0,0.0,False,False
+DICTrank,AMIKACIN SULFATE,1981,1981.0,0.0,False,False
+DICTrank,THIAMINE HYDROCHLORIDE,1947,1947.0,0.0,False,False
+DICTrank,METHYLPREDNISOLONE SODIUM SUCCINATE,1959,1957.0,2.0,False,False
+DICTrank,Methylergonovine Maleate,1946,1946.0,0.0,False,False
+DICTrank,SUCCINYLCHOLINE CHLORIDE,1952,1952.0,0.0,False,False
+DICTrank,Tobramycin Sulfate,1975,1975.0,0.0,False,False
+DICTrank,AZTREONAM,1986,1986.0,0.0,False,False
+DICTrank,OXACILLIN SODIUM,1971,1971.0,0.0,False,False
+DICTrank,Hydralazine Hydrochloride,1953,1953.0,0.0,False,False
+DICTrank,FOSPHENYTOIN SODIUM,1996,1996.0,0.0,False,False
+DICTrank,PYRIDOXINE HYDROCHLORIDE,1947,1947.0,0.0,False,False
+DICTrank,CEFOTETAN,1985,1985.0,0.0,False,False
+DICTrank,ERTAPENEM SODIUM,2001,2001.0,0.0,False,False
+DICTrank,bumetanide,1983,1983.0,0.0,False,False
+DICTrank,edrophonium chloride,1951,1951.0,0.0,False,False
+DICTrank,Piperacillin Sodium,1981,1981.0,0.0,False,False
+DICTrank,ceftizoxime sodium,1983,1983.0,0.0,False,False
+DICTrank,Cosyntropin,1970,1970.0,0.0,False,False
+DICTrank,METHOHEXITAL SODIUM,1960,1960.0,0.0,False,False
+DICTrank,MEPERIDINE HYDROCHLORIDE,1942,1942.0,0.0,False,False
+DICTrank,PRALIDOXIME CHLORIDE,1964,1964.0,0.0,False,False
+DICTrank,Nalbuphine Hydrochloride,1979,1979.0,0.0,False,False
+DICTrank,DEFEROXAMINE MESYLATE,1968,1968.0,0.0,False,False
+DICTrank,Hydromorphone Hydrochloride,1984,1984.0,0.0,False,False
+DICTrank,nalmefene hydrochloride,1995,1995.0,0.0,False,False
+DICTrank,CORTICOTROPIN,1950,1950.0,0.0,False,False
+DICTrank,CALCITONIN SALMON,1978,1978.0,0.0,False,False
+DICTrank,HYDROXYPROGESTERONE CAPROATE,1974,1974.0,0.0,False,False
+DICTrank,FLUPHENAZINE DECANOATE,1972,1972.0,0.0,False,False
+DICTrank,LEUPROLIDE ACETATE,1985,1985.0,0.0,False,False
+DICTrank,ACETYLCHOLINE CHLORIDE,1973,1973.0,0.0,False,False
+DICTrank,BRILLIANT BLUE G,2019,2019.0,0.0,False,True
+DICTrank,TRYPAN BLUE,2004,2004.0,0.0,False,False
+DICTrank,Procaine Hydrochloride,1952,1952.0,0.0,False,False
+DICTrank,Iohexol,1985,1985.0,0.0,False,False
+DICTrank,cytarabine,1969,1969.0,0.0,False,False
+DICTrank,IOPAMIDOL,1985,1985.0,0.0,False,False
+DICTrank,Iodixanol,1996,1996.0,0.0,False,False
+DICTrank,ALPROSTADIL,1981,1981.0,0.0,False,False
+DICTrank,CYSTEINE HYDROCHLORIDE,1986,1986.0,0.0,False,False
+DICTrank,GALLIUM GA-68 GOZETOTIDE,2020,2020.0,0.0,False,True
+DICTrank,Etomidate,1982,1982.0,0.0,False,False
+DICTrank,TECHNETIUM TC-99M MEDRONATE,1978,1978.0,0.0,False,False
+DICTrank,fosdenopterin hydrobromide,2021,2021.0,0.0,False,True
+DICTrank,ERAVACYCLINE DIHYDROCHLORIDE,2018,2018.0,0.0,False,True
+DICTrank,COPANLISIB,2017,2017.0,0.0,False,True
+DICTrank,oritavancin diphosphate,2014,2014.0,0.0,False,True
+DICTrank,Ephedrine Sulfate,2016,2016.0,0.0,False,True
+DICTrank,Cefiderocol sulfate tosylate,2019,2019.0,0.0,False,True
+DICTrank,FLORBETABEN F-18,2014,2014.0,0.0,False,True
+DICTrank,FLUOROESTRADIOL F-18,2020,2020.0,0.0,False,True
+DICTrank,Flortaucipir F-18,2020,2020.0,0.0,False,True
+DICTrank,BREXANOLONE,2019,2019.0,0.0,False,True
+DICTrank,peramivir,2014,2014.0,0.0,False,True
+DICTrank,IOBENGUANE I-131,2018,2018.0,0.0,False,True
+DICTrank,ASCORBIC ACID,1947,1947.0,0.0,False,False
+DICTrank,DOXAPRAM HYDROCHLORIDE,1965,1965.0,0.0,False,False
+DICTrank,DAPTOMYCIN,2003,2003.0,0.0,False,False
+DICTrank,OLICERIDINE,2020,2020.0,0.0,False,True
+DICTrank,CHOLINE C-11,2012,2012.0,0.0,False,True
+DICTrank,AMIFOSTINE,1995,1995.0,0.0,False,False
+DICTrank,ANGIOTENSIN II,2017,2017.0,0.0,False,True
+DICTrank,Sincalide,1976,1976.0,0.0,False,False
+DICTrank,PLAZOMICIN,2018,2018.0,0.0,False,True
+DICTrank,Flutemetamol F-18,2013,2013.0,0.0,False,True
+DICTrank,IXABEPILONE,2007,2007.0,0.0,False,False
+DICTrank,ARGATROBAN,2000,2000.0,0.0,False,False
+DICTrank,indocyanine green,1959,1959.0,0.0,False,False
+DICTrank,Trabectedin,2015,2015.0,0.0,False,True
+DICTrank,GADOXETATE DISODIUM,2008,2008.0,0.0,False,False
+DICTrank,FENOLDOPAM MESYLATE,1997,1997.0,0.0,False,False
+DICTrank,ARGININE HYDROCHLORIDE,1973,1973.0,0.0,False,False
+DICTrank,BELINOSTAT,2014,2014.0,0.0,False,True
+DICTrank,SUGAMMADEX SODIUM,2015,2015.0,0.0,False,True
+DICTrank,epoprostenol,1995,1995.0,0.0,False,False
+DICTrank,CALCIUM GLUCONATE MONOHYDRATE,1971,1971.0,0.0,False,False
+DICTrank,PERFLUTREN,2001,2001.0,0.0,False,False
+DICTrank,ERIBULIN MESYLATE,2010,2010.0,0.0,False,True
+DICTrank,PRALATREXATE,2009,2009.0,0.0,False,False
+DICTrank,Pemetrexed disodium heptahydrate,2004,,,False,False
+DICTrank,IBUTILIDE FUMARATE,1995,1995.0,0.0,False,False
+DICTrank,ANIDULAFUNGIN,2006,2006.0,0.0,False,False
+DICTrank,BENDAMUSTINE HYDROCHLORIDE,2008,2008.0,0.0,False,False
+DICTrank,foscarnet sodium,1991,1991.0,0.0,False,False
+DICTrank,gadodiamide,1993,1993.0,0.0,False,False
+DICTrank,Amisulpride,2020,2020.0,0.0,False,True
+DICTrank,CEFTAROLINE FOSAMIL,2010,2010.0,0.0,False,True
+DICTrank,DOPAMINE HYDROCHLORIDE,1974,1974.0,0.0,False,False
+DICTrank,conivaptan hydrochloride,2005,2005.0,0.0,False,False
+DICTrank,SAMARIUM SM-153 LEXIDRONAM PENTASODIUM,1997,1997.0,0.0,False,False
+DICTrank,CARFILZOMIB,2012,2012.0,0.0,False,True
+DICTrank,ETELCALCETIDE HYDROCHLORIDE,2017,2017.0,0.0,False,True
+DICTrank,FLORBETAPIR F-18,2012,2012.0,0.0,False,True
+DICTrank,CYCLOPHOSPHAMIDE ANHYDROUS,1959,1959.0,0.0,False,False
+DICTrank,TIROFIBAN HYDROCHLORIDE,1998,1998.0,0.0,False,False
+DICTrank,CANGRELOR,2015,2015.0,0.0,False,True
+DICTrank,TEMSIROLIMUS,2007,2007.0,0.0,False,False
+DICTrank,STREPTOZOCIN,1982,1982.0,0.0,False,False
+DICTrank,Remifentanil Hydrochloride,1996,1996.0,0.0,False,False
+DICTrank,etoposide phosphate,1996,1983.0,13.0,False,False
+DICTrank,PAFOLACIANINE SODIUM,2021,2021.0,0.0,False,True
+DICTrank,trilaciclib dihydrochloride,2021,2021.0,0.0,False,True
+DICTrank,gadobenate dimeglumine,2004,2004.0,0.0,False,False
+DICTrank,ioflupane I-123,2011,2011.0,0.0,False,True
+DICTrank,TECHNETIUM TC-99M EXAMETAZIME,1973,,,False,False
+DICTrank,PENTOSTATIN,1991,1991.0,0.0,False,False
+DICTrank,PIFLUFOLASTAT F-18,2021,2021.0,0.0,False,True
+DICTrank,Fluciclovine F-18,2016,2016.0,0.0,False,True
+DICTrank,ACETAMINOPHEN,1968,1968.0,0.0,False,False
+DICTrank,melphalan flufenamide hydrochloride,1964,,,False,False
+DICTrank,REGADENOSON,2008,2008.0,0.0,False,False
+DICTrank,LURBINECTEDIN,2020,2020.0,0.0,False,True
+DICTrank,FLUORODOPA F-18,2019,2019.0,0.0,False,True
+DICTrank,remimazolam besylate,2020,2020.0,0.0,False,True
+DICTrank,EPIRUBICIN HYDROCHLORIDE,1999,1999.0,0.0,False,False
+DICTrank,GADOBUTROL,2011,2011.0,0.0,False,True
+DICTrank,CLEVIDIPINE,2008,2008.0,0.0,False,False
+DICTrank,Alfentanil Hydrochloride,1986,1986.0,0.0,False,False
+DICTrank,DEXMEDETOMIDINE HYDROCHLORIDE,1999,1999.0,0.0,False,False
+DICTrank,DIFELIKEFALIN ACETATE,2021,2021.0,0.0,False,True
+DICTrank,POLIDOCANOL,2010,2010.0,0.0,False,True
+DICTrank,telavancin hydrochloride,2009,2009.0,0.0,False,False
+DICTrank,LEVOTHYROXINE SODIUM ANHYDROUS,2000,2000.0,0.0,False,False
+DICTrank,ATROPINE SULFATE,1960,1960.0,0.0,False,False
+DICTrank,ganciclovir sodium,1989,1989.0,0.0,False,False
+DICTrank,TROMETHAMINE,1965,1965.0,0.0,False,False
+DICTrank,gadoteridol,1992,1992.0,0.0,False,False
+DICTrank,PROPOFOL,1989,1989.0,0.0,False,False
+DICTrank,CASPOFUNGIN ACETATE,2001,2001.0,0.0,False,False
+DICTrank,ESMOLOL HYDROCHLORIDE,1986,1986.0,0.0,False,False
+DICTrank,IFOSFAMIDE,1987,1987.0,0.0,False,False
+DICTrank,DAUNORUBICIN HYDROCHLORIDE,1979,1979.0,0.0,False,False
+DICTrank,MITOXANTRONE HYDROCHLORIDE,1987,1987.0,0.0,False,False
+DICTrank,CARMUSTINE,1977,1977.0,0.0,False,False
+DICTrank,GEMCITABINE HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,CAFFEINE CITRATE,1999,1948.0,51.0,False,False
+DICTrank,BIVALIRUDIN,2000,2000.0,0.0,False,False
+DICTrank,VINCRISTINE SULFATE,1963,1963.0,0.0,False,False
+DICTrank,MICAFUNGIN,2005,2005.0,0.0,False,False
+DICTrank,cefoxitin sodium,1978,1978.0,0.0,False,False
+DICTrank,SODIUM TETRADECYL SULFATE,1946,1946.0,0.0,False,False
+DICTrank,paclitaxel,1992,1992.0,0.0,False,False
+DICTrank,mesna,1987,1987.0,0.0,False,False
+DICTrank,Eptifibatide,1998,1998.0,0.0,False,False
+DICTrank,IBUPROFEN LYSINE,2006,2006.0,0.0,False,False
+DICTrank,VINBLASTINE SULFATE,1965,1965.0,0.0,False,False
+DICTrank,INDIUM IN-111 OXYQUINOLINE,1985,1985.0,0.0,False,False
+DICTrank,gadoterate meglumine,2013,2013.0,0.0,False,True
+DICTrank,Adenosine,1989,1989.0,0.0,False,False
+DICTrank,NICARDIPINE HYDROCHLORIDE,1988,1988.0,0.0,False,False
+DICTrank,AZITHROMYCIN MONOHYDRATE,1991,1991.0,0.0,False,False
+DICTrank,CIDOFOVIR,1996,1996.0,0.0,False,False
+DICTrank,AMPICILLIN SODIUM,1966,1966.0,0.0,False,False
+DICTrank,NOREPINEPHRINE BITARTRATE,1950,1950.0,0.0,False,False
+DICTrank,CEFEPIME HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,ROCURONIUM BROMIDE,1994,1994.0,0.0,False,False
+DICTrank,ENALAPRILAT,1988,1988.0,0.0,False,False
+DICTrank,Busulfan,1954,1954.0,0.0,False,False
+DICTrank,Calcitriol,1978,1978.0,0.0,False,False
+DICTrank,MEROPENEM,1996,1996.0,0.0,False,False
+DICTrank,Clindamycin Phosphate,1972,1970.0,2.0,False,False
+DICTrank,FOSAPREPITANT DIMEGLUMINE,2008,2008.0,0.0,False,False
+DICTrank,ROMIDEPSIN,2009,2009.0,0.0,False,False
+DICTrank,Aminophylline Dihydrate,1940,1940.0,0.0,False,False
+DICTrank,CARBOPLATIN,1989,1989.0,0.0,False,False
+DICTrank,AZATHIOPRINE SODIUM,1974,1968.0,6.0,False,False
+DICTrank,CEFTAZIDIME,1985,1985.0,0.0,False,False
+DICTrank,Milrinone Lactate,1987,1987.0,0.0,False,False
+DICTrank,NEOSTIGMINE METHYLSULFATE,2013,2013.0,0.0,False,True
+DICTrank,AMIODARONE HYDROCHLORIDE,1985,1985.0,0.0,False,False
+DICTrank,PAMIDRONATE DISODIUM,1991,1991.0,0.0,False,False
+DICTrank,CHLORAMPHENICOL SODIUM SUCCINATE,1959,1951.0,8.0,False,False
+DICTrank,Fomepizole,1997,1997.0,0.0,False,False
+DICTrank,CISATRACURIUM BESYLATE,1995,1995.0,0.0,False,False
+DICTrank,AMPHOTERICIN B,1964,1964.0,0.0,False,False
+DICTrank,TOPOTECAN,1996,1996.0,0.0,False,False
+DICTrank,DACARBAZINE,1975,1975.0,0.0,False,False
+DICTrank,DECITABINE,2006,2006.0,0.0,False,False
+DICTrank,TIGECYCLINE,2005,2005.0,0.0,False,False
+DICTrank,ETOPOSIDE,1983,1983.0,0.0,False,False
+DICTrank,DOCETAXEL ANHYDROUS,1996,1996.0,0.0,False,False
+DICTrank,Dipyridamole,1961,1961.0,0.0,False,False
+DICTrank,NELARABINE,2005,2005.0,0.0,False,False
+DICTrank,IDARUBICIN HYDROCHLORIDE,1990,1990.0,0.0,False,False
+DICTrank,VALPROATE SODIUM,1996,1996.0,0.0,False,False
+DICTrank,ACETAZOLAMIDE SODIUM,1954,1953.0,1.0,False,False
+DICTrank,ALLOPURINOL SODIUM,1996,1966.0,30.0,False,False
+DICTrank,FLUMAZENIL,1991,1991.0,0.0,False,False
+DICTrank,ERYTHROMYCIN LACTOBIONATE,1964,1964.0,0.0,False,False
+DICTrank,Granisetron Hydrochloride,1993,1993.0,0.0,False,False
+DICTrank,vinorelbine tartrate,1994,1994.0,0.0,False,False
+DICTrank,FLUDARABINE PHOSPHATE,1991,1991.0,0.0,False,False
+DICTrank,DACTINOMYCIN,1964,1964.0,0.0,False,False
+DICTrank,Fludeoxyglucose F-18,1994,1994.0,0.0,False,False
+DICTrank,DOBUTAMINE HYDROCHLORIDE,1978,1978.0,0.0,False,False
+DICTrank,INDOMETHACIN SODIUM,1985,1965.0,20.0,False,False
+DICTrank,OXALIPLATIN,2002,2002.0,0.0,False,False
+DICTrank,IRINOTECAN HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,CEFTRIAXONE SODIUM,1984,1984.0,0.0,False,False
+DICTrank,trimetrexate glucuronate,1993,1993.0,0.0,False,False
+DICTrank,Temozolomide,1999,1999.0,0.0,False,False
+DICTrank,brivaracetam,2016,2016.0,0.0,False,True
+DICTrank,tedizolid phosphate,2014,2014.0,0.0,False,True
+DICTrank,delafloxacin meglumine,2017,2017.0,0.0,False,True
+DICTrank,SELEXIPAG,2015,2015.0,0.0,False,True
+DICTrank,LACOSAMIDE,2008,2008.0,0.0,False,False
+DICTrank,LETERMOVIR,2017,2017.0,0.0,False,True
+DICTrank,omadacycline,2018,2018.0,0.0,False,True
+DICTrank,trovafloxacin mesylate,1997,1997.0,0.0,False,False
+DICTrank,HEPARIN SODIUM,1939,1939.0,0.0,False,False
+DICTrank,bortezomib,2003,2003.0,0.0,False,False
+DICTrank,AZACITIDINE,2004,2004.0,0.0,False,False
+DICTrank,OCTREOTIDE ACETATE,1988,1988.0,0.0,False,False
+DICTrank,Dimethyl Sulfoxide,1978,1978.0,0.0,False,False
+DICTrank,HEXAMINOLEVULINATE HYDROCHLORIDE,2010,2010.0,0.0,False,True
+DICTrank,VALRUBICIN,1998,1998.0,0.0,False,False
+DICTrank,ISAVUCONAZONIUM SULFATE,2015,2015.0,0.0,False,True
+DICTrank,TIPRANAVIR,2005,2005.0,0.0,False,False
+DICTrank,METYRAPONE,1961,1961.0,0.0,False,False
+DICTrank,GLYCEROL PHENYLBUTYRATE,2013,2013.0,0.0,False,True
+DICTrank,macitentan,2013,2013.0,0.0,False,True
+DICTrank,saxagliptin hydrochloride,2009,2009.0,0.0,False,False
+DICTrank,FIDAXOMICIN,2011,2011.0,0.0,False,True
+DICTrank,PITOLISANT HYDROCHLORIDE,2019,2019.0,0.0,False,True
+DICTrank,SAFINAMIDE MESYLATE,2017,2017.0,0.0,False,True
+DICTrank,PEXIDARTINIB HYDROCHLORIDE,2019,2019.0,0.0,False,True
+DICTrank,VANDETANIB,2011,2011.0,0.0,False,True
+DICTrank,IDELALISIB,2014,2014.0,0.0,False,True
+DICTrank,BENZNIDAZOLE,2017,2017.0,0.0,False,True
+DICTrank,OLSALAZINE SODIUM,1990,1990.0,0.0,False,False
+DICTrank,OSILODROSTAT PHOSPHATE,2020,2020.0,0.0,False,True
+DICTrank,OPICAPONE,2020,2020.0,0.0,False,True
+DICTrank,RIFAPENTINE,1998,1998.0,0.0,False,False
+DICTrank,PROCARBAZINE HYDROCHLORIDE,1969,1969.0,0.0,False,False
+DICTrank,Amlodipine Benzoate,2019,2019.0,0.0,False,True
+DICTrank,GEMIFLOXACIN MESYLATE,2003,2003.0,0.0,False,False
+DICTrank,LOMITAPIDE MESYLATE,2012,2012.0,0.0,False,True
+DICTrank,DAROLUTAMIDE,2019,2019.0,0.0,False,True
+DICTrank,OLAPARIB,2014,2014.0,0.0,False,True
+DICTrank,Urea C-14,1997,1997.0,0.0,False,False
+DICTrank,SONIDEGIB PHOSPHATE,2015,2015.0,0.0,False,True
+DICTrank,Tepotinib Hydrochloride,2021,2021.0,0.0,False,True
+DICTrank,DICHLORPHENAMIDE,1958,1958.0,0.0,False,False
+DICTrank,ILOPERIDONE,2009,2009.0,0.0,False,False
+DICTrank,ANAGRELIDE HYDROCHLORIDE ANHYDROUS,1997,1997.0,0.0,False,False
+DICTrank,maralixibat chloride,2021,2021.0,0.0,False,True
+DICTrank,LOFEXIDINE HYDROCHLORIDE,2018,2018.0,0.0,False,True
+DICTrank,naldemedine tosylate,2017,2017.0,0.0,False,True
+DICTrank,APREMILAST,2014,2014.0,0.0,False,True
+DICTrank,SAQUINAVIR MESYLATE,1995,1995.0,0.0,False,False
+DICTrank,FEDRATINIB HYDROCHLORIDE,2019,2019.0,0.0,False,True
+DICTrank,ENASIDENIB MESYLATE,2017,2017.0,0.0,False,True
+DICTrank,VILAZODONE HYDROCHLORIDE,2011,2011.0,0.0,False,True
+DICTrank,adefovir dipivoxil,2002,2002.0,0.0,False,False
+DICTrank,DOLASETRON MESYLATE,1997,1997.0,0.0,False,False
+DICTrank,CAPMATINIB,2020,2020.0,0.0,False,True
+DICTrank,SITAGLIPTIN PHOSPHATE,2006,2006.0,0.0,False,False
+DICTrank,IVABRADINE HYDROCHLORIDE,2015,2015.0,0.0,False,True
+DICTrank,FOSTAMATINIB,2018,2018.0,0.0,False,True
+DICTrank,NITAZOXANIDE,2002,2002.0,0.0,False,False
+DICTrank,LISDEXAMFETAMINE DIMESYLATE,2007,2007.0,0.0,False,False
+DICTrank,TASIMELTEON,2014,2014.0,0.0,False,True
+DICTrank,DABIGATRAN ETEXILATE MESYLATE,2010,2010.0,0.0,False,True
+DICTrank,TECOVIRIMAT MONOHYDRATE,2018,2018.0,0.0,False,True
+DICTrank,GEFITINIB,2003,2003.0,0.0,False,False
+DICTrank,RIOCIGUAT,2013,2013.0,0.0,False,True
+DICTrank,SIPONIMOD,2019,2019.0,0.0,False,True
+DICTrank,SAPROPTERIN DIHYDROCHLORIDE,2007,2007.0,0.0,False,False
+DICTrank,dasatinib,2006,2006.0,0.0,False,False
+DICTrank,SECNIDAZOLE,2017,2017.0,0.0,False,True
+DICTrank,Aspirin,1950,1950.0,0.0,False,False
+DICTrank,Stiripentol,2018,2018.0,0.0,False,True
+DICTrank,ivosidenib,2018,2018.0,0.0,False,True
+DICTrank,MARIBAVIR,2021,2021.0,0.0,False,True
+DICTrank,ALECTINIB HYDROCHLORIDE,2015,2015.0,0.0,False,True
+DICTrank,CENOBAMATE,2019,2019.0,0.0,False,True
+DICTrank,CEVIMELINE HYDROCHLORIDE,2000,2000.0,0.0,False,False
+DICTrank,RELUGOLIX,2020,2020.0,0.0,False,True
+DICTrank,CALCIFEDIOL,1980,1980.0,0.0,False,False
+DICTrank,DEUTETRABENAZINE,2017,2017.0,0.0,False,True
+DICTrank,Bedaquiline Fumarate,2012,2012.0,0.0,False,True
+DICTrank,LORLATINIB,2018,2018.0,0.0,False,True
+DICTrank,VILOXAZINE HYDROCHLORIDE,2021,2021.0,0.0,False,True
+DICTrank,ETHIONAMIDE,1965,1965.0,0.0,False,False
+DICTrank,AVACOPAN,2021,2021.0,0.0,False,True
+DICTrank,TOFACITINIB CITRATE,2012,2012.0,0.0,False,True
+DICTrank,MOXIDECTIN,2018,2018.0,0.0,False,True
+DICTrank,DESVENLAFAXINE,2013,2008.0,5.0,False,True
+DICTrank,pimavanserin tartrate,2016,2016.0,0.0,False,True
+DICTrank,Venetoclax,2016,2016.0,0.0,False,True
+DICTrank,DROSPIRENONE,2001,2001.0,0.0,False,False
+DICTrank,MIRABEGRON,2012,2012.0,0.0,False,True
+DICTrank,ERTUGLIFLOZIN PIDOLATE,2017,,,False,True
+DICTrank,galantamine hydrobromide,2001,2001.0,0.0,False,False
+DICTrank,OXAPROZIN,1992,1992.0,0.0,False,False
+DICTrank,REGORAFENIB MONOHYDRATE,2012,2012.0,0.0,False,True
+DICTrank,FERRIC MALTOL,2019,2019.0,0.0,False,True
+DICTrank,PAROXETINE MESYLATE,2003,1992.0,11.0,False,False
+DICTrank,vibegron,2020,2020.0,0.0,False,True
+DICTrank,PITAVASTATIN,2009,2009.0,0.0,False,False
+DICTrank,IBREXAFUNGERP CITRATE,2021,2021.0,0.0,False,True
+DICTrank,METHENAMINE HIPPURATE,1967,1967.0,0.0,False,False
+DICTrank,COBICISTAT,2012,2012.0,0.0,False,True
+DICTrank,VERICIGUAT,2021,2021.0,0.0,False,True
+DICTrank,ENTRECTINIB,2019,2019.0,0.0,False,True
+DICTrank,RIFAXIMIN,2004,2004.0,0.0,False,False
+DICTrank,LACTITOL,2020,2020.0,0.0,False,True
+DICTrank,ROSIGLITAZONE MALEATE,1999,1999.0,0.0,False,False
+DICTrank,DEFLAZACORT,2017,2017.0,0.0,False,True
+DICTrank,telithromycin,2004,2004.0,0.0,False,False
+DICTrank,GLASDEGIB,2018,2018.0,0.0,False,True
+DICTrank,NITISINONE,2002,2002.0,0.0,False,False
+DICTrank,CERITINIB,2014,2014.0,0.0,False,True
+DICTrank,diroximel fumarate,2019,2019.0,0.0,False,True
+DICTrank,Dronedarone,2009,2009.0,0.0,False,False
+DICTrank,"ESTROGENS, CONJUGATED SYNTHETIC A",1999,1999.0,0.0,False,False
+DICTrank,QUAZEPAM,1985,1985.0,0.0,False,False
+DICTrank,DROXIDOPA,2014,2014.0,0.0,False,True
+DICTrank,IBANDRONATE SODIUM,2003,2003.0,0.0,False,False
+DICTrank,baricitinib,2018,2018.0,0.0,False,True
+DICTrank,LONAFARNIB,2020,2020.0,0.0,False,True
+DICTrank,VORAPAXAR SULFATE,2014,2014.0,0.0,False,True
+DICTrank,MIDOSTAURIN,2017,2017.0,0.0,False,True
+DICTrank,ACALABRUTINIB,2017,2017.0,0.0,False,True
+DICTrank,CITALOPRAM HYDROBROMIDE,1998,1998.0,0.0,False,False
+DICTrank,brigatinib,2017,2017.0,0.0,False,True
+DICTrank,PANOBINOSTAT LACTATE,2015,2015.0,0.0,False,True
+DICTrank,niraparib,2017,2017.0,0.0,False,True
+DICTrank,empagliflozin,2014,2014.0,0.0,False,True
+DICTrank,TICAGRELOR,2011,2011.0,0.0,False,True
+DICTrank,AVATROMBOPAG MALEATE,2018,2018.0,0.0,False,True
+DICTrank,PALBOCICLIB,2015,2015.0,0.0,False,True
+DICTrank,FINGOLIMOD HYDROCHLORIDE,2010,2010.0,0.0,False,True
+DICTrank,LAPATINIB DITOSYLATE,2007,2007.0,0.0,False,False
+DICTrank,CHOLIC ACID,2015,2015.0,0.0,False,True
+DICTrank,AMILORIDE HYDROCHLORIDE,1981,1981.0,0.0,False,False
+DICTrank,TENOFOVIR ALAFENAMIDE FUMARATE,2015,2015.0,0.0,False,True
+DICTrank,umbralisib tosylate,2021,2021.0,0.0,False,True
+DICTrank,THIOGUANINE,1966,1966.0,0.0,False,False
+DICTrank,CARIPRAZINE,2015,2015.0,0.0,False,True
+DICTrank,NILOTINIB,2025,2007.0,18.0,True,True
+DICTrank,LENALIDOMIDE,2005,2005.0,0.0,False,False
+DICTrank,FESOTERODINE FUMARATE,2008,2008.0,0.0,False,False
+DICTrank,LENVATINIB,2015,2015.0,0.0,False,True
+DICTrank,MERCAPTOPURINE,1953,1953.0,0.0,False,False
+DICTrank,BUPROPION HYDROBROMIDE,2008,1985.0,23.0,False,False
+DICTrank,SUCCIMER,1991,1991.0,0.0,False,False
+DICTrank,Rifamycin,2018,2018.0,0.0,False,True
+DICTrank,cabozantinib s-malate,2012,2012.0,0.0,False,True
+DICTrank,AVANAFIL,2012,2012.0,0.0,False,True
+DICTrank,eliglustat,2014,2014.0,0.0,False,True
+DICTrank,TAFENOQUINE SUCCINATE,2018,2018.0,0.0,False,True
+DICTrank,FINERENONE,2021,2021.0,0.0,False,True
+DICTrank,PIRFENIDONE,2014,2014.0,0.0,False,True
+DICTrank,POMALIDOMIDE,2013,2013.0,0.0,False,True
+DICTrank,MIGALASTAT HYDROCHLORIDE,2018,2018.0,0.0,False,True
+DICTrank,AMPHETAMINE,2015,1960.0,55.0,False,True
+DICTrank,Tolcapone,1998,1998.0,0.0,False,False
+DICTrank,selpercatinib,2020,2020.0,0.0,False,True
+DICTrank,OXYCODONE,2016,1950.0,66.0,False,True
+DICTrank,AXITINIB,2012,2012.0,0.0,False,True
+DICTrank,TIOPRONIN,1988,1988.0,0.0,False,False
+DICTrank,ASCIMINIB HYDROCHLORIDE,2021,2021.0,0.0,False,True
+DICTrank,TRAMETINIB DIMETHYL SULFOXIDE,2013,2013.0,0.0,False,True
+DICTrank,Fenofibric Acid,2009,2009.0,0.0,False,False
+DICTrank,RIBOCICLIB SUCCINATE,2017,2017.0,0.0,False,True
+DICTrank,AMANTADINE,2024,1968.0,56.0,True,True
+DICTrank,DABRAFENIB MESYLATE,2013,2013.0,0.0,False,True
+DICTrank,OSPEMIFENE,2013,2013.0,0.0,False,True
+DICTrank,DARIFENACIN,2004,2004.0,0.0,False,False
+DICTrank,TRIMETHOPRIM,1973,1973.0,0.0,False,False
+DICTrank,ZANUBRUTINIB,2019,2019.0,0.0,False,True
+DICTrank,UBROGEPANT,2019,2019.0,0.0,False,True
+DICTrank,INFIGRATINIB,2021,2021.0,0.0,False,True
+DICTrank,SORAFENIB,2005,2005.0,0.0,False,False
+DICTrank,Ripretinib,2020,2020.0,0.0,False,True
+DICTrank,NERATINIB MALEATE,2017,2017.0,0.0,False,True
+DICTrank,rivaroxaban,2011,2011.0,0.0,False,True
+DICTrank,EVEROLIMUS,2009,2009.0,0.0,False,False
+DICTrank,NEVIRAPINE,1996,1996.0,0.0,False,False
+DICTrank,NELFINAVIR MESYLATE,1997,1997.0,0.0,False,False
+DICTrank,ponatinib hydrochloride,2012,2012.0,0.0,False,True
+DICTrank,ORLISTAT,1999,1999.0,0.0,False,False
+DICTrank,ENZALUTAMIDE,2012,2012.0,0.0,False,True
+DICTrank,SOLRIAMFETOL,2019,2019.0,0.0,False,True
+DICTrank,doravirine,2018,2018.0,0.0,False,True
+DICTrank,HYDROXYCHLOROQUINE SULFATE,1955,1955.0,0.0,False,False
+DICTrank,ENCORAFENIB,2018,2018.0,0.0,False,True
+DICTrank,telotristat ethyl,2017,,,False,True
+DICTrank,tivozanib hydrochloride,2021,2021.0,0.0,False,True
+DICTrank,Erdafitinib,2019,2019.0,0.0,False,True
+DICTrank,Berotralstat hydrochloride,2020,2020.0,0.0,False,True
+DICTrank,DAPAGLIFLOZIN PROPANEDIOL,2014,,,False,True
+DICTrank,MACIMORELIN,2017,2017.0,0.0,False,True
+DICTrank,BOSUTINIB MONOHYDRATE,2012,2012.0,0.0,False,True
+DICTrank,BELUMOSUDIL,2021,2021.0,0.0,False,True
+DICTrank,RUXOLITINIB,2011,2011.0,0.0,False,True
+DICTrank,mebendazole,1974,1974.0,0.0,False,False
+DICTrank,TRANYLCYPROMINE SULFATE,1961,1961.0,0.0,False,False
+DICTrank,BELZUTIFAN,2021,2021.0,0.0,False,True
+DICTrank,Plecanatide,2017,2017.0,0.0,False,True
+DICTrank,SODIUM OXYBATE,2002,2002.0,0.0,False,False
+DICTrank,ATOGEPANT,2021,2021.0,0.0,False,True
+DICTrank,LOMUSTINE,1976,1976.0,0.0,False,False
+DICTrank,UMECLIDINIUM BROMIDE,2013,2013.0,0.0,False,True
+DICTrank,CEFDITOREN PIVOXIL,2001,2001.0,0.0,False,False
+DICTrank,mitotane,1970,1970.0,0.0,False,False
+DICTrank,CHLOROTHIAZIDE,1958,1958.0,0.0,False,False
+DICTrank,INDINAVIR SULFATE,1996,1996.0,0.0,False,False
+DICTrank,RISDIPLAM,2020,2020.0,0.0,False,True
+DICTrank,lasmiditan,2019,2019.0,0.0,False,True
+DICTrank,gabapentin enacarbil,2011,2011.0,0.0,False,True
+DICTrank,ESTRAMUSTINE PHOSPHATE SODIUM,1981,1981.0,0.0,False,False
+DICTrank,TAPENTADOL HYDROCHLORIDE,2008,2008.0,0.0,False,False
+DICTrank,LUMATEPERONE,2019,2019.0,0.0,False,True
+DICTrank,SELUMETINIB,2025,2020.0,5.0,True,True
+DICTrank,tazemetostat hydrobromide,2020,2020.0,0.0,False,True
+DICTrank,LUSUTROMBOPAG,2018,2018.0,0.0,False,True
+DICTrank,ICOSAPENT ETHYL,2012,2012.0,0.0,False,True
+DICTrank,COBIMETINIB FUMARATE,2015,2015.0,0.0,False,True
+DICTrank,NALOXEGOL OXALATE,2014,2014.0,0.0,False,True
+DICTrank,Ceftibuten dihydrate,1995,1995.0,0.0,False,False
+DICTrank,DUVELISIB,2018,2018.0,0.0,False,True
+DICTrank,VALBENAZINE TOSYLATE,2017,2017.0,0.0,False,True
+DICTrank,GILTERITINIB FUMARATE,2018,2018.0,0.0,False,True
+DICTrank,Ponesimod,2021,2021.0,0.0,False,True
+DICTrank,ELAGOLIX SODIUM,2018,2018.0,0.0,False,True
+DICTrank,VORINOSTAT,2006,2006.0,0.0,False,False
+DICTrank,ROLAPITANT HYDROCHLORIDE,2015,2015.0,0.0,False,True
+DICTrank,MILTEFOSINE,2014,2014.0,0.0,False,True
+DICTrank,CRIZOTINIB,2011,2011.0,0.0,False,True
+DICTrank,avapritinib,2020,2020.0,0.0,False,True
+DICTrank,DACOMITINIB,2018,2018.0,0.0,False,True
+DICTrank,TENAPANOR HYDROCHLORIDE,2019,2019.0,0.0,False,True
+DICTrank,BALOXAVIR MARBOXIL,2018,2018.0,0.0,False,True
+DICTrank,THALIDOMIDE,1998,1998.0,0.0,False,False
+DICTrank,PRUCALOPRIDE SUCCINATE,2018,2018.0,0.0,False,True
+DICTrank,ELTROMBOPAG OLAMINE,2008,2008.0,0.0,False,False
+DICTrank,Apalutamide,2018,2018.0,0.0,False,True
+DICTrank,ACETOHYDROXAMIC ACID,1983,1983.0,0.0,False,False
+DICTrank,upadacitinib,2019,2019.0,0.0,False,True
+DICTrank,NISOLDIPINE,1995,1995.0,0.0,False,False
+DICTrank,Cladribine,1993,1993.0,0.0,False,False
+DICTrank,TRICLABENDAZOLE,2019,2019.0,0.0,False,True
+DICTrank,ETHOTOIN,1957,1957.0,0.0,False,False
+DICTrank,ixazomib citrate,2015,2015.0,0.0,False,True
+DICTrank,ELUXADOLINE,2015,2015.0,0.0,False,True
+DICTrank,monomethyl fumarate,2020,2020.0,0.0,False,True
+DICTrank,RALTEGRAVIR POTASSIUM,2007,2007.0,0.0,False,False
+DICTrank,NINTEDANIB ESYLATE,2014,2014.0,0.0,False,True
+DICTrank,AFATINIB,2013,2013.0,0.0,False,True
+DICTrank,rucaparib camsylate,2016,2016.0,0.0,False,True
+DICTrank,Voxelotor,2019,2019.0,0.0,False,True
+DICTrank,APIXABAN,2012,2012.0,0.0,False,True
+DICTrank,LINAGLIPTIN,2011,2011.0,0.0,False,True
+DICTrank,OZANIMOD HYDROCHLORIDE,2020,2020.0,0.0,False,True
+DICTrank,BETAINE,1996,1996.0,0.0,False,False
+DICTrank,AURANOFIN,1985,1985.0,0.0,False,False
+DICTrank,OSIMERTINIB,2015,2015.0,0.0,False,True
+DICTrank,Mobocertinib,2021,2021.0,0.0,False,True
+DICTrank,Flibanserin,2015,2015.0,0.0,False,True
+DICTrank,ISOCARBOXAZID,1959,1959.0,0.0,False,False
+DICTrank,darunavir ethanolate,2015,2015.0,0.0,False,True
+DICTrank,EDOXABAN TOSYLATE,2015,2015.0,0.0,False,True
+DICTrank,selinexor,2019,2019.0,0.0,False,True
+DICTrank,FEXINIDAZOLE,2021,2021.0,0.0,False,True
+DICTrank,FOSTEMSAVIR TROMETHAMINE,2020,2020.0,0.0,False,True
+DICTrank,uridine triacetate,2015,2015.0,0.0,False,True
+DICTrank,odevixibat,2021,2021.0,0.0,False,True
+DICTrank,VOCLOSPORIN,2021,2021.0,0.0,False,True
+DICTrank,TRIHEPTANOIN,2020,2020.0,0.0,False,True
+DICTrank,NABILONE,1985,1985.0,0.0,False,False
+DICTrank,brexpiprazole,2015,2015.0,0.0,False,True
+DICTrank,istradefylline,2019,2019.0,0.0,False,True
+DICTrank,FENFLURAMINE,2020,2020.0,0.0,False,True
+DICTrank,LEVOKETOCONAZOLE,2021,2021.0,0.0,False,True
+DICTrank,SOTORASIB,2021,2021.0,0.0,False,True
+DICTrank,PHENELZINE SULFATE,1961,1961.0,0.0,False,False
+DICTrank,VISMODEGIB,2012,2012.0,0.0,False,True
+DICTrank,rilpivirine hydrochloride,2011,2011.0,0.0,False,True
+DICTrank,METHYLPHENIDATE,2006,1955.0,51.0,False,False
+DICTrank,VEMURAFENIB,2011,2011.0,0.0,False,True
+DICTrank,ivacaftor,2012,2012.0,0.0,False,True
+DICTrank,IBRUTINIB,2013,2013.0,0.0,False,True
+DICTrank,PRALSETINIB,2020,2020.0,0.0,False,True
+DICTrank,DOLUTEGRAVIR SODIUM,2013,2013.0,0.0,False,True
+DICTrank,Bempedoic Acid,2020,2020.0,0.0,False,True
+DICTrank,TERIFLUNOMIDE,2012,2012.0,0.0,False,True
+DICTrank,CANNABIDIOL,2018,2018.0,0.0,False,True
+DICTrank,CHLORAMBUCIL,1957,1957.0,0.0,False,False
+DICTrank,BINIMETINIB,2018,2018.0,0.0,False,True
+DICTrank,DICLOFENAC,2013,1988.0,25.0,False,True
+DICTrank,RIMEGEPANT SULFATE,2020,2020.0,0.0,False,True
+DICTrank,CODEINE SULFATE,2009,1952.0,57.0,False,False
+DICTrank,FENOPROFEN CALCIUM,1976,1976.0,0.0,False,False
+DICTrank,canagliflozin,2013,2013.0,0.0,False,True
+DICTrank,roflumilast,2011,2011.0,0.0,False,True
+DICTrank,LEMBOREXANT,2019,2019.0,0.0,False,True
+DICTrank,METHSUXIMIDE,1957,1957.0,0.0,False,False
+DICTrank,LEVOCARNITINE,1985,1985.0,0.0,False,False
+DICTrank,suvorexant,2014,2014.0,0.0,False,True
+DICTrank,Obeticholic Acid,2016,2016.0,0.0,False,True
+DICTrank,CARBINOXAMINE MALEATE,1974,1974.0,0.0,False,False
+DICTrank,Erythromycin Ethylsuccinate,1965,1965.0,0.0,False,False
+DICTrank,CEFUROXIME AXETIL,1987,1987.0,0.0,False,False
+DICTrank,PYRIMETHAMINE,1953,1953.0,0.0,False,False
+DICTrank,ALPRAZOLAM,1981,1981.0,0.0,False,False
+DICTrank,ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE,1996,,,False,False
+DICTrank,ISRADIPINE,1990,1990.0,0.0,False,False
+DICTrank,ATOVAQUONE,1992,1992.0,0.0,False,False
+DICTrank,BOSENTAN ANHYDROUS,2001,2001.0,0.0,False,False
+DICTrank,COLESTIPOL HYDROCHLORIDE,1977,1977.0,0.0,False,False
+DICTrank,FELBAMATE,1993,1993.0,0.0,False,False
+DICTrank,HYDROXYUREA,1967,1967.0,0.0,False,False
+DICTrank,LOXAPINE SUCCINATE,1975,1975.0,0.0,False,False
+DICTrank,PIOGLITAZONE,1999,1999.0,0.0,False,False
+DICTrank,MORPHINE SULFATE,1984,1984.0,0.0,False,False
+DICTrank,PRAZOSIN HYDROCHLORIDE,1976,1976.0,0.0,False,False
+DICTrank,ZOLPIDEM TARTRATE,1992,1992.0,0.0,False,False
+DICTrank,MYCOPHENOLATE SODIUM,2004,2004.0,0.0,False,False
+DICTrank,TRIAMTERENE,1964,1964.0,0.0,False,False
+DICTrank,RIZATRIPTAN BENZOATE,1998,1998.0,0.0,False,False
+DICTrank,RUFINAMIDE,2008,2008.0,0.0,False,False
+DICTrank,CIMETIDINE HYDROCHLORIDE,1977,1977.0,0.0,False,False
+DICTrank,CLONIDINE HYDROCHLORIDE,1974,1974.0,0.0,False,False
+DICTrank,METHAZOLAMIDE,1959,1959.0,0.0,False,False
+DICTrank,METOPROLOL TARTRATE,1978,1978.0,0.0,False,False
+DICTrank,SIROLIMUS,1999,1999.0,0.0,False,False
+DICTrank,TORSEMIDE,1993,1993.0,0.0,False,False
+DICTrank,OXCARBAZEPINE,2000,2000.0,0.0,False,False
+DICTrank,CLINDAMYCIN PALMITATE HYDROCHLORIDE,1986,1970.0,16.0,False,False
+DICTrank,MELOXICAM,2000,2000.0,0.0,False,False
+DICTrank,METHYLTESTOSTERONE,1971,1971.0,0.0,False,False
+DICTrank,GLYCOPYRROLATE,1961,1961.0,0.0,False,False
+DICTrank,DEFERASIROX,2005,2005.0,0.0,False,False
+DICTrank,ISONIAZID,1952,1952.0,0.0,False,False
+DICTrank,FLUDROCORTISONE ACETATE,1955,1955.0,0.0,False,False
+DICTrank,VERAPAMIL HYDROCHLORIDE,1981,1981.0,0.0,False,False
+DICTrank,ZILEUTON,1996,1996.0,0.0,False,False
+DICTrank,PROPANTHELINE BROMIDE,1953,1953.0,0.0,False,False
+DICTrank,SERTRALINE HYDROCHLORIDE,1991,1991.0,0.0,False,False
+DICTrank,BISOPROLOL FUMARATE,1992,1992.0,0.0,False,False
+DICTrank,VARDENAFIL,2003,2003.0,0.0,False,False
+DICTrank,AMINOCAPROIC ACID,1964,1964.0,0.0,False,False
+DICTrank,TELMISARTAN,1998,1998.0,0.0,False,False
+DICTrank,LAMOTRIGINE,1994,1994.0,0.0,False,False
+DICTrank,FENOFIBRATE,1993,1993.0,0.0,False,False
+DICTrank,MONTELUKAST SODIUM,1998,1998.0,0.0,False,False
+DICTrank,METOLAZONE,1973,1973.0,0.0,False,False
+DICTrank,DISULFIRAM,1951,1951.0,0.0,False,False
+DICTrank,MEGESTROL ACETATE,1971,1971.0,0.0,False,False
+DICTrank,ACARBOSE,1995,1995.0,0.0,False,False
+DICTrank,CLINDAMYCIN HYDROCHLORIDE,1970,1970.0,0.0,False,False
+DICTrank,NORETHINDRONE,1962,1962.0,0.0,False,False
+DICTrank,LEVOCETIRIZINE DIHYDROCHLORIDE,2007,2007.0,0.0,False,False
+DICTrank,COLCHICINE,1961,1961.0,0.0,False,False
+DICTrank,PENTOXIFYLLINE,1984,1984.0,0.0,False,False
+DICTrank,ZALEPLON,1999,1999.0,0.0,False,False
+DICTrank,METHSCOPOLAMINE BROMIDE,1953,1953.0,0.0,False,False
+DICTrank,CANDESARTAN CILEXETIL,1998,1998.0,0.0,False,False
+DICTrank,QUINIDINE GLUCONATE,1950,1950.0,0.0,False,False
+DICTrank,AMOXAPINE,1980,1980.0,0.0,False,False
+DICTrank,PROMETHAZINE HYDROCHLORIDE,1951,1951.0,0.0,False,False
+DICTrank,LABETALOL,1984,1984.0,0.0,False,False
+DICTrank,DOFETILIDE,1999,1999.0,0.0,False,False
+DICTrank,FAMCICLOVIR,1994,1994.0,0.0,False,False
+DICTrank,Albuterol,1981,1981.0,0.0,False,False
+DICTrank,GEMFIBROZIL,1981,1981.0,0.0,False,False
+DICTrank,MELPHALAN,1964,1964.0,0.0,False,False
+DICTrank,DIAZEPAM,1963,1963.0,0.0,False,False
+DICTrank,MOEXIPRIL HYDROCHLORIDE,1995,1995.0,0.0,False,False
+DICTrank,CHLORTHALIDONE,1960,1960.0,0.0,False,False
+DICTrank,FLUVASTATIN SODIUM,1993,1993.0,0.0,False,False
+DICTrank,PROBENECID,1951,1951.0,0.0,False,False
+DICTrank,GUANFACINE HYDROCHLORIDE,1986,1986.0,0.0,False,False
+DICTrank,almotriptan malate,2001,2001.0,0.0,False,False
+DICTrank,NIZATIDINE,1988,1988.0,0.0,False,False
+DICTrank,TENOFOVIR DISOPROXIL FUMARATE,2001,2001.0,0.0,False,False
+DICTrank,DILTIAZEM HYDROCHLORIDE,1982,1982.0,0.0,False,False
+DICTrank,FELODIPINE,1991,1991.0,0.0,False,False
+DICTrank,RISEDRONATE SODIUM,1998,1998.0,0.0,False,False
+DICTrank,CEPHALEXIN,1971,1971.0,0.0,False,False
+DICTrank,DIAZOXIDE,1973,1973.0,0.0,False,False
+DICTrank,RITONAVIR,1996,1996.0,0.0,False,False
+DICTrank,ACETAZOLAMIDE,1953,1953.0,0.0,False,False
+DICTrank,LURASIDONE HYDROCHLORIDE,2010,2010.0,0.0,False,True
+DICTrank,DUTASTERIDE,2001,2001.0,0.0,False,False
+DICTrank,Exemestane,1999,1999.0,0.0,False,False
+DICTrank,FOSINOPRIL SODIUM,1991,1991.0,0.0,False,False
+DICTrank,SODIUM PHENYLBUTYRATE,1996,1996.0,0.0,False,False
+DICTrank,HYDROCODONE BITARTRATE,1943,1943.0,0.0,False,False
+DICTrank,ENTECAVIR ANHYDROUS,2005,2005.0,0.0,False,False
+DICTrank,CILOSTAZOL,1999,1999.0,0.0,False,False
+DICTrank,OLANZAPINE,1996,1996.0,0.0,False,False
+DICTrank,DISOPYRAMIDE PHOSPHATE,1977,1977.0,0.0,False,False
+DICTrank,DANAZOL,1976,1976.0,0.0,False,False
+DICTrank,BENAZEPRIL HYDROCHLORIDE,1991,1991.0,0.0,False,False
+DICTrank,Ergotamine Tartrate,1948,1948.0,0.0,False,False
+DICTrank,AZATHIOPRINE,1968,1968.0,0.0,False,False
+DICTrank,CARBIDOPA,1975,1975.0,0.0,False,False
+DICTrank,CHLORDIAZEPOXIDE HYDROCHLORIDE,1960,1960.0,0.0,False,False
+DICTrank,MARAVIROC,2007,2007.0,0.0,False,False
+DICTrank,FLECAINIDE ACETATE,1985,1985.0,0.0,False,False
+DICTrank,ETHACRYNIC ACID,1967,1967.0,0.0,False,False
+DICTrank,ELETRIPTAN HYDROBROMIDE,2002,2002.0,0.0,False,False
+DICTrank,ISOSORBIDE MONONITRATE,1991,1991.0,0.0,False,False
+DICTrank,NABUMETONE,1991,1991.0,0.0,False,False
+DICTrank,SUNITINIB MALATE,2006,2006.0,0.0,False,False
+DICTrank,CABERGOLINE,1996,1996.0,0.0,False,False
+DICTrank,RASAGILINE MESYLATE,2006,2006.0,0.0,False,False
+DICTrank,ACITRETIN,1996,1996.0,0.0,False,False
+DICTrank,OXYBUTYNIN CHLORIDE,1975,1975.0,0.0,False,False
+DICTrank,RISPERIDONE,1993,1993.0,0.0,False,False
+DICTrank,RAMIPRIL,1991,1991.0,0.0,False,False
+DICTrank,PYRIDOSTIGMINE BROMIDE,1955,1955.0,0.0,False,False
+DICTrank,SOLIFENACIN SUCCINATE,2004,2004.0,0.0,False,False
+DICTrank,OMEPRAZOLE,1989,1989.0,0.0,False,False
+DICTrank,MEMANTINE HYDROCHLORIDE,2003,2003.0,0.0,False,False
+DICTrank,NEBIVOLOL HYDROCHLORIDE,2007,2007.0,0.0,False,False
+DICTrank,VORICONAZOLE,2002,2002.0,0.0,False,False
+DICTrank,RIMANTADINE HYDROCHLORIDE,1993,1993.0,0.0,False,False
+DICTrank,EFAVIRENZ,1998,1998.0,0.0,False,False
+DICTrank,CELECOXIB,1998,1998.0,0.0,False,False
+DICTrank,CEFADROXIL HEMIHYDRATE,1978,,,False,False
+DICTrank,SUMATRIPTAN SUCCINATE,1992,1992.0,0.0,False,False
+DICTrank,CLOZAPINE,1989,1989.0,0.0,False,False
+DICTrank,ABACAVIR SULFATE,1998,1998.0,0.0,False,False
+DICTrank,PREDNISOLONE SODIUM PHOSPHATE,1973,1955.0,18.0,False,False
+DICTrank,FOSAMPRENAVIR CALCIUM,2003,2003.0,0.0,False,False
+DICTrank,ISOSORBIDE DINITRATE,1959,1959.0,0.0,False,False
+DICTrank,NIFEDIPINE,1981,1981.0,0.0,False,False
+DICTrank,FLUOXETINE HYDROCHLORIDE,1987,1987.0,0.0,False,False
+DICTrank,AMBRISENTAN,2007,2007.0,0.0,False,False
+DICTrank,SOTALOL HYDROCHLORIDE,1992,1992.0,0.0,False,False
+DICTrank,MECLIZINE HYDROCHLORIDE,1957,1957.0,0.0,False,False
+DICTrank,TRIENTINE HYDROCHLORIDE,1985,1985.0,0.0,False,False
+DICTrank,BACLOFEN,1977,1977.0,0.0,False,False
+DICTrank,BETHANECHOL CHLORIDE,1948,1948.0,0.0,False,False
+DICTrank,CLARITHROMYCIN,1991,1991.0,0.0,False,False
+DICTrank,CHLORZOXAZONE,1958,1958.0,0.0,False,False
+DICTrank,PRIMAQUINE PHOSPHATE,1952,1952.0,0.0,False,False
+DICTrank,VENLAFAXINE,1993,1993.0,0.0,False,False
+DICTrank,VIGABATRIN,2009,2009.0,0.0,False,False
+DICTrank,PENICILLAMINE,1970,1970.0,0.0,False,False
+DICTrank,METAPROTERENOL SULFATE,1973,1973.0,0.0,False,False
+DICTrank,VALGANCICLOVIR,2001,2001.0,0.0,False,False
+DICTrank,LIOTHYRONINE SODIUM,1956,1956.0,0.0,False,False
+DICTrank,PRASUGREL HYDROCHLORIDE,2009,2009.0,0.0,False,False
+DICTrank,EMTRICITABINE,2003,2003.0,0.0,False,False
+DICTrank,VALACYCLOVIR HYDROCHLORIDE,1995,1995.0,0.0,False,False
+DICTrank,DESLORATADINE,2001,2001.0,0.0,False,False
+DICTrank,PERPHENAZINE,1957,1957.0,0.0,False,False
+DICTrank,DIMETHYL FUMARATE,2013,2013.0,0.0,False,True
+DICTrank,BROMOCRIPTINE MESYLATE,1978,1978.0,0.0,False,False
+DICTrank,NADOLOL,1979,1979.0,0.0,False,False
+DICTrank,PROPRANOLOL HYDROCHLORIDE,1967,1967.0,0.0,False,False
+DICTrank,ALBENDAZOLE,1996,1996.0,0.0,False,False
+DICTrank,INDAPAMIDE,1983,1983.0,0.0,False,False
+DICTrank,EZETIMIBE,2002,2002.0,0.0,False,False
+DICTrank,ABIRATERONE ACETATE,2011,2011.0,0.0,False,True
+DICTrank,ISOTRETINOIN,1982,1982.0,0.0,False,False
+DICTrank,LISINOPRIL,1987,1987.0,0.0,False,False
+DICTrank,TIAGABINE HYDROCHLORIDE,1997,1997.0,0.0,False,False
+DICTrank,ROPINIROLE HYDROCHLORIDE,1997,1997.0,0.0,False,False
+DICTrank,TERAZOSIN HYDROCHLORIDE,1987,1987.0,0.0,False,False
+DICTrank,FROVATRIPTAN SUCCINATE,2001,2001.0,0.0,False,False
+DICTrank,SILODOSIN,2008,2008.0,0.0,False,False
+DICTrank,DICYCLOMINE HYDROCHLORIDE,1950,1950.0,0.0,False,False
+DICTrank,CEFDINIR,1997,1997.0,0.0,False,False
+DICTrank,TEMAZEPAM,1981,1981.0,0.0,False,False
+DICTrank,PROPOXYPHENE HYDROCHLORIDE,1957,1957.0,0.0,False,False
+DICTrank,MOXIFLOXACIN HYDROCHLORIDE,1999,1999.0,0.0,False,False
+DICTrank,PHENTERMINE,1973,1973.0,0.0,False,False
+DICTrank,SILDENAFIL CITRATE,1998,1998.0,0.0,False,False
+DICTrank,STAVUDINE,1994,1994.0,0.0,False,False
+DICTrank,IMIPRAMINE HYDROCHLORIDE,1959,1959.0,0.0,False,False
+DICTrank,RANITIDINE HYDROCHLORIDE,1983,1983.0,0.0,False,False
+DICTrank,PINDOLOL,1982,1982.0,0.0,False,False
+DICTrank,DALFAMPRIDINE,2010,2010.0,0.0,False,True
+DICTrank,TIZANIDINE HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,ACEBUTOLOL HYDROCHLORIDE,1984,1984.0,0.0,False,False
+DICTrank,TRIHEXYPHENIDYL HYDROCHLORIDE,1949,1949.0,0.0,False,False
+DICTrank,SIMVASTATIN,1991,1991.0,0.0,False,False
+DICTrank,MIGLUSTAT,2003,2003.0,0.0,False,False
+DICTrank,RANOLAZINE,2006,2006.0,0.0,False,False
+DICTrank,BEXAROTENE,1999,1999.0,0.0,False,False
+DICTrank,TICLOPIDINE HYDROCHLORIDE,1991,1991.0,0.0,False,False
+DICTrank,BICALUTAMIDE,1995,1995.0,0.0,False,False
+DICTrank,MIRTAZAPINE,1996,1996.0,0.0,False,False
+DICTrank,CHLORPROMAZINE HYDROCHLORIDE,1957,1957.0,0.0,False,False
+DICTrank,LACTULOSE,1976,1976.0,0.0,False,False
+DICTrank,NAPROXEN SODIUM,1980,1976.0,4.0,False,False
+DICTrank,PREDNISOLONE,1955,1955.0,0.0,False,False
+DICTrank,TRAMADOL HYDROCHLORIDE,1995,1995.0,0.0,False,False
+DICTrank,LOVASTATIN,1987,1987.0,0.0,False,False
+DICTrank,RIVASTIGMINE TARTRATE,2000,2000.0,0.0,False,False
+DICTrank,MEPROBAMATE,1955,1955.0,0.0,False,False
+DICTrank,CAPTOPRIL,1981,1981.0,0.0,False,False
+DICTrank,FLAVOXATE HYDROCHLORIDE,1970,1970.0,0.0,False,False
+DICTrank,METHAMPHETAMINE HYDROCHLORIDE,1943,1943.0,0.0,False,False
+DICTrank,CEFIXIME,1989,1989.0,0.0,False,False
+DICTrank,CYCLOSERINE,1964,1964.0,0.0,False,False
+DICTrank,MECLOFENAMATE SODIUM,1980,1980.0,0.0,False,False
+DICTrank,FOLIC ACID,1946,1946.0,0.0,False,False
+DICTrank,NITROFURANTOIN,1953,1953.0,0.0,False,False
+DICTrank,MYCOPHENOLATE MOFETIL,1995,1995.0,0.0,False,False
+DICTrank,KETOPROFEN,1986,1986.0,0.0,False,False
+DICTrank,DULOXETINE HYDROCHLORIDE,2004,2004.0,0.0,False,False
+DICTrank,RAMELTEON,2005,2005.0,0.0,False,False
+DICTrank,FLUCONAZOLE,1990,1990.0,0.0,False,False
+DICTrank,IMATINIB MESYLATE,2001,2001.0,0.0,False,False
+DICTrank,CORTISONE ACETATE,1950,1950.0,0.0,False,False
+DICTrank,PAROMOMYCIN SULFATE,1969,1969.0,0.0,False,False
+DICTrank,ROSUVASTATIN CALCIUM,2003,2003.0,0.0,False,False
+DICTrank,PALIPERIDONE,2006,2006.0,0.0,False,False
+DICTrank,ARIPIPRAZOLE,2002,2002.0,0.0,False,False
+DICTrank,VARENICLINE TARTRATE,2006,2006.0,0.0,False,False
+DICTrank,VALSARTAN,1996,1996.0,0.0,False,False
+DICTrank,AMOXICILLIN,1974,1974.0,0.0,False,False
+DICTrank,DEXAMETHASONE,1958,1958.0,0.0,False,False
+DICTrank,FUROSEMIDE,1966,1966.0,0.0,False,False
+DICTrank,LETROZOLE,1997,1997.0,0.0,False,False
+DICTrank,RILUZOLE,1995,1995.0,0.0,False,False
+DICTrank,Dronabinol,1985,1985.0,0.0,False,False
+DICTrank,OXANDROLONE,2006,2006.0,0.0,False,False
+DICTrank,FOSFOMYCIN TROMETHAMINE,1996,1996.0,0.0,False,False
+DICTrank,TAMOXIFEN CITRATE,1977,1977.0,0.0,False,False
+DICTrank,DIFLUNISAL,1982,1982.0,0.0,False,False
+DICTrank,LORATADINE,1993,1993.0,0.0,False,False
+DICTrank,METFORMIN HYDROCHLORIDE,1995,1995.0,0.0,False,False
+DICTrank,LOPERAMIDE HYDROCHLORIDE,1976,1976.0,0.0,False,False
+DICTrank,FLUTAMIDE,1989,1989.0,0.0,False,False
+DICTrank,HYDROXYZINE DIHYDROCHLORIDE,1956,1956.0,0.0,False,False
+DICTrank,LUBIPROSTONE,2006,2006.0,0.0,False,False
+DICTrank,FLURAZEPAM HYDROCHLORIDE,1970,1970.0,0.0,False,False
+DICTrank,ALFUZOSIN HYDROCHLORIDE,2003,2003.0,0.0,False,False
+DICTrank,TADALAFIL,2003,2003.0,0.0,False,False
+DICTrank,DIGOXIN,1954,1954.0,0.0,False,False
+DICTrank,THIOTHIXENE,1967,1967.0,0.0,False,False
+DICTrank,URSODIOL,1987,1987.0,0.0,False,False
+DICTrank,PROPYLTHIOURACIL,1947,1947.0,0.0,False,False
+DICTrank,SELEGILINE HYDROCHLORIDE,1989,1989.0,0.0,False,False
+DICTrank,TRIFLUOPERAZINE HYDROCHLORIDE,1959,1959.0,0.0,False,False
+DICTrank,LEVOFLOXACIN,1996,1996.0,0.0,False,False
+DICTrank,TRAZODONE HYDROCHLORIDE,1981,1981.0,0.0,False,False
+DICTrank,CHLOROQUINE PHOSPHATE,1949,1949.0,0.0,False,False
+DICTrank,EPLERENONE,2002,2002.0,0.0,False,False
+DICTrank,PHENDIMETRAZINE TARTRATE,1975,1975.0,0.0,False,False
+DICTrank,PROPAFENONE,1989,1989.0,0.0,False,False
+DICTrank,PANTOPRAZOLE SODIUM,2000,2000.0,0.0,False,False
+DICTrank,CAPECITABINE,1998,1998.0,0.0,False,False
+DICTrank,ALVIMOPAN,2008,2008.0,0.0,False,False
+DICTrank,PARICALCITOL,1998,1998.0,0.0,False,False
+DICTrank,REPAGLINIDE,1997,1997.0,0.0,False,False
+DICTrank,PRAZIQUANTEL,1982,1982.0,0.0,False,False
+DICTrank,CLORAZEPATE DIPOTASSIUM,1972,1972.0,0.0,False,False
+DICTrank,PHENYTOIN,1953,1953.0,0.0,False,False
+DICTrank,WARFARIN SODIUM,1954,1954.0,0.0,False,False
+DICTrank,MEXILETINE HYDROCHLORIDE,1985,1985.0,0.0,False,False
+DICTrank,MEFLOQUINE HYDROCHLORIDE,1989,1989.0,0.0,False,False
+DICTrank,OXYMORPHONE HYDROCHLORIDE,1959,1959.0,0.0,False,False
+DICTrank,LEVONORGESTREL,1979,1979.0,0.0,False,False
+DICTrank,TOLTERODINE TARTRATE,1998,1998.0,0.0,False,False
+DICTrank,ETHOSUXIMIDE,1960,1960.0,0.0,False,False
+DICTrank,FAMOTIDINE,1986,1986.0,0.0,False,False
+DICTrank,CLONAZEPAM,1975,1975.0,0.0,False,False
+DICTrank,BENZONATATE,1958,1958.0,0.0,False,False
+DICTrank,FLUVOXAMINE MALEATE,1994,1994.0,0.0,False,False
+DICTrank,FLURBIPROFEN,1988,1986.0,2.0,False,False
+DICTrank,MIDODRINE HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,ATOMOXETINE HYDROCHLORIDE,2002,2002.0,0.0,False,False
+DICTrank,NIMODIPINE,1988,1988.0,0.0,False,False
+DICTrank,ESTRADIOL,1975,1975.0,0.0,False,False
+DICTrank,ATAZANAVIR SULFATE,2003,2003.0,0.0,False,False
+DICTrank,KETOROLAC TROMETHAMINE,1989,1989.0,0.0,False,False
+DICTrank,ZONISAMIDE,2000,2000.0,0.0,False,False
+DICTrank,LEVETIRACETAM,1999,1999.0,0.0,False,False
+DICTrank,BENZPHETAMINE HYDROCHLORIDE,1960,1960.0,0.0,False,False
+DICTrank,LOSARTAN POTASSIUM,1995,1995.0,0.0,False,False
+DICTrank,DONEPEZIL HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,PRAVASTATIN SODIUM,1991,1991.0,0.0,False,False
+DICTrank,METHOTREXATE SODIUM,1953,1953.0,0.0,False,False
+DICTrank,CARBAMAZEPINE,1968,1968.0,0.0,False,False
+DICTrank,GRISEOFULVIN,1962,,,False,False
+DICTrank,ITRACONAZOLE,1992,1992.0,0.0,False,False
+DICTrank,ANASTROZOLE,1995,1995.0,0.0,False,False
+DICTrank,CYPROHEPTADINE,1961,1961.0,0.0,False,False
+DICTrank,ALENDRONATE SODIUM,1995,1995.0,0.0,False,False
+DICTrank,QUETIAPINE FUMARATE,1997,1997.0,0.0,False,False
+DICTrank,FEXOFENADINE HYDROCHLORIDE,1996,1996.0,0.0,False,False
+DICTrank,ETODOLAC,1991,1991.0,0.0,False,False
+DICTrank,PYRAZINAMIDE,1971,1971.0,0.0,False,False
+DICTrank,ZOLMITRIPTAN,1997,1997.0,0.0,False,False
+DICTrank,NEFAZODONE HYDROCHLORIDE,1994,1994.0,0.0,False,False
+DICTrank,SPIRONOLACTONE,1960,1960.0,0.0,False,False
+DICTrank,AMITRIPTYLINE HYDROCHLORIDE,1961,1961.0,0.0,False,False
+DICTrank,TRIMIPRAMINE MALEATE,1979,1979.0,0.0,False,False
+DICTrank,niacin,1957,1957.0,0.0,False,False
+DICTrank,TOREMIFENE CITRATE,1997,1997.0,0.0,False,False
+DICTrank,METHADONE HYDROCHLORIDE,1947,1947.0,0.0,False,False
+DICTrank,TOLVAPTAN,2009,2009.0,0.0,False,False
+DICTrank,CARISOPRODOL,1959,1959.0,0.0,False,False
+DICTrank,BUSPIRONE HYDROCHLORIDE,1986,1986.0,0.0,False,False
+DICTrank,DESIPRAMINE HYDROCHLORIDE,1964,1964.0,0.0,False,False
+DICTrank,BALSALAZIDE DISODIUM,2000,2000.0,0.0,False,False
+DICTrank,RIFABUTIN,1992,1992.0,0.0,False,False
+DICTrank,TRANDOLAPRIL,1996,1996.0,0.0,False,False
+DICTrank,METAXALONE,1962,1962.0,0.0,False,False
+DICTrank,APREPITANT,2003,2003.0,0.0,False,False
+DICTrank,CINACALCET HYDROCHLORIDE,2004,2004.0,0.0,False,False
+DICTrank,TRIAZOLAM,1982,1982.0,0.0,False,False
+DICTrank,PIMOZIDE,1984,1984.0,0.0,False,False
+DICTrank,TROSPIUM CHLORIDE,2004,2004.0,0.0,False,False
+DICTrank,MOLINDONE HYDROCHLORIDE,1974,1974.0,0.0,False,False
+DICTrank,CLOMIPHENE CITRATE,1967,1967.0,0.0,False,False
+DICTrank,DIETHYLPROPION HYDROCHLORIDE,1959,1959.0,0.0,False,False
+DICTrank,PERINDOPRIL ERBUMINE,1993,1993.0,0.0,False,False
+DICTrank,CLEMASTINE FUMARATE,1977,1977.0,0.0,False,False
+DICTrank,SULINDAC,1978,1978.0,0.0,False,False
+DICTrank,PIROXICAM,1982,1982.0,0.0,False,False
+DICTrank,PRIMIDONE,1954,1954.0,0.0,False,False
+DICTrank,METHOCARBAMOL,1957,1957.0,0.0,False,False
+DICTrank,NARATRIPTAN HYDROCHLORIDE,1998,1998.0,0.0,False,False
+DICTrank,CYCLOBENZAPRINE HYDROCHLORIDE,1977,1977.0,0.0,False,False
+DICTrank,MIGLITOL,1996,1996.0,0.0,False,False
+DICTrank,LANSOPRAZOLE,1995,1995.0,0.0,False,False
+DICTrank,CARVEDILOL,1995,1995.0,0.0,False,False
+DICTrank,HYDROCHLOROTHIAZIDE,1959,1959.0,0.0,False,False
+DICTrank,MISOPROSTOL,1988,1988.0,0.0,False,False
+DICTrank,ETRAVIRINE,2008,2008.0,0.0,False,False
+DICTrank,CLOPIDOGREL BISULFATE,1997,1997.0,0.0,False,False
+DICTrank,NEOMYCIN SULFATE,1954,1954.0,0.0,False,False
+DICTrank,LEVORPHANOL TARTRATE,1953,1953.0,0.0,False,False
+DICTrank,TINIDAZOLE,2004,2004.0,0.0,False,False
+DICTrank,TOLMETIN SODIUM,1976,1976.0,0.0,False,False
+DICTrank,NORTRIPTYLINE HYDROCHLORIDE,1964,1964.0,0.0,False,False
+DICTrank,secobarbital sodium,1950,1950.0,0.0,False,False
+DICTrank,isosorbide,1974,1974.0,0.0,False,False
+DICTrank,lomefloxacin hydrochloride,1992,1992.0,0.0,False,False
+DICTrank,pergolide,1988,1988.0,0.0,False,False
+DICTrank,LAROTRECTINIB,2018,2018.0,0.0,False,True
+DICTrank,METHYLNALTREXONE BROMIDE,2008,2008.0,0.0,False,False
+DICTrank,ESZOPICLONE,2004,2004.0,0.0,False,False
+DICTrank,NALOXONE HYDROCHLORIDE,1971,1971.0,0.0,False,False
+DICTrank,PHYTONADIONE,1955,1955.0,0.0,False,False
+DICTrank,ALCOHOL,1946,1946.0,0.0,False,False
+DICTrank,DEGARELIX,2008,2008.0,0.0,False,False
+DICTrank,HISTRELIN ACETATE,1991,1991.0,0.0,False,False
+DICTrank,bremelanotide acetate,2019,2019.0,0.0,False,True
+DICTrank,SETMELANOTIDE,2020,2020.0,0.0,False,True
+DICTrank,LANREOTIDE ACETATE,2007,2007.0,0.0,False,False
+DICTrank,ABALOPARATIDE,2017,2017.0,0.0,False,True
+DICTrank,DASIGLUCAGON,2021,2021.0,0.0,False,True
+DICTrank,exenatide,2005,,,False,False
+DICTrank,LIRAGLUTIDE,2010,2010.0,0.0,False,True
+DICTrank,TESTOSTERONE ENANTHATE,1953,1953.0,0.0,False,False
+DICTrank,VOSORITIDE,2021,2021.0,0.0,False,True
+DICTrank,pramlintide acetate,2005,2005.0,0.0,False,False
+DICTrank,goserelin acetate,1989,1989.0,0.0,False,False
+DICTrank,OMACETAXINE MEPESUCCINATE,2012,2012.0,0.0,False,True
+DICTrank,SEMAGLUTIDE,2017,2017.0,0.0,False,True
+DICTrank,etonogestrel,2001,2001.0,0.0,False,False
+DICTrank,Enfuvirtide,2003,2003.0,0.0,False,False
+DICTrank,MIPOMERSEN SODIUM,2013,2013.0,0.0,False,True
+DICTrank,Teriparatide,2002,2002.0,0.0,False,False
+DICTrank,DEOXYCHOLIC ACID,2015,2015.0,0.0,False,True
+DICTrank,FONDAPARINUX SODIUM,2001,2001.0,0.0,False,False
+DICTrank,terbutaline sulfate,1974,1974.0,0.0,False,False
+DICTrank,ganirelix acetate,1999,1999.0,0.0,False,False
+DICTrank,ISOSULFAN BLUE,1981,1981.0,0.0,False,False
+DICTrank,ICATIBANT ACETATE,2011,2011.0,0.0,False,True
+DICTrank,apomorphine hydrochloride,2004,2004.0,0.0,False,False
+DICTrank,SUFENTANIL,1984,1984.0,0.0,False,False
+DICTrank,NITROGLYCERIN,1981,1981.0,0.0,False,False
+DICTrank,ASENAPINE MALEATE,2009,2009.0,0.0,False,False
+DICTrank,BUPRENORPHINE HYDROCHLORIDE,1981,1981.0,0.0,False,False
+DICTrank,PRILOCAINE HYDROCHLORIDE,1965,1965.0,0.0,False,False

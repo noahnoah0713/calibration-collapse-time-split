@@ -1,0 +1,3 @@
+dataset,family,test,n_a,n_b,stat,p
+DILIrank,3_exploratory_subgroup,화학공간 유사도 상/하위 AUROC 차이,78,78,0.06754278384733958,0.527
+DILIrank,3_exploratory_subgroup,유사도-정답확률 Spearman,156,0,0.11634161209268117,0.1480830143585971

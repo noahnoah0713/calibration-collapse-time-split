@@ -1,0 +1,21 @@
+dataset,test,p,q_BH,significant_after_FDR,family
+DILIrank,시간분할 성능 저하 (순열 1000회),0.0069930069930069,0.0069930069930069,True,1_primary
+DICTrank,시간분할 성능 저하 (순열 1000회),0.0049950049950049,0.0069930069930069,True,1_primary
+DILIrank,R1. 무작위 (표준) (ECE 배율 3.35),0.004975124378109453,0.0059701492537313425,True,2_prevalence_control
+DILIrank,R2. 무작위 + 검증군 비율맞춤 (ECE 배율 1.76),0.004975124378109453,0.0059701492537313425,True,2_prevalence_control
+DILIrank,R3. 무작위 + 학습·검증 비율맞춤 (ECE 배율 1.37),0.004975124378109453,0.0059701492537313425,True,2_prevalence_control
+DICTrank,R1. 무작위 (표준) (ECE 배율 2.08),0.004975124378109453,0.0059701492537313425,True,2_prevalence_control
+DICTrank,R2. 무작위 + 검증군 비율맞춤 (ECE 배율 1.45),0.004975124378109453,0.0059701492537313425,True,2_prevalence_control
+DICTrank,R3. 무작위 + 학습·검증 비율맞춤 (ECE 배율 1.21),0.03482587064676617,0.03482587064676617,True,2_prevalence_control
+DILIrank,ATC L(항종양) vs 그외,0.0210526315789473,0.1263157894736838,False,3_exploratory_subgroup
+DILIrank,구조: MW>500,0.716,0.716,False,3_exploratory_subgroup
+DILIrank,구조: 방향환>=4,0.428,0.642,False,3_exploratory_subgroup
+DILIrank,구조: N>=6,0.06,0.18,False,3_exploratory_subgroup
+DILIrank,구조: logP>=3,0.115,0.276,False,3_exploratory_subgroup
+DICTrank,ATC L(항종양) vs 그외,0.552,0.6624,False,3_exploratory_subgroup
+DICTrank,구조: MW>500,0.02,0.1263157894736838,False,3_exploratory_subgroup
+DICTrank,구조: 방향환>=4,0.624,0.6807272727272727,False,3_exploratory_subgroup
+DICTrank,구조: N>=6,0.05,0.18,False,3_exploratory_subgroup
+DICTrank,구조: logP>=3,0.297,0.5091428571428571,False,3_exploratory_subgroup
+DILIrank,화학공간 유사도 상/하위 AUROC 차이,0.527,0.6624,False,3_exploratory_subgroup
+DILIrank,유사도-정답확률 Spearman,0.1480830143585971,0.2961660287171942,False,3_exploratory_subgroup

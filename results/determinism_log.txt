@@ -1,0 +1,75 @@
+격자 모델 결정성 검사
+==============================================================
+python 3.11.14  numpy 2.4.6
+
+[1] 모델 정의 단일성
+    LightGBM       동일
+    LogisticReg    동일
+    RandomForest   동일
+    XGBoost        동일
+
+[1b] 표현 정의 단일성 (dtype 포함)
+    ECFP4        int8      동일
+    ECFP4+desc   float64   동일
+    MACCS        int8      동일
+    RDKit desc   float64   동일
+    vs 주 분석      float64   동일
+
+[1c] 지표 정의 단일성 (ece, 비트 단위)
+    기준 _shared.ece = 0.25866197597754215  (정의 7개 확인)
+    _shared.py                     0.25866197597754215  동일
+    baseline_cv.py                 0.25866197597754215  동일
+    prevalence_control.py          0.25866197597754215  동일
+    recalibration.py               0.25866197597754215  동일
+    robustness.py                  0.25866197597754215  동일
+    seed_sensitivity.py            0.25866197597754215  동일
+    year_sensitivity.py            0.25866197597754215  동일
+
+[2] 두 번 적합 결과 비트 단위 동일성
+    DILIrank  n=796  학습 640 / 검증 156
+        XGBoost        예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+        RandomForest   예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+        LogisticReg    예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+        LightGBM       예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+
+    DICTrank  n=919  학습 652 / 검증 267
+        XGBoost        예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+        RandomForest   예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+        LogisticReg    예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+        LightGBM       예측 최대차 0.000e+00  동일 | AUROC/ECE/기울기 동일
+
+[3] 재보정 사다리(§10) 실행 간 동일성
+    DILIrank A   예측 최대차 0.000e+00  ECE 0.446623/0.446623 차 0.000e+00  동일
+    DILIrank A'  예측 최대차 0.000e+00  ECE 0.457678/0.457678 차 0.000e+00  동일
+    DILIrank B   예측 최대차 0.000e+00  ECE 0.414704/0.414704 차 0.000e+00  동일
+    DILIrank C   예측 최대차 0.000e+00  ECE 0.408460/0.408460 차 0.000e+00  동일
+    DILIrank D   예측 최대차 0.000e+00  ECE 0.295937/0.295937 차 0.000e+00  동일
+    DILIrank E   예측 최대차 0.000e+00  ECE 0.048166/0.048166 차 0.000e+00  동일
+
+    DICTrank A   예측 최대차 0.000e+00  ECE 0.272569/0.272569 차 0.000e+00  동일
+    DICTrank A'  예측 최대차 0.000e+00  ECE 0.294210/0.294210 차 0.000e+00  동일
+    DICTrank B   예측 최대차 0.000e+00  ECE 0.167904/0.167904 차 0.000e+00  동일
+    DICTrank C   예측 최대차 0.000e+00  ECE 0.173900/0.173900 차 0.000e+00  동일
+    DICTrank D   예측 최대차 0.000e+00  ECE 0.243794/0.243794 차 0.000e+00  동일
+    DICTrank E   예측 최대차 0.000e+00  ECE 0.023418/0.023418 차 0.000e+00  동일
+
+    저장: results/determinism.csv
+
+[5] 프로세스를 달리해 두 번 (스레드 고정 없음)
+    DILIrank A   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DILIrank A'  예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DILIrank B   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DILIrank C   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DILIrank D   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DILIrank E   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+
+    DICTrank A   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DICTrank A'  예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DICTrank B   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DICTrank C   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DICTrank D   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+    DICTrank E   예측 최대차 0.000e+00  ECE 차 0.000e+00  동일
+
+    저장: results/determinism_cross_process.csv
+
+실패 0건

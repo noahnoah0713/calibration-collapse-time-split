@@ -1,0 +1,342 @@
+%Version 3.1 December 2024
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%=========================================================================================%%
+%% the documentclass is set to pdflatex as default. You can delete it if not appropriate.  %%
+%%=========================================================================================%%
+
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove "Numbered" in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-chicago.bst%  
+ 
+%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[pdflatex,sn-basic,Numbered,referee,lineno]{sn-jnl}% J Cheminformatics: chemistry ref style, numbered, double-spaced, line numbers
+%%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[pdflatex,sn-vancouver-num]{sn-jnl}% Vancouver Numbered Reference Style
+%%\documentclass[pdflatex,sn-vancouver-ay]{sn-jnl}% Vancouver Author Year Reference Style
+%%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+\unnumbered% unnumbered section headings -- BMC / J Cheminformatics house style
+
+\begin{document}
+
+\title[Article Title]{Article Title}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg} 
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author*[1,2]{\fnm{First} \sur{Author}}\email{iauthor@gmail.com}
+
+\author[2,3]{\fnm{Second} \sur{Author}}\email{iiauthor@gmail.com}
+\equalcont{These authors contributed equally to this work.}
+
+\author[1,2]{\fnm{Third} \sur{Author}}\email{iiiauthor@gmail.com}
+\equalcont{These authors contributed equally to this work.}
+
+\affil*[1]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{100190}, \state{State}, \country{Country}}}
+
+\affil[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{10587}, \state{State}, \country{Country}}}
+
+\affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+
+%%===========================================================%%
+%% Journal of Cheminformatics: abstract must be UNSTRUCTURED, %%
+%% 350 words maximum, and must contain a section titled      %%
+%% "Scientific Contribution" of at most THREE sentences.     %%
+%%===========================================================%%
+
+\abstract{[Aim, approach and principal findings, in continuous prose. No
+subheadings, no citations, no equations. 350 words maximum including the
+sentences below.]
+
+\textbf{Scientific Contribution} [Sentence 1: what this work establishes that
+was not established before.] [Sentence 2: how it differs from prior work on
+this topic.] [Sentence 3: why that difference matters for how these models are
+validated. --- Three sentences maximum.]}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+\keywords{keyword1, Keyword2, Keyword3, Keyword4}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+\section{Methods}
+
+\subsection{Datasets and curation}
+
+Hepatotoxicity labels came from DILIrank 2.0 [19, 20], the 2025 revision of the original DILIrank list [18], and cardiotoxicity labels from DICTrank [14, 21].
+
+Both sources grade concern on an ordinal scale and both carry an ambiguous grade. I treated the two upper grades as positive and the lowest as negative, and discarded the ambiguous compounds: they carry no directional information, and forcing them into either class would put unverifiable labels into the evaluation set. For DILIrank 2.0 this removed 354 of 1,336 entries, leaving 982 compounds (568 positive, 414 negative). DICTrank lists 1,318 entries, of which 107 are ambiguous and a further 27 carry no active-ingredient name; 1,184 remained (841 positive, 343 negative).
+
+Structures came from PubChem [24], resolved by compound name. Each retrieved SMILES was standardised in RDKit [27] --- split the molecule into fragments, keep the largest fragment containing carbon, re-canonicalise --- which strips counter-ions and salt forms. Compounds that could not be resolved or parsed were dropped. Duplicates were then removed on the first 14 characters of the InChIKey, collapsing salt forms, hydrates and stereoisomers of a single parent structure into one record. Of the 982 labelled DILIrank compounds, 891 resolved to a structure and 870 survived deduplication; for DICTrank the corresponding figures are 1,087 and 968.
+
+Approval years came from the Drugs@FDA bulk files [28]. \texttt{Products.txt} was joined to \texttt{Submissions.txt} on application number, keeping only approved submissions with a parsable action date and taking the earliest such date per application; combination products were split on the semicolon separator so that each active ingredient carried its own date. Matching drug names to ingredient names is the fragile step. I used a cascade that begins strict and loosens: exact match after normalisation, then match after stripping trailing salt and hydrate tokens, then match on the first token, and --- for DILIrank only --- substring containment restricted to names of at least five characters. Of the 870 structurally curated DILIrank compounds, 795 matched exactly, 11 through the looser stages and 64 not at all; I checked all 11 loose matches against the drugs' known approval histories. The cascade differs slightly between the two sources because their ingredient strings are formatted differently, but this has no consequence here: applying the DILIrank version to DICTrank left every compound's year unchanged and moved none across the split boundary.
+
+This left \textbf{806 DILIrank compounds} (approved 1939--2022) and \textbf{953 DICTrank compounds} (1939--2025).
+
+\subsection{Molecular representation}
+
+Each compound was represented by a 2,048-bit Morgan fingerprint of radius 2 [29] concatenated with six RDKit descriptors: molecular weight, logP, topological polar surface area, hydrogen-bond donors, hydrogen-bond acceptors and rotatable bonds [27]. The robustness grid additionally uses the fingerprint alone, the 167-bit MACCS keys [30], and the six descriptors alone. The descriptor block is identical wherever it appears, so the fingerprint-plus-descriptor cell of that grid reproduces the primary analysis exactly.
+
+\subsection{Models}
+
+The primary model is XGBoost [31]: 400 trees, depth 6, learning rate 0.05, subsample and column-subsample both 0.8, logistic loss, seed 42. The robustness grid adds a random forest [32] (500 trees, at least two samples per leaf), L2-penalised logistic regression (C = 1, up to 3,000 iterations, features scaled but not centred so the fingerprint stays sparse) and LightGBM [33] (400 trees, 31 leaves, learning rate 0.05, subsample and column-subsample 0.8). All were fitted through the scikit-learn interface [34].
+
+I did not tune hyperparameters. One fixed configuration runs everywhere, so that a difference between validation schemes is a property of the scheme rather than of how hard the search was under each one. Nor was any class weighting, resampling or threshold adjustment applied at fit time. The predicted probability is the object of study here, and correcting imbalance during fitting would alter precisely the quantity under examination.
+
+\subsection{Validation designs}
+
+\paragraph{Temporal split.}
+Compounds approved before 2010 form the training set, those approved in 2010 or later the held-out set: 649 and 157 for DILIrank (positive rate 64.9\% training, 30.6\% held out), 681 and 272 for DICTrank (75.8\% and 61.4\%).
+
+\paragraph{Random reference.}
+A single random partition is noisy, so the random reference is an average over repeated partitions drawn at the same held-out size as the temporal split. The number of repeats varies by analysis --- 20 for the calibration analysis, the Brier decomposition and the conformal analysis; 30 for the prevalence-matched controls; 15 for the model-by-representation grid; 200 for the permutation test --- and is stated with each result. The resulting estimates are close but not identical (for DILIrank: 0.7437 at 200 repeats, 0.7440 at 30, 0.7469 at 15, 0.7478 at 20). Cross-validation, used only in the split-strategy comparison below, is a different procedure, and is called cross-validation throughout.
+
+\paragraph{Split strategies.}
+To separate chemical novelty from temporal shift I compared five-fold stratified cross-validation against five-fold Bemis--Murcko scaffold cross-validation [58, 59], run on the same compounds as the temporal split. Scaffolds were taken without stereochemistry and assigned greedily, largest group first, to whichever fold was smallest at the time, so no scaffold spans folds. All three strategies pass through the same features, model and metrics.
+
+\paragraph{Prevalence-matched controls.}
+The temporal split changes the positive rate between training and held-out data --- prior probability shift in the taxonomy of Moreno-Torres et al. [62] --- which confounds any calibration comparison against an ordinary random split. I therefore built three nested controls, each averaged over 30 partitions. R1 is an unconstrained random split. R2 subsamples the held-out set to the positive rate of the temporal held-out set. R3 subsamples both training and held-out sets to the corresponding temporal rates. Subsampling keeps every instance of the limiting class and draws the other without replacement, at the largest size that reaches the target rate. Partitions that fell below 30 held-out or 100 training compounds, or that lost a class entirely, were discarded.
+
+\subsection{Evaluation metrics}
+
+Discrimination is reported as AUROC [63], balanced accuracy and the Matthews correlation coefficient [60, 61], the latter two at the default threshold of 0.5 and again at the threshold maximising Youden's J.
+
+Probability quality is reported as the Brier score [35]; expected and maximum calibration error over ten equal-width bins [38--40]; and the calibration slope and intercept obtained by regressing the outcome on the predicted log-odds, where a slope of 1 and an intercept of 0 mark perfect calibration [41].
+
+\paragraph{Brier decomposition.}
+Which of the two carries the loss is easy to assert and harder to show, so I decomposed the Brier score in Murphy's form [36, 37] over the same ten bins:
+
+\begin{equation}
+\mathrm{BS} = \mathrm{reliability} - \mathrm{resolution} + \mathrm{uncertainty}.
+\end{equation}
+
+Uncertainty is fixed by the held-out class balance and is not a property of the model. Resolution rewards separating compounds and tracks discrimination; reliability penalises predicted probabilities that do not match observed frequencies and tracks calibration. The change in Brier score between the random reference and the temporal split is attributed to the two model-dependent terms, and the reliability share reported as $\Delta$reliability / ($\Delta$reliability + $\Delta$resolution). Bin-wise estimates are unstable at these sample sizes, so the random reference for this analysis is pooled across 20 partitions before binning.
+
+\subsection{Recalibration}
+
+If the loss is concentrated in calibration, the natural question is whether it can be repaired --- and repaired without the held-out labels, which in a prospective setting do not exist yet. I split the pre-2010 training data by approval year and held out the most recent 25\% as an internal calibration set, so that the calibration set sits in the future relative to the fitting set while remaining entirely within the training era.
+
+Five strategies were compared: (A) no recalibration; (A$'$) no recalibration, refitted without the calibration set, as a like-for-like baseline; (B) Platt scaling [42] fitted on the internal calibration set; (C) isotonic regression [43, 44] on the same set; (D) a prior-probability correction that shifts the predicted log-odds by the log ratio of target to source odds, the intercept-only form of the Saerens procedure [45, 46]; and (E) an oracle Platt scaling fitted directly on the held-out labels. (E) is not available in practice and is reported only as a ceiling. Recovery is expressed as the fraction of the gap between the uncorrected and oracle ECE that a strategy closes.
+
+\subsection{Conformal prediction}
+
+Parametric recalibration might fail for reasons peculiar to the parametric form, so I repeated the question in a distribution-free setting. Split conformal prediction [47, 48, 53, 54] was applied using the same fit and calibration partition as above, with non-conformity $1 - \hat{p}$ for the true class and the conformal quantile taken at $\lceil (n+1)(1-\alpha) \rceil / n$ of the calibration scores; a prediction set contains every class whose non-conformity falls at or below that quantile. Marginal coverage, class-conditional coverage, mean set size and the empty-set rate were evaluated at target coverages of 90\% and 80\% ($\alpha = 0.10$ and $0.20$), against a random reference averaged over 20 partitions with identical fit, calibration and held-out sizes.
+
+Class-conditional coverage is reported separately because marginal coverage hides which class absorbs the shortfall. Conformal procedures adapted to covariate and label shift do exist [51, 52], but they require the shift to be characterised in advance. The exchangeability assumption behind the coverage guarantee is precisely what a temporal split breaks [49, 50], so a failure of the standard procedure is expected in direction; the question is its size and its asymmetry.
+
+\subsection{Label maturity}
+
+Post-marketing safety labels accumulate over time, so a recently approved drug is more likely to carry a negative label simply because nothing has been reported yet [72]. This is a plausible competing explanation for temporal degradation, and I tested it directly. Observation time was defined as 2025 minus approval year, 2025 being the release year of DILIrank 2.0.
+
+Three analyses follow. First, the held-out set was restricted to compounds with at least 8, 10, 12 or 15 years of observation and the gap recomputed. Second, negative labels were down-weighted in proportion to observation time --- weight $\min(\mathrm{exposure}/\tau,\,1)$ for $\tau$ of 5, 8, 10 and 15 years, with positives always weighted 1 --- and a pairwise-weighted AUROC computed from them. Third, the same observation-time threshold was applied to training and held-out sets together, so that the comparison is not distorted by restricting only one side. Restrictions leaving fewer than 30 held-out compounds, or a single class, were not evaluated.
+
+\subsection{Robustness and sensitivity}
+
+I varied four things. \textbf{Model and representation:} all 16 combinations of the four learners and four representations, for each dataset, at the 2010 cut-off. \textbf{Cut-off year:} the temporal split repeated at 2005, 2010 and 2015, with the Brier decomposition recomputed at each. \textbf{Seed:} the primary pipeline rerun under ten seeds (42, 0, 1, 7, 13, 21, 100, 123, 777, 2024), recording AUROC, ECE, reliability and resolution. \textbf{Binning:} ECE and the decomposition recomputed over 5, 10, 15 and 20 bins under both equal-width and equal-frequency binning, since ECE is known to move with the binning scheme [40].
+
+\subsection{Subgroup analyses}
+
+Held-out performance was stratified by first-level ATC class [26] and by four physicochemical cut-points (molecular weight above 500, four or more aromatic rings, six or more nitrogens, logP of 3 or above). ATC assignments came from a bulk pull of the KEGG DRUG--ATC linkage [25], matched to compound names by exact match after normalisation and then by match after salt-token stripping; the assignment was verified against compounds of known class before use. This matching is deliberately more conservative than the approval-year cascade, since a misassigned therapeutic class would contaminate a whole subgroup rather than move one compound across a split. Chemical-space displacement was quantified as the maximum Tanimoto similarity [22, 23] of each held-out compound to the training set, computed on the same fingerprints.
+
+These analyses are exploratory. They are reported with multiplicity correction and are not used to support any primary claim.
+
+\subsection{Statistical analysis}
+
+The primary test of temporal degradation is a permutation test [55]: 200 random partitions of the same held-out size were drawn, the model refitted on each, and the observed temporal AUROC referred to the resulting null distribution as a one-sided p-value. Confidence intervals for AUROC and ECE are percentile bootstrap (1,000 resamples for AUROC in the primary split, 2,000 for ECE and for subgroup differences) [57]. Differences between independent held-out subgroups --- high versus low similarity, ATC class L versus the rest --- were tested by bootstrapping each subgroup separately and taking the two-sided proportion of sign-consistent resamples. The relationship between training-set similarity and the predicted probability of the true class was tested by Spearman correlation.
+
+I controlled multiplicity with the Benjamini--Hochberg procedure [56], applying it within three families rather than across all tests at once, because the tests are not of one kind. Family 1 holds the two primary confirmatory tests of temporal degradation, one per dataset. Family 2 holds the six prevalence-matched comparisons. Family 3 holds the eight exploratory subgroup tests, which is where the multiplicity problem actually lives. Tests reported at $p < 10^{-4}$ sit at the resolution limit of the resampling and were entered as $10^{-4}$.
+
+\subsection{Software and data availability}
+
+Everything was run under Python 3.11.14 with RDKit 2026.03.5 [27], scikit-learn 1.9.0 [34], XGBoost 3.2.0 [31], LightGBM 4.7.0 [33], SciPy 1.17.1, statsmodels 0.15.0, pandas 3.0.5 and NumPy 2.4.6; figures were drawn in Matplotlib at 600 dpi. All random number generation is seeded, and I re-executed the robustness pipeline independently to confirm that the reported values reproduce exactly.
+
+The datasets are public [20, 21, 28] and the analysis code is deposited at [REPOSITORY DOI --- to be inserted].
+
+\backmatter
+
+\bmhead{Supplementary information}
+
+Not applicable.
+
+%%===========================================================%%
+%% Journal of Cheminformatics requires, in this order:       %%
+%%   List of abbreviations, then Declarations containing     %%
+%%   Availability of data and materials / Competing interests%%
+%%   / Funding / Authors' contributions / Acknowledgements    %%
+%%   (Authors' information is optional).                     %%
+%% Note: Acknowledgements belongs INSIDE Declarations here,  %%
+%% unlike the template default.                              %%
+%%===========================================================%%
+
+\section*{List of abbreviations}
+
+AUROC, area under the receiver operating characteristic curve;
+BH, Benjamini--Hochberg;
+DICT, drug-induced cardiotoxicity;
+DILI, drug-induced liver injury;
+ECE, expected calibration error;
+MCC, Matthews correlation coefficient;
+MCE, maximum calibration error.
+% [Trim or extend this list to match the abbreviations the final text uses.]
+
+\section*{Declarations}
+
+%% The journal prescribes the wording of this paragraph. Keep the sentence
+%% structure below and replace only the bracketed parts.
+\bmhead{Availability of data and materials}
+
+The datasets supporting the conclusions of this article are available in the
+[repository name] repository, [persistent identifier and hyperlink in https://
+format]. The analysis code required to reproduce every result reported here is
+available in the same repository.
+
+\bmhead{Competing interests}
+
+The author declares no competing interests.
+
+\bmhead{Funding}
+
+[State the funding source, or: No funding was received for this work.]
+
+\bmhead{Authors' contributions}
+
+[Single author: the author designed the study, performed all analyses and wrote
+the manuscript.]
+
+\bmhead{Acknowledgements}
+
+[Optional. Springer Nature policy requires any use of a large language model in
+preparing the manuscript to be disclosed here: name the tool and state what it
+was used for.]
+
+%% \bmhead{Authors' information}  %% optional -- delete or fill in
+
+%% --- sample appendix commented out; uncomment and edit if an appendix is needed ---
+% \begin{appendices}
+%
+% \section{Section title of first appendix}\label{secA1}
+%
+% An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+%
+% %%=============================================%%
+% %% For submissions to Nature Portfolio Journals %%
+% %% please use the heading ``Extended Data''.   %%
+% %%=============================================%%
+%
+% %%=============================================================%%
+% %% Sample for another appendix section			       %%
+% %%=============================================================%%
+%
+% %% \section{Example of another appendix section}\label{secA2}%
+% %% Appendices may be used for helpful, supporting or essential material that would otherwise 
+% %% clutter, break up or be distracting to the text. Appendices can consist of sections, figures, 
+% %% tables and equations etc.
+%
+% \end{appendices}
+
+%%===========================================================================================%%
+%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
+%% system, please include the references within the manuscript file itself. You may do this  %%
+%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
+%% file, and delete the associated \verb+\bibliography+ commands.                            %%
+%%===========================================================================================%%
+
+\bibliography{sn-bibliography}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+\end{document}

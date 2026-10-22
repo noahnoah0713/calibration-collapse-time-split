@@ -1,0 +1,88 @@
+1. Reuben A, Koch DG, Lee WM; Acute Liver Failure Study Group. Drug-induced acute liver failure: results of a U.S. multicenter, prospective study. Hepatology. 2010;52(6):2065–2076. doi:10.1002/hep.23937
+2. Craveiro NS, Lopes BS, Tomás L, Almeida SF. Drug withdrawal due to safety: a review of the data supporting withdrawal decision. Curr Drug Saf. 2020;15(1):4–12. doi:10.2174/1574886314666191004092520
+3. U.S. Food and Drug Administration, Center for Drug Evaluation and Research. Considerations for the Use of Artificial Intelligence To Support Regulatory Decision-Making for Drug and Biological Products. Draft Guidance, January 2025 (Docket No. FDA-2024-D-4689).
+4. Organisation for Economic Co-operation and Development. (Q)SAR Assessment Framework: Guidance for the Regulatory Assessment of (Quantitative) Structure Activity Relationship Models and Predictions. 2nd ed. OECD Series on Testing and Assessment. Paris: OECD Publishing; 2024. doi:10.1787/bbdac345-en
+5. Sheridan RP. Time-Split Cross-Validation as a Method for Estimating the Goodness of Prospective Prediction. J Chem Inf Model. 2013;53(4):783–790. doi:10.1021/ci400084k
+6. Landrum GA, Beckers M, Lanini J, Schneider N, Stiefl N, Riniker S. SIMPD: an algorithm for generating simulated time splits for validating machine learning approaches. J Cheminform. 2023;15:119. doi:10.1186/s13321-023-00787-9
+7. Crucitti D, Mosquera Orgueira A. Train–test splits matter more for evaluation than for performance. J Cheminform. 2026;18. doi:10.1186/s13321-026-01266-7 *(논문번호 미확정 — 투고 전 확인)*
+8. Li T, Tong W, Roberts R, Liu Z, Thakkar S. DeepDILI: Deep Learning-Powered Drug-Induced Liver Injury Prediction Using Model-Level Representation. Chem Res Toxicol. 2021;34(2):550–565. doi:10.1021/acs.chemrestox.0c00374
+9. Morger A, Garcia de Lomana M, Norinder U, Svensson F, Kirchmair J, Mathea M, Volkamer A. Studying and mitigating the effects of data drifts on ML model performance at the example of chemical toxicity data. Sci Rep. 2022;12:7244. doi:10.1038/s41598-022-09309-3
+10. Morger A, Svensson F, Arvidsson McShane S, Gauraha N, Norinder U, Spjuth O, Volkamer A. Assessing the calibration in toxicological in vitro models with conformal prediction. J Cheminform. 2021;13:35. doi:10.1186/s13321-021-00511-5
+11. Morita K, Mizuno T, Kusuhara H. Investigation of a Data Split Strategy Involving the Time Axis in Adverse Event Prediction Using Machine Learning. J Chem Inf Model. 2022;62(17):3982–3992. doi:10.1021/acs.jcim.2c00765
+12. Wallach I, Heifets A. Most Ligand-Based Classification Benchmarks Reward Memorization Rather than Generalization. J Chem Inf Model. 2018;58(5):916–932. doi:10.1021/acs.jcim.7b00403
+13. Friesacher HR, Svensson E, Winiwarter S, Mervin L, Arany Á, Engkvist O. Temporal distribution shift in real-world pharmaceutical data: implications for uncertainty quantification in QSAR models. Artif Intell Life Sci. 2025;8:100132. doi:10.1016/j.ailsci.2025.100132
+14. Qu Y, Li T, Liu Z, Li D, Tong W. DICTrank: The largest reference list of 1318 human drugs ranked by risk of drug-induced cardiotoxicity using FDA labeling. Drug Discov Today. 2023;28(11):103770. doi:10.1016/j.drudis.2023.103770
+15. Ovadia Y, Fertig E, Ren J, Nado Z, Sculley D, Nowozin S, Dillon JV, Lakshminarayanan B, Snoek J. Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift. Adv Neural Inf Process Syst. 2019;32:13969–13980.
+16. Davis SE, Lasko TA, Chen G, Siew ED, Matheny ME. Calibration drift in regression and machine learning models for acute kidney injury. J Am Med Inform Assoc. 2017;24(6):1052–1061. doi:10.1093/jamia/ocx030
+17. Seal S, Spjuth O, Hosseini-Gerami L, García-Ortegón M, Singh S, Bender A, Carpenter AE. Insights into Drug Cardiotoxicity from Biological and Chemical Data: The First Public Classifiers for FDA Drug-Induced Cardiotoxicity Rank. J Chem Inf Model. 2024;64(4):1172–1186. doi:10.1021/acs.jcim.3c01834
+18. Qu Y, Li T, Liu Z, Tong W, Li D. DICTrank Is a Reliable Dataset for Cardiotoxicity Prediction Using Machine Learning Methods. Chem Res Toxicol. 2025;38(4):647–655. doi:10.1021/acs.chemrestox.4c00428
+19. Chen M, Suzuki A, Thakkar S, Yu K, Hu C, Tong W. DILIrank: the largest reference drug list ranked by the risk for developing drug-induced liver injury in humans. Drug Discov Today. 2016;21(4):648–653. doi:10.1016/j.drudis.2016.02.015
+20. Olubamiwa AO, Qu Y, Connor S, Tong W, Li D, Chen M. DILIrank 2.0: An updated and expanded database for drug-induced liver injury risk based on FDA labeling and a literature review. Drug Discov Today. 2025;30(11):104485. doi:10.1016/j.drudis.2025.104485
+21. U.S. Food and Drug Administration, National Center for Toxicological Research. Drug Induced Liver Injury Rank (DILIrank 2.0) Dataset [Internet]. Available from: https://www.fda.gov/science-research/liver-toxicity-knowledge-base-ltkb/drug-induced-liver-injury-rank-dilirank-20-dataset (accessed [데이터 수집일])
+22. U.S. Food and Drug Administration, National Center for Toxicological Research. Drug Induced Cardiotoxicity Rank (DICTrank) Dataset [Internet]. Available from: https://www.fda.gov/science-research/bioinformatics-tools/drug-induced-cardiotoxicity-rank-dictrank-dataset (accessed [데이터 수집일])
+23. Bento AP, Hersey A, Félix E, Landrum G, Gaulton A, Atkinson F, Bellis LJ, De Veij M, Leach AR. An open source chemical structure curation pipeline using RDKit. J Cheminform. 2020;12:51. doi:10.1186/s13321-020-00456-1
+24. Heller SR, McNaught A, Pletnev I, Stein S, Tchekhovskoi D. InChI, the IUPAC International Chemical Identifier. J Cheminform. 2015;7:23. doi:10.1186/s13321-015-0068-4
+25. Rogers DJ, Tanimoto TT. A Computer Program for Classifying Plants. Science. 1960;132(3434):1115–1118. doi:10.1126/science.132.3434.1115
+26. Bajusz D, Rácz A, Héberger K. Why is Tanimoto index an appropriate choice for fingerprint-based similarity calculations? J Cheminform. 2015;7:20. doi:10.1186/s13321-015-0069-3
+27. Sheridan RP, Feuston BP, Maiorov VN, Kearsley SK. Similarity to Molecules in the Training Set Is a Good Discriminator for Prediction Accuracy in QSAR. J Chem Inf Comput Sci. 2004;44(6):1912–1928. doi:10.1021/ci049782w
+28. Kim S, Chen J, Cheng T, et al. PubChem 2025 update. Nucleic Acids Res. 2025;53(D1):D1516–D1525. doi:10.1093/nar/gkae1059
+29. Kanehisa M, Goto S. KEGG: Kyoto Encyclopedia of Genes and Genomes. Nucleic Acids Res. 2000;28(1):27–30. doi:10.1093/nar/28.1.27
+30. WHO Collaborating Centre for Drug Statistics Methodology. ATC classification index with DDDs. Oslo, Norway. https://atcddd.fhi.no/atc_ddd_index/ (accessed [데이터 수집일])
+31. Landrum G. RDKit: Open-source cheminformatics. https://www.rdkit.org (accessed [데이터 수집일])
+32. U.S. Food and Drug Administration. Drugs@FDA Data Files. https://www.fda.gov/drugs/drug-approvals-and-databases/drugsfda-data-files (accessed [데이터 수집일])
+33. Rogers D, Hahn M. Extended-Connectivity Fingerprints. J Chem Inf Model. 2010;50(5):742–754. doi:10.1021/ci100050t
+34. Durant JL, Leland BA, Henry DR, Nourse JG. Reoptimization of MDL Keys for Use in Drug Discovery. J Chem Inf Comput Sci. 2002;42(6):1273–1280. doi:10.1021/ci010132r
+35. Wildman SA, Crippen GM. Prediction of Physicochemical Parameters by Atomic Contributions. J Chem Inf Comput Sci. 1999;39(5):868–873. doi:10.1021/ci990307l
+36. Ertl P, Rohde B, Selzer P. Fast Calculation of Molecular Polar Surface Area as a Sum of Fragment-Based Contributions and Its Application to the Prediction of Drug Transport Properties. J Med Chem. 2000;43(20):3714–3717. doi:10.1021/jm000942e
+37. Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. In: Proc. 22nd ACM SIGKDD. 2016:785–794. doi:10.1145/2939672.2939785
+38. Breiman L. Random Forests. Mach Learn. 2001;45(1):5–32. doi:10.1023/A:1010933404324
+39. Ke G, Meng Q, Finley T, Wang T, Chen W, Ma W, Ye Q, Liu TY. LightGBM: A Highly Efficient Gradient Boosting Decision Tree. Adv Neural Inf Process Syst. 2017;30:3146–3154.
+40. Pedregosa F, Varoquaux G, Gramfort A, et al. Scikit-learn: Machine Learning in Python. J Mach Learn Res. 2011;12:2825–2830.
+41. Brier GW. Verification of Forecasts Expressed in Terms of Probability. Mon Weather Rev. 1950;78(1):1–3. doi:10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2
+42. Murphy AH. A New Vector Partition of the Probability Score. J Appl Meteorol. 1973;12(4):595–600. doi:10.1175/1520-0450(1973)012<0595:ANVPOT>2.0.CO;2
+43. Murphy AH, Winkler RL. Reliability of Subjective Probability Forecasts of Precipitation and Temperature. J R Stat Soc Ser C (Appl Stat). 1977;26(1):41–47. doi:10.2307/2346866
+44. Guo C, Pleiss G, Sun Y, Weinberger KQ. On Calibration of Modern Neural Networks. In: Proc. 34th ICML. 2017:1321–1330.
+45. Pakdaman Naeini M, Cooper GF, Hauskrecht M. Obtaining Well Calibrated Probabilities Using Bayesian Binning. Proc AAAI. 2015;29(1):2901–2907. doi:10.1609/aaai.v29i1.9602
+46. Nixon J, Dusenberry MW, Zhang L, Jerfel G, Tran D. Measuring Calibration in Deep Learning. In: Proc. IEEE/CVF CVPR Workshops. 2019:38–41.
+47. Roelofs R, Cain N, Shlens J, Mozer MC. Mitigating Bias in Calibration Error Estimation. In: Camps-Valls G, Ruiz FJR, Valera I, editors. Proc. 25th AISTATS. Proc Mach Learn Res. 2022;151:4036–4054.
+48. Van Calster B, Nieboer D, Vergouwe Y, De Cock B, Pencina MJ, Steyerberg EW. A calibration hierarchy for risk models was defined: from utopia to empirical data. J Clin Epidemiol. 2016;74:167–176. doi:10.1016/j.jclinepi.2015.12.005
+49. Platt JC. Probabilistic Outputs for Support Vector Machines and Comparisons to Regularized Likelihood Methods. In: Advances in Large Margin Classifiers. MIT Press; 1999:61–74.
+50. Zadrozny B, Elkan C. Transforming Classifier Scores into Accurate Multiclass Probability Estimates. In: Proc. 8th ACM SIGKDD. 2002:694–699.
+51. Ayer M, Brunk HD, Ewing GM, Reid WT, Silverman E. An Empirical Distribution Function for Sampling with Incomplete Information. Ann Math Stat. 1955;26(4):641–647. doi:10.1214/aoms/1177728423
+52. Saerens M, Latinne P, Decaestecker C. Adjusting the outputs of a classifier to new a priori probabilities: a simple procedure. Neural Comput. 2002;14(1):21–41. doi:10.1162/089976602753284446
+53. Lipton ZC, Wang YX, Smola A. Detecting and Correcting for Label Shift with Black Box Predictors. In: Dy J, Krause A, editors. Proc. 35th ICML. Proc Mach Learn Res. 2018;80:3122–3130.
+54. Alexandari A, Kundaje A, Shrikumar A. Maximum Likelihood with Bias-Corrected Calibration is Hard-To-Beat at Label Shift Adaptation. In: Proc. 37th ICML. Proc Mach Learn Res. 2020;119:222–232.
+55. Garg S, Wu Y, Balakrishnan S, Lipton ZC. A Unified View of Label Shift Estimation. Adv Neural Inf Process Syst. 2020;33:3290–3300. arXiv:2003.07554
+56. Elkan C. The Foundations of Cost-Sensitive Learning. In: Proc. 17th IJCAI. 2001:973–978.
+57. Vovk V, Gammerman A, Shafer G. Algorithmic Learning in a Random World. Springer; 2005.
+58. Papadopoulos H, Proedrou K, Vovk V, Gammerman A. Inductive Confidence Machines for Regression. In: Elomaa T, Mannila H, Toivonen H, editors. Machine Learning: ECML 2002. Lecture Notes in Computer Science, vol 2430. Berlin: Springer; 2002:345–356. doi:10.1007/3-540-36755-1_29
+59. Lei J, G'Sell M, Rinaldo A, Tibshirani RJ, Wasserman L. Distribution-Free Predictive Inference for Regression. J Am Stat Assoc. 2018;113(523):1094–1111. doi:10.1080/01621459.2017.1307116
+60. Vovk V. Conditional validity of inductive conformal predictors. Mach Learn. 2013;92(2–3):349–376. doi:10.1007/s10994-013-5355-6
+61. Tibshirani RJ, Barber RF, Candès E, Ramdas A. Conformal Prediction Under Covariate Shift. Adv Neural Inf Process Syst. 2019;32. arXiv:1904.06019
+62. Barber RF, Candès EJ, Ramdas A, Tibshirani RJ. Conformal prediction beyond exchangeability. Ann Statist. 2023;51(2):816–845. doi:10.1214/23-AOS2276
+63. Laghuvarapu S, Lin Z, Sun J. CoDrug: Conformal Drug Property Prediction with Density Estimation under Covariate Shift. Adv Neural Inf Process Syst. 2023;36. arXiv:2310.12033
+64. Lee H, Kim J, Jadamba E, Choi S, Shin H. Conformal Prediction for Molecular Properties under Label Shift. NeurIPS 2025 Workshop on Reliable ML from Unreliable Data. arXiv:2608.17678 *(워크숍 채택 확인됨 — 정식 학술지 게재 시 공식판으로 교체)*
+65. Angelopoulos AN, Bates S. Conformal Prediction: A Gentle Introduction. Found Trends Mach Learn. 2023;16(4):494–591. doi:10.1561/2200000101
+66. Norinder U, Carlsson L, Boyer S, Eklund M. Introducing Conformal Prediction in Predictive Modeling. A Transparent and Flexible Alternative to Applicability Domain Determination. J Chem Inf Model. 2014;54(6):1596–1603. doi:10.1021/ci5001168
+67. Ojala M, Garriga GC. Permutation Tests for Studying Classifier Performance. J Mach Learn Res. 2010;11:1833–1863.
+68. Phipson B, Smyth GK. Permutation P-values Should Never Be Zero: Calculating Exact P-values When Permutations Are Randomly Drawn. Stat Appl Genet Mol Biol. 2010;9(1):Article 39. doi:10.2202/1544-6115.1585
+69. Benjamini Y, Hochberg Y. Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. J R Stat Soc Series B. 1995;57(1):289–300.
+70. Efron B, Tibshirani RJ. An Introduction to the Bootstrap. Chapman & Hall; 1993.
+71. Bemis GW, Murcko MA. The Properties of Known Drugs. 1. Molecular Frameworks. J Med Chem. 1996;39(15):2887–2893.
+72. Yang K, Swanson K, Jin W, et al. Analyzing Learned Molecular Representations for Property Prediction. J Chem Inf Model. 2019;59(8):3370–3388. doi:10.1021/acs.jcim.9b00237
+73. Matthews BW. Comparison of the Predicted and Observed Secondary Structure of T4 Phage Lysozyme. Biochim Biophys Acta. 1975;405(2):442–451. doi:10.1016/0005-2795(75)90109-9
+74. Chicco D, Jurman G. The advantages of the Matthews correlation coefficient (MCC) over F1 score and accuracy in binary classification evaluation. BMC Genomics. 2020;21:6. doi:10.1186/s12864-019-6413-7
+75. Youden WJ. Index for Rating Diagnostic Tests. Cancer. 1950;3(1):32–35. doi:10.1002/1097-0142(1950)3:1<32::AID-CNCR2820030106>3.0.CO;2-3
+76. Moreno-Torres JG, Raeder T, Alaiz-Rodríguez R, Chawla NV, Herrera F. A unifying view on dataset shift in classification. Pattern Recognit. 2012;45(1):521–530. doi:10.1016/j.patcog.2011.06.019
+77. Fawcett T. An introduction to ROC analysis. Pattern Recognit Lett. 2006;27(8):861–874. doi:10.1016/j.patrec.2005.10.010
+78. Lopez-Paz D, Oquab M. Revisiting Classifier Two-Sample Tests. In: 5th International Conference on Learning Representations (ICLR); 2017. arXiv:1610.06545
+79. Rabanser S, Günnemann S, Lipton ZC. Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift. Adv Neural Inf Process Syst. 2019;32. arXiv:1810.11953
+80. Shultz MD. Two Decades under the Influence of the Rule of Five and the Changing Properties of Approved Oral Drugs. J Med Chem. 2019;62(4):1701–1714. doi:10.1021/acs.jmedchem.8b00686
+81. Kapoor S, Narayanan A. Leakage and the Reproducibility Crisis in Machine-Learning-Based Science. Patterns. 2023;4(9):100804. doi:10.1016/j.patter.2023.100804
+82. Nael MA, Alakonda LM, Elokely KM. Defining the Data set Defines the QSAR Claim. J Chem Inf Model. 2026;66(6):2951–2954. doi:10.1021/acs.jcim.6c00514
+83. Rasmussen MH, Duan C, Kulik HJ, Jensen JH. Uncertain of uncertainties? A comparison of uncertainty quantification metrics for chemical data sets. J Cheminform. 2023;15:121. doi:10.1186/s13321-023-00790-0
+84. Friesacher HR, et al. Achieving well-informed decision-making in drug discovery: a comprehensive calibration study using neural network-based structure-activity models. J Cheminform. 2025;17:29. doi:10.1186/s13321-025-00964-y
+85. Van Calster B, McLernon DJ, van Smeden M, Wynants L, Steyerberg EW. Calibration: the Achilles heel of predictive analytics. BMC Med. 2019;17:230. doi:10.1186/s12916-019-1466-7
+86. Flores G, Smith AH, Fukuyama J, Wilson A. Aligning Evaluation with Clinical Priorities: Calibration, Label Shift, and Error Costs. Adv Neural Inf Process Syst. 2025;38. (NeurIPS 2025; 최종 proceedings 권·페이지는 투고 전 확인)
+87. Downing NS, Shah ND, Aminawung JA, Pease AM, Zeitoun JD, Krumholz HM, et al. Postmarket Safety Events Among Novel Therapeutics Approved by the US Food and Drug Administration Between 2001 and 2010. JAMA. 2017;317(18):1854–1863. doi:10.1001/jama.2017.5150
+88. Lasser KE, Allen PD, Woolhandler SJ, Himmelstein DU, Wolfe SM, Bor DH. Timing of New Black Box Warnings and Withdrawals for Prescription Medications. JAMA. 2002;287(17):2215–2220. doi:10.1001/jama.287.17.2215

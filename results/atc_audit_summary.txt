@@ -1,0 +1,62 @@
+ATC 배정 검수
+==========================================================================
+KEGG 이름 키 12,681개 (캐시: kegg_atc_map.csv)
+
+[1] 매칭 방식별 분포
+    DICTrank  (n=919)
+      exact           888  (96.6%)
+      salt_stripped     9  ( 1.0%)
+      unmatched        22  ( 2.4%)
+    DILIrank  (n=796)
+      exact           771  (96.9%)
+      salt_stripped     7  ( 0.9%)
+      unmatched        18  ( 2.3%)
+
+    exact         = 정규화한 전체 이름이 KEGG 키와 일치. 가장 안전.
+    salt_stripped = 염 표기를 뗀 뒤에야 일치. 대체로 정상이지만,
+                    뗀 부분이 실제 활성성분의 일부였다면 오류가 된다.
+
+[2] 두 데이터셋에 공통으로 있는 분자의 ATC 일치 여부
+    (같은 분자인데 이름 표기가 달라도 같은 코드가 나와야 한다)
+    양쪽 모두 코드가 붙은 공통 분자: 581개
+      전체 코드까지 일치 : 573개
+      1단계(대분류) 일치 : 578개
+      1단계 불일치       : 3개
+      !! 아래 분자는 데이터셋마다 다른 대분류를 받았다:
+dataset        DICTrank DILIrank                  DICTrank_name               DILIrank_name
+ikey14                                                                                     
+QVYRGXJJSLMXQH  M03BC01  N04AB02           Orphenadrine Citrate  Orphenadrine hydrochloride
+XMAYWYJOQHXEEK  H02CA04  D01AC08               LEVOKETOCONAZOLE                Ketoconazole
+ZZVUWRFHKOJYTH  D04AA32  R06AA11  DIPHENHYDRAMINE HYDROCHLORIDE              Dimenhydrinate
+
+[3] ATC 미배정 화합물 (층화 분석에서 제외됨)
+    DICTrank: 22개
+      BRILLIANT BLUE G, CYSTEINE HYDROCHLORIDE, FLORBETABEN F-18, FLUOROESTRADIOL F-18, CHOLINE C-11, INDIUM IN-111 OXYQUINOLINE, ENALAPRILAT, ISAVUCONAZONIUM SULFATE, Urea C-14, ESTROGENS, CONJUGATED SYNTHETIC A, SUCCIMER, Fenofibric Acid, ICOSAPENT ETHYL, ZILEUTON, METHSCOPOLAMINE BROMIDE, CARBIDOPA, PHENDIMETRAZINE TARTRATE, BENZPHETAMINE HYDROCHLORIDE, METAXALONE, LEVORPHANOL TARTRATE, isosorbide, ISOSULFAN BLUE
+    DILIrank: 18개
+      Alatrofloxacin mesylate, Benzphetamine hydrochloride, Brilliant blue g, Choline c-11, Exenatide synthetic, Fenofibric acid, Florbetaben f-18, Fluoroestradiol f-18, Gallium ga-68 edotreotide, Levomefolate calcium, Levorphanol tartrate, Metaxalone, Methscopolamine bromide, Phendimetrazine tartrate, Succimer, Tyramine, Vitamin C, Zileuton
+
+[4] L(항종양·면역조절) 배정 — 사람이 확인할 목록
+    전체 283개
+    DICTrank: 177개 (그중 검증군 94개)
+      매칭 방식: exact 173, salt_stripped 4
+    DILIrank: 106개 (그중 검증군 32개)
+      매칭 방식: exact 104, salt_stripped 2
+
+    -> results/atc_review_L.csv 를 열어 '항종양제가 맞는가' 를
+       한 줄씩 확인할 것. 자동으로 가릴 방법이 없다.
+       특히 검증군(승인 2010년 이후) 항목이 중요하다. 논문의
+       L 계열 주장이 그 표본에 걸려 있다.
+
+==========================================================================
+판정
+==========================================================================
+  미배정 40개 | 염 제거 후 매칭 16개 | 데이터셋 간 대분류 불일치 3개
+
+  !! 대분류 불일치가 있다. 위 표를 확인하고 고칠 것.
+
+  확인하지 못한 것 (이 스크립트의 한계):
+    - KEGG 한 약물에 ATC 가 여러 개일 때 알파벳 첫 코드만 채택됨
+    - KEGG 이름 키 충돌 시 먼저 온 약물이 이김
+    두 항목은 rest.kegg.jp 재수집이 필요한데 현재 막혀 있다(403).
+    그때까지 L 계열 결과는 '가설 생성' 으로만 서술할 것.
+    (다중비교 보정 후에도 L 은 유의하지 않으므로 결론은 어차피 같다.)

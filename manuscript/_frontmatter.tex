@@ -1,0 +1,85 @@
+
+
+%% [TODO] 대괄호는 러닝 헤드(짧은 제목)다.
+\title[Calibration collapse in time-split validation]{Beyond AUROC: Quantifying
+Calibration Collapse in Time-Split Validation of Hepatotoxicity and
+Cardiotoxicity Models}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg} 
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+%% 단독 저자. 템플릿의 둘째·셋째 저자와 \equalcont 는 지웠다.
+%% [TODO] 이름·이메일을 채울 것. ORCID 는 투고 시스템에 입력한다.
+\author*[1]{\fnm{[이름]} \sur{[성]}}\email{[이메일]}
+
+%% [TODO] 소속 한 곳.
+\affil*[1]{\orgdiv{[학과]}, \orgname{[기관]}, \orgaddress{\city{[도시]}, \country{[국가]}}}
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+
+%%===========================================================%%
+%% Journal of Cheminformatics: abstract must be UNSTRUCTURED, %%
+%% 350 words maximum, and must contain a section titled      %%
+%% "Scientific Contribution" of at most THREE sentences.     %%
+%%===========================================================%%
+
+\abstract{Models for drug-induced liver injury and cardiotoxicity are usually validated
+on random splits and reported by the area under the receiver operating
+characteristic curve. Deployment is
+prospective: a model trained on approved drugs is applied to drugs approved
+later. We asked what a random split hides, using two public FDA datasets (DILIrank,
+796 compounds; DICTrank, 919) split at 2010, with compounds, features and
+learner held fixed on both sides of every comparison.
+
+Discrimination fell modestly, from 0.735 to 0.648 and from 0.697 to 0.620. A Murphy
+decomposition of the Brier score attributed 86.1\% and 82.5\% of the loss to
+reliability rather than resolution: the cost falls on the probabilities, not the
+ranking. Because the positive rate also drops across the boundary, we built random
+controls matched on held-out size and on one or both base rates; after matching
+both, the temporal expected calibration error was still 1.37 and 1.21 times the
+control.
+Recalibrating inside the training era, as a prospective user must, recovered
+8\% and 42\% of the distance to an oracle ceiling; split conformal prediction
+missed its nominal 90\% coverage, at 0.737 and 0.824; and eight further
+remedies, from prior-probability correction and nine quantification estimators
+to density-ratio weighting and four additional calibrators, did not close the
+gap. One intervention did.
+Retraining as approvals accumulate and recalibrating at each refit lowered the
+error by 0.166 and 0.176, and the larger part of that gain came from the
+recalibration rather than from the retraining.
+
+\textbf{Scientific Contribution} This work separates the temporal validation penalty into
+discrimination and calibration and shows the calibration component survives
+matching on both base rates, so it does not reduce to prevalence shift. It also does not reduce to the amount of covariate shift, since splits built to
+match the measured shift remain less affected than the time split. Periodic retraining with recalibration is the one remedy that closes most of
+the gap, which turns a reporting recommendation into an operating procedure.}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+%% [TODO] 저널 지침 확인 후 확정.
+\keywords{calibration, temporal validation, drug-induced liver injury,
+drug-induced cardiotoxicity, conformal prediction, model evaluation}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle

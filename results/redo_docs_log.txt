@@ -1,0 +1,14 @@
+make_report        OK   
+make_tables        OK   
+make_figures       OK   
+verify9            OK     절 36개 / 하위절 67개 / 표 132개 실패 0건 
+verify10           OK     대조한 행·칸: 856개 실패 0건 
+verify11           OK   실패 0건 
+make_report        OK   
+verify9            OK     절 36개 / 하위절 67개 / 표 132개 실패 0건 
+verify10           OK     대조한 행·칸: 856개 실패 0건 
+make_manuscript    OK   
+verify12           OK   옛 수치 합계 0건   인용 안 되는 그림 3개 
+
+  [재고] 결과 CSV 104개 — 생성기가 읽음 90 / 중간·원자료 선언 14 / 문서 편입 대기 0 / 설명 없음 0
+끝났다.

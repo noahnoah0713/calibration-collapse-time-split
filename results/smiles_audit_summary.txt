@@ -1,0 +1,130 @@
+SMILES 이름-구조 매칭 검수
+==========================================================================
+PubChem 캐시 2,482건 중 조회 실패 208건 (8.4%)
+
+==========================================================================
+DILIrank   (구조 확보 860건)
+==========================================================================
+
+[1] 서로 다른 이름이 같은 구조로 합쳐진 경우: 0건
+
+[2] 서로 다른 이름이 같은 PubChem CID를 받은 경우: 0건
+
+[4] 표준화 후 분자량 100 미만 또는 중원자 6개 미만: 6건
+            compound  mw_std  heavy_std     smiles_std
+Sodium nitroprusside  26.018          2         [C-]#N
+     Calcium acetate  59.044          4     CC(=O)[O-]
+ Lanthanum carbonate  60.008          4  O=C([O-])[O-]
+         Hydroxyurea  76.055          5       NC(=O)NO
+      Sodium lactate  89.070          6 CC(O)C(=O)[O-]
+       Dalfampridine  94.117          7      Nc1ccncc1
+
+[5] 표준화로 골격이 바뀌었는데 이름에 염 표기가 없는 경우: 36건
+    (염·수화물이면 정상. 그 외면 조각 선택이 잘못됐을 수 있다)
+                     compound   mw_std       skel_raw       skel_std
+                Aminophylline  180.167 FQPFAHBPWDRTLU ZFXYFBGIUFBOJW
+                    Auranofin  363.364 AUJRCFUBUPVWSZ SFOZKJGZNOBSHF
+       Azilsartan kamedoxomil  567.534 IHWFKDWIUSZLCJ QJFSABGVXDWMIW
+             Brilliant blue g  831.049 RWVGQQGBQSJDQV YVNQAIFQFWTPLQ
+                  Carboplatin  144.126 VSRXQHXAPYXROS CCQPAEQGAVNNIA
+        Clopidogrel bisulfate  321.829 FDEODCTUSIWGLK GKTWGGQPFAXNFI
+        Copper cu-64 dotatate 1433.632 IJRLLVFQGCCPPI QVFLVLMYXXNJDT
+               Cyanocobalamin 1270.437 RMRCNWBMXRMIRW RHYVGCKRBKDRDX
+  Dextromethorphan polistirex  271.404 MISZALMBODQYFT MKXZASYAUGDDCJ
+               Dimenhydrinate  255.361 NFLLKCVHYJRNRH ZZVUWRFHKOJYTH
+          Eltrombopag olamine  442.475 DJMJHIKGMVJYCW SVOQIEJWJCQGDQ
+        Erythromycin estolate  790.001 AWMFUEJKWXESNL TYQXKHPOXXXCTP
+          Ethanolamine oleate  282.468 KGWDUNBJIMUFAP ZQPPMHVWECSIRJ
+                Ferric maltol  125.103 AHPWLYJHTFAWKI XPCTZQVDEJYUGT
+       Gadobenate dimeglumine  510.476 OCDAWJYGVOLXGZ OEIYJWYTUDFZBH
+                   Gadobutrol  447.465 ZPDFIIGFYAHNSK JZNZSKXIEDHOBD
+       Gadofosveset trisodium  731.648 XGOSYNSWSRUASG NZLPWFTXPYJYSS
+    Gadopentetate dimeglumine  390.325 LGMLJQFQKXPRGA QPCDCPDFJACHGM
+                  Gadoteridol  401.440 DPNNNPAKRZOSMO IQUHNCOJRJBMSU
+              Gadoversetamide  504.517 HBEAOBRDTOXWRZ AXFGWXLCWCNPHP
+    Gallium ga-68 edotreotide 1418.641 PZBPHYLKIMOZPR RZHKDBRREKOZEW
+     Gallium ga-68 gozetotide  942.973 AEBYHKKMCWUMKX QJUIUFGOTBRHKP
+               Glycopyrrolate  318.437 VPNYRYCIDCJBOM ANGKOCUUWGHLCE
+     Guanethidine monosulfate  198.314 YUFWAVFNITUSHI ACGDKVXYNVEAGU
+            Indocyanine green  751.991 MOFVSTNWEDAEEK BDBMLMBYCXNVMC
+           Interferon alfa-2b  376.671 MIXCUJKCXRNYFM TVLSRXXIMLFWEO
+         Lapatinib ditosylate  581.069 XNRVGTHNYCNCFF BCFGMOOMADDAQU
+           Nintedanib esylate  539.636 ZNMRDZZRAFJOKY CPMDPSXJELVGJG
+                  Oxaliplatin  112.176 DRMCATBEKSVAPL SBDHODHEVRCXGI
+                     Pamabrom  259.063 ATOTUUBRFJHZQG SKTFQHRVFFOHTQ
+      Penicillin g benzathine  334.397 WIDKTXGNSOORHA JGSARLDLIJGVTE
+      Pentamidine isethionate  340.427 YBVNFKZSMZGRAD XDRYMKDFEDOLFX
+     Physostigmine salicylate  275.352 HZOTZTANVBDFOF PIJVFDBKTWXHHD
+                  Tetrabamate  578.663 YADPKIAGCVAODE DXCDTAQKDOXTKV
+Trametinib dimethyl sulfoxide  615.403 OQUFJVRYDFIQBW LIRYPHYGHXZJBZ
+                    Vitamin E  430.717 CXJUMRUCKLZKKB GVJHHUAWPYXKBD
+
+[6] PubChem CID 없음: 1건
+            compound
+Aminosalicylic acid 
+
+==========================================================================
+DICTrank   (구조 확보 919건)
+==========================================================================
+
+[1] 서로 다른 이름이 같은 구조로 합쳐진 경우: 0건
+
+[2] 서로 다른 이름이 같은 PubChem CID를 받은 경우: 0건
+
+[4] 표준화 후 분자량 100 미만 또는 중원자 6개 미만: 7건
+            compound    mw_std  heavy_std  smiles_std
+             ALCOHOL 46.069000          3         CCO
+           Urea C-14 62.048242          4 N[14C](N)=O
+ACETOHYDROXAMIC ACID 75.067000          5    CC(=O)NO
+         HYDROXYUREA 76.055000          5    NC(=O)NO
+  Dimethyl Sulfoxide 78.136000          4     CS(C)=O
+          Fomepizole 82.106000          6 Cc1cn[nH]c1
+       DALFAMPRIDINE 94.117000          7   Nc1ccncc1
+
+[5] 표준화로 골격이 바뀌었는데 이름에 염 표기가 없는 경우: 38건
+    (염·수화물이면 정상. 그 외면 조각 선택이 잘못됐을 수 있다)
+                              compound   mw_std       skel_raw       skel_std
+                 ESTROGENS, CONJUGATED  349.428 VUCAHVBMSFIGAI JKKFKPJIXZFSSB
+               PENTAMIDINE ISETHIONATE  340.427 YBVNFKZSMZGRAD XDRYMKDFEDOLFX
+                      BRILLIANT BLUE G  831.049 RWVGQQGBQSJDQV YVNQAIFQFWTPLQ
+                           TRYPAN BLUE  868.862 GLNADSQYFUSGOU ZBNARPCCDMHDDV
+              GALLIUM GA-68 GOZETOTIDE  942.973 AEBYHKKMCWUMKX QJUIUFGOTBRHKP
+           TECHNETIUM TC-99M MEDRONATE  171.969 IUPNVOAUFBLQME MBKDYNNUVRNNRF
+               oritavancin diphosphate 1793.125 PWTROOMOPLCZHB VHFGEBVPHAGQPI
+                     indocyanine green  751.991 MOFVSTNWEDAEEK BDBMLMBYCXNVMC
+                           gadodiamide  416.411 HZHFFEYYPYZMNU RZESKRXOCXWCFX
+SAMARIUM SM-153 LEXIDRONAM PENTASODIUM  428.060 SZZACTGRBZTAKY NFDRPXJGHKJRLJ
+                gadobenate dimeglumine  510.476 OCDAWJYGVOLXGZ OEIYJWYTUDFZBH
+         TECHNETIUM TC-99M EXAMETAZIME  269.369 ZLRVWFDVJWKAIL LQCCPMBAPDOVQE
+                            GADOBUTROL  447.465 ZPDFIIGFYAHNSK JZNZSKXIEDHOBD
+                           gadoteridol  401.440 DPNNNPAKRZOSMO IQUHNCOJRJBMSU
+                                 mesna  141.193 XOGTZOOQQBDUSI ZNEWHQLOPFWXOF
+                      IBUPROFEN LYSINE  206.285 IHHXIUAEPKVVII HEFNNWSXXWATRW
+            INDIUM IN-111 OXYQUINOLINE  144.153 AEGSYIKLTCZUEZ MCJGNVYPOGVAJF
+             FOSAPREPITANT DIMEGLUMINE  614.411 VRQHBYGYXDWZDL BARDROPHSZEBKC
+                           CARBOPLATIN  144.126 VSRXQHXAPYXROS CCQPAEQGAVNNIA
+             NEOSTIGMINE METHYLSULFATE  223.296 OSZNNLWOYWAHSS ALWKGYPQUAPLQC
+             ERYTHROMYCIN LACTOBIONATE  733.937 NNRXCKZMQLFUPL ULGZDMOVFRHVEP
+                           OXALIPLATIN  112.176 DRMCATBEKSVAPL SBDHODHEVRCXGI
+              trimetrexate glucuronate  369.425 ZCJXQWYMBJYJNB NOYPYLRCIDNJJB
+           LISDEXAMFETAMINE DIMESYLATE  263.385 CETWSOHVEGTIBR VOBHXZCDAVEXEY
+                         FERRIC MALTOL  125.103 AHPWLYJHTFAWKI XPCTZQVDEJYUGT
+                 METHENAMINE HIPPURATE  179.175 ROAIXOJGRFKICW QIAFMBKCNZACKA
+     ESTROGENS, CONJUGATED SYNTHETIC A  347.412 QTTMOCOWZLSYSV YJBYRYVLFAUXBJ
+                  LAPATINIB DITOSYLATE  581.069 XNRVGTHNYCNCFF BCFGMOOMADDAQU
+         TRAMETINIB DIMETHYL SULFOXIDE  615.403 OQUFJVRYDFIQBW LIRYPHYGHXZJBZ
+             DAPAGLIFLOZIN PROPANEDIOL  408.878 GOADIQFWSVMMRJ JVHXJTBJCFBINQ
+                   ELTROMBOPAG OLAMINE  442.475 DJMJHIKGMVJYCW SVOQIEJWJCQGDQ
+                    NINTEDANIB ESYLATE  539.636 ZNMRDZZRAFJOKY CPMDPSXJELVGJG
+                             AURANOFIN  363.364 AUJRCFUBUPVWSZ SFOZKJGZNOBSHF
+                  darunavir ethanolate  547.674 QWSHKNICRJHQCY CJBJHOAVZSMMDJ
+                        GLYCOPYRROLATE  318.437 VPNYRYCIDCJBOM ANGKOCUUWGHLCE
+                  PERINDOPRIL ERBUMINE  368.474 IYNMDWMQHSMDDE IPVQLZZIHOAWMC
+                 CLOPIDOGREL BISULFATE  321.829 FDEODCTUSIWGLK GKTWGGQPFAXNFI
+                        ISOSULFAN BLUE  543.687 NLUFDZBOHMOBOE YFKDCGWIINMRQY
+
+[6] PubChem CID 없음: 0건
+
+==========================================================================
+[3] 두 데이터셋 공통 이름 531건의 구조 일치 여부
+    불일치: 0건

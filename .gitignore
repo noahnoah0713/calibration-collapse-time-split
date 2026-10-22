@@ -1,0 +1,102 @@
+# FDA 원자료 (42MB) — 공개 배포 대신 받는 방법을 문서로 제공한다
+data/raw/
+
+# 작업 중 백업 — 저장소에 올릴 내용이 아니다.
+# 다만 _backup/precision_20261020/ 은 예외다 (68KB, 6개 파일).
+# record_precision_fix.py 가 그 스냅샷과 현재 결과를 비교해
+# results/precision_fix_20261020.csv 를 만들고, 보고서 §10.5 가
+# 그 파일을 읽는다. 빼면 받은 사람이 rerun_all.sh 를 돌릴 때
+# 그 지점에서 멈춘다 (2026-10-22 확인). 재현 자료의 일부다.
+_backup/*
+!_backup/precision_20261020/
+src_backup/
+results/_stale_prefilter/
+results/_superseded/
+manuscript/_superseded/
+
+# 실행 중 생기는 임시 파일
+results/sweep_run.log
+results/prevalence_sweep_progress.txt
+results/diag.txt
+
+# 파이썬
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# =====================================================================
+# 공개 저장소에서 제외 — 구판 문서와 작업 흔적
+# 같은 내용의 오래된 보고서가 함께 올라가면 논문과 어긋나는 수치가 섞여
+# 올라간다. 아래 파일은 모두 로컬에만 남긴다 (삭제하지 않는다).
+# =====================================================================
+
+# 옛 보고서 (현행은 실험결과_논문용_20261002.md 하나뿐)
+/REPORT.md
+/report_paper_20260929.md
+/실험결과_보고서_20260921.md
+/실험결과_최종보고서_20260921.md
+/실험결과_최종보고서_20260922.md
+/실험결과_최종보고서_20260923.md
+/실험결과_최종보고서_20260923_이전판.md
+/보고서_검증_20261004.md
+/보고서_정정내역_20261004.md
+/참고문헌_정리_20260921.md
+
+# rerun_all.sh 로 대체된 옛 실행 스크립트
+/run_all.sh
+/run_everything.sh
+/run_final2.sh
+/run_new3.sh
+/run_paper_ready.sh
+/run_supplementary.sh
+/redo_permutation.sh
+/make_preconflict_evidence.sh
+/progress.sh
+/RUN_ORDER.txt
+
+# results/ 의 옛 사본
+/audit_pack/
+
+# 원고 작업 중 단편 (최종본은 manuscript/ 에 있다)
+/Results_Discussion_복붙용.txt
+/Results_v2_복붙용.txt
+/results_body_v2.tex
+/results_tables_v2.tex
+/discussion_body_v1.tex
+/review_sheet_20260929.xlsx
+/투고전_육안검수표_20260929.xlsx
+
+# 내부 작업 메모
+/manuscript/00_원고_현황.md
+/manuscript/01_실행계획.md
+/manuscript/02_참고문헌_목록.md
+
+# 2026-10-22: 한글 이름 파일 정리.
+#   참고문헌_목록_20261002.txt 는 루트 REFS.txt 와 **내용이 같다**.
+#   manuscript/02_참고문헌_목록.md 는 LaTeX 주석에서만 언급되는
+#   작업 메모이고 코드가 읽지 않는다. 둘 다 공개에서 뺀다.
+#   남는 한글 이름은 생성 보고서 하나뿐이고 그건 재현의 증거라
+#   뺄 수 없다 (make_report·verify9·verify10 이 읽는다).
+/참고문헌_목록_20261002.txt
+/manuscript/_methods_v2_notes.md
+
+# src 안의 백업·캐시
+src/_backup_*/
+*.bak
+
+# 옛 실행기(run_everything.sh 등)가 남긴 실행 표식과 단계별 로그.
+# 현행 rerun_all.sh 는 results/rerun_all_log.txt 하나만 쓴다.
+results/.rerun_done/
+results/logs/
+results/*_run.log
+
+# results/ 사본 (rerun_all.sh 전에 떠 두는 백업)
+# 2026-10-22: results_백업_* 가 패턴에 없어 3.6MB 짜리 구판 결과가
+#   그대로 올라갈 뻔했다. 같은 이름의 결과 파일이 두 벌 올라가면
+#   심사자가 어느 쪽이 논문 값인지 알 수 없다.
+/results_논문값*/
+/results_backup*/
+/results_백업*/
