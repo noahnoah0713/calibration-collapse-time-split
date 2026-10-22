@@ -11,7 +11,11 @@ verify9 의 수치 추적 검사는 "문서의 숫자가 results/ 어딘가에 �
     python src/verify10.py
 """
 
-import glob, io, os, re, sys
+import glob
+import io
+import os
+import re
+import sys
 import pandas as pd
 
 

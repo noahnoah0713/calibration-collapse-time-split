@@ -18,7 +18,9 @@ mtime 기반 최신성 검사는 그때 전부 '오래됨'으로 오탐한다
 """
 
 import ast
-import hashlib, json, sys
+import hashlib
+import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]

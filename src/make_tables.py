@@ -15,12 +15,17 @@ make_report.py 와 같은 원칙이다 — 문장만 이 파일에 있고 숫자
   * 그림 제목·범례는 이미지 파일 안이 아니라 .tex 에 둔다
 """
 
-import io, math, os, re, sys
+import io
+import math
+import os
+import re
+import sys
 import pandas as pd
 
 
 def _find_root():
-    import glob as _g, os as _o
+    import glob as _g
+    import os as _o
 
     cands = []
     cands += _g.glob(_o.path.expanduser("~/mnt/FDA"))
