@@ -4,9 +4,11 @@
 [![checks](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml/badge.svg)](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml)
 
 Hepatotoxicity (DILIrank) and cardiotoxicity (DICTrank) models lose about
-0.09 AUROC when the held-out set is defined by approval year rather than at
-random. Their expected calibration error more than doubles. This repository
-holds the analysis code and every intermediate result behind that claim.
+0.08 AUROC when the held-out set is defined by approval year rather than at
+random. Their expected calibration error more than doubles, and still rises
+by 1.37x and 1.21x once prevalence is held equal on both sides of the split.
+This repository holds the analysis code and every intermediate result behind
+that claim.
 
 Everything in the paper — each number, table and figure — is regenerated
 from `data/processed/` by the scripts here. Nothing is typed in by hand.
