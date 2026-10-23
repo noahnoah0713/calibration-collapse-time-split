@@ -73,10 +73,11 @@ audit it against the raw source. The first two are not called by
 `rerun_all.sh`; the other three skip themselves when `data/raw/` is absent.
 The remaining 84 touch only `data/processed/` and `results/`.
 
-One consequence: `results/year_evidence.csv` and
-`results/year_corrections.csv`, the evidence table behind the approval-year
-corrections, cannot be rebuilt without the raw files. Both are committed and
-the report reads those copies.
+One consequence: `results/year_evidence.csv`, `results/year_corrections.csv`
+and `results/year_match_types.csv` — the evidence behind the approval-year
+corrections, and the tally of which name-matching rule assigned each year —
+cannot be rebuilt without the raw files. All three are committed and the
+report reads those copies.
 
 | File | Contents |
 |---|---|
@@ -230,13 +231,13 @@ inputs, the second now compares syntax trees.
 src/              89 analysis and verification scripts (_shared.py is the common module)
 tests/            unit tests for the shared metric functions
 data/processed/   processed data the analyses read
-results/          every intermediate and final result: 99 CSV, 68 TXT, 2 JSON
+results/          every intermediate and final result: 100 CSV, 68 TXT, 2 JSON
 figures/          figures for the manuscript, PDF and 600 dpi PNG
 _backup/          results from before the precision fix; record_precision_fix.py
                   reads them to document what it changed
 ```
 
-Of the 169 files in `results/`, 96 are read by name by the report, tables and
+Of the 170 files in `results/`, 97 are read by name by the report, tables and
 figures. The rest are per-analysis summaries a reader can skim without
 running anything, permutation null distributions kept so the tests need not
 be repeated, and audit records for SMILES, approval years, labels and ATC

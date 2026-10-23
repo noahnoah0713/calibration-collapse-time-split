@@ -262,6 +262,43 @@ def main():
     if len(fix):
         log(fix.to_string(index=False))
 
+    # 승인연도를 어느 규칙으로 붙였는지 집계한다.
+    # 왜 필요한가 — 절단선이 승인연도로 정해지는데, 그 연도가 전부
+    # 정확한 성분명 일치로 붙은 것은 아니다. map_approval_year.py 가
+    # 완화 규칙(염 표기 제거·첫 단어·부분 문자열)으로 붙인 건이 섞여
+    # 있고, 그 사실이 문서 어디에도 없었다 (2026-10-23).
+    mt_rows = []
+    for ds, path in (
+        ("DILIrank", PROC / "dilirank2_with_year.csv"),
+        ("DICTrank", PROC / "dictrank_processed.csv"),
+    ):
+        if not path.exists():
+            continue
+        df = pd.read_csv(path).dropna(subset=["approval_year"])
+        if "year_match" not in df.columns:
+            # DICTrank 파이프라인은 같은 세 규칙을 쓰지만 어느 것이
+            # 걸렸는지 기록하지 않는다. 없는 것을 지어내지 않는다.
+            continue
+        for mt, g in df.groupby("year_match"):
+            yrs = g["approval_year"].astype(int)
+            mt_rows.append(
+                {
+                    "dataset": ds,
+                    "match_type": mt,
+                    "n": len(g),
+                    "n_pre_cutoff": int((yrs < CUTOFF).sum()),
+                    "n_post_cutoff": int((yrs >= CUTOFF).sum()),
+                    "min_year": int(yrs.min()),
+                    "max_year": int(yrs.max()),
+                }
+            )
+    if mt_rows:
+        mt = pd.DataFrame(mt_rows).sort_values(["dataset", "n"], ascending=[True, False])
+        mt.to_csv(RES / "year_match_types.csv", index=False)
+        log("=" * 70)
+        log("[6] 승인연도 매칭 방식 -> results/year_match_types.csv")
+        log(mt.to_string(index=False))
+
     audit.to_csv(RES / "year_audit.csv", index=False)
     (RES / "year_audit_summary.txt").write_text("\n".join(log_lines), encoding="utf-8")
     log(f"\n저장: {RES/'year_audit.csv'}")
