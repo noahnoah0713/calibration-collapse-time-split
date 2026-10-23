@@ -14,6 +14,7 @@
   Fig 4  학습 유병률 격차 스윕 (2패널)
   Fig 5  재보정 사다리와 conformal 커버리지 (2패널)   ← 2026-10-22
   Fig 6  배포 시뮬레이션과 라벨 지연 (2패널)           ← 2026-10-22
+  Fig 7  이동량을 맞춘 비시간 분할 (2패널)            ← 2026-10-23
   Fig S1 ATC 계열별 성능
 
   2026-10-22: 이 목록이 실제 출력과 어긋나 있었다 — 유병률이 FigS1 에서
@@ -896,6 +897,152 @@ def fig6():
     save(fig, "Fig6_retraining_delay")
 
 
+def fig7():
+    """이동은 실재하지만, 그 크기만으로는 붕괴를 설명하지 못한다 (§33).
+
+    (a) alpha 를 0 에서 1 로 올리면 비시간 분할의 이동량(시대 분류 AUC)이
+        무작위 수준에서 축 극단까지 연속으로 올라간다. 데이터셋마다 선이
+        세 개(분자량·logP·무작위 방향)인데 거의 포개진다 — 어느 축을 쓰든
+        alpha 가 이동량을 같은 식으로 올린다. 가로 점선이 시간분할의
+        이동량이고, 속이 빈 표식이 거기에 맞춘 alpha* 다. 즉 이동량 자체는
+        원하는 만큼 맞출 수 있다.
+    (b) 그렇게 이동량을 맞춘 지점에서 ECE 를 비교한다. 가로선이 시간분할
+        ECE 다. 같은 이동량인데도 여섯 설정 중 다섯에서 시간분할이 위에
+        있다 — 이동의 크기가 같아도 시간분할만 더 무너진다.
+    """
+    try:
+        sw = pd.read_csv(RES / "shift_matched_v2.csv")
+        mt = pd.read_csv(RES / "shift_matched_v2_matched.csv")
+    except FileNotFoundError as e:
+        print(f"  Fig7 건너뜀: {e}")
+        return
+
+    # 축 이름은 결과 파일이 한국어다. 그림은 영문으로 쓴다.
+    AX = {"A1. 분자량": "MolWt", "A2. logP": "logP", "A3. 무작위 방향": "Random direction"}
+    DS = ["DILIrank", "DICTrank"]
+    col = {"DILIrank": C["temporal"], "DICTrank": C["random"]}
+
+    fig, axes = plt.subplots(1, 2, figsize=(COL2, 2.7))
+
+    # -------------------------------------------- (a) alpha 를 훑는다
+    ax = axes[0]
+    for ds in DS:
+        g = sw[sw.dataset == ds]
+        for _axis, ga in g.groupby("axis"):
+            ga = ga.sort_values("alpha_num")
+            # 축 세 개를 같은 실선으로 그린다. 거의 포개지는 것 자체가
+            # 결과다 — 어느 축을 쓰든 alpha 가 이동량을 같은 식으로 올린다.
+            ax.plot(ga.alpha_num, ga.shift_auc, color=col[ds], lw=0.9, alpha=0.75, zorder=2)
+        ax.axhline(
+            float(g.shift_auc_temporal.iloc[0]),
+            color=col[ds],
+            lw=0.8,
+            ls=":",
+            zorder=1,
+        )
+        m = mt[mt.dataset == ds]
+        ax.plot(
+            m.alpha_star,
+            m.shift_auc_matched,
+            ls="none",
+            marker="o",
+            ms=4.5,
+            mfc="white",
+            mec=col[ds],
+            mew=1.1,
+            zorder=4,
+        )
+    ax.set_xlabel("alpha  (0 = random split, 1 = axis extreme)")
+    ax.set_ylabel("Era-classification AUC of the split")
+    ax.set_xlim(-0.03, 1.03)
+    ax.set_ylim(0.45, 1.02)
+    hs = [
+        mpl.lines.Line2D([], [], color=C["temporal"], lw=1.0),
+        mpl.lines.Line2D([], [], color=C["random"], lw=1.0),
+        mpl.lines.Line2D([], [], color=C["gray"], lw=0.8, ls=":"),
+        mpl.lines.Line2D(
+            [], [], ls="none", marker="o", ms=4.5, mfc="white", mec=C["gray"], mew=1.1
+        ),
+    ]
+    ax.legend(
+        hs,
+        ["DILIrank", "DICTrank", "Time split", "Matched alpha*"],
+        frameon=False,
+        loc="lower right",
+        handlelength=1.8,
+        labelspacing=0.3,
+    )
+    panel_label(ax, "a")
+
+    # -------------------------------------------- (b) 맞춘 지점의 ECE
+    ax = axes[1]
+    xs, labs = {}, []
+    pos = 0.0
+    for ds in DS:
+        m = mt[mt.dataset == ds].sort_values("axis")
+        xs[ds] = np.arange(len(m)) + pos
+        ax.hlines(
+            float(m.ece_temporal.iloc[0]),
+            xs[ds][0] - 0.42,
+            xs[ds][-1] + 0.42,
+            color=col[ds],
+            lw=1.3,
+            zorder=3,
+        )
+        ax.errorbar(
+            xs[ds],
+            m.ece_matched,
+            yerr=m.ece_matched_sd,
+            ls="none",
+            marker="o",
+            ms=4.5,
+            mfc="white",
+            mec=col[ds],
+            mew=1.1,
+            ecolor=col[ds],
+            elinewidth=0.9,
+            capsize=2.2,
+            capthick=0.9,
+            zorder=4,
+        )
+        labs += [AX.get(a, a) for a in m.axis]
+        pos += len(m) + 1.0
+    allx = np.concatenate([xs[d] for d in DS])
+    ax.set_xticks(allx)
+    ax.set_xticklabels(labs, rotation=30, ha="right")
+    ax.set_ylabel("Expected calibration error")
+    ax.set_ylim(0, None)
+    for ds in DS:
+        ax.text(
+            xs[ds].mean(),
+            1.02,
+            ds,
+            color=col[ds],
+            transform=ax.get_xaxis_transform(),
+            ha="center",
+            va="bottom",
+            fontsize=7.5,
+        )
+    hs = [
+        mpl.lines.Line2D([], [], color=C["gray"], lw=1.3),
+        mpl.lines.Line2D(
+            [], [], ls="none", marker="o", ms=4.5, mfc="white", mec=C["gray"], mew=1.1
+        ),
+    ]
+    ax.legend(
+        hs,
+        ["Time split", "Shift-matched split"],
+        frameon=False,
+        loc="lower left",
+        handlelength=1.8,
+        labelspacing=0.3,
+    )
+    panel_label(ax, "b")
+
+    fig.tight_layout(pad=0.3, w_pad=1.4)
+    save(fig, "Fig7_shift_matched")
+
+
 def main():
     print("그림 생성 중...")
     fig1()
@@ -904,6 +1051,7 @@ def main():
     fig4()
     fig5()
     fig6()
+    fig7()
     figS1()
     print(f"\n완료. {FIG} 확인")
     print("PDF는 벡터(투고용), PNG는 600dpi(확인용)")
