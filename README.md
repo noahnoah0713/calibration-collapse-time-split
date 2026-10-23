@@ -156,9 +156,12 @@ python -m unittest discover -s tests -v
   by c divides the calibration slope by exactly c.
 
 Every test was written by breaking the function it watches and confirming the
-suite turns red. Eight deliberate faults were tried — a sign flipped, a bin
-edge opened, a clip loosened, a rounding dropped, the `float32` cast removed at
-each of the three sites that carry it — and all eight were caught.
+suite turns red. Eight deliberate faults were tried and all eight were
+caught: the `float32` cast removed at each of the three sites that carry it,
+the last ECE bin left open, reliability inflated by one percent, the logit
+clip loosened from `1e-6` to `1e-3`, the uncertainty formula altered in one
+of the three decomposition copies, and rounding replaced by truncation in
+the prevalence matching.
 
 `.github/workflows/checks.yml` runs three jobs on every push: the linters, the
 unit tests installed from `requirements.txt`, and a re-run of the document
@@ -197,8 +200,10 @@ inputs, the second now compares syntax trees.
 - **The modelling code.** The unit tests cover the metric functions, not
   featurisation, model fitting or the split logic. Those are only checked
   by agreement between scripts and by the end-to-end re-run.
-- **A clean-room run.** The pipeline has never been run end to end from a
-  fresh clone under the same conditions a reader would have.
+- **A clean-room run.** The checks workflow does regenerate the report and
+  re-run the verifiers from a fresh checkout on every push, but
+  `rerun_all.sh` itself — the analyses that produce `results/` — has never
+  been run end to end from a clean clone.
 
 ---
 
@@ -256,8 +261,9 @@ analysis was run with:
 > (v0.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23583594
 
 Zenodo mints two DOIs. The one above belongs to v0.1 and never moves, which
-is what a paper should cite. `10.5281/zenodo.23583593` is the concept DOI: it always
-resolves to the newest release, and that is the one in the badge at the top.
+is what a paper should cite. `10.5281/zenodo.23583593` is the concept DOI:
+it always resolves to the newest release, and that is the one in the badge
+at the top.
 
 `CITATION.cff` in the repository root holds the same details in the
 machine-readable form that GitHub's "Cite this repository" button reads.
