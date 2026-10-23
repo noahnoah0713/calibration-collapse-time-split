@@ -343,6 +343,78 @@ def main():
         if nfig == 0:
             print("     전부 본문에서 인용된다")
 
+    # ---------------------------------------------------------------- 7
+    # 표의 열 수가 서식과 맞는가.
+    # 왜 — tab:mondrian 의 서식이 "llllccccc"[:10] 로 적혀 있었다. 그
+    # 문자열은 9자라 슬라이스가 9열을 돌려주는데 행은 10열이었고, LaTeX
+    # 가 "Extra alignment tab" 으로 멈췄다 (2026-10-23 확인). 서식과 행을
+    # 같이 세면 눈으로 볼 필요가 없다.
+    ncol = 0
+    print("")
+    print("표 열 수 검사")
+    for d in ("tables_main.tex", "tables_supp.tex"):
+        q = os.path.join(MAN, d)
+        if not os.path.exists(q):
+            continue
+        t = io.open(q, encoding="utf-8").read()
+        for m in re.finditer(
+            r"\\label\{(tab:[^}]+)\}.*?\\begin\{tabular\}(.*?)\\end\{tabular\}",
+            t,
+            re.S,
+        ):
+            lab, rest = m.group(1), m.group(2)
+            # tabular 의 열 서식은 중괄호가 중첩된다 (@{}llll@{}). 깊이를
+            # 세어 꺼내지 않으면 @{ 에서 끊긴다.
+            k, depth, end = rest.index("{"), 0, -1
+            for j in range(k, len(rest)):
+                if rest[j] == "{":
+                    depth += 1
+                elif rest[j] == "}":
+                    depth -= 1
+                    if depth == 0:
+                        end = j
+                        break
+            spec, body = rest[k + 1 : end], rest[end + 1 :]
+            want = len(re.sub(r"@\{[^}]*\}|[|\s]", "", spec))
+            for line in body.split("\n"):
+                line = line.strip()
+                if not line.endswith("\\\\"):
+                    continue
+                # \multicolumn{n} 는 열 n 개를 차지한다.
+                spans = [int(x) for x in re.findall(r"\\multicolumn\{(\d+)\}", line)]
+                got = line.count("&") + 1 + sum(n - 1 for n in spans)
+                if got != want:
+                    ncol += 1
+                    print("     X %-14s 서식 %d열 / 행 %d열  %s" % (lab, want, got, line[:46]))
+                    break
+    if ncol == 0:
+        print("     모든 표가 서식과 같은 열 수다")
+    nbad += ncol
+
+    # ---------------------------------------------------------------- 8
+    # 본문에 한국어가 남아 있는가.
+    # 왜 — 표는 src/make_tables.py 가 결과 CSV 에서 만들고, 그 CSV 의
+    # 라벨은 한국어다. 번역 사전에 빠진 라벨이 하나 생기면 영문 투고본에
+    # 한국어가 그대로 찍힌다. 실제로 보충표에 10줄이 그렇게 들어가 있었다
+    # (2026-10-23). 주석의 한국어는 세지 않는다 — 작업 메모는 한국어로
+    # 쓰는 것이 이 저장소의 방식이다.
+    nko = 0
+    print("")
+    print("본문 한국어 검사")
+    for d in DOCS + ["tables_main.tex", "tables_supp.tex", "figures.tex"]:
+        q = os.path.join(MAN, d)
+        if not os.path.exists(q):
+            continue
+        lines = io.open(q, encoding="utf-8").read().split("\n")
+        for i, line in enumerate(lines, 1):
+            bare = re.sub(r"(?<!\\)%.*$", "", line)
+            if re.search(r"[\uac00-\ud7a3]", bare):
+                nko += 1
+                print("     X %s:%d  %s" % (d, i, bare.strip()[:70]))
+    if nko == 0:
+        print("     주석 밖에 한국어 없음")
+    nbad += nko
+
     print("")
     print("옛 수치 합계 %d건   인용 안 되는 그림 %d개" % (nbad, nfig))
     # 그림 인용은 원고 완성도 문제이지 코드 결함이 아니다. 실패
