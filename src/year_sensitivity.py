@@ -10,7 +10,7 @@ Drugs@FDA 의 Products/Submissions 기록에서 성분명으로 매칭해 붙였
 검수해 두 종류를 찾아냈다.
 
   (A) 더 이른 Drugs@FDA 기록이 실제로 존재하는데 늦은 연도가 붙은 것
-      -> results/year_corrections.csv 의 8건. 대체 연도가 문서로
+      -> results/year_corrections.csv 의 7건. 대체 연도가 문서로
          확인되므로 그 값으로 바꿔 다시 돌린다.
 
   (B) Drugs@FDA 기록상으로는 늦은 승인이 맞지만 분자 자체는 훨씬
