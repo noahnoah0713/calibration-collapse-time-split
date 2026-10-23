@@ -222,7 +222,6 @@ def run(name, fn, n_boot, ref):
     p_cal = m_fit.predict_proba(X[cal_i])[:, 1]
     p_te_fit = m_fit.predict_proba(X[te])[:, 1]
     cal_fn = platt_fit(p_cal, y[cal_i])
-    p_cal_c = cal_fn(p_cal)
     p_te_c = cal_fn(p_te_fit)
 
     log("=" * 122)

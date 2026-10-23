@@ -130,7 +130,7 @@ def variant_indices(kind, yr, tr_idx, n_cal, rng=None, df=None):
         boundary = yr[srt[-n_cal]]
         above = srt[yr[srt] > boundary]  # 무조건 보정셋
         tie = srt[yr[srt] == boundary]  # 경쟁 구간
-        below = srt[yr[srt] < boundary]  # 무조건 적합셋
+        # boundary 미만은 모두 적합셋이다 — 아래 setdiff1d 가 자동으로 처리한다.
         k = n_cal - len(above)
         pick = rng.choice(tie, size=k, replace=False) if k > 0 else np.array([], int)
         cal = np.concatenate([np.sort(pick), above])

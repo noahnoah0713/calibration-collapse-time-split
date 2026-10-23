@@ -220,7 +220,6 @@ def main():
 
     # -------------------------------------------------- 구조 기반 보조 층화
     log("\n--- 구조 기반 보조 층화 ---")
-    kinase_pat = Chem.MolFromSmarts("c1ncnc2[nH]cnc12")  # 퓨린 유사
 
     def flags(s):
         mol = Chem.MolFromSmiles(s)

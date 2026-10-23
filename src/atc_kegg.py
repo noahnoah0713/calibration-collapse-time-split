@@ -302,15 +302,15 @@ def analyse(name, df, kmap, rows_strat, rows_tests):
     # ---------------------------------------------------- L vs 그 외
     log("\n  --- 항종양·면역조절(L) vs 그 외 ---")
     sub = test.dropna(subset=["atc1"])
-    L, O = sub[sub.atc1 == "L"], sub[sub.atc1 != "L"]
-    if len(L) >= 10 and L["y"].nunique() == 2 and O["y"].nunique() == 2:
+    L, oth = sub[sub.atc1 == "L"], sub[sub.atc1 != "L"]
+    if len(L) >= 10 and L["y"].nunique() == 2 and oth["y"].nunique() == 2:
         aL = roc_auc_score(L["y"], L["prob"])
-        aO = roc_auc_score(O["y"], O["prob"])
-        p = boot_auc_diff(L["y"].values, L["prob"].values, O["y"].values, O["prob"].values)
+        a_oth = roc_auc_score(oth["y"], oth["prob"])
+        p = boot_auc_diff(L["y"].values, L["prob"].values, oth["y"].values, oth["prob"].values)
         log(f"    L    n={len(L):3d} 양성{L['y'].mean():5.0%} AUROC {aL:.4f}")
-        log(f"    그외 n={len(O):3d} 양성{O['y'].mean():5.0%} AUROC {aO:.4f}")
+        log(f"    그외 n={len(oth):3d} 양성{oth['y'].mean():5.0%} AUROC {a_oth:.4f}")
         log(
-            f"    차이 {aL-aO:+.4f}, 부트스트랩 p = {p:.4f}"
+            f"    차이 {aL-a_oth:+.4f}, 부트스트랩 p = {p:.4f}"
             f"  {'*유의*' if p < 0.05 else '(유의하지 않음)'}"
         )
         rows_tests.append(
@@ -319,10 +319,10 @@ def analyse(name, df, kmap, rows_strat, rows_tests):
                 "family": "3_exploratory_subgroup",
                 "test": "ATC L(항종양) vs 그외",
                 "n_a": len(L),
-                "n_b": len(O),
+                "n_b": len(oth),
                 "auroc_a": aL,
-                "auroc_b": aO,
-                "diff": aL - aO,
+                "auroc_b": a_oth,
+                "diff": aL - a_oth,
                 "p": p,
             }
         )

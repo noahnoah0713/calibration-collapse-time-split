@@ -284,7 +284,6 @@ def run(name, fn, reps, ref_pc, ref_ep):
     ]
     ctrl_rows = []
     if sel:
-        w_sel = dens_ratio(p_post[tr], best_cap)
         for tag, mt, mr in (("R1", False, False), ("R3", True, True)):
             E, _cauc = [], []
             for i in range(reps):

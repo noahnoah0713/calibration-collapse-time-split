@@ -131,3 +131,4 @@ results/*_run.log
 /results/extra_calib_log.txt
 /results/determinism_log.txt
 /results/.!*!*
+/results/.!*!*

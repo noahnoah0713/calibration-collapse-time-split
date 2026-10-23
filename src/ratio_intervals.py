@@ -82,7 +82,10 @@ def ratio_ci(ece_obs_boot, ctrl_boot):
     ok = b > 0
     r = np.sort(a[ok] / b[ok])
     d = np.sort(a - b)
-    q = lambda v: (float(np.percentile(v, 2.5)), float(np.percentile(v, 97.5)))
+
+    def q(v):
+        return float(np.percentile(v, 2.5)), float(np.percentile(v, 97.5))
+
     return q(r) + q(d)
 
 

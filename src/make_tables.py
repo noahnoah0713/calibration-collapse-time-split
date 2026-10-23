@@ -719,7 +719,7 @@ _alls = (
     + [float(x) for x in _avx.pct_from_reliability]
     + [float(x) for x in ster.share_reliability]
 )
-_nrows = len([l for l in _b if l.endswith("\\\\") and "multicolumn" not in l])
+_nrows = len([ln for ln in _b if ln.endswith("\\\\") and "multicolumn" not in ln])
 assert len(_allr) == _nrows, "각주 범위 %d 과 표 행 %d 이 어긋난다" % (len(_allr), _nrows)
 SUPP.table(
     "Sensitivity of the primary result to three data-curation decisions",

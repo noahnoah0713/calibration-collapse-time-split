@@ -178,7 +178,6 @@ def derived():
     bd = pd.read_csv(os.path.join(RES, "brier_decomposition.csv"))
     cens = pd.read_csv(os.path.join(RES, "censoring_results.csv"))
     rec = pd.read_csv(os.path.join(RES, "recalibration_results.csv"))
-    td = pd.read_csv(os.path.join(RES, "temporal_detail.csv"))
     ys = pd.read_csv(os.path.join(RES, "year_sensitivity.csv"))
     gr = pd.read_csv(os.path.join(RES, "grid_calibration.csv"))
     ster = pd.read_csv(os.path.join(RES, "stereo_sensitivity.csv"))
@@ -846,9 +845,9 @@ if "--save" in sys.argv:
     print("재고 기준치 저장: %s" % INV)
 elif os.path.exists(INV):
     _inv_old = dict(
-        (l.split("\t")[0], int(l.split("\t")[1]))
-        for l in io.open(INV, encoding="utf-8").read().split("\n")
-        if l
+        (ln.split("\t")[0], int(ln.split("\t")[1]))
+        for ln in io.open(INV, encoding="utf-8").read().split("\n")
+        if ln
     )
     for k, v0 in sorted(_inv_old.items()):
         v1 = _inv_now.get(k, -1)
@@ -877,7 +876,6 @@ INTERMEDIATE = {
     # 귀무분포 전체 — 문서에는 평균·백분위·p 만 들어간다(요약 CSV 경유).
     "era_permutation_null_dilirank.csv": "귀무분포 2000개 원자료",
     "era_permutation_null_dictrank.csv": "귀무분포 2000개 원자료",
-    "permutation_null.csv": "귀무분포 원자료",
     "permutation_null_dilirank.csv": "귀무분포 원자료",
     "permutation_null_dictrank.csv": "귀무분포 원자료",
     # 재개 캐시 — 중단된 순열을 이어 돌리기 위한 것.
@@ -956,7 +954,6 @@ for _b in _gone:
 DUP_OK = {
     "era_permutation_null_dilirank.csv": "귀무분포 — 값 중복이 정상",
     "era_permutation_null_dictrank.csv": "귀무분포 — 값 중복이 정상",
-    "permutation_null.csv": "귀무분포 — 값 중복이 정상",
     "permutation_null_dilirank.csv": "귀무분포 — 값 중복이 정상",
     "permutation_null_dictrank.csv": "귀무분포 — 값 중복이 정상",
     "era_partial_dilirank.csv": "귀무분포 재개 캐시",

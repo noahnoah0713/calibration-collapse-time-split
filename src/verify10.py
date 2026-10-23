@@ -218,7 +218,10 @@ for d in DS:
     for b in ("R1", "R2", "R3"):
         r = mn[(mn.dataset == d) & (mn.baseline == b)].iloc[0]
         same = abs(r.ratio_old - r.ratio_new) < 1e-12
-        ar = lambda a, bb, fmt: (fmt(a) if same else "%s → %s" % (fmt(a), fmt(bb)))
+
+        def ar(a, bb, fmt):
+            return fmt(a) if same else "%s → %s" % (fmt(a), fmt(bb))
+
         rowstr(
             [
                 d,

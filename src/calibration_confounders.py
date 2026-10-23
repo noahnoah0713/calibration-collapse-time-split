@@ -74,7 +74,10 @@ def rand_baseline(X, y, n_test, n_rep, target_rate=None):
 
 def nn_similarity(smiles_tr, smiles_te):
     """검증군 각 화합물의 학습군 최근접 Tanimoto."""
-    fp = lambda s: AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(s), 2, 2048)
+
+    def fp(s):
+        return AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(s), 2, 2048)
+
     ftr = [fp(s) for s in smiles_tr]
     return np.array([max(DataStructs.BulkTanimotoSimilarity(fp(s), ftr)) for s in smiles_te])
 
@@ -94,11 +97,8 @@ def run(name, path, n_rep):
     m0 = S.make_model().fit(X[tr], y[tr])
     p_t = m0.predict_proba(X[te])[:, 1]
     yte, prob = y[te], p_t
-    d0 = S.decompose(yte, prob)
     base_r = rand_baseline(X, y, int(te.sum()), n_rep)
-    base_pm = rand_baseline(
-        X, y, int(te.sum()), n_rep, target_rate=float(yte0_rate := float(y[te].mean()))
-    )
+    base_pm = rand_baseline(X, y, int(te.sum()), n_rep, target_rate=float(y[te].mean()))
     rows = []
 
     def emit(tag, group, yy, pp, rnd, extra=None, rnd_pm=None):

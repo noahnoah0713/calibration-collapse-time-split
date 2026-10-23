@@ -71,7 +71,9 @@ def main():
     txt = expand(SRC, set())
     # 펼친 결과에 \input 이 남아 있으면 조립이 덜 된 것이다.
     left = [
-        l for l in txt.split("\n") if re.match(r"\s*\\input\{", l) and not l.strip().startswith("%")
+        ln
+        for ln in txt.split("\n")
+        if re.match(r"\s*\\input\{", ln) and not ln.strip().startswith("%")
     ]
     if left:
         raise SystemExit("펼치지 못한 \\input 이 남았다: %s" % left[:3])
