@@ -262,7 +262,7 @@
     "src/horizon_ratio.py": "6833e4f5516bceae3c8f71bb2d8c9a1d860ed9eeb89ad333712d60fc6003bac0",
     "src/hparam_sensitivity.py": "2c6dca0b6780e14adf06f545d87c9ca3f851716282a5f720742b39957318e56d",
     "src/label_threshold.py": "73b09c6769896e519916ed7310258713c5a34de0bf667a85c8986955f0d62f10",
-    "src/make_figures.py": "5f9c859c738f31d4c32fd9d82c8d4810a871ce2c3c50b420dd9d3b96b7ea3178",
+    "src/make_figures.py": "604dc5fcbd890bd22c73c62c6342bf8431ddd99526b5b3300b08f859797e5b4e",
     "src/make_manuscript.py": "d75e20955d33bb7896c3313b3f3c05c6f5de145c3fdc37267e683930f16dd905",
     "src/make_report.py": "b5bdda5c0aea69d185f62737b4ab98b76cd6f0488c5368ace140e04792f93160",
     "src/make_tables.py": "0e4e3ab10b5b4aa8cb619a474b1614272e3cb94fc85ea8e8cb4fdd07ddd83248",
@@ -303,7 +303,7 @@
     "src/useful_threshold_sweep.py": "30a067b2bfd7b9e63931c37f6633ab62caefee2546565b86760a68406c1b7f9b",
     "src/verify10.py": "71e6696fcf990c28fe1b9d9c659e96d013ee12493c15423880a8a7ce10b0e2f6",
     "src/verify11.py": "382073c89385ceda782a7c8941deee37a65fce558b33ce2f6f6a3e955a10a777",
-    "src/verify12.py": "c4fdd31f7d6bb0143c8374fdc9792d334dcb490f6a7aeab6e4a681594b24d221",
+    "src/verify12.py": "221cde7029fb9f80e144ef10e68f58e44381656350e64b8c5737964cc22ac566",
     "src/verify9.py": "6d244dcf2eacbab3398159d98e9dc043ad8f4de98507b77db4f960b16060bdd9",
     "src/year_sensitivity.py": "a467fcd36e9d5882439020177c9044b46063fa90f13d36fc08030b7204b8fec7"
   },
@@ -352,7 +352,7 @@
     "src/horizon_ratio.py": "2a096025353cb7a2b9ff0488a80c7c35310323e6298a26e0cc0ed2f0d0f5afc6",
     "src/hparam_sensitivity.py": "9a6f9c07865a4271d7f1d76d789344d5b8082ad9508d838044e44e7a8aa40e19",
     "src/label_threshold.py": "ea0ae036840bcf0581548289ac9910e3bdbe6a4acc2b387581b0cf5634f7847d",
-    "src/make_figures.py": "b0690b0b649c8761521085c983856e1e7c4cf65b549b34bef1c7d27c31067633",
+    "src/make_figures.py": "e5b6e7533799db38ce6f6eb180531085d0cab0d85468fc5cefc7c6ee10c9244a",
     "src/make_manuscript.py": "7e06ee49595600bd2a4d9b9a76caa0199176a1ce4a570f9b9263734280b46c21",
     "src/make_report.py": "49754fddc867a0e94d5578e232c5f075d1de2ef33512ab5386e216e5a8377b3c",
     "src/make_tables.py": "9a460842f6aae55069ac6bfa5677e2ae39d28be5907cbf334790f7df2fae1f48",
@@ -393,7 +393,7 @@
     "src/useful_threshold_sweep.py": "17b57e7d11f2cc684b5ca634936b38bbf5c292bf532ce0799002546037cb81cb",
     "src/verify10.py": "136e2daa28bd6718549a99ed3a3ee41c798229b4867fefeac18434f0c94d28c3",
     "src/verify11.py": "f8e755722129deef2832c936209073b43b786e0b7ea03fc23274ee13aa82dac1",
-    "src/verify12.py": "37d6519341e6194c9cb07d162fc7c626d65116d4a0715f062828efad74bcd3d0",
+    "src/verify12.py": "3933005d8ba4e1cfed99c072f401f94690609765db5646f69d21ea0f0a72d94b",
     "src/verify9.py": "1675ddee4dec2ef346cafadae9bc13d63493943c7747a8c58c8a397574bc9258",
     "src/year_sensitivity.py": "0bde2954067eae88af34ac9c6dbf86ffd228751d0d001c259da54cf385c2f10c"
   }

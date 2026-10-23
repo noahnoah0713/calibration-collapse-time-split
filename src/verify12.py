@@ -119,6 +119,50 @@ PROSE = load_prose()
 CUR = [None]  # 지금 검사 중인 문서
 
 
+def written(num, t):
+    """`num` 이 그 수로서 산문에 적혀 있는가 — 부분문자열로 묻지 않는다.
+
+    왜 부분문자열이 안 되는가. 2026-10-23 에 양방향으로 틀렸다.
+
+    1) 거짓 경보. 옛 q 값 후보 "0.033" 이 새로 쓴 재학습 문단의 신뢰구간
+       하한 "$-0.033$" 안에 들어 있어서, 부호도 가리키는 양도 다른 수가
+       '원고에 남은 옛 값' 으로 잡혔다.
+    2) 조용한 통과. 반대로 참값 "0.005" 는 원고가 "$p = 0.0050$" 으로
+       적어도 부분문자열로 걸리므로 '적혀 있다' 로 세어졌다. 자리수만
+       다른 같은 수라서 이번에는 맞았지만, 같은 느슨함이면 "0.0051" 도
+       통과한다.
+
+    그래서 숫자를 글자가 아니라 수로 비교한다. 산문의 숫자를 모두 뽑아
+    기대값의 소수 자리수로 반올림해 같은지 본다. 앞에 부호나 숫자가
+    붙은 토큰은 다른 수이므로 건너뛴다.
+    """
+    core, suf = num, ""
+    if core.endswith("\\%"):
+        core, suf = core[:-2], "\\%"
+    try:
+        target = float(core)
+    except ValueError:
+        return core in t
+    dec = len(core.split(".")[1]) if "." in core else 0
+    for m in re.finditer(r"(\d+(?:\.\d+)?)" + re.escape(suf), t):
+        k = m.start(1)
+        if k and (t[k - 1] in "-\u2212." or t[k - 1].isdigit()):
+            continue
+        tok = m.group(1)
+        frac = tok.split(".")[1] if "." in tok else ""
+        if len(frac) < dec:
+            # 자리수가 모자라면 그 수의 표기가 아니다. "0.31" 은 "0.310"
+            # 이 가리키는 양이 아니고 다른 양을 두 자리로 적은 것이다
+            # (실제로 고찰의 "ECE 배율이 최대 0.31" 이 R3 ECE 0.310 의
+            # 옛 값으로 잡혔다).
+            continue
+        if dec == 0 and frac:
+            continue
+        if round(float(tok), dec) == round(target, dec):
+            return True
+    return False
+
+
 def claim(label, fmt, value, alt=()):
     """원고 산문에 이 값이 적혀 있는가.
 
@@ -130,10 +174,10 @@ def claim(label, fmt, value, alt=()):
     global ok
     want = fmt % value
     t = PROSE.get(CUR[0], "")
-    if want in t:
+    if written(want, t):
         ok += 1
         return
-    found = [a for a in alt if a in t]
+    found = [a for a in alt if written(a, t)]
     if found:
         bad.append((CUR[0], label, want, ", ".join(found)))
     else:
