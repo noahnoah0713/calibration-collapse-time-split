@@ -888,7 +888,11 @@ def fig6():
         )
         ax.fill_between(d, g.lo.values, g.hi.values, color=st["c"], alpha=0.14, lw=0, zorder=2)
     ax.set_xlabel("Assumed label delay (years)")
-    ax.set_ylabel(r"$\Delta$ECE vs fixed model")
+    # 델타는 수식(mathtext)으로 쓰지 않는다. mathtext 는 Arial 이 아니라
+    # 기본 수식 폰트(DejaVu Sans)로 그려지고, 그러면 Fig6 PDF 에만 다른
+    # 폰트가 하나 더 임베딩된다 (2026-10-23 확인: 8개 그림 중 Fig6 만
+    # DejaVuSans 를 들고 있었다). 유니코드 글자로 쓰면 본문 폰트를 탄다.
+    ax.set_ylabel("\u0394ECE vs fixed model")
     ax.set_xticks(sorted(q.delay.unique()))
     ax.legend(frameon=False, loc="lower right", handlelength=1.6)
     panel_label(ax, "b")
