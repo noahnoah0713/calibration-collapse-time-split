@@ -727,12 +727,13 @@ SUPP.table(
     _b,
     "\\textbf{The control ECE column is the denominator of the ratio in the same row and differs "
     "between rows}: the approval-year and ATC rows use a size-matched random control re-drawn for "
-    "each analysis set, while the stereoisomer rows use the prevalence-matched control of "
-    "Table~\\ref{tab:prev}, so ratios are comparable within a block and not across blocks. "
+    "each analysis set, while the stereoisomer rows use the prevalence-matched random "
+    "control of the main text, so ratios are comparable within a block and not across "
+    "blocks. "
     "The corrected-years row applies the seven approval-year corrections identified by the audit, "
     "one of which the manual review judged insufficiently supported; the next row additionally "
     "excludes phenobarbital sodium. "
-    "Reliability share is the Murphy decomposition share of Table~\\ref{tab:brier}. Across all "
+    "Reliability share is the Murphy decomposition share reported in the main text. Across all "
     "%d conditions the ratio stays above 1 (range %s--%s) and the reliability share above half "
     "(range %s--%s); the lowest share, %s, is the DICTrank primary key, which is why no claim of "
     "a dominant calibration component is made for that dataset."
@@ -1123,8 +1124,8 @@ SUPP.table(
     "lipophilic and have greater polar surface area in both datasets. The distribution shift the "
     "temporal split creates is therefore real at the level of structure, which is what "
     "Table~\\ref{tab:era} measures as a single number. \\textbf{Existence of shift is not "
-    "evidence that its magnitude drives the calibration collapse}; "
-    "Table~\\ref{tab:nontemporal} tests that and does not support it.",
+    "evidence that its magnitude drives the calibration collapse}; the non-temporal splits "
+    "of the main text test that and do not support it.",
 )
 
 
@@ -1370,7 +1371,7 @@ SUPP.table(
     "or %s if the upper confidence bound is used. The error magnitudes are a weaker "
     "signal, %s %s, and the labels themselves are nearly independent, phi = %s on these same "
     "compounds. \\textbf{The two results are not fully independent replication and this "
-    "table quantifies by how much}; Table~\\ref{tab:nontemporal} reports the disjoint-subset "
+    "table quantifies by how much}; the main text reports the disjoint-subset "
     "replication separately. The equal-variance approximation behind the effective count is "
     "stated rather than tested."
     % (
@@ -1645,7 +1646,7 @@ SUPP.table(
     "anything beyond shrinking the sample. \\textbf{It is positive in %d of the %d non-zero "
     "settings}, and where negative it is small, so the sign is not stable. An "
     "applicability-domain filter is therefore not a remedy for the calibration loss reported "
-    "in Table~\\ref{tab:split}." % (_npos, _nset),
+    "in the main text." % (_npos, _nset),
 )
 
 # ================================================================ T13 상수 예측기

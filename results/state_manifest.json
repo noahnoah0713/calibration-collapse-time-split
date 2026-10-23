@@ -266,7 +266,7 @@
     "src/make_manuscript.py": "d75e20955d33bb7896c3313b3f3c05c6f5de145c3fdc37267e683930f16dd905",
     "src/make_refs_list.py": "0d566a41bec54683ab8a6f1876fb70e4947aecec07e0e01c8f52e38f6e07fbc4",
     "src/make_report.py": "b5bdda5c0aea69d185f62737b4ab98b76cd6f0488c5368ace140e04792f93160",
-    "src/make_tables.py": "529ac5dd434fb625d8a3f2798976dd87c921ce491c6135d21ec3a71b0882bec6",
+    "src/make_tables.py": "d060cc484b4e86444ed49ba38bd023b0cd00e826eb26a4649409ba6452728b9e",
     "src/map_approval_year.py": "287a3293c507ded56979a5580eaf617bf85d50415dae33d9730354b13115cdd3",
     "src/matched_n_control.py": "818d4c7efa0bb4649eb0e5b30dc62c907cdde8fad64098e807c64b93f58a21f2",
     "src/mondrian_conformal.py": "71e9dd7db187fdd1f60dee387e6bab782d656d958709b3f89bca50caac31ffdb",
@@ -304,9 +304,9 @@
     "src/useful_threshold_sweep.py": "30a067b2bfd7b9e63931c37f6633ab62caefee2546565b86760a68406c1b7f9b",
     "src/verify10.py": "71e6696fcf990c28fe1b9d9c659e96d013ee12493c15423880a8a7ce10b0e2f6",
     "src/verify11.py": "382073c89385ceda782a7c8941deee37a65fce558b33ce2f6f6a3e955a10a777",
-    "src/verify12.py": "439907c1a56b547858f3dba583b619f3faf204905136de50688ed3a24bb76c5c",
+    "src/verify12.py": "2a4364ac6076edc057f40faa895bb23f21f3bbceb91effa09137c5e35c37792d",
     "src/verify9.py": "6d244dcf2eacbab3398159d98e9dc043ad8f4de98507b77db4f960b16060bdd9",
-    "src/verify_refs.py": "6eaadcc6ad682b64951146a13c0c4236e9cb640d648f77a4737b75e27fb7b85c",
+    "src/verify_refs.py": "7e4fd2f66d71f433a63d2588e866b673df89065379ecf892930cdaeb267564f6",
     "src/year_sensitivity.py": "a467fcd36e9d5882439020177c9044b46063fa90f13d36fc08030b7204b8fec7"
   },
   "src_ast": {
@@ -358,7 +358,7 @@
     "src/make_manuscript.py": "7e06ee49595600bd2a4d9b9a76caa0199176a1ce4a570f9b9263734280b46c21",
     "src/make_refs_list.py": "deb18fdbf2eab9cf8968bd8c39786c75956b7ae5841a1d0eb11db0435520303b",
     "src/make_report.py": "49754fddc867a0e94d5578e232c5f075d1de2ef33512ab5386e216e5a8377b3c",
-    "src/make_tables.py": "44fd7a795dff97afbf1e44d83c6ca3d6f277df9bf49efd033d412099d7bd4394",
+    "src/make_tables.py": "67960c958e32c2cd288cdc9d056f431330dad5e2756d6b8de9de10cf444e673b",
     "src/map_approval_year.py": "7fdb45c14610c1985c64e1b4d163afd37f117b6d3559e563c3aa92f19aba3605",
     "src/matched_n_control.py": "0d56ed06a15be7e26ce2886aa1c1a419e99715a735324d9965ca0cdee90df755",
     "src/mondrian_conformal.py": "436cdaf9f33c0aa5a886047fed58c9581708db39c9d8cd59bbf53e7613f7bd2a",
@@ -396,9 +396,9 @@
     "src/useful_threshold_sweep.py": "17b57e7d11f2cc684b5ca634936b38bbf5c292bf532ce0799002546037cb81cb",
     "src/verify10.py": "136e2daa28bd6718549a99ed3a3ee41c798229b4867fefeac18434f0c94d28c3",
     "src/verify11.py": "f8e755722129deef2832c936209073b43b786e0b7ea03fc23274ee13aa82dac1",
-    "src/verify12.py": "fd3b663c32aef34475c1105dfa02452748e53967b268c135b674865065090580",
+    "src/verify12.py": "1043fab063de6d982dd4a85752b081a0f1266d42f285a7b35627acdd9ce6c5ff",
     "src/verify9.py": "1675ddee4dec2ef346cafadae9bc13d63493943c7747a8c58c8a397574bc9258",
-    "src/verify_refs.py": "3032a830fe9609571e0a1d2187109b23d7459c08c7bf0397870143a31c29b393",
+    "src/verify_refs.py": "9c5e0410bc02b5c1e4baf9f5f3326680c98b2cf48d447d82b202d7f14f7767a8",
     "src/year_sensitivity.py": "0bde2954067eae88af34ac9c6dbf86ffd228751d0d001c259da54cf385c2f10c"
   }
 }
