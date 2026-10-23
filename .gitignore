@@ -132,3 +132,9 @@ results/*_run.log
 /results/determinism_log.txt
 /results/.!*!*
 /results/.!*!*
+
+# 순열 검정 재개 캐시. 로컬에서는 중단 재개에 쓰지만 저장소에 넣으면
+# 새로 클론한 사람의 rerun_all.sh 가 귀무분포를 다시 계산하지 않고
+# 캐시를 읽어 0.0분에 끝난다. 재현이 아니게 된다.
+/results/*_partial_*.csv
+/results/*_partial_*.meta.json

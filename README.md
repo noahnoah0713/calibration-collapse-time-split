@@ -161,16 +161,18 @@ inputs, the second now compares syntax trees.
 ```
 src/              89 analysis and verification scripts (_shared.py is the common module)
 data/processed/   processed data the analyses read
-results/          every intermediate and final result: 103 CSV, 67 TXT, 6 JSON
+results/          every intermediate and final result: 99 CSV, 68 TXT, 2 JSON
 figures/          figures for the manuscript, PDF and 600 dpi PNG
 _backup/          one snapshot kept because a script compares against it
 ```
 
-Of the 176 files in `results/`, 96 are read by name by the report, tables and
+Of the 169 files in `results/`, 96 are read by name by the report, tables and
 figures. The rest are per-analysis summaries a reader can skim without
 running anything, permutation null distributions kept so the tests need not
 be repeated, and audit records for SMILES, approval years, labels and ATC
-assignments.
+assignments. The resume caches the permutation scripts write are not
+included, so a fresh clone recomputes those null distributions instead of
+reading a finished run back.
 
 ### Scripts `rerun_all.sh` does not call
 
