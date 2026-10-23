@@ -2,10 +2,25 @@
 논문 투고용 그림 생성
 
 규격:
-  - 크기: 단일 컬럼 3.3in, 이중 컬럼 7.0in (ACS/Elsevier 표준)
-  - 폰트: Arial 계열, 축 8pt, 패널 라벨 12pt bold
+  - 크기: 폭 5.146in = sn-jnl textwidth (130.7mm). width=textwidth 로
+    넣으면 축소율 1.00 이라 그린 크기 그대로 실린다.
+  - 폰트: Arial 계열, 축 7pt, 눈금 6.5pt, 패널 라벨 8pt bold
   - 저장: PDF(벡터) + PNG(600dpi) 동시
-  - 색맹 친화 팔레트, 흑백 인쇄 대비 해칭/마커 병용
+  - Nature 계열 관행: 눈금선을 깔지 않고 축선은 왼쪽·아래만, 눈금은
+    바깥으로. 빗금은 쓰지 않는다 (인쇄에서 뭉치고 화면에서 시끄럽다).
+
+색이 뜻하는 것 — 이 규칙을 그림마다 바꾸지 않는다
+--------------------------------------------------
+  파랑  #0072B2 = DILIrank
+  주황  #D55E00 = DICTrank
+  회색  #666666 = 무작위 분할(대조군), 기준선, 우연 수준
+
+  2026-10-23 이전에는 같은 두 색이 Fig1~3 에서 '시간분할 / 무작위분할',
+  Fig4~7 에서 'DILIrank / DICTrank' 를 뜻했다. Fig1 에서 '주황 = 시간
+  분할' 을 배운 독자가 Fig4 부터 속는다. 그래서 색은 언제나 데이터셋이고,
+  분할 종류는 위치·패널·표식 모양으로 구분한다. 한 데이터셋 안에서
+  분할을 대비할 때만(Fig2 등) 무작위 쪽을 회색으로 둔다 — 회색은 두
+  데이터셋 색 어느 쪽과도 겹치지 않는다.
 
 생성 그림:
   Fig 1  분할 전략별 AUROC / ECE (2패널)
@@ -30,6 +45,7 @@
     figures/*.pdf, figures/*.png
 """
 
+import os
 import warnings
 from pathlib import Path
 
@@ -37,7 +53,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.legend_handler import HandlerTuple
 from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 from rdkit import Chem, RDLogger
 from rdkit.Chem import AllChem, Descriptors
 from xgboost import XGBClassifier
@@ -48,8 +66,12 @@ RDLogger.DisableLog("rdApp.*")
 ROOT = Path(__file__).resolve().parents[1]
 PROC = ROOT / "data" / "processed"
 RES = ROOT / "results"
-FIG = ROOT / "figures"
-FIG.mkdir(exist_ok=True)
+# 출력 폴더. 기본은 figures/ 지만 FIG_OUT 으로 바꿀 수 있다.
+# 왜 — Arial 이 없는 기계에서 시험 삼아 돌리면 대체 폰트로 그려진
+# 그림이 투고용 파일을 덮어쓴다. 실제로 한 번 그랬다 (2026-10-22,
+# git show 로 되살렸다). 미리보기는 FIG_OUT 을 주고 돌린다.
+FIG = Path(os.environ.get("FIG_OUT", ROOT / "figures"))
+FIG.mkdir(parents=True, exist_ok=True)
 
 SEED, CUTOFF = 42, 2010
 COL1, COL2 = 5.146, 5.146  # 인치 = sn-jnl \textwidth (372pt = 130.7mm)
@@ -61,15 +83,18 @@ mpl.rcParams.update(
     {
         "font.family": "sans-serif",
         "font.sans-serif": ["Arial", "Liberation Sans", "Helvetica", "DejaVu Sans"],
-        "font.size": 8,
-        "axes.labelsize": 8,
-        "axes.titlesize": 9,
-        "xtick.labelsize": 7,
-        "ytick.labelsize": 7,
-        "legend.fontsize": 7,
-        "axes.linewidth": 0.8,
-        "xtick.major.width": 0.8,
-        "ytick.major.width": 0.8,
+        "font.size": 7,
+        "axes.labelsize": 7,
+        "axes.titlesize": 7.5,
+        "xtick.labelsize": 6.5,
+        "ytick.labelsize": 6.5,
+        "legend.fontsize": 6.5,
+        "axes.linewidth": 0.5,
+        "axes.edgecolor": "#000000",
+        "xtick.major.width": 0.5,
+        "ytick.major.width": 0.5,
+        "xtick.major.size": 2.4,
+        "ytick.major.size": 2.4,
         "xtick.direction": "out",
         "ytick.direction": "out",
         "axes.spines.top": False,
@@ -83,26 +108,56 @@ mpl.rcParams.update(
     }
 )
 
-# 색맹 친화 팔레트 (Okabe-Ito)
+# 색맹 친화 팔레트 (Wong B. Points of view: Color blindness.
+# Nat Methods 2011;8:441 — Nature 계열 그림이 표준으로 쓰는 8색).
+# 두 데이터셋 색 조합은 검증을 거쳤다: 적록색약 dE 21.9, 정상 31.2,
+# 배경 대비 3:1 이상.
 C = {
-    "random": "#0072B2",
-    "scaffold": "#E69F00",
-    "temporal": "#D55E00",
+    "dili": "#0072B2",  # DILIrank — 파랑
+    "dict": "#D55E00",  # DICTrank — 주황
+    "ref": "#666666",  # 무작위 분할 대조군·기준선·우연 수준
     "gray": "#666666",
+    "accent": "#E69F00",
     "green": "#009E73",
     "purple": "#CC79A7",
 }
+# 데이터셋 이름 -> 색·표식. 그림마다 손으로 고르지 말고 이것만 쓴다.
+DS_COLOR = {"DILIrank": C["dili"], "DICTrank": C["dict"]}
+DS_MARKER = {"DILIrank": "o", "DICTrank": "s"}
+
+
+def ds_color(name):
+    """'DILIrank 2.0' 처럼 뒤에 말이 붙어도 맞춘다."""
+    for k, v in DS_COLOR.items():
+        if str(name).startswith(k):
+            return v
+    return C["gray"]
+
+
+def ds_marker(name):
+    for k, v in DS_MARKER.items():
+        if str(name).startswith(k):
+            return v
+    return "o"
+
+
+def bare(ax):
+    """Nature 계열 축 — 눈금선 없음, 축선은 왼쪽·아래만, 눈금 바깥."""
+    ax.tick_params(axis="y", pad=1.5)
+    ax.tick_params(axis="x", pad=2.5)
 
 
 def save(fig, name):
     for ext in ("pdf", "png"):
         fig.savefig(FIG / f"{name}.{ext}")
     plt.close(fig)
-    print(f"  저장: figures/{name}.pdf, .png")
+    print(f"  저장: {FIG.name}/{name}.pdf, .png")
 
 
-def panel_label(ax, txt, x=-0.16, y=1.06):
-    ax.text(x, y, txt, transform=ax.transAxes, fontsize=12, fontweight="bold", va="top", ha="left")
+def panel_label(ax, txt, x=-0.16, y=1.08):
+    """패널 글자는 소문자 굵게 8pt — Nature 계열 관행. 전에는 12pt 라
+    축 글자(7pt)보다 한참 커서 그림보다 글자가 먼저 보였다."""
+    ax.text(x, y, txt, transform=ax.transAxes, fontsize=8, fontweight="bold", va="top", ha="left")
 
 
 # ------------------------------------------------------------ 공통 계산
@@ -185,17 +240,22 @@ def fig1():
     이 그림이 논문의 주장을 그대로 담는다.
       (a) 판별력은 분할을 어렵게 해도 완만하게만 떨어진다.
       (b) 그런데 보정 오차는 스캐폴드 분할에서는 무작위와 같은 수준이고,
-          시간분할에서만 무너진다. 즉 보정 붕괴는 "화학공간이 달라서"가
-          아니라 "시간이 달라서" 생긴다.
+          시간분할에서만 무너진다.
       (c) 그 붕괴가 학습군·검증군의 양성 비율 차이 때문도 아니다.
+
+    (a) 를 막대가 아니라 점으로 그린다 — y축이 0.45 에서 시작하는데
+    막대는 길이가 크기를 뜻하므로 축을 자르면 차이가 과장된다. 점은
+    길이로 말하지 않으니 잘라도 된다 (2026-10-23 수정).
+
+    시간분할 칸은 한 칸 더 띄운다. 색을 하나 더 쓰지 않고 위치만으로
+    "이 칸은 종류가 다르다" 를 말한다.
 
     모든 수치는 결과 CSV에서 읽는다 (하드코딩 금지).
       (a)(b) baseline_cv_per_fold.csv — 두 데이터셋 동일 절차
           · random_cv / scaffold_cv : 5-fold 평균 ± fold 간 표준편차
-          · temporal                : 단일 분할
-                                      (AUROC 는 95% 부트스트랩 CI,
-                                       ECE 는 prevalence_control.csv 의
-                                       부트스트랩 CI를 가져다 쓴다)
+          · temporal                : 단일 분할 (AUROC 는 95% 부트스트랩
+                                      CI, ECE 는 prevalence_control.csv 의
+                                      부트스트랩 CI)
       (c) prevalence_control.csv
           · R1/R2/R3 : 반복 평균 ± 반복 간 표준편차
           · T        : 단일 분할 + 95% 부트스트랩 신뢰구간
@@ -213,15 +273,15 @@ def fig1():
         )
         return
 
-    fig, axes = plt.subplots(1, 3, figsize=(COL2, 2.6))
-    w = 0.36
-
+    fig, axes = plt.subplots(1, 3, figsize=(COL2, 1.95))
+    W = 0.3
     splits = ["random_cv", "scaffold_cv", "temporal"]
-    labels = ["Random\n5-fold CV", "Scaffold\n5-fold CV", "Temporal\nsplit"]
-    series = [
-        ("DILIrank", dict(color=C["random"], edgecolor="black")),
-        ("DICTrank", dict(color="white", edgecolor="black", hatch="///")),
-    ]
+    # 패널 폭이 좁다. 긴 라벨은 서로 붙어 읽히지 않으므로 한 단어로 줄이고
+    # "5겹 교차검증" 은 캡션이 말한다.
+    labels = ["Random", "Scaffold", "Temporal"]
+    XP3 = np.array([0.0, 1.45, 3.05])
+    XP4 = np.array([0.0, 1.0, 2.0, 3.35])
+    SER = [("DILIrank", C["dili"]), ("DICTrank", C["dict"])]
 
     def temporal_ece_ci(ds):
         """시간분할 ECE의 부트스트랩 CI는 prevalence_control.csv 에 있다."""
@@ -244,66 +304,6 @@ def fig1():
         v = s[col]
         return v.mean(), v.std(ddof=1), v.std(ddof=1)
 
-    def grouped_bars(ax, col):
-        """DILIrank 는 색, DICTrank 는 빗금. 시간분할 막대만 주황으로 둬서
-        세 패널에서 '주황 = 시간분할' 이 같은 뜻이 되게 한다."""
-        x = np.arange(len(splits))
-        for k, (ds, style) in enumerate(series):
-            vals, lo, hi = zip(*[stat_of(ds, sp, col) for sp in splits])
-            style = dict(style)
-            if k == 0:
-                style["color"] = [C["random"], C["random"], C["temporal"]]
-            ax.bar(x + (k - 0.5) * w, vals, w, linewidth=0.6, label=ds, **style)
-            ax.errorbar(
-                x + (k - 0.5) * w,
-                vals,
-                yerr=[lo, hi],
-                fmt="none",
-                ecolor="black",
-                elinewidth=0.7,
-                capsize=2.5,
-            )
-        ax.set_xticks(x)
-        ax.set_xticklabels(labels, fontsize=6)
-        return x
-
-    # ---------------------------------------------- (a) 분할 전략별 AUROC
-    ax = axes[0]
-    grouped_bars(ax, "AUROC")
-    ax.axhline(0.5, color=C["gray"], ls=":", lw=0.7, zorder=0)
-    ax.set_ylabel("AUROC")
-    ax.set_ylim(0.45, 0.85)
-    from matplotlib.patches import Patch
-
-    ax.legend(
-        handles=[
-            Patch(facecolor="0.55", edgecolor="black", linewidth=0.6, label="DILIrank"),
-            Patch(
-                facecolor="white", edgecolor="black", linewidth=0.6, hatch="///", label="DICTrank"
-            ),
-        ],
-        frameon=False,
-        loc="upper right",
-        fontsize=5.5,
-        handlelength=1.2,
-        borderaxespad=0.2,
-    )
-    panel_label(ax, "a", x=-0.28, y=1.10)
-
-    # ---------------------------------------------- (b) 분할 전략별 ECE
-    ax = axes[1]
-    grouped_bars(ax, "ECE")
-    ax.set_ylabel("Expected calibration error")
-    ax.set_ylim(0, 0.58)
-    panel_label(ax, "b", x=-0.28, y=1.10)
-
-    # ---------------------------------------------- (c) 유병률 통제별 ECE
-    ax = axes[2]
-    order = ["R1. ", "R2. ", "R3. ", "T. "]
-    # 패널 폭이 좁아 긴 라벨은 서로 겹친다. R1/R2/R3 의 뜻은 캡션에서
-    # 정의할 것: R1 = 비율 맞춤 없음, R2 = 검증군만 맞춤, R3 = 학습·검증 모두.
-    labels_c = ["R1", "R2", "R3", "Temporal\nsplit"]
-
     def ece_of(ds_key, prefix):
         s = prev[prev.dataset.str.startswith(ds_key) & prev.setting.str.startswith(prefix)]
         if not len(s):
@@ -314,44 +314,99 @@ def fig1():
         sd = r.ECE_sd if pd.notna(r.ECE_sd) else 0.0
         return r.ECE, sd, sd
 
-    x = np.arange(len(order))
-    cols = [C["random"]] * 3 + [C["temporal"]]
-    for k, (ds_key, hatch) in enumerate([("DILIrank", None), ("DICTrank", "///")]):
-        vals, lo, hi = zip(*[ece_of(ds_key, pf) for pf in order])
-        ax.bar(
-            x + (k - 0.5) * w,
-            vals,
-            w,
-            color=(cols if k == 0 else ["white"] * 4),
-            edgecolor="black",
-            linewidth=0.6,
-            hatch=hatch,
-            label=ds_key,
-        )
+    def axis_of(ax, xp, labs):
+        ax.set_xticks(xp)
+        ax.set_xticklabels(labs)
+        ax.set_xlim(xp[0] - 0.72, xp[-1] + 0.72)
+        ax.tick_params(axis="x", length=0)
+        bare(ax)
+
+    def ebars(ax, x, v, lo, hi):
         ax.errorbar(
-            x + (k - 0.5) * w,
-            vals,
+            x,
+            v,
             yerr=[lo, hi],
             fmt="none",
             ecolor="black",
-            elinewidth=0.7,
-            capsize=2.5,
+            elinewidth=0.6,
+            capsize=1.6,
+            capthick=0.6,
+            zorder=4,
         )
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels_c, fontsize=6)
-    ax.set_ylabel("Expected calibration error")
-    ax.set_ylim(0, 0.58)
-    panel_label(ax, "c", x=-0.28, y=1.10)
+    # ---------------------------------------------- (a) 분할 전략별 AUROC
+    ax = axes[0]
+    for k, (ds, col) in enumerate(SER):
+        v, lo, hi = zip(*[stat_of(ds, sp, "AUROC") for sp in splits])
+        ax.errorbar(
+            XP3 + (k - 0.5) * W,
+            v,
+            yerr=[lo, hi],
+            fmt=ds_marker(ds),
+            ms=3.6,
+            mfc=col,
+            mec=col,
+            ecolor=col,
+            elinewidth=0.9,
+            capsize=1.6,
+            capthick=0.9,
+            label=ds,
+            clip_on=False,
+            zorder=3,
+        )
+    ax.axhline(0.5, color=C["ref"], lw=0.5, ls=(0, (4, 3)), zorder=1)
+    ax.text(XP3[-1] + 0.7, 0.504, "chance", fontsize=6, color=C["ref"], ha="right", va="bottom")
+    ax.set_ylabel("AUROC")
+    ax.set_ylim(0.45, 0.78)
+    ax.set_yticks([0.5, 0.6, 0.7])
+    axis_of(ax, XP3, labels)
+    ax.legend(
+        frameon=False,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.25),
+        ncol=2,
+        handletextpad=0.25,
+        columnspacing=0.9,
+        handlelength=0.9,
+    )
+    panel_label(ax, "a", x=-0.30, y=1.17)
 
-    fig.tight_layout(w_pad=1.4)
+    # ---------------------------------------------- (b) 분할 전략별 ECE
+    ax = axes[1]
+    for k, (ds, col) in enumerate(SER):
+        v, lo, hi = zip(*[stat_of(ds, sp, "ECE") for sp in splits])
+        ax.bar(XP3 + (k - 0.5) * W, v, W * 0.86, color=col, lw=0, zorder=2)
+        ebars(ax, XP3 + (k - 0.5) * W, v, lo, hi)
+    ax.set_ylabel("Expected calibration error")
+    ax.set_ylim(0, 0.56)
+    ax.set_yticks([0, 0.2, 0.4])
+    axis_of(ax, XP3, labels)
+    panel_label(ax, "b", x=-0.30, y=1.17)
+
+    # ---------------------------------------------- (c) 유병률 통제별 ECE
+    ax = axes[2]
+    order = ["R1. ", "R2. ", "R3. ", "T. "]
+    # R1/R2/R3 의 뜻은 캡션이 정의한다: R1 = 비율 맞춤 없음, R2 = 검증군만,
+    # R3 = 학습·검증 모두.
+    labels_c = ["R1", "R2", "R3", "Temporal"]
+    for k, (ds, col) in enumerate(SER):
+        v, lo, hi = zip(*[ece_of(ds, pf) for pf in order])
+        ax.bar(XP4 + (k - 0.5) * W, v, W * 0.86, color=col, lw=0, zorder=2)
+        ebars(ax, XP4 + (k - 0.5) * W, v, lo, hi)
+    ax.set_ylabel("Expected calibration error")
+    ax.set_ylim(0, 0.56)
+    ax.set_yticks([0, 0.2, 0.4])
+    axis_of(ax, XP4, labels_c)
+    panel_label(ax, "c", x=-0.30, y=1.17)
+
+    fig.tight_layout(w_pad=1.9)
     save(fig, "Fig1_split_strategies")
 
 
 # ============================================================ Fig 2
 def fig2():
     """보정 곡선 (reliability diagram)."""
-    fig, axes = plt.subplots(1, 2, figsize=(COL2, 3.0))
+    fig, axes = plt.subplots(1, 2, figsize=(COL2, 2.75))
 
     files = [
         ("DILIrank", PROC / "dilirank2_with_year.csv"),
@@ -365,24 +420,30 @@ def fig2():
         y_t, p_t, y_r, p_r = get_probs(df)
 
         ax.plot(
-            [0, 1], [0, 1], ls="--", color=C["gray"], lw=0.9, label="Perfect calibration", zorder=1
+            [0, 1],
+            [0, 1],
+            ls=(0, (1.5, 1.8)),
+            color="#999999",
+            lw=0.7,
+            label="Perfect calibration",
+            zorder=1,
         )
 
-        for y, p, tag, col, mk in [
-            (y_r, p_r, "Random split", C["random"], "o"),
-            (y_t, p_t, "Temporal split", C["temporal"], "s"),
+        for y, p, tag, col, mk, ls, fill in [
+            (y_r, p_r, "Random split", C["ref"], "o", (0, (3.5, 2.5)), False),
+            (y_t, p_t, "Temporal split", ds_color(nm), ds_marker(nm), "-", True),
         ]:
             xs, ys, ns = rel_curve(y, p)
-            sz = 8 + 40 * ns / ns.max()
-            ax.plot(xs, ys, "-", color=col, lw=1.1, zorder=2)
+            sz = 6 + 26 * ns / ns.max()
+            ax.plot(xs, ys, ls=ls, color=col, lw=1.0, zorder=2)
             ax.scatter(
                 xs,
                 ys,
                 s=sz,
-                color=col,
+                facecolor=col if fill else "white",
                 marker=mk,
-                edgecolor="black",
-                linewidth=0.4,
+                edgecolor=col,
+                linewidth=0.8,
                 zorder=3,
                 label=tag,
             )
@@ -393,9 +454,12 @@ def fig2():
         ax.set_xlabel("Mean predicted probability")
         if lab == "a":
             ax.set_ylabel("Observed positive fraction")
-        ax.set_title(nm, fontsize=9)
-        ax.legend(frameon=False, loc="upper left", fontsize=6.5)
-        panel_label(ax, lab, x=-0.24, y=1.16)  # 제목/눈금과 겹치지 않게
+        ax.set_title(nm, fontsize=7.5, color=ds_color(nm), pad=3)
+        ax.set_xticks([0, 0.5, 1])
+        ax.set_yticks([0, 0.5, 1])
+        bare(ax)
+        ax.legend(frameon=False, loc="upper left", handletextpad=0.4, borderaxespad=0.2)
+        panel_label(ax, lab, x=-0.26, y=1.18)  # 제목/눈금과 겹치지 않게
 
     fig.tight_layout(w_pad=1.5)
     save(fig, "Fig2_calibration_curves")
@@ -403,7 +467,14 @@ def fig2():
 
 # ============================================================ Fig 3
 def fig3():
-    """견고성: 32조합 분포 + 절단연도 민감도."""
+    """견고성: 모델×표현 격자의 ECE 배율 분포(a)와 절단연도 민감도(b·c).
+
+    2026-10-23: 전에는 (b) 하나에 ΔAUROC 와 ECE 배율을 **이중 축**으로
+    겹쳐 그렸다(ax.twinx()). 두 축의 눈금을 어떻게 맞출지는 임의 선택이라
+    없는 상관을 만들어 보여준다 — 데이터 시각화에서 가장 많이 지적되는
+    오류다. 두 패널로 쪼갰다. 두 양이 같은 x(절단연도) 위에 나란히 있어
+    비교는 그대로 되고, 축이 하나씩이라 오해가 생기지 않는다.
+    """
     try:
         rob = pd.read_csv(RES / "robustness_models.csv")
         cut = pd.read_csv(RES / "robustness_cutoff.csv")
@@ -411,126 +482,100 @@ def fig3():
         print("  Fig3 건너뜀: 결과 파일 없음")
         return
 
-    fig, axes = plt.subplots(1, 2, figsize=(COL2, 2.6))
+    fig, axes = plt.subplots(1, 3, figsize=(COL2, 1.95))
 
-    # (a) 32조합 ECE 배율 (스트립 플롯)
+    # ---------------------------------------------- (a) 격자 전체의 ECE 배율
     ax = axes[0]
-    for i, ds in enumerate(rob["dataset"].unique()):
+    names = list(rob["dataset"].unique())
+    for i, ds in enumerate(names):
         s = rob[rob.dataset == ds]
         jit = np.random.default_rng(SEED).normal(0, 0.055, len(s))
         ax.scatter(
             np.full(len(s), i) + jit,
             s["ece_ratio"],
-            s=22,
-            color=C["temporal"] if i == 0 else C["random"],
-            edgecolor="black",
+            s=14,
+            color=ds_color(ds),
+            edgecolor="white",
             linewidth=0.4,
-            alpha=0.85,
+            alpha=0.9,
             zorder=3,
         )
         med = s["ece_ratio"].median()
-        ax.plot([i - 0.22, i + 0.22], [med, med], color="black", lw=1.6, zorder=4)
-        ax.text(i, s["ece_ratio"].max() + 0.28, f"{len(s)}/{len(s)}", ha="center", fontsize=6.5)
+        ax.plot([i - 0.24, i + 0.24], [med, med], color="black", lw=1.1, zorder=4)
+        ax.text(i, s["ece_ratio"].max() + 0.3, f"{len(s)}/{len(s)}", ha="center", fontsize=6)
 
-    ax.axhline(1.0, color=C["gray"], ls="--", lw=0.9, zorder=1)
-    ax.set_xticks(range(len(rob["dataset"].unique())))
-    ax.set_xticklabels(rob["dataset"].unique(), fontsize=7.5)
+    ax.axhline(1.0, color=C["ref"], ls=(0, (4, 3)), lw=0.5, zorder=1)
+    ax.set_xticks(range(len(names)))
+    ax.set_xticklabels(names)
+    ax.set_xlim(-0.6, len(names) - 0.4)
+    ax.tick_params(axis="x", length=0)
     ax.set_ylabel("ECE ratio (temporal / random)")
-    ax.set_ylim(0.8, 6.6)  # 수정: 상단 여유 확보 (기존 6.0)
-    # 수정: 좌상단 -> 우상단으로 이동 (DILIrank의 16/16 라벨과 겹치던 문제 해결)
+    ax.set_ylim(0.8, 6.6)
     ax.text(
         0.98,
         0.97,
         "All 32 combinations > 1.0",
         transform=ax.transAxes,
-        fontsize=6.5,
+        fontsize=6,
         va="top",
         ha="right",
         style="italic",
     )
-    panel_label(ax, "a")
+    bare(ax)
+    panel_label(ax, "a", x=-0.30, y=1.14)
 
-    # (b) 절단연도 민감도: AUROC 격차 vs ECE 배율
-    ax = axes[1]
-    ax2 = ax.twinx()
-    ax2.spines["right"].set_visible(True)
-
-    # 수정: 데이터셋 구분을 채움/테두리 마커 + x축 지터로 명확화
-    # (기존 코드는 두 데이터셋 선이 같은 색이라 2010년 교차점에서 뒤섞여 보였음)
+    # ------------------------------------- (b)(c) 절단연도 민감도, 축 하나씩
     style = {
         "DILIrank": dict(marker="o", fill=True, dx=-0.12),
         "DICTrank": dict(marker="s", fill=False, dx=+0.12),
     }
 
-    for ds in cut["dataset"].unique():
-        s = cut[cut.dataset == ds].sort_values("cutoff")
-        st = style.get(ds, dict(marker="o", fill=True, dx=0.0))
-        x = s["cutoff"] + st["dx"]
+    def year_panel(ax, col, ylab, ylim, hline=None):
+        for ds in cut["dataset"].unique():
+            s = cut[cut.dataset == ds].sort_values("cutoff")
+            st = style.get(ds, dict(marker="o", fill=True, dx=0.0))
+            c = ds_color(ds)
+            ax.plot(
+                s["cutoff"] + st["dx"],
+                s[col],
+                "-",
+                marker=st["marker"],
+                ms=3.4,
+                lw=1.0,
+                color=c,
+                markerfacecolor=c if st["fill"] else "white",
+                markeredgecolor=c,
+                markeredgewidth=0.9,
+                label=ds,
+                zorder=3,
+            )
+        if hline is not None:
+            ax.axhline(hline, color=C["ref"], ls=(0, (4, 3)), lw=0.5, zorder=1)
+        ax.set_xticks([2005, 2010, 2015])
+        ax.set_xlim(2002.5, 2017.5)
+        ax.set_xlabel("Temporal split cutoff (year)")
+        ax.set_ylabel(ylab)
+        ax.set_ylim(*ylim)
+        bare(ax)
 
-        ax.plot(
-            x,
-            s["d_auroc"],
-            "-",
-            marker=st["marker"],
-            ms=5,
-            lw=1.2,
-            color=C["temporal"],
-            markerfacecolor=C["temporal"] if st["fill"] else "white",
-            markeredgecolor=C["temporal"],
-            markeredgewidth=1.0,
-            zorder=3,
-        )
-
-        ax2.plot(
-            x,
-            s["ece_ratio"],
-            "--",
-            marker=st["marker"],
-            ms=5,
-            lw=1.2,
-            color=C["random"],
-            markerfacecolor=C["random"] if st["fill"] else "white",
-            markeredgecolor=C["random"],
-            markeredgewidth=1.0,
-            zorder=3,
-        )
-
-    ax.set_xticks([2005, 2010, 2015])
-    ax.set_xlabel("Temporal split cutoff (year)")
-    ax.set_ylabel("ΔAUROC (random − temporal)", color=C["temporal"])
-    ax2.set_ylabel("ECE ratio", color=C["random"])
-    ax.tick_params(axis="y", colors=C["temporal"])
-    ax2.tick_params(axis="y", colors=C["random"])
-    ax.set_ylim(0, 0.13)
-    ax2.set_ylim(0, 4.0)
-    ax.axhline(0, color=C["gray"], ls=":", lw=0.7)
-
-    handles = [
-        Line2D([], [], color=C["temporal"], marker="o", ms=4, lw=1.2, label="ΔAUROC (left)"),
-        Line2D(
-            [],
-            [],
-            color=C["random"],
-            marker="o",
-            ms=4,
-            lw=1.2,
-            ls="--",
-            markerfacecolor="white",
-            label="ECE ratio (right)",
-        ),
-        Line2D(
-            [], [], color="black", marker="o", ms=4, lw=0, markerfacecolor="black", label="DILIrank"
-        ),
-        Line2D(
-            [], [], color="black", marker="s", ms=4, lw=0, markerfacecolor="white", label="DICTrank"
-        ),
-    ]
+    ax = axes[1]
+    year_panel(ax, "d_auroc", "ΔAUROC (random − temporal)", (0, 0.13), hline=0)
     ax.legend(
-        handles=handles, frameon=False, fontsize=6, loc="upper center", ncol=2, columnspacing=0.8
+        frameon=False,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.24),
+        ncol=2,
+        handletextpad=0.3,
+        columnspacing=0.9,
+        handlelength=1.3,
     )
-    panel_label(ax, "b")
+    panel_label(ax, "b", x=-0.30, y=1.14)
 
-    fig.tight_layout(w_pad=3.0)
+    ax = axes[2]
+    year_panel(ax, "ece_ratio", "ECE ratio (temporal / random)", (0, 4.0), hline=1.0)
+    panel_label(ax, "c", x=-0.30, y=1.14)
+
+    fig.tight_layout(w_pad=1.9)
     save(fig, "Fig3_robustness")
 
 
@@ -551,8 +596,8 @@ def fig4():
         return
 
     style = {
-        "DILIrank": dict(c=C["temporal"], marker="o", fill=True),
-        "DICTrank": dict(c=C["random"], marker="s", fill=False),
+        "DILIrank": dict(c=C["dili"], marker="o", fill=True),
+        "DICTrank": dict(c=C["dict"], marker="s", fill=False),
     }
 
     fig, axes = plt.subplots(1, 2, figsize=(COL2, 2.6))
@@ -591,9 +636,10 @@ def fig4():
                 zorder=5,
             )
 
-    ax.axvline(0, color=C["gray"], ls="--", lw=0.9, zorder=1)
+    ax.axvline(0, color=C["ref"], ls=(0, (4, 3)), lw=0.5, zorder=1)
     ax.set_xlabel("Training − test prevalence gap")
     ax.set_ylabel("ECE")
+    bare(ax)
     ax.margins(y=0.22)  # 범례가 곡선을 덮지 않도록 여유
     # 주석은 좌하단 — 좌상단은 범례 자리이고 우하단은 DILIrank 곡선이 지난다
     ax.text(
@@ -653,10 +699,11 @@ def fig4():
             zorder=3,
         )
 
-    ax.axhline(1.0, color=C["gray"], ls="--", lw=0.9, zorder=1)
-    ax.axvline(0, color=C["gray"], ls="--", lw=0.9, zorder=1)
+    ax.axhline(1.0, color=C["ref"], ls=(0, (4, 3)), lw=0.5, zorder=1)
+    ax.axvline(0, color=C["ref"], ls=(0, (4, 3)), lw=0.5, zorder=1)
     ax.set_xlabel("Training − test prevalence gap")
     ax.set_ylabel("Ratio to value at zero gap")
+    bare(ax)
 
     ax.margins(y=0.14)
     handles = [
@@ -680,25 +727,59 @@ def fig4():
 
 # ============================================================ Fig S1
 def figS1():
-    """ATC 계열별 성능."""
+    """ATC 1단계 계열별 성능 — 데이터셋마다 한 패널.
+
+    2026-10-23: 전에는 두 데이터셋 13개 계열을 한 축에 섞어 AUROC 순으로
+    늘어놓았다. 어느 막대가 어느 데이터셋인지 표시가 없어서 ATC 글자가
+    중복으로 보였고(C 두 번, N 두 번 ...), 읽을 수 없는 그림이었다.
+    패널을 갈라 데이터셋마다 따로 그린다.
+
+    계열 이름은 결과 CSV 가 한국어로 들고 있으므로 여기서 영문으로 옮긴다.
+    """
     f = RES / "atc_stratified.csv"
     if not f.exists():
         print("  FigS1 건너뜀: atc_stratified.csv 없음")
         return
-    s = pd.read_csv(f).dropna(subset=["auroc"]).sort_values("auroc")
+    d = pd.read_csv(f).dropna(subset=["auroc"])
 
-    fig, ax = plt.subplots(figsize=(COL1, 2.6))
-    yy = np.arange(len(s))
-    ax.barh(yy, s["auroc"], color=C["random"], edgecolor="black", linewidth=0.6)
-    ax.axvline(0.5, color=C["temporal"], ls="--", lw=1.0)
-    ax.set_yticks(yy)
-    ax.set_yticklabels([f"{r.atc} (n={int(r.n)})" for _, r in s.iterrows()], fontsize=6.5)
-    ax.set_xlabel("AUROC (temporal split)")
-    ax.set_xlim(0, 1)
-    # 수정: "random"은 무작위 분할 대조군(0.70~0.75대)이 아니라
-    # 우연 수준(AUROC=0.5)을 뜻하므로 다른 그림들과 용어 혼동 방지
-    ax.text(0.51, -0.6, "chance (AUROC=0.5)", fontsize=6, color=C["temporal"])
-    fig.tight_layout()
+    # ATC 1단계 분류의 공식 영문명 (WHO ATC index). 줄이 길어지면 y축이
+    # 밀리므로 통용되는 짧은 형태를 쓰고, 글자 코드를 함께 남긴다.
+    ATC_EN = {
+        "A": "Alimentary, metabolism",
+        "B": "Blood",
+        "C": "Cardiovascular",
+        "J": "Anti-infectives",
+        "L": "Antineoplastic, immune",
+        "N": "Nervous system",
+        "V": "Various",
+    }
+
+    names = [x for x in ("DILIrank", "DICTrank") if (d.dataset == x).any()]
+    fig, axes = plt.subplots(1, len(names), figsize=(COL2, 2.0), sharex=True)
+    if len(names) == 1:
+        axes = [axes]
+
+    for ax, ds, lab in zip(axes, names, "ab"):
+        s = d[d.dataset == ds].sort_values("auroc")
+        yy = np.arange(len(s))
+        ax.barh(yy, s["auroc"], height=0.72, color=ds_color(ds), lw=0)
+        ax.axvline(0.5, color=C["ref"], ls=(0, (4, 3)), lw=0.5, zorder=3)
+        ax.set_yticks(yy)
+        ax.set_yticklabels(
+            ["%s %s (n=%d)" % (r.atc, ATC_EN.get(r.atc, ""), int(r.n)) for _, r in s.iterrows()],
+            fontsize=5.8,
+        )
+        ax.set_ylim(-0.7, len(s) - 0.3)
+        ax.set_xlim(0, 1)
+        ax.set_xticks([0, 0.5, 1.0])
+        ax.set_xlabel("AUROC (temporal split)")
+        ax.set_title(ds, fontsize=7.5, color=ds_color(ds), pad=3)
+        ax.tick_params(axis="y", length=0)
+        bare(ax)
+        panel_label(ax, lab, x=-0.62, y=1.14)
+
+    axes[-1].text(0.515, -0.62, "chance", fontsize=6, color=C["ref"])
+    fig.tight_layout(w_pad=1.6)
     save(fig, "FigS1_atc_stratified")
 
 
@@ -726,10 +807,10 @@ def fig5():
     # ---------------------------------------------- (a) 재보정 사다리
     ax = axes[0]
     order = ["A.", "B.", "C.", "D.", "E."]
-    lab = {"A.": "None", "B.": "Platt", "C.": "Isotonic", "D.": "Prior shift", "E.": "Oracle"}
+    lab = {"A.": "None", "B.": "Platt", "C.": "Isotonic", "D.": "Prior\nshift", "E.": "Oracle"}
     style = {
-        "DILIrank": dict(c=C["temporal"], marker="o", mfc=C["temporal"]),
-        "DICTrank": dict(c=C["random"], marker="s", mfc="white"),
+        "DILIrank": dict(c=C["dili"], marker="o", mfc=C["dili"]),
+        "DICTrank": dict(c=C["dict"], marker="s", mfc="white"),
     }
     x = np.arange(len(order))
     for ds, st in style.items():
@@ -751,22 +832,15 @@ def fig5():
             clip_on=False,
             zorder=3,
         )
-        # 무보정과 Oracle 사이를 음영으로 — 되돌릴 수 있는 전부
-        ax.fill_between(
-            [x[0], x[-1]],
-            [ys[0], ys[0]],
-            [ys[-1], ys[-1]],
-            color=st["c"],
-            alpha=0.06,
-            lw=0,
-            zorder=1,
-        )
     ax.set_xticks(x)
-    ax.set_xticklabels([lab[p] for p in order], rotation=20, ha="right")
+    ax.set_xticklabels([lab[p] for p in order])
+    ax.set_xlim(-0.45, len(order) - 0.55)
+    ax.tick_params(axis="x", length=0)
     ax.set_ylabel("Expected calibration error")
     ax.set_ylim(0, None)
-    ax.legend(frameon=False, loc="upper right", handlelength=1.6)
-    panel_label(ax, "a")
+    bare(ax)
+    ax.legend(frameon=False, loc="upper right", handlelength=1.4, borderaxespad=0.2)
+    panel_label(ax, "a", x=-0.22, y=1.10)
 
     # ---------------------------------------------- (b) conformal 커버리지
     ax = axes[1]
@@ -783,17 +857,16 @@ def fig5():
         )
     xs = np.arange(len(rows))
     wd = 0.26
-    ax.bar(xs - wd, [r[2] for r in rows], wd, color=C["random"], label="Random", lw=0)
-    ax.bar(xs, [r[3] for r in rows], wd, color=C["temporal"], label="Temporal", lw=0)
+    cols = [ds_color(r[0]) for r in rows]
+    ax.bar(xs - wd, [r[2] for r in rows], wd, color=C["ref"], lw=0)
+    ax.bar(xs, [r[3] for r in rows], wd, color=cols, lw=0)
     ax.bar(
         xs + wd,
         [r[4] for r in rows],
         wd,
         facecolor="white",
-        edgecolor=C["temporal"],
-        hatch="///",
-        lw=0.8,
-        label="Temporal, negatives",
+        edgecolor=cols,
+        lw=0.9,
     )
     for i, r in enumerate(rows):
         ax.plot(
@@ -808,8 +881,28 @@ def fig5():
     ax.set_xticklabels(["%s\n%.0f%%" % (r[0].replace("rank", ""), 100 * r[1]) for r in rows])
     ax.set_ylabel("Empirical coverage")
     ax.set_ylim(0, 1.05)
-    ax.legend(frameon=False, loc="lower left", handlelength=1.4, borderaxespad=0.2)
-    panel_label(ax, "b")
+    ax.tick_params(axis="x", length=0)
+    bare(ax)
+    _pair_fill = tuple(Patch(facecolor=c, lw=0) for c in (C["dili"], C["dict"]))
+    _pair_open = tuple(
+        Patch(facecolor="white", edgecolor=c, lw=0.9) for c in (C["dili"], C["dict"])
+    )
+    ax.legend(
+        handles=[Patch(facecolor=C["ref"], lw=0), _pair_fill, _pair_open],
+        labels=["Random", "Temporal", "Temporal, negatives"],
+        handler_map={tuple: HandlerTuple(ndivide=None, pad=0.0)},
+        frameon=False,
+        # 패널 안에 두면 막대를 덮는다. 패널 위 바깥에 한 줄로 둔다.
+        loc="lower center",
+        bbox_to_anchor=(0.5, 1.0),
+        ncol=3,
+        fontsize=5.8,
+        handlelength=1.4,
+        handletextpad=0.4,
+        columnspacing=0.8,
+        borderaxespad=0.1,
+    )
+    panel_label(ax, "b", x=-0.22, y=1.14)
 
     fig.tight_layout(w_pad=2.4)
     save(fig, "Fig5_recalibration_conformal")
@@ -834,8 +927,8 @@ def fig6():
 
     fig, axes = plt.subplots(1, 2, figsize=(COL2, 2.7))
     style = {
-        "DILIrank": dict(c=C["temporal"], marker="o", mfc=C["temporal"]),
-        "DICTrank": dict(c=C["random"], marker="s", mfc="white"),
+        "DILIrank": dict(c=C["dili"], marker="o", mfc=C["dili"]),
+        "DICTrank": dict(c=C["dict"], marker="s", mfc="white"),
     }
 
     # ---------------------------------------------- (a) 세 팔의 ECE
@@ -924,7 +1017,7 @@ def fig7():
     # 축 이름은 결과 파일이 한국어다. 그림은 영문으로 쓴다.
     AX = {"A1. 분자량": "MolWt", "A2. logP": "logP", "A3. 무작위 방향": "Random direction"}
     DS = ["DILIrank", "DICTrank"]
-    col = {"DILIrank": C["temporal"], "DICTrank": C["random"]}
+    col = {"DILIrank": C["dili"], "DICTrank": C["dict"]}
 
     fig, axes = plt.subplots(1, 2, figsize=(COL2, 2.7))
 
@@ -961,22 +1054,26 @@ def fig7():
     ax.set_xlim(-0.03, 1.03)
     ax.set_ylim(0.45, 1.02)
     hs = [
-        mpl.lines.Line2D([], [], color=C["temporal"], lw=1.0),
-        mpl.lines.Line2D([], [], color=C["random"], lw=1.0),
-        mpl.lines.Line2D([], [], color=C["gray"], lw=0.8, ls=":"),
-        mpl.lines.Line2D(
-            [], [], ls="none", marker="o", ms=4.5, mfc="white", mec=C["gray"], mew=1.1
+        mpl.lines.Line2D([], [], color=C["dili"], lw=1.0),
+        mpl.lines.Line2D([], [], color=C["dict"], lw=1.0),
+        tuple(mpl.lines.Line2D([], [], color=c, lw=0.8, ls=":") for c in (C["dili"], C["dict"])),
+        tuple(
+            mpl.lines.Line2D([], [], ls="none", marker="o", ms=3.6, mfc="white", mec=c, mew=1.0)
+            for c in (C["dili"], C["dict"])
         ),
     ]
     ax.legend(
         hs,
         ["DILIrank", "DICTrank", "Time split", "Matched alpha*"],
+        handler_map={tuple: HandlerTuple(ndivide=None, pad=0.4)},
         frameon=False,
         loc="lower right",
         handlelength=1.8,
         labelspacing=0.3,
+        borderaxespad=0.2,
     )
-    panel_label(ax, "a")
+    bare(ax)
+    panel_label(ax, "a", x=-0.22, y=1.10)
 
     # -------------------------------------------- (b) 맞춘 지점의 ECE
     ax = axes[1]
@@ -1013,7 +1110,9 @@ def fig7():
         pos += len(m) + 1.0
     allx = np.concatenate([xs[d] for d in DS])
     ax.set_xticks(allx)
-    ax.set_xticklabels(labs, rotation=30, ha="right")
+    ax.set_xticklabels([t.replace(" ", "\n") for t in labs])
+    ax.tick_params(axis="x", length=0)
+    bare(ax)
     ax.set_ylabel("Expected calibration error")
     ax.set_ylim(0, None)
     for ds in DS:
@@ -1028,20 +1127,23 @@ def fig7():
             fontsize=7.5,
         )
     hs = [
-        mpl.lines.Line2D([], [], color=C["gray"], lw=1.3),
-        mpl.lines.Line2D(
-            [], [], ls="none", marker="o", ms=4.5, mfc="white", mec=C["gray"], mew=1.1
+        tuple(mpl.lines.Line2D([], [], color=c, lw=1.3) for c in (C["dili"], C["dict"])),
+        tuple(
+            mpl.lines.Line2D([], [], ls="none", marker="o", ms=3.6, mfc="white", mec=c, mew=1.0)
+            for c in (C["dili"], C["dict"])
         ),
     ]
     ax.legend(
         hs,
         ["Time split", "Shift-matched split"],
+        handler_map={tuple: HandlerTuple(ndivide=None, pad=0.4)},
         frameon=False,
         loc="lower left",
         handlelength=1.8,
         labelspacing=0.3,
+        borderaxespad=0.2,
     )
-    panel_label(ax, "b")
+    panel_label(ax, "b", x=-0.22, y=1.10)
 
     fig.tight_layout(pad=0.3, w_pad=1.4)
     save(fig, "Fig7_shift_matched")
