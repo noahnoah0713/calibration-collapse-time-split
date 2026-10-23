@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """승인연도 후보 7건의 Drugs@FDA 근거를 뽑는다 (results/year_evidence.csv).
 
 check_years.py 가 results/year_corrections.csv 에 "더 이른 승인 기록이 있다"

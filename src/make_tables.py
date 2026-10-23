@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """투고용 LaTeX 표 생성기.
 
 모든 수치를 results/ 의 CSV·TXT 에서 직접 읽어 manuscript/ 의 .tex 표를 만든다.
