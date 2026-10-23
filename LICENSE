@@ -19,10 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-NOTE ON DATA. The licence above covers the code in this repository only.
-The datasets under data/ derive from US FDA/NCTR public releases (DILIrank 2.0,
-DICTrank) and from the WHO Collaborating Centre for Drug Statistics Methodology
-(ATC classification). Their terms are those of the original sources.
