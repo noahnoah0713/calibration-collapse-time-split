@@ -26,6 +26,10 @@ bash rerun_all.sh
 | Figures, vector and raster | `figures/` |
 | Every intermediate result | `results/` |
 
+`RESULTS_REPORT.md` is written in Korean. Every number in it is read from
+the CSV files in `results/`, whose column names are English, so the
+underlying values are readable without it.
+
 `rerun_all.sh` runs 77 scripts in 81 calls. The report and the two
 document-side verifiers run twice, because the second pass picks up a cell
 count the first pass produces. At the end it checks that every result file
@@ -121,6 +125,41 @@ Randomness is seeded through `numpy.random.default_rng`. LightGBM's thread
 dependence is disabled and RandomForest accumulates predictions on a single
 thread, so repeated runs reproduce bit for bit (`src/_shared.py`).
 
+### Known answers
+
+The checks above compare results with each other. `tests/` compares them with
+arithmetic done by hand: 41 unit tests in three files, run with the standard
+library alone.
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+- `test_metrics.py` pins the shared metric functions to worked examples — the
+  ECE of a two-bin case, the Murphy decomposition of an eight-point forecast
+  against its own Brier score, the bin a forecast of exactly 1.0 belongs to,
+  and the four constants the whole paper rests on.
+- `test_duplicate_definitions.py` applies those same answers to every copy.
+  `ece` is defined seven times across the analysis scripts, `calib_slope`,
+  `bin_table` and `murphy_decomposition` three times each. `check_determinism.py`
+  checks the copies agree; agreeing is not the same as being right, so each one
+  is measured against the hand-computed value separately. The file also pins
+  the number of definitions, so an unregistered eighth copy fails the run.
+- `test_invariants.py` covers what must hold for any input: ECE is unchanged by
+  row order and stays within its bounds, the decomposition terms stay in range
+  and track the Brier score to within the binning error, and scaling the logit
+  by c divides the calibration slope by exactly c.
+
+Every test was written by breaking the function it watches and confirming the
+suite turns red. Eight deliberate faults were tried — a sign flipped, a bin
+edge opened, a clip loosened, a rounding dropped, the `float32` cast removed at
+each of the three sites that carry it — and all eight were caught.
+
+`.github/workflows/checks.yml` runs three jobs on every push: the linters, the
+unit tests installed from `requirements.txt`, and a re-run of the document
+verifiers that confirms the committed report is still exactly what the
+generator produces from the committed results.
+
 ### What the checks actually caught
 
 These were written to find mistakes, not to pass. Four turned up, and until
@@ -150,9 +189,9 @@ inputs, the second now compares syntax trees.
 
 - **Figures.** `make_figures.py` keeps no record of the values it plotted,
   so a figure that disagrees with its table would go unnoticed.
-- **The metric definitions themselves.** The checks confirm that duplicated
-  definitions agree with each other, not that they are right. Agreement is
-  not correctness; that needs tests with known answers.
+- **The modelling code.** The unit tests cover the metric functions, not
+  featurization, model fitting or the split logic. Those are only checked
+  by agreement between scripts and by the end-to-end re-run.
 - **A clean-room run.** The pipeline has never been run end to end from a
   fresh clone under the same conditions a reader would have.
 
@@ -162,6 +201,7 @@ inputs, the second now compares syntax trees.
 
 ```
 src/              89 analysis and verification scripts (_shared.py is the common module)
+tests/            unit tests for the shared metric functions
 data/processed/   processed data the analyses read
 results/          every intermediate and final result: 99 CSV, 68 TXT, 2 JSON
 figures/          figures for the manuscript, PDF and 600 dpi PNG

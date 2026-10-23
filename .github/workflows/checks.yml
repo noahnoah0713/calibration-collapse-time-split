@@ -1,0 +1,53 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    name: formatting and lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # 서식 규칙은 pyproject.toml, 무시 목록은 setup.cfg 에 적혀 있다.
+      - run: pip install black pycodestyle pyflakes
+      - run: black --check src tests
+      - run: pycodestyle src tests
+      - run: pyflakes src tests
+
+  tests:
+    name: unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # README 가 독자에게 안내하는 설치 경로를 그대로 쓴다. 이 줄이
+      # 실패하면 안내가 틀린 것이므로 그것도 알아야 할 정보다.
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+
+  document:
+    name: report matches results
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # 문서 검증기와 생성기는 pandas 하나만 쓴다. 기록된 버전으로
+      # 고정해 두어야 재생성 결과가 커밋된 문서와 바이트까지 같다.
+      - run: pip install "pandas==3.0.5"
+      - run: python src/verify9.py
+      - run: python src/verify10.py
+      - run: python src/verify11.py
+      - run: python src/verify12.py
+      # verify9 가 생성기를 다시 돌린다. 그 뒤에도 파일이 그대로여야
+      # 커밋된 보고서가 손으로 고쳐지지 않았다는 뜻이다.
+      - run: git diff --exit-code -- RESULTS_REPORT.md
