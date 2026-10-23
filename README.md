@@ -1,6 +1,6 @@
 # Calibration collapse under time-split validation
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23583594.svg)](https://doi.org/10.5281/zenodo.23583594)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23583593.svg)](https://doi.org/10.5281/zenodo.23583593)
 [![checks](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml/badge.svg)](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml)
 
 Hepatotoxicity (DILIrank) and cardiotoxicity (DICTrank) models lose about
@@ -243,16 +243,19 @@ versions — see the determinism note above.
 
 ## Citing
 
-This repository is archived on Zenodo, which assigns it a DOI:
+This repository is archived on Zenodo. To cite the exact version an
+analysis was run with:
 
 > Lee, N. (2026). *Beyond AUROC: Quantifying Calibration Collapse in
 > Time-Split Validation of Hepatotoxicity and Cardiotoxicity Models*
 > (v0.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23583594
 
+Zenodo mints two DOIs. The one above belongs to v0.1 and never moves, which
+is what a paper should cite. `10.5281/zenodo.23583593` is the concept DOI: it always
+resolves to the newest release, and that is the one in the badge at the top.
+
 `CITATION.cff` in the repository root holds the same details in the
 machine-readable form that GitHub's "Cite this repository" button reads.
-Zenodo mints a separate DOI for each release; the record page lists both
-that one and the DOI above, which resolves to the most recent version.
 
 Bibliographic details for the paper itself will be added once it is
 published.
