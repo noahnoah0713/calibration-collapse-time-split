@@ -1,5 +1,7 @@
 # Beyond AUROC: calibration collapse under time-split validation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23583594.svg)](https://doi.org/10.5281/zenodo.23583594)
+
 Hepatotoxicity (DILIrank) and cardiotoxicity (DICTrank) models lose about
 0.09 AUROC when the held-out set is defined by approval year rather than at
 random. Their expected calibration error more than doubles. This repository
@@ -200,7 +202,19 @@ versions — see the determinism note above.
 
 ## Citing
 
-Bibliographic details and a DOI will be added once the paper is published.
+This repository is archived on Zenodo, which assigns it a DOI:
+
+> Lee, N. (2026). *Beyond AUROC: Quantifying Calibration Collapse in
+> Time-Split Validation of Hepatotoxicity and Cardiotoxicity Models*
+> (v0.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23583594
+
+`CITATION.cff` in the repository root holds the same details in the
+machine-readable form that GitHub's "Cite this repository" button reads.
+Zenodo mints a separate DOI for each release; the record page lists both
+that one and the DOI above, which resolves to the most recent version.
+
+Bibliographic details for the paper itself will be added once it is
+published.
 
 ## Licence
 
