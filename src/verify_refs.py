@@ -47,6 +47,8 @@ DOCS = [
     "figures.tex",
     "tables_main.tex",
     "tables_supp.tex",
+    # Additional file 1 — 본문과 별개 문서지만 같은 .bib 를 쓴다.
+    "supplementary.tex",
 ]
 
 # 본문에 남아 있어도 인용이 아닌 대괄호. 늘려야 하면 여기에 적는다.

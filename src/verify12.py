@@ -401,7 +401,7 @@ def main():
     nko = 0
     print("")
     print("본문 한국어 검사")
-    for d in DOCS + ["tables_main.tex", "tables_supp.tex", "figures.tex"]:
+    for d in DOCS + ["tables_main.tex", "tables_supp.tex", "figures.tex", "supplementary.tex"]:
         q = os.path.join(MAN, d)
         if not os.path.exists(q):
             continue
