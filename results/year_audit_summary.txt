@@ -516,3 +516,10 @@ DICTrank             AMPHETAMINE           2015            1960
 DICTrank               OXYCODONE           2016            1950
 DICTrank              AMANTADINE           2024            1968
 DICTrank              DICLOFENAC           2013            1988
+======================================================================
+[6] 승인연도 매칭 방식 -> results/year_match_types.csv
+ dataset    match_type   n  n_pre_cutoff  n_post_cutoff  min_year  max_year
+DILIrank         exact 785           630            155      1939      2022
+DILIrank salt_stripped   5             4              1      1960      2018
+DILIrank    first_word   4             4              0      1947      1978
+DILIrank     substring   2             2              0      1973      1973

@@ -4924,6 +4924,41 @@ for d in DS:
 w()
 w("**본문 수치는 S0 이며, 연도 배정 오류가 결론을 만들지 않았음을 S1·S2 가 보인다.**")
 w()
+_ymt = cv("year_match_types.csv")
+_ymt_d = _ymt[_ymt.dataset == "DILIrank"]
+_ymt_x = _ymt_d[_ymt_d.match_type == "exact"]
+_ymt_r = _ymt_d[_ymt_d.match_type != "exact"]
+_ymt_lbl = {
+    "salt_stripped": "염 표기 제거",
+    "first_word": "첫 단어",
+    "substring": "부분 문자열",
+}
+w()
+w(
+    "**승인연도를 어느 규칙으로 붙였는가.** DILIrank %d건 중 %d건은 성분명이 Drugs@FDA "
+    "기록과 정확히 일치해 붙었다. 나머지 %d건은 완화된 규칙으로 붙였다 — %s. 이 %d건의 "
+    "승인연도는 %d–%d년에 걸쳐 있고, 그중 %d건이 절단선(%d년) 아래, %d건이 위다. 즉 이름 "
+    "매칭의 불확실성이 시간분할 소속을 바꿀 여지는 %d건에 한정된다. **DICTrank 파이프라인은 "
+    "같은 세 규칙을 쓰지만 어느 규칙이 걸렸는지 기록하지 않아 같은 집계를 낼 수 없다** — "
+    "한계로 남긴다."
+    % (
+        int(_ymt_d.n.sum()),
+        int(_ymt_x.n.iloc[0]),
+        int(_ymt_r.n.sum()),
+        ", ".join(
+            "%s %d건" % (_ymt_lbl.get(r.match_type, r.match_type), int(r.n))
+            for _, r in _ymt_r.sort_values("n", ascending=False).iterrows()
+        ),
+        int(_ymt_r.n.sum()),
+        int(_ymt_r.min_year.min()),
+        int(_ymt_r.max_year.max()),
+        int(_ymt_r.n_pre_cutoff.sum()),
+        2010,
+        int(_ymt_r.n_post_cutoff.sum()),
+        int(_ymt_r.n_post_cutoff.sum()),
+    )
+)
+w()
 w("### 16.2 ATC V(기타) 계열 제외")
 w()
 w(
