@@ -2037,7 +2037,9 @@ _r3 = {d: cswc[(cswc.dataset == d) & (cswc.control == "R3")].iloc[0] for d in DS
 MAIN.table(
     "Importance weighting by a domain classifier does not restore calibration",
     "tab:covshift",
-    "llcccccc"[:8],
+    # 열은 7개다 (Dataset, Training weights, Effective n, Max w, AUROC,
+    # ECE, Resolution). 서식이 8열이면 빈 열이 하나 붙어 정렬이 밀린다.
+    "llccccc",
     _b,
     "Training compounds are weighted by $w(x)=P(\\mathrm{post}|x)/(1-P(\\mathrm{post}|x))$, "
     "where the probability comes from out-of-fold predictions of a classifier trained to "
@@ -2300,6 +2302,17 @@ _INFO = {
     "학습군 라벨만": "training labels only",
     "**검증군 라벨**": "validation labels",
 }
+# 추정량 이름이 결과 CSV 에서는 한국어다. 괄호 앞만 잘라 쓰고 있었는데
+# (`split(" (")[0]`) 괄호 앞에도 한국어가 있는 것이 넷이라, 보충표에
+# 한국어가 그대로 찍히고 있었다 (2026-10-23 확인: tables_supp.tex 9줄).
+# 영문 투고본에 한국어가 들어가면 심사자 쪽에서 글자가 깨지거나
+# 컴파일이 멈춘다.
+_EST = {
+    "Q0 참값": "Q0 True prevalence (oracle)",
+    "Q4 SLD/EM, 전체 학습": "Q4 SLD/EM, full training set",
+    "Q4b SLD/EM, 보정셋 제외 학습": "Q4b SLD/EM, calibration set excluded",
+    "Q5 SLD/EM + Platt 보정": "Q5 SLD/EM after Platt scaling",
+}
 for i, d in enumerate(DS):
     if i:
         _b.append("\\midrule")
@@ -2309,6 +2322,7 @@ for i, d in enumerate(DS):
         if r.pi_hat != r.pi_hat:
             continue
         _nm = str(r.estimator).split(" (")[0]
+        _nm = _EST.get(_nm, _nm)
         _b.append(
             row(
                 d if first else "",
@@ -2532,7 +2546,11 @@ _dsok10 = [d for d in DS if d not in _dsbad10]
 SUPP.table(
     "A per-class conformal guarantee recovers coverage in one dataset only",
     "tab:mondrian",
-    "llllccccc"[:10],
+    # 열이 10개다 (Dataset, Target, Split, Procedure, Coverage, Positive,
+    # Negative, Set size, z+, z-). 전에는 "llllccccc"[:10] 로 적혀 있었는데
+    # 그 문자열이 9자라 슬라이스가 9개만 돌려줬고, 모든 행이 열을 하나씩
+    # 넘겨 LaTeX 가 "Extra alignment tab" 으로 멈췄다 (2026-10-23 확인).
+    "llllcccccc",
     _b,
     "Marginal split conformal calibrates one quantile on the whole calibration "
     "set and guarantees only overall coverage, so the per-class figures of the "
@@ -2695,6 +2713,40 @@ _fold = fat[~fat.newly_included].copy()
 _fold["sig_existing"] = _fold.sig_existing.astype(bool)
 _fold["sig_F0"] = _fold.sig_F0.astype(bool)
 _fflipT = _fold[_fold.sig_existing & ~_fold.sig_F0]
+# 이 각주는 F0 에서 유의성을 잃는 검정의 이름을 그대로 찍는다. 그런데
+# 검정 이름이 결과 CSV 에서는 한국어다. 그래서 영문 투고본의 보충표
+# 각주에 한국어가 한 줄 들어가 있었다 (2026-10-23 확인). 기존 가족에
+# 들어 있는 검정 전부를 번역해 두고, 번역이 없는 이름이 찍히려 하면
+# 조용히 한국어를 내보내지 말고 멈춘다.
+_TESTEN = {
+    "R1. 무작위": "R1, unconstrained random split",
+    "R2. 무작위 + 검증군 비율맞춤": "R2, held-out prevalence matched",
+    "R3. 무작위 + 학습·검증 비율맞춤": "R3, both prevalences matched",
+    "시간분할 성능 저하": "temporal degradation",
+    "ATC L(항종양) vs 그외": "ATC class L versus the rest",
+    "구조: MW>500": "structural subgroup, MW above 500",
+    "구조: N>=6": "structural subgroup, six or more nitrogens",
+    "구조: logP>=3": "structural subgroup, logP of 3 or above",
+    "구조: 방향환>=4": "structural subgroup, four or more aromatic rings",
+    "유사도-정답확률 Spearman": "similarity versus true-class probability, Spearman",
+    "화학공간 유사도 상/하위 AUROC 차이": "AUROC difference, high versus low similarity",
+}
+
+
+def _testen(name):
+    """검정 이름을 영문으로. 없는 이름이면 멈춘다 — 조용히 통과시키면
+    한국어가 그대로 투고본에 들어간다."""
+    key = str(name).split(" (")[0]
+    if key in _TESTEN:
+        return _TESTEN[key]
+    if any("\uac00" <= ch <= "\ud7a3" for ch in key):
+        raise SystemExit(
+            "make_tables: 검정 이름 번역이 없다 — %r (src/make_tables.py 의 _TESTEN 에 추가할 것)"
+            % key
+        )
+    return key
+
+
 _SECEN = {
     "§11.1": "Label-conditional conformal coverage",
     "§12.2": "Reversed temporal split",
@@ -2773,10 +2825,7 @@ SUPP.table(
         (
             (
                 " (%s)"
-                % ", ".join(
-                    "%s, %s" % (r.dataset, str(r.test).split(" (")[0])
-                    for _, r in _fflipT.iterrows()
-                )
+                % ", ".join("%s, %s" % (r.dataset, _testen(r.test)) for _, r in _fflipT.iterrows())
             )
             if len(_fflipT)
             else ""
