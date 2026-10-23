@@ -9,14 +9,13 @@ verify9·verify10 은 "문서와 결과 파일이 맞는가" 를 본다. "어제
 
 쓰기
 ----
-    python src/diff_results.py results_백업_20261020_2105
+    python src/diff_results.py _backup/precision_20261020
     python src/diff_results.py <백업디렉터리> --save   # _backup 에 CSV 로
 """
 
 import os
 import sys
 
-import numpy as np
 import pandas as pd
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

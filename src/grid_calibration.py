@@ -33,13 +33,6 @@ from sklearn.metrics import roc_auc_score
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _shared as S  # noqa: E402
 
-try:
-    from lightgbm import LGBMClassifier
-
-    HAS_LGBM = True
-except ImportError:
-    HAS_LGBM = False
-
 ROOT = Path(__file__).resolve().parents[1]
 PROC, RES = ROOT / "data" / "processed", ROOT / "results"
 RES.mkdir(exist_ok=True)

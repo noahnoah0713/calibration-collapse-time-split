@@ -249,9 +249,7 @@ def checks():
 
 
 def main():
-    if not os.path.isdir(MAN) or not any(
-        os.path.exists(os.path.join(MAN, d)) for d in DOCS
-    ):
+    if not os.path.isdir(MAN) or not any(os.path.exists(os.path.join(MAN, d)) for d in DOCS):
         # 원고가 없으면 대조할 산문이 없다. 건너뛴다 (2026-10-22).
         print("건너뜀 — %s 에 원고가 없다 (이 저장소에 포함하지 않는다)." % MAN)
         return

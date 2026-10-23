@@ -1,0 +1,5 @@
+# black 설정. setup.cfg 의 pycodestyle max-line-length 와 같은 값을 쓴다.
+# 이 파일이 없으면 black 기본값 88 이 적용되어 거의 모든 파일이
+# 다시 정렬 대상으로 잡힌다.
+[tool.black]
+line-length = 100

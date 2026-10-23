@@ -139,7 +139,6 @@ def shift_auc(X, lab, seed=S.SEED):
 
 def axes(X, df):
     """분할 축 3종. 값이 큰 쪽이 '검증군' 이 된다."""
-    mw = df["smiles"].map(len).values.astype(float)  # 자리표시자, 아래에서 교체
     desc = X[:, -6:]  # featurize 가 뒤에 붙이는 기술자 6종
     r = np.random.default_rng(S.SEED)
     # 무작위 방향: 지문 공간의 임의 선형결합. 어떤 물리화학적 해석도 없다.

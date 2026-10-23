@@ -282,7 +282,6 @@ def main():
     log(
         "1. 빠져 있던 %d건을 한 가족으로 보정하면 %d건이 유의하다(α=%.2f)." % (len(new), _n4, ALPHA)
     )
-    _sig4 = g[g.sig_F4]
     for src in SECS:
         _a = g[g.source == src]
         log(

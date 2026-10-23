@@ -55,8 +55,6 @@ from brier_decomposition import (  # noqa: E402
     N_REPEATS,
     SEED,
     bin_table,
-    featurize,
-    make_model,
     murphy_decomposition,
     shares,
 )

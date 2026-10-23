@@ -24,7 +24,7 @@ bash rerun_all.sh
 | Figures, vector and raster | `figures/` |
 | Every intermediate result | `results/` |
 
-`rerun_all.sh` runs 78 scripts in 83 calls. The report and the two
+`rerun_all.sh` runs 77 scripts in 81 calls. The report and the two
 document-side verifiers run twice, because the second pass picks up a cell
 count the first pass produces. At the end it checks that every result file
 the report, tables and figures read actually exists, and exits non-zero with
@@ -161,12 +161,12 @@ inputs, the second now compares syntax trees.
 ```
 src/              89 analysis and verification scripts (_shared.py is the common module)
 data/processed/   processed data the analyses read
-results/          every intermediate and final result: 105 CSV, 76 summary TXT and JSON
+results/          every intermediate and final result: 103 CSV, 67 TXT, 6 JSON
 figures/          figures for the manuscript, PDF and 600 dpi PNG
 _backup/          one snapshot kept because a script compares against it
 ```
 
-Of the 181 files in `results/`, 95 are read by name by the report, tables and
+Of the 176 files in `results/`, 96 are read by name by the report, tables and
 figures. The rest are per-analysis summaries a reader can skim without
 running anything, permutation null distributions kept so the tests need not
 be repeated, and audit records for SMILES, approval years, labels and ATC

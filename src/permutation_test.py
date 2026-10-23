@@ -310,9 +310,6 @@ def run(name, filename, endpoint):
     pd.DataFrame({"null_auroc": null}).to_csv(
         RES / f"permutation_null_{name.lower()}.csv", index=False
     )
-    # 기존 파일명 호환 (make_figures 등이 참조할 수 있음)
-    if name == "DILIrank":
-        pd.DataFrame({"null_auroc": null}).to_csv(RES / "permutation_null.csv", index=False)
 
     return {
         "dataset": name,

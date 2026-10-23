@@ -3848,10 +3848,19 @@ w("|---|---|---|")
 for desc in ["MolWt", "MolLogP", "TPSA", "NumHAcceptors", "NumRotatableBonds", "NumHDonors"]:
     a = sqd[(sqd.dataset == "DILIrank") & (sqd.descriptor == desc)].iloc[0]
     b = sqd[(sqd.dataset == "DICTrank") & (sqd.descriptor == desc)].iloc[0]
-    fm = (lambda x: "%.1f" % x) if desc in ("MolWt", "TPSA") else (lambda x: "%.2f" % x)
     if desc.startswith("Num"):
-        fm = lambda x: "%.0f" % x
-    sgn = lambda x: ("+" if x >= 0 else "") + fm(x)
+        spec = "%.0f"
+    elif desc in ("MolWt", "TPSA"):
+        spec = "%.1f"
+    else:
+        spec = "%.2f"
+
+    def fm(x):
+        return spec % x
+
+    def sgn(x):
+        return ("+" if x >= 0 else "") + fm(x)
+
     w(
         "| %s | %s → %s (%s) | %s → %s (%s) |"
         % (

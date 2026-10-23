@@ -100,7 +100,9 @@ def boot_nb(y, p, pt, n_boot=N_BOOT, seed=S.SEED):
 
 
 def platt(y_tr, p_tr, p_te):
-    lp = lambda q: np.log(np.clip(q, S.EPS, 1 - S.EPS) / np.clip(1 - q, S.EPS, 1 - S.EPS))
+    def lp(q):
+        return np.log(np.clip(q, S.EPS, 1 - S.EPS) / np.clip(1 - q, S.EPS, 1 - S.EPS))
+
     lr = LogisticRegression(max_iter=1000)
     lr.fit(lp(p_tr).reshape(-1, 1), y_tr)
     return lr.predict_proba(lp(p_te).reshape(-1, 1))[:, 1]

@@ -144,8 +144,6 @@ def run_dataset(name, path):
         for nb in BIN_COUNTS:
             edges = edge_fn(p, nb)
             e, rel, res = ece_and_decomp(y_te, p, edges)
-            total = rel + res if (rel + res) > 0 else np.nan
-            pct_rel = 100 * rel / (rel + res) if (rel + res) > 0 else np.nan
             # 판별력/보정 기여도는 무작위 대조군 없이는 정의 불가하므로
             # 여기서는 ECE와 reliability/resolution 절대값만 비교
             log(f"{scheme:>10s}{nb:>8d}{e:>10.4f}{rel:>13.4f}{res:>12.4f}")
@@ -172,7 +170,6 @@ def run_dataset(name, path):
         f"  기존 보고값(균등폭 10구간): ECE {base['ece']:.4f}, "
         f"reliability {base['reliability']:.4f}, resolution {base['resolution']:.4f}"
     )
-    rel_ratio = d["reliability"].max() / max(d["reliability"].min(), 1e-6)
     log(
         "  reliability가 resolution을 압도한다는 결론 유지 여부: "
         + (
