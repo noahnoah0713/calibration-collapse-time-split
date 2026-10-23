@@ -203,6 +203,16 @@ inputs, the second now compares syntax trees.
 
 ### What is still unchecked
 
+- **The method itself.** The checks confirm that the written rules were
+  executed and that the numbers agree with each other. Whether those are the
+  right rules — the choice of control arm, estimator and test — is not
+  something any script here can settle.
+- **The analysis-specific maths.** Of the 245 functions in `src/`, eleven are
+  pinned to hand-computed answers. The bootstrap intervals, the recalibrators,
+  the conformal coverage and the multiple-comparison correction are checked
+  only by agreeing with each other and by the end-to-end re-run. The `float32`
+  defect showed what that misses: seven copies of one metric agreed with each
+  other for weeks while all seven were wrong.
 - **Figures.** `make_figures.py` keeps no record of the values it plotted,
   so a figure that disagrees with its table would go unnoticed. The headline
   values were matched against the figures by hand once, by recording every
