@@ -5,10 +5,10 @@
 
 Hepatotoxicity (DILIrank) and cardiotoxicity (DICTrank) models lose about
 0.08 AUROC when the held-out set is defined by approval year rather than at
-random. Their expected calibration error more than doubles, and still rises
-by 1.37x and 1.21x once prevalence is held equal on both sides of the split.
-This repository holds the analysis code and every intermediate result behind
-that claim.
+random. Their expected calibration error more than doubles, and with
+prevalence held equal on both sides of the split it is still 1.37x and 1.21x
+the matched control. This repository holds the analysis code and every
+intermediate result behind that claim.
 
 Everything in the paper — each number, table and figure — is regenerated
 from `data/processed/` by the scripts here. Nothing is typed in by hand.
@@ -25,7 +25,7 @@ bash rerun_all.sh
 | Output | Where |
 |---|---|
 | Results report, with all numbers and tables | `RESULTS_REPORT.md` |
-| LaTeX tables for the manuscript | `manuscript/tables_main.tex`, `tables_supp.tex` |
+| LaTeX tables for the manuscript | `manuscript/tables_main.tex`, `tables_supp.tex` (the run creates the folder) |
 | Figures, vector and raster | `figures/` |
 | Every intermediate result | `results/` |
 
@@ -111,7 +111,7 @@ repeated runs keep the pre-filter data the sensitivity analyses depend on.
 
 No figure in the report is transcribed. `src/make_report.py` and
 `src/make_tables.py` read every value out of `results/` and format it, so a
-copying error is not possible by construction. Four scripts then check the
+copying error is not possible by construction. Five scripts then check the
 result from both directions:
 
 - `verify9.py` traces every number in the report back to the file it came
@@ -121,6 +121,8 @@ result from both directions:
   `results/` and looks for them in the document, cell by cell.
 - `verify11.py` checks that the 32-cell model × representation grid agrees
   between the two scripts that compute it.
+- `verify12.py` does the same for the manuscript prose, and skips itself
+  when the manuscript is absent, as it is here.
 - `verify_state.py` records hashes of the data, the code and the results so
   drift between them is visible.
 
@@ -193,7 +195,7 @@ inputs, the second now compares syntax trees.
 - **Figures.** `make_figures.py` keeps no record of the values it plotted,
   so a figure that disagrees with its table would go unnoticed.
 - **The modelling code.** The unit tests cover the metric functions, not
-  featurization, model fitting or the split logic. Those are only checked
+  featurisation, model fitting or the split logic. Those are only checked
   by agreement between scripts and by the end-to-end re-run.
 - **A clean-room run.** The pipeline has never been run end to end from a
   fresh clone under the same conditions a reader would have.
@@ -208,7 +210,8 @@ tests/            unit tests for the shared metric functions
 data/processed/   processed data the analyses read
 results/          every intermediate and final result: 99 CSV, 68 TXT, 2 JSON
 figures/          figures for the manuscript, PDF and 600 dpi PNG
-_backup/          one snapshot kept because a script compares against it
+_backup/          results from before the precision fix; record_precision_fix.py
+                  reads them to document what it changed
 ```
 
 Of the 169 files in `results/`, 96 are read by name by the report, tables and
