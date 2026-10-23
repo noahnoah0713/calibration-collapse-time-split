@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """라벨 조건부(Mondrian) conformal — 한계 5번.
 
 왜 필요한가

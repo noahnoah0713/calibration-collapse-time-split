@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """§9.1(robustness.py) 과 §9.5(grid_calibration.py) 의 격자가 실제로 같은
 격자인지 결과 파일로 확인한다.
 

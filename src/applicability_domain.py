@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """적용범위(applicability domain) — 미설명분이 '낯선 분자' 에 몰려 있는가.
 
 왜 필요한가 (Major 3 의 잔여분)
