@@ -1,4 +1,4 @@
-# Beyond AUROC: calibration collapse under time-split validation
+# Calibration collapse under time-split validation
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23583594.svg)](https://doi.org/10.5281/zenodo.23583594)
 [![checks](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml/badge.svg)](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml)
