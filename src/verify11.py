@@ -48,6 +48,15 @@ def main():
     print("robustness_models.csv  %d행" % len(ra))
     print("grid_calibration.csv   %d행" % len(rb))
 
+    # 0) 칸 수가 32 인가.
+    # 왜 필요한가 — _shared.grid_models() 는 lightgbm 이 없으면 조용히
+    # 3종만 돌려준다. 그러면 두 파일이 나란히 24칸으로 줄고, 아래의
+    # '서로 같은가' 검사는 둘 다 줄었으므로 통과해 버린다. 논문 수치는
+    # 모델 4종 x 표현 4종 x 데이터셋 2개 = 32칸에서 나온 값이다.
+    for nm, r in (("robustness_models.csv", ra), ("grid_calibration.csv", rb)):
+        if len(r) != 32:
+            fails.append("%s 가 32칸이 아니라 %d칸이다 (lightgbm 미설치면 24칸)" % (nm, len(r)))
+
     # 1) 칸 집합이 같은가
     ka = set(map(tuple, ra[KEY].values))
     kb = set(map(tuple, rb[KEY].values))

@@ -133,8 +133,8 @@ thread, so repeated runs reproduce bit for bit (`src/_shared.py`).
 ### Known answers
 
 The checks above compare results with each other. `tests/` compares them with
-arithmetic done by hand: 41 unit tests in three files, run with the standard
-library alone.
+arithmetic done by hand: 54 unit tests in four files, driven by `unittest`, so
+there is nothing extra to install.
 
 ```bash
 python -m unittest discover -s tests -v
@@ -154,6 +154,12 @@ python -m unittest discover -s tests -v
   row order and stays within its bounds, the decomposition terms stay in range
   and track the Brier score to within the binning error, and scaling the logit
   by c divides the calibration slope by exactly c.
+- `test_modelling.py` pins the contract of the modelling code rather than its
+  values, which move with the library versions: the feature matrix is 2048 bits
+  plus six descriptors in the documented order, the fingerprint block is binary,
+  the same molecules give the same matrix and the same seed gives the same
+  predictions. It also pins the model grid, which is where the fifth defect
+  below came from.
 
 Every test was written by breaking the function it watches and confirming the
 suite turns red. Eight deliberate faults were tried and all eight were
@@ -170,7 +176,7 @@ generator produces from the committed results.
 
 ### What the checks actually caught
 
-These were written to find mistakes, not to pass. Four turned up, and until
+These were written to find mistakes, not to pass. Five turned up, and until
 each was found every check was green. The source comments carry the dates
 and the reasoning.
 
@@ -180,6 +186,7 @@ and the reasoning.
 | Two hand-run steps missing from the pipeline | comparing a full re-run against the previous results cell by cell | §13.5 and §33 would not reproduce for anyone else |
 | Four result files a resume cache had skipped entirely | a result file older than the code that writes it | two full re-runs had reported them as complete |
 | Duplicate rows accumulated by append-mode writes | counting exactly repeated rows across every result file | the multiple-comparison correction counted 73 tests instead of 57 |
+| A model grid that silently drops from 32 cells to 24 when LightGBM is missing | writing a unit test for the model factory | `verify11.py` compared the two grid files with each other, so both shrinking together passed |
 
 The first one took two wrong guesses to find. The difference was blamed on
 lbfgs reaching a different optimum each run; a determinism check ruled that
@@ -196,14 +203,24 @@ inputs, the second now compares syntax trees.
 ### What is still unchecked
 
 - **Figures.** `make_figures.py` keeps no record of the values it plotted,
-  so a figure that disagrees with its table would go unnoticed.
-- **The modelling code.** The unit tests cover the metric functions, not
-  featurisation, model fitting or the split logic. Those are only checked
-  by agreement between scripts and by the end-to-end re-run.
-- **A clean-room run.** The checks workflow does regenerate the report and
-  re-run the verifiers from a fresh checkout on every push, but
-  `rerun_all.sh` itself — the analyses that produce `results/` — has never
-  been run end to end from a clean clone.
+  so a figure that disagrees with its table would go unnoticed. The headline
+  values were matched against the figures by hand once, by recording every
+  number the plotting calls received: sixteen table values appear in a figure
+  and all sixteen agreed, and the rest are not plotted at all. Nothing
+  re-checks this when the figures change.
+- **The modelling code.** `test_modelling.py` pins shape, order and
+  determinism, not the values themselves — nothing says the fingerprints or
+  the fitted probabilities are the right numbers, only that they are stable
+  and well formed.
+- **A clean-room run.** The checks workflow regenerates the report and
+  re-runs the verifiers from a fresh checkout on every push, and seven of the
+  analysis scripts have been run from a clean clone on a deliberately
+  different stack (Python 3.10, NumPy 2.2, pandas 2.3, scikit-learn 1.7,
+  RDKit 2026.09) to see what moves: they all ran, `check_determinism.py`
+  still reported no failures, and 41 cells shifted in the fourth decimal —
+  temporal AUROC 0.6476 to 0.6489, temporal ECE 0.4384 to 0.4445. The
+  remaining seventy scripts, and `rerun_all.sh` end to end, have not been run
+  that way.
 
 ---
 
