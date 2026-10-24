@@ -3,9 +3,12 @@
 
 왜 필요한가
 -----------
-sn-jnl 단일단의 판면은 119mm x 194.25mm 다 (sn-jnl.cls 의 geometry:
-paperwidth=155mm, paperheight=235mm, text={119mm,194.25mm}). 본문 폭은
-339pt 뿐이라 열이 일곱 개를 넘는 표는 그대로 두면 판면을 넘는다. 넘치면
+sn-jnl 단일단의 판면은 A4(210x297mm) 에 본문 31pc x 194.25mm 다
+(sn-jnl.cls v3.1 의 geometry: paperwidth=210mm, paperheight=297mm,
+text={31pc,194.25mm}). 31pc = 372pt 다. 2026-10-24 에 처음에는 155x235mm /
+119mm 로 적힌 **구버전** cls 를 보고 339pt 로 잡았는데, 그 버전에는
+Numbered·NameDate 옵션도 없다. 원고가 쓰는 v3.1 계열(sn-mathphys-num,
+sn-vancouver-num, Numbered 가 있는 판)은 A4·31pc 다. 넘치면
 Overleaf 는 Overfull hbox 경고만 내고 조용히 글자를 여백 밖으로 밀어낸다.
 
 그래서 표마다 tabular 의 **자연 폭**을 재고, make_tables.py 의 LAYOUT 이
@@ -35,7 +38,7 @@ MAN = os.path.join(ROOT, "manuscript")
 SRC = os.path.join(ROOT, "src")
 
 MM = 2.84526  # 1mm 의 pt 값
-TEXT_W = 119.0 * MM  # 339pt — 세로쓰기 표가 들어갈 폭
+TEXT_W = 31.0 * 12.0  # 31pc = 372pt — 세로쓰기 표가 들어갈 폭
 TEXT_H = 194.25 * MM  # 553pt — 가로로 돌린 표가 들어갈 폭
 SIZES = ["normalsize", "small", "footnotesize", "scriptsize"]
 
@@ -109,7 +112,7 @@ def measure(items):
 
 def main():
     print("표 폭 검사 — sn-jnl 단일단 판면 %.0fpt x %.0fpt" % (TEXT_W, TEXT_H))
-    print("  (sn-jnl.cls: paperwidth=155mm paperheight=235mm text={119mm,194.25mm})")
+    print("  (sn-jnl.cls v3.1: paperwidth=210mm paperheight=297mm text={31pc,194.25mm})")
     print("")
     items = []
     for f in ("tables_main.tex", "tables_supp.tex"):

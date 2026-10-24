@@ -1,16 +1,17 @@
-"""
+r"""
 논문 투고용 그림 생성
 
 규격:
-  - 크기: 폭 4.685in = sn-jnl 단일단 textwidth (119mm). sn-jnl.cls 의
-    geometry 가 text={119mm,194.25mm} 이다. 전에 130.7mm 로 적혀 있었는데
-    그 값은 어디서 온 것인지 근거가 없고, 그대로 두면 width=\textwidth 로
-    넣을 때 0.91 로 줄어들어 7pt 글자가 6.4pt 로 실렸다 (2026-10-24
-    sn-jnl.cls 원문에서 확인). bbox_inches="tight" 가 여백을 조금 깎으므로
-    실제 축척은 1.0 을 조금 넘는다 — 글자가 작아지는 쪽이 아니라 커지는
-    쪽이라 안전하다. BMC 는 production 에서 85mm 또는 170mm 로 다시
-    앉히는데, 119mm 로 그려 두면 170mm 에서는 글자가 커지고 85mm 에서도
-    5pt 밑으로 내려가지 않는다.
+  - 크기: 폭 5.146in = sn-jnl 단일단 \textwidth (31pc = 372pt).
+    원고가 쓰는 템플릿은 v3.1(2024-12) 이고 그 sn-jnl.cls 의 geometry 는
+    paperwidth=210mm, paperheight=297mm, text={31pc,194.25mm} 다. 즉 A4 에
+    본문 372pt 다. width=\textwidth 로 넣으면 축척이 1.00 근처가 된다.
+
+    2026-10-24 주의: 이 값을 한때 4.685in(119mm)으로 바꿨다가 되돌렸다.
+    155x235mm / text={119mm,194.25mm} 로 적힌 **구버전** cls 를 보고
+    고친 것이었는데, 그 버전에는 Numbered·NameDate 옵션도 없어서 원고가
+    쓰는 판이 아니다. 판면 값을 다시 확인할 일이 있으면 cls 에
+    \DeclareOption{Numbered} 가 있는지로 버전을 먼저 가릴 것.
   - 폰트: Arial 계열, 축 7pt, 눈금 6.5pt, 패널 라벨 8pt bold
   - 저장: PDF(벡터) + PNG(600dpi) 동시
   - Nature 계열 관행: 눈금선을 깔지 않고 축선은 왼쪽·아래만, 눈금은
@@ -85,7 +86,7 @@ FIG = Path(os.environ.get("FIG_OUT", ROOT / "figures"))
 FIG.mkdir(parents=True, exist_ok=True)
 
 SEED, CUTOFF = 42, 2010
-COL1, COL2 = 4.685, 4.685  # 인치 = sn-jnl 단일단 \textwidth (119mm = 339pt)
+COL1, COL2 = 5.146, 5.146  # 인치 = sn-jnl 단일단 \textwidth (31pc = 372pt)
 # 이 폭으로 만들면 width=\textwidth 삽입 시 축척이 1.0 근처가 된다.
 # src/verify14.py 가 만들어진 PDF 의 실제 폭을 재서 확인한다.
 N_BINS = 10
