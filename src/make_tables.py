@@ -2425,6 +2425,12 @@ SUPP.table(
     "tab:prior2",
     "lllccccc"[:8],
     _b,
+    "The estimators are classify and count (CC), its adjusted (ACC) and "
+    "probabilistic adjusted (PACC) forms, the "
+    "Saerens--Latinne--Decaestecker expectation--maximisation procedure "
+    "(SLD/EM), the hard and soft forms of black-box shift estimation (BBSE), "
+    "minimisation of the Hellinger distance between score distributions (HDy) "
+    "and the median sweep (MS); the Methods give the references. "
     "Sensitivities, specificities and score distributions are estimated on a held-out "
     "slice of the training era, so no estimator uses validation labels except the oracle "
     "row. Intervals are 2.5--97.5 percentiles of a bootstrap of the validation set with "
