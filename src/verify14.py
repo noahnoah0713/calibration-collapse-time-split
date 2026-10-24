@@ -4,10 +4,14 @@
 왜 필요한가
 -----------
 figures.tex 는 그림을 width=\\textwidth 로 넣는다. sn-jnl 단일단의
-\\textwidth 는 119mm = 339pt 다 (sn-jnl.cls: text={119mm,194.25mm}).
-그림 PDF 가 그보다 넓으면 LaTeX 가 줄여서 앉히고, 줄인 만큼 글자도
-작아진다. 2026-10-24 에 그림이 130.7mm 로 그려져 있어서 7pt 로 지정한
-축 글자가 6.4pt 로 실리고 있었다. 경고는 아무데도 찍히지 않는다.
+\\textwidth 는 31pc = 372pt 다 (sn-jnl.cls v3.1: paperwidth=210mm,
+paperheight=297mm, text={31pc,194.25mm}). 그림 PDF 가 그보다 넓으면
+LaTeX 가 줄여서 앉히고, 줄인 만큼 글자도 작아진다. 경고는 아무데도
+찍히지 않는다.
+
+2026-10-24 주의: 처음에는 155x235mm / 119mm 로 적힌 **구버전** cls 를
+보고 339pt 로 잡았다. 그 버전에는 Numbered 옵션이 없어서 원고가 쓰는
+판이 아니다. 원고의 템플릿은 v3.1 이고 A4 / 31pc 다.
 
 그래서 만들어진 PDF 의 MediaBox 를 직접 읽어 축척을 계산하고, 축척과
 그 축척에서의 글자 크기가 허용 범위에 있는지 본다.
@@ -35,7 +39,7 @@ FIGDIR = os.environ.get("FIG_OUT") or os.path.join(ROOT, "figures")
 MAN = os.path.join(ROOT, "manuscript")
 
 MM = 2.84526
-TEXT_W = 119.0 * MM  # 339pt
+TEXT_W = 31.0 * 12.0  # 31pc = 372pt
 SCALE_LO, SCALE_HI = 0.95, 1.10
 TICK_PT = 6.5  # make_figures.py 의 xtick/ytick labelsize
 AXIS_PT = 7.0  # axes.labelsize
@@ -72,7 +76,7 @@ def main():
             txt = io.open(f, encoding="utf-8").read()
             used |= set(re.findall(r"\\includegraphics\[[^\]]*\]\{([^}]+)\}", txt))
 
-    print("그림 폭 검사 — sn-jnl 단일단 판면 폭 %.0fpt (119mm)" % TEXT_W)
+    print("그림 폭 검사 — sn-jnl 단일단 판면 폭 %.0fpt (31pc)" % TEXT_W)
     print("")
     print("%-34s %7s %6s %7s %7s %s" % ("그림", "폭pt", "축척", "글자pt", "선pt", "판정"))
     nbad = 0

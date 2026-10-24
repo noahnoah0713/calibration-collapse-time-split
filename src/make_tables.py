@@ -299,41 +299,37 @@ def head(*cells):
 
 
 # 표마다 글자 크기와 가로쓰기 여부. (크기, 가로쓰기) 이고 크기가 None 이면
-# 본문 크기다. sn-jnl 단일단의 본문 폭은 119mm = 339pt, 가로로 돌리면
-# 194.25mm = 553pt 다. 어느 값이 필요한지는 src/verify13.py 가 pdflatex 로
-# 표의 자연 폭을 재서 검사하므로, 여기를 손으로 고치면 그 검사가 맞는지
-# 말해 준다. 적지 않은 표는 그대로 본문 크기·세로쓰기다.
+# 본문 크기다. sn-jnl 단일단(v3.1, A4)의 본문 폭은 31pc = 372pt, 가로로
+# 돌리면 194.25mm = 553pt 다. 어느 값이 필요한지는 src/verify13.py 가
+# pdflatex 로 표의 자연 폭을 재서 검사하므로, 여기를 손으로 고치면 그
+# 검사가 맞는지 말해 준다. 적지 않은 표는 그대로 본문 크기·세로쓰기다.
 LAYOUT = {
     # 세로쓰기로 들어가지만 본문 크기로는 넘치는 표
-    "tab:brier": ("small", False),
-    "tab:prequential": ("footnotesize", False),
-    "tab:recal": ("small", False),
-    "tab:covshift": ("footnotesize", False),
-    "tab:conflict": ("small", False),
-    "tab:fdrall": ("footnotesize", False),
-    "tab:desc": ("footnotesize", False),
-    "tab:curation": ("footnotesize", False),
+    "tab:prequential": ("small", False),
+    "tab:fdrall": ("small", False),
+    "tab:desc": ("small", False),
+    "tab:curation": ("small", False),
     # 가로로 돌려야 하는 표
     "tab:sweep": (None, True),
-    "tab:nontemporal": ("footnotesize", True),
+    "tab:era": (None, True),
+    "tab:nontemporal": ("small", True),
     "tab:shiftmatched": (None, True),
+    "tab:mondrian": (None, True),
     "tab:recency": ("scriptsize", True),
     "tab:prior": (None, True),
+    "tab:prior2": (None, True),
     "tab:applicability": ("small", True),
+    "tab:adfilter": (None, True),
     "tab:hparam": (None, True),
     "tab:power": (None, True),
+    "tab:interval": (None, True),
     "tab:reverse": (None, True),
     "tab:concept": ("small", True),
-    "tab:ratioci": (None, True),
-    "tab:trivial": (None, True),
-    "tab:era": (None, True),
-    "tab:mondrian": (None, True),
-    "tab:prior2": (None, True),
-    "tab:adfilter": (None, True),
-    "tab:interval": (None, True),
     "tab:gridr3": (None, True),
     "tab:horizon": (None, True),
+    "tab:ratioci": (None, True),
     "tab:tieavg": (None, True),
+    "tab:trivial": (None, True),
     "tab:subcalib": (None, True),
 }
 
