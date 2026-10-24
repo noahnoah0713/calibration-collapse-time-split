@@ -25,12 +25,16 @@
 생성 그림:
   Fig 1  분할 전략별 AUROC / ECE (2패널)
   Fig 2  보정 곡선 reliability diagram (2패널: 두 데이터셋)
-  Fig 3  견고성 (2패널: 32조합 ECE 배율 분포, 절단연도 민감도)
-  Fig 4  학습 유병률 격차 스윕 (2패널)
+  Fig 3  학습 유병률 격차 스윕 (2패널)
+  Fig 4  이동량을 맞춘 비시간 분할 (2패널)
   Fig 5  재보정 사다리와 conformal 커버리지 (2패널)   ← 2026-10-22
   Fig 6  배포 시뮬레이션과 라벨 지연 (2패널)           ← 2026-10-22
-  Fig 7  이동량을 맞춘 비시간 분할 (2패널)            ← 2026-10-23
-  Fig S1 ATC 계열별 성능
+  Fig 7  견고성 (3패널: 32조합 ECE 배율, 절단연도 민감도 둘)
+  Fig S1 ATC 계열별 성능 (Additional file 1)
+
+  2026-10-24: 그림 번호를 본문 인용 순서에 맞춰 다시 매겼다. 학술지는
+  "본문에 처음 언급되는 순서로 번호 매기고 그 순서로 올리라" 고 요구한다.
+  옛 Fig4 -> Fig3, 옛 Fig7 -> Fig4, 옛 Fig3 -> Fig7 이다.
 
   2026-10-22: 이 목록이 실제 출력과 어긋나 있었다 — 유병률이 FigS1 에서
   Fig4 로, ATC 가 FigS2 에서 FigS1 로 옮겨간 뒤 주석만 안 고쳤다.
@@ -465,8 +469,8 @@ def fig2():
     save(fig, "Fig2_calibration_curves")
 
 
-# ============================================================ Fig 3
-def fig3():
+# ============================================================ Fig 7
+def fig7():
     """견고성: 모델×표현 격자의 ECE 배율 분포(a)와 절단연도 민감도(b·c).
 
     2026-10-23: 전에는 (b) 하나에 ΔAUROC 와 ECE 배율을 **이중 축**으로
@@ -479,7 +483,7 @@ def fig3():
         rob = pd.read_csv(RES / "robustness_models.csv")
         cut = pd.read_csv(RES / "robustness_cutoff.csv")
     except FileNotFoundError:
-        print("  Fig3 건너뜀: 결과 파일 없음")
+        print("  Fig7 건너뜀: 결과 파일 없음")
         return
 
     fig, axes = plt.subplots(1, 3, figsize=(COL2, 1.95))
@@ -576,11 +580,11 @@ def fig3():
     panel_label(ax, "c", x=-0.30, y=1.14)
 
     fig.tight_layout(w_pad=1.9)
-    save(fig, "Fig3_robustness")
+    save(fig, "Fig7_robustness")
 
 
-# ============================================================ Fig 4
-def fig4():
+# ============================================================ Fig 3
+def fig3():
     """학습 유병률 격차 스윕 — 보정은 무너지고 판별은 멀쩡하다.
 
     (a) ECE 가 격차 0 에서 최소를 이루고 양쪽으로 오른다. 시간분할의
@@ -592,7 +596,7 @@ def fig4():
     try:
         sw = pd.read_csv(RES / "prevalence_sweep.csv")
     except FileNotFoundError:
-        print("  Fig4 건너뜀: prevalence_sweep.csv 없음")
+        print("  Fig3 건너뜀: prevalence_sweep.csv 없음")
         return
 
     style = {
@@ -722,7 +726,7 @@ def fig4():
     panel_label(ax, "b")
 
     fig.tight_layout(w_pad=3.0)
-    save(fig, "Fig4_prevalence_sweep")
+    save(fig, "Fig3_prevalence_sweep")
 
 
 # ============================================================ Fig S1
@@ -994,7 +998,7 @@ def fig6():
     save(fig, "Fig6_retraining_delay")
 
 
-def fig7():
+def fig4():
     """이동은 실재하지만, 그 크기만으로는 붕괴를 설명하지 못한다 (§33).
 
     (a) alpha 를 0 에서 1 로 올리면 비시간 분할의 이동량(시대 분류 AUC)이
@@ -1011,7 +1015,7 @@ def fig7():
         sw = pd.read_csv(RES / "shift_matched_v2.csv")
         mt = pd.read_csv(RES / "shift_matched_v2_matched.csv")
     except FileNotFoundError as e:
-        print(f"  Fig7 건너뜀: {e}")
+        print(f"  Fig4 건너뜀: {e}")
         return
 
     # 축 이름은 결과 파일이 한국어다. 그림은 영문으로 쓴다.
@@ -1146,7 +1150,7 @@ def fig7():
     panel_label(ax, "b", x=-0.22, y=1.10)
 
     fig.tight_layout(pad=0.3, w_pad=1.4)
-    save(fig, "Fig7_shift_matched")
+    save(fig, "Fig4_shift_matched")
 
 
 def main():

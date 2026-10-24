@@ -92,27 +92,6 @@ def load_prose():
     return out
 
 
-def _unused():
-    out = {}
-    for name in DOCS:
-        p = os.path.join(MAN, name)
-        if not os.path.exists(p):
-            continue
-        keep, depth = [], 0
-        for ln in io.open(p, encoding="utf-8", errors="replace").read().split("\n"):
-            if ln.strip().startswith("%"):
-                continue
-            if re.search(r"\\begin\{(table|tabular|longtable|sidewaystable)", ln):
-                depth += 1
-            if depth > 0:
-                if re.search(r"\\end\{(table|tabular|longtable|sidewaystable)", ln):
-                    depth -= 1
-                continue
-            keep.append(re.sub(r"(?<!\\)%.*$", "", ln))
-        out[name] = "\n".join(keep)
-    return out
-
-
 PROSE = load_prose()
 
 
@@ -344,6 +323,46 @@ def main():
             print("     전부 본문에서 인용된다")
 
     # ---------------------------------------------------------------- 7
+    # 표·그림이 번호 순서대로 인용되는가, 전부 인용되는가.
+    # 왜 — 학술지 규정이다. 표는 "numbered and cited in the text in
+    # sequence", 그림은 "numbered in the order they are first mentioned".
+    # 2026-10-24 확인: 본문 표 20개 중 11개가 미인용이었고, 인용되는 9개도
+    # 번호 순서와 등장 순서가 달랐다 (Table 10 이 Table 7 보다 먼저).
+    norder = 0
+    prose = ""
+    for d in DOCS:
+        q = os.path.join(MAN, d)
+        if os.path.exists(q) and d not in ("submission.tex", "main.tex"):
+            prose += _strip(q)
+    print("")
+    print("표·그림 인용 순서")
+    for kind, src, pre in (("표", "tables_main.tex", "tab"), ("그림", "figures.tex", "fig")):
+        q = os.path.join(MAN, src)
+        if not os.path.exists(q):
+            continue
+        raw = io.open(q, encoding="utf-8", errors="replace").read()
+        nocom = "\n".join(re.sub(r"(?<!\\\\)%.*$", "", ln) for ln in raw.split("\n"))
+        labs = re.findall(r"\\label\{(%s:[^}]+)\}" % pre, nocom)
+        seq = []
+        for m in re.finditer(r"\\(?:ref|autoref|cref)\{(%s:[^}]+)\}" % pre, prose):
+            if m.group(1) in labs and m.group(1) not in seq:
+                seq.append(m.group(1))
+        missing = [x for x in labs if x not in seq]
+        nums = [labs.index(x) + 1 for x in seq]
+        if missing:
+            norder += len(missing)
+            print(
+                "     X %s %d개가 본문에 인용되지 않는다: %s"
+                % (kind, len(missing), ", ".join(missing))
+            )
+        if nums != sorted(nums):
+            norder += 1
+            print("     X %s 번호 순서와 등장 순서가 다르다: %s" % (kind, nums))
+        if not missing and nums == sorted(nums):
+            print("     %s %d개 — 전부 인용되고 번호 순서대로다" % (kind, len(labs)))
+    nbad += norder
+
+    # ---------------------------------------------------------------- 8
     # 표의 열 수가 서식과 맞는가.
     # 왜 — tab:mondrian 의 서식이 "llllccccc"[:10] 로 적혀 있었다. 그
     # 문자열은 9자라 슬라이스가 9열을 돌려주는데 행은 10열이었고, LaTeX
@@ -391,7 +410,7 @@ def main():
         print("     모든 표가 서식과 같은 열 수다")
     nbad += ncol
 
-    # ---------------------------------------------------------------- 8
+    # ---------------------------------------------------------------- 9
     # 본문에 한국어가 남아 있는가.
     # 왜 — 표는 src/make_tables.py 가 결과 CSV 에서 만들고, 그 CSV 의
     # 라벨은 한국어다. 번역 사전에 빠진 라벨이 하나 생기면 영문 투고본에
