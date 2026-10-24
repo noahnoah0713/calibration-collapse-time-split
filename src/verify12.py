@@ -403,6 +403,38 @@ def main():
             print("     보충 표 %d개 — 전부 언급되고 번호 순서대로다" % len(slabs))
     nbad += nsupp
 
+    # ---------------------------------------------------------------- 7c
+    # 문서를 넘는 \\ref 가 없는가.
+    # 왜 — 본문과 보충자료는 별도 문서다. 보충 표의 각주가 본문 표를
+    # \\ref 로 가리키면 컴파일 결과에 ?? 가 찍힌다. 2026-10-24 에 표
+    # 12개를 보충자료로 옮기면서 11곳이 그렇게 됐다.
+    nx = 0
+    print("")
+    print("문서를 넘는 참조 검사")
+    labs = {}
+    for d in ("tables_main.tex", "tables_supp.tex", "figures.tex"):
+        q = os.path.join(MAN, d)
+        if os.path.exists(q):
+            labs[d] = set(
+                re.findall(r"\\label\{((?:tab|fig):[^}]+)\}", io.open(q, encoding="utf-8").read())
+            )
+    own = {
+        "tables_main.tex": labs.get("tables_main.tex", set()) | labs.get("figures.tex", set()),
+        "tables_supp.tex": labs.get("tables_supp.tex", set()),
+    }
+    for d, mine in own.items():
+        q = os.path.join(MAN, d)
+        if not os.path.exists(q):
+            continue
+        txt = io.open(q, encoding="utf-8").read()
+        for m in re.finditer(r"\\ref\{((?:tab|fig):[^}]+)\}", txt):
+            if m.group(1) not in mine:
+                nx += 1
+                print("     X %s 가 다른 문서의 %s 를 \\ref 한다" % (d, m.group(1)))
+    if not nx:
+        print("     표 각주의 모든 \\ref 가 같은 문서 안을 가리킨다")
+    nbad += nx
+
     # ---------------------------------------------------------------- 8
     # 표의 열 수가 서식과 맞는가.
     # 왜 — tab:mondrian 의 서식이 "llllccccc"[:10] 로 적혀 있었다. 그
@@ -435,7 +467,11 @@ def main():
                         end = j
                         break
             spec, body = rest[k + 1 : end], rest[end + 1 :]
-            want = len(re.sub(r"@\{[^}]*\}|[|\s]", "", spec))
+            # 서식에서 열을 센다. @{..} >{..} <{..} 는 열이 아니고,
+            # p{..} m{..} b{..} 와 P{..} 같은 newcolumntype 은 한 열이다.
+            s = re.sub(r"[@><]\{[^}]*\}", "", spec)
+            s = re.sub(r"[A-Za-z]\{[^}]*\}", "X", s)
+            want = len(re.sub(r"[|\s]", "", s))
             for line in body.split("\n"):
                 line = line.strip()
                 if not line.endswith("\\\\"):
