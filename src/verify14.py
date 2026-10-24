@@ -35,11 +35,11 @@ FIGDIR = os.environ.get("FIG_OUT") or os.path.join(ROOT, "figures")
 MAN = os.path.join(ROOT, "manuscript")
 
 MM = 2.84526
-TEXT_W = 119.0 * MM          # 339pt
+TEXT_W = 119.0 * MM  # 339pt
 SCALE_LO, SCALE_HI = 0.95, 1.10
-TICK_PT = 6.5                # make_figures.py 의 xtick/ytick labelsize
-AXIS_PT = 7.0                # axes.labelsize
-RULE_PT = 0.5                # axes.linewidth
+TICK_PT = 6.5  # make_figures.py 의 xtick/ytick labelsize
+AXIS_PT = 7.0  # axes.labelsize
+RULE_PT = 0.5  # axes.linewidth
 MIN_FONT = 6.0
 MIN_RULE = 0.25
 

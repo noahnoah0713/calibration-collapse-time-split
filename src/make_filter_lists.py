@@ -40,10 +40,18 @@ PROC = os.path.join(ROOT, "data", "processed")
 RES = os.path.join(ROOT, "results")
 
 SETS = [
-    ("DILIrank", "dilirank2_with_year_prefilter.csv",
-     "dilirank2_with_year_preconflict.csv", "dilirank2_with_year.csv"),
-    ("DICTrank", "dictrank_processed_prefilter.csv",
-     "dictrank_processed_preconflict.csv", "dictrank_processed.csv"),
+    (
+        "DILIrank",
+        "dilirank2_with_year_prefilter.csv",
+        "dilirank2_with_year_preconflict.csv",
+        "dilirank2_with_year.csv",
+    ),
+    (
+        "DICTrank",
+        "dictrank_processed_prefilter.csv",
+        "dictrank_processed_preconflict.csv",
+        "dictrank_processed.csv",
+    ),
 ]
 
 log = []
@@ -113,8 +121,7 @@ def main():
         w.writerows(rows)
     say("")
     say("저장: %s  (%d행)" % (out, len(rows)))
-    with io.open(os.path.join(RES, "filter_lists_summary.txt"), "w",
-                 encoding="utf-8") as f:
+    with io.open(os.path.join(RES, "filter_lists_summary.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(log) + "\n")
     return bad
 

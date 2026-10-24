@@ -378,9 +378,7 @@ def main():
         slabs = re.findall(r"\\label\{(tab:[^}]+)\}", nocom)
         seq = []
         # "Table S7" 과 "Tables S13 and S15" 둘 다 잡는다.
-        for m in re.finditer(
-            r"Tables?[~ ]S\d+(?:\s*(?:,|and|to|--)\s*(?:Table[~ ])?S\d+)*", prose
-        ):
+        for m in re.finditer(r"Tables?[~ ]S\d+(?:\s*(?:,|and|to|--)\s*(?:Table[~ ])?S\d+)*", prose):
             for g in re.findall(r"S(\d+)", m.group(0)):
                 k = int(g)
                 if k not in seq:
