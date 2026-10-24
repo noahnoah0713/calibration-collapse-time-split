@@ -183,6 +183,7 @@ run verify10.py
 run make_manuscript.py      # 투고본 한 파일 조립 (main.tex -> submission.tex)
 run verify12.py             # 원고 산문 수치 대조
 run verify13.py             # 표가 저널 판면에 들어가는지 pdflatex 로 실측
+run verify14.py             # 그림이 저널 판면 폭으로 그려졌는지 확인
 run verify_state.py --save
 
 # ---------------------------------------------------------- 8 누락 점검
