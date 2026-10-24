@@ -1,0 +1,46 @@
+큐레이션 필터 2종이 제거한 화합물
+======================================================================
+
+DILIrank  870 -> 861 -> 860
+  탄소 없는 구조 9건
+    Ammonium chloride
+    Cisplatin
+    Cupric chloride
+    Ferumoxytol
+    Rubidium chloride rb-82
+    Sodium fluoride f-18
+    Sodium thiosulfate
+    Sodium zirconium cyclosilicate
+    Sterile water
+  라벨 충돌로 제거된 행 1건
+
+DICTrank  953 -> 932 -> 919
+  탄소 없는 구조 21건
+    AMMONIA N-13
+    ARSENIC TRIOXIDE
+    CALCIUM CHLORIDE
+    CHROMIC CHLORIDE
+    cisplatin
+    COPPER
+    CUPRIC CHLORIDE
+    GALLIUM NITRATE
+    INDIUM CHLORIDE IN-111
+    SELENIUM
+    SODIUM FLUORIDE F-18
+    SODIUM IODIDE I-131
+    Sodium Nitrite
+    Sodium Thiosulfate
+    SODIUM ZIRCONIUM CYCLOSILICATE
+    TALC
+    TECHNETIUM TC-99M PYROPHOSPHATE
+    TECHNETIUM TC-99M SODIUM PERTECHNETATE
+    TECHNETIUM TC-99M SULFUR COLLOID
+    ZINC CHLORIDE
+    ZINC SULFATE
+  라벨 충돌로 제거된 행 13건
+
+라벨 충돌 그룹 (results/label_conflict_groups.csv)
+  DILIrank  그룹 1개 / 행 2개
+  DICTrank  그룹 13개 / 행 34개
+
+저장: /sessions/rcw-01q1yfwjeecy8mfgugsmxvwf/mnt/FDA/results/structure_filter_removed.csv  (30행)

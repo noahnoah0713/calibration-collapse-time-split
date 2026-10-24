@@ -1,0 +1,31 @@
+dataset,compound
+DILIrank,Ammonium chloride
+DILIrank,Cisplatin
+DILIrank,Cupric chloride
+DILIrank,Ferumoxytol
+DILIrank,Rubidium chloride rb-82
+DILIrank,Sodium fluoride f-18
+DILIrank,Sodium thiosulfate
+DILIrank,Sodium zirconium cyclosilicate
+DILIrank,Sterile water
+DICTrank,AMMONIA N-13
+DICTrank,ARSENIC TRIOXIDE
+DICTrank,CALCIUM CHLORIDE
+DICTrank,CHROMIC CHLORIDE
+DICTrank,cisplatin
+DICTrank,COPPER
+DICTrank,CUPRIC CHLORIDE
+DICTrank,GALLIUM NITRATE
+DICTrank,INDIUM CHLORIDE IN-111
+DICTrank,SELENIUM
+DICTrank,SODIUM FLUORIDE F-18
+DICTrank,SODIUM IODIDE I-131
+DICTrank,Sodium Nitrite
+DICTrank,Sodium Thiosulfate
+DICTrank,SODIUM ZIRCONIUM CYCLOSILICATE
+DICTrank,TALC
+DICTrank,TECHNETIUM TC-99M PYROPHOSPHATE
+DICTrank,TECHNETIUM TC-99M SODIUM PERTECHNETATE
+DICTrank,TECHNETIUM TC-99M SULFUR COLLOID
+DICTrank,ZINC CHLORIDE
+DICTrank,ZINC SULFATE
