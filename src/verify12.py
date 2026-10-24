@@ -362,6 +362,47 @@ def main():
             print("     %s %d개 — 전부 인용되고 번호 순서대로다" % (kind, len(labs)))
     nbad += norder
 
+    # ---------------------------------------------------------------- 7b
+    # 보충 표는 다른 문서에 있어 \\ref 가 안 되고, 본문이 "Additional file 1:
+    # Table S<n>" 이라는 글자로 가리킨다. 그래서 tables_supp.tex 의 표 순서가
+    # 곧 S 번호다. 아무도 이 대응을 검사하지 않으면 표를 하나 끼워 넣는
+    # 순간 본문의 S 번호가 전부 한 칸씩 어긋난다. 2026-10-24 에 실제로
+    # 인용 순서가 S11, S2, S3, ... 로 흩어져 있었다.
+    nsupp = 0
+    print("")
+    print("보충 표 번호 검사")
+    q = os.path.join(MAN, "tables_supp.tex")
+    if os.path.exists(q):
+        raw = io.open(q, encoding="utf-8", errors="replace").read()
+        nocom = "\n".join(re.sub(r"(?<!\\\\)%.*$", "", ln) for ln in raw.split("\n"))
+        slabs = re.findall(r"\\label\{(tab:[^}]+)\}", nocom)
+        seq = []
+        # "Table S7" 과 "Tables S13 and S15" 둘 다 잡는다.
+        for m in re.finditer(
+            r"Tables?[~ ]S\d+(?:\s*(?:,|and|to|--)\s*(?:Table[~ ])?S\d+)*", prose
+        ):
+            for g in re.findall(r"S(\d+)", m.group(0)):
+                k = int(g)
+                if k not in seq:
+                    seq.append(k)
+        oob = [k for k in seq if k < 1 or k > len(slabs)]
+        uncited = [i + 1 for i in range(len(slabs)) if i + 1 not in seq]
+        if oob:
+            nsupp += len(oob)
+            print("     X 없는 보충 표를 가리킨다: %s (보충 표는 %d개)" % (oob, len(slabs)))
+        if uncited:
+            nsupp += len(uncited)
+            print(
+                "     X 보충 표 %d개가 본문에 언급되지 않는다: %s"
+                % (len(uncited), ", ".join("S%d (%s)" % (i, slabs[i - 1]) for i in uncited))
+            )
+        if seq != sorted(seq):
+            nsupp += 1
+            print("     X 보충 표 번호 순서와 등장 순서가 다르다: %s" % seq)
+        if not oob and not uncited and seq == sorted(seq):
+            print("     보충 표 %d개 — 전부 언급되고 번호 순서대로다" % len(slabs))
+    nbad += nsupp
+
     # ---------------------------------------------------------------- 8
     # 표의 열 수가 서식과 맞는가.
     # 왜 — tab:mondrian 의 서식이 "llllccccc"[:10] 로 적혀 있었다. 그
