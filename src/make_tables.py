@@ -173,6 +173,8 @@ assert len(EMPTY) == 4, "공집합 블록 %d개" % len(EMPTY)
 class Doc(object):
     def __init__(self, title):
         self.L = []
+        self.T = []  # (라벨, 줄 목록) — 표 하나당 하나
+        self._open = None  # 지금 쌓는 중인 표
         self.n = 0
         self.w("%" + "=" * 68 + "%")
         self.w("%% %-66s %%" % title)
@@ -185,13 +187,25 @@ class Doc(object):
         )
         self.w("%% %-66s %%" % "no thousands separators.")
         self.w("%" + "=" * 68 + "%")
+        self.head = self.L
 
     def w(self, s=""):
-        self.L.append(s)
+        if self._open is None:
+            self.L.append(s)
+        else:
+            self._open.append(s)
 
     def table(self, caption, label, colspec, body, legend, placement="h"):
+        """표 하나를 모아 둔다. 바로 쓰지 않고 save() 에서 정해진 순서로 쓴다.
+
+        왜 — 학술지는 표를 "본문에 처음 인용되는 순서로" 번호 매기라고
+        요구한다. 코드가 계산하기 편한 순서와 본문이 읽는 순서는 다르고,
+        2026-10-24 에 실제로 어긋나 있었다 (본문이 Table 10 을 Table 7 보다
+        먼저 가리켰다). 순서는 아래 MAIN_ORDER 한 곳에서 정한다.
+        """
         assert len(caption.split()) <= 15, "캡션 %d단어: %s" % (len(caption.split()), caption)
         self.n += 1
+        self._open = []
         self.w()
         self.w("\\begin{table}[%s]" % placement)
         self.w("\\caption{%s}\\label{%s}" % (caption, label))
@@ -203,10 +217,27 @@ class Doc(object):
         self.w("\\end{tabular}")
         self.w("\\footnotetext{%s}" % legend)
         self.w("\\end{table}")
+        self.T.append((label, self._open))
+        self._open = None
 
-    def save(self, path):
-        io.open(path, "w", encoding="utf-8").write("\n".join(self.L) + "\n")
-        return len(self.L)
+    def save(self, path, order=None):
+        """order 가 주어지면 그 순서로 쓴다. 빠진 표나 모르는 라벨이 있으면
+        멈춘다 — 조용히 순서를 포기하면 번호가 또 어긋난다."""
+        body = []
+        if order is not None:
+            have = [t[0] for t in self.T]
+            miss = [x for x in order if x not in have]
+            extra = [x for x in have if x not in order]
+            assert not miss, "순서 목록에 있는데 만들어지지 않은 표: %s" % miss
+            assert not extra, "만들어졌는데 순서 목록에 없는 표: %s" % extra
+            byl = dict(self.T)
+            for lab in order:
+                body += byl[lab]
+        else:
+            for _, lines in self.T:
+                body += lines
+        io.open(path, "w", encoding="utf-8").write("\n".join(self.head + body) + "\n")
+        return len(self.head) + len(body)
 
 
 def row(*cells):
@@ -219,6 +250,32 @@ def head(*cells):
 
 MAIN = Doc("Main-text tables")
 SUPP = Doc("Supplementary tables")
+
+# 본문이 처음 인용하는 순서. 학술지 규정이 이 순서로 번호 매기라고 한다.
+# 본문을 고쳐 인용 순서가 바뀌면 이 목록도 같이 고친다 — 어긋나면
+# save() 가 멈춘다.
+MAIN_ORDER = [
+    "tab:split",
+    "tab:brier",
+    "tab:prev",
+    "tab:sweep",
+    "tab:nontemporal",
+    "tab:shiftmatched",
+    "tab:recal",
+    "tab:conformal",
+    "tab:recency",
+    "tab:prior",
+    "tab:covshift",
+    "tab:applicability",
+    "tab:hparam",
+    "tab:power",
+    "tab:prequential",
+    "tab:reverse",
+    "tab:concept",
+    "tab:ratioci",
+    "tab:metrics",
+    "tab:trivial",
+]
 
 # ================================================================ T1 분할 설계
 _b = []
@@ -3118,7 +3175,7 @@ if not os.path.isdir(MAN):
     os.makedirs(MAN)
 _pm = os.path.join(MAN, "tables_main.tex")
 _ps = os.path.join(MAN, "tables_supp.tex")
-nm = MAIN.save(_pm)
+nm = MAIN.save(_pm, MAIN_ORDER)
 ns = SUPP.save(_ps)
 print("저장: %s" % _pm)
 print("  표 %d개 / %d 행" % (MAIN.n, nm))
