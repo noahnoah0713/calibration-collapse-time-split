@@ -168,6 +168,7 @@ run fdr_all_tests.py         # 가족 밖 검정 전수 편입 (한계 19)
 #   다음 실행에서야 반영된다. 보고서 앞으로 옮긴다.
 run record_precision_fix.py  # 2026-10-20 정밀도 수정 전·후 기록 (백업 대조)
 
+run make_filter_lists.py   # 큐레이션 필터가 제거한 화합물 목록 (보충 표 S13·S15)
 run make_report.py
 run make_tables.py
 run make_figures.py

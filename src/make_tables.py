@@ -277,6 +277,28 @@ MAIN_ORDER = [
     "tab:trivial",
 ]
 
+# 보충 표도 같은 규정을 따른다. 본문은 \ref 가 아니라 "Additional file 1:
+# Table S<n>" 라는 글자로 보충 표를 가리키므로(문서가 달라 \ref 가 안 된다)
+# 이 목록의 순서가 곧 S 번호다. 본문 인용 순서와 어긋나면
+# src/verify12.py 의 보충표 검사가 멈춘다.
+SUPP_ORDER = [
+    "tab:fdrall",
+    "tab:era",
+    "tab:desc",
+    "tab:mondrian",
+    "tab:prior2",
+    "tab:adfilter",
+    "tab:interval",
+    "tab:gridr3",
+    "tab:horizon",
+    "tab:tieavg",
+    "tab:overlap",
+    "tab:curation",
+    "tab:conflict",
+    "tab:subcalib",
+    "tab:carbon",
+]
+
 # ================================================================ T1 분할 설계
 _b = []
 _b.append(head("Dataset", "Validation design", "AUROC", "ECE"))
@@ -3170,13 +3192,86 @@ SUPP.table(
     ),
 )
 
+# ================================================================ S 큐레이션 필터 2종
+# Methods 가 "제거한 화합물을 보충자료에 전부 싣는다" 고 적으므로 목록을
+# 실제로 싣는다. 두 파일 모두 src/make_filter_lists.py 가 만든다.
+_cfg = cv("label_conflict_groups.csv")
+_b = []
+_b.append(head("Dataset", "InChIKey prefix", "Compound as listed", "Label"))
+_first = True
+for d in DS:
+    g = _cfg[_cfg.dataset == d]
+    if g.empty:
+        continue
+    if not _first:
+        _b.append("\\midrule")
+    _first = False
+    shown_d, shown_k = False, None
+    for k in g["_k"].unique():
+        for _, r in g[g["_k"] == k].iterrows():
+            _b.append(
+                row(
+                    d if not shown_d else "",
+                    tex(k) if shown_k != k else "",
+                    tex(r["CompoundName"]),
+                    "positive" if float(r["y"]) == 1 else "negative",
+                )
+            )
+            shown_d, shown_k = True, k
+_ngrp = {d: _cfg[_cfg.dataset == d]["_k"].nunique() for d in DS}
+SUPP.table(
+    "Structure groups removed because their labels disagreed",
+    "tab:conflict",
+    "llll",
+    _b,
+    "Standardisation collapses salt forms, hydrates and stereoisomers of one "
+    "parent structure into a single record, keyed on the first 14 characters of "
+    "the InChIKey. Where the entries so collapsed did not carry the same binary "
+    "label, keeping the first would adopt one of them arbitrarily, so the whole "
+    "group was dropped: %d group in %s and %d in %s, which removes %d and %d "
+    "records from the analysis sets. The rule was fixed before its effect on any "
+    "result was examined, and that effect is not one-directional, as "
+    "Table~\\ref{tab:curation} reports. The rows below are the members as each "
+    "source lists them, before collapsing; the counts of removed records are "
+    "smaller because collapsing had already reduced each group to one record."
+    % (_ngrp[DS[0]], DS[0], _ngrp[DS[1]], DS[1], _ngrp[DS[0]], _ngrp[DS[1]]),
+)
+
+_cfl = cv("structure_filter_removed.csv")
+_b = []
+_b.append(head("Dataset", "Compound as listed"))
+for i, d in enumerate(DS):
+    g = _cfl[_cfl.dataset == d]
+    if i:
+        _b.append("\\midrule")
+    for j, (_, r) in enumerate(g.iterrows()):
+        _b.append(row(d if j == 0 else "", tex(r["compound"])))
+SUPP.table(
+    "Compounds removed because the standardised structure holds no carbon",
+    "tab:carbon",
+    "ll",
+    _b,
+    "A circular fingerprint of an inorganic salt, an elemental preparation or a "
+    "radiopharmaceutical carries almost no structural information, so compounds "
+    "whose standardised structure contains no carbon atom were removed before "
+    "any analysis: %d in %s and %d in %s. The rule looks only at the structure "
+    "and not at the label or the approval year. Names are reproduced as each "
+    "source writes them, including its capitalisation."
+    % (
+        int((_cfl.dataset == DS[0]).sum()),
+        DS[0],
+        int((_cfl.dataset == DS[1]).sum()),
+        DS[1],
+    ),
+)
+
 # ================================================================ 저장
 if not os.path.isdir(MAN):
     os.makedirs(MAN)
 _pm = os.path.join(MAN, "tables_main.tex")
 _ps = os.path.join(MAN, "tables_supp.tex")
 nm = MAIN.save(_pm, MAIN_ORDER)
-ns = SUPP.save(_ps)
+ns = SUPP.save(_ps, SUPP_ORDER)
 print("저장: %s" % _pm)
 print("  표 %d개 / %d 행" % (MAIN.n, nm))
 print("저장: %s" % _ps)
