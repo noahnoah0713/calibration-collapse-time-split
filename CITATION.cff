@@ -8,21 +8,20 @@ authors:
   - family-names: Lee
     given-names: Noah
     alias: 이노아
-version: v0.1
-date-released: "2026-10-23"
-doi: 10.5281/zenodo.23583594
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.23583593
-    description: Concept DOI, always resolving to the newest release
+version: v0.2
+date-released: "2026-10-24"
+# 개념 DOI 를 적는다. 버전 DOI 는 릴리스마다 Zenodo 가 새로 만들므로
+# 여기에 박아 두면 바로 낡는다 (v0.1 의 버전 DOI 가 그랬다).
+doi: 10.5281/zenodo.23583593
 license: MIT
 repository-code: "https://github.com/noahnoah0713/calibration-collapse-time-split"
 abstract: >-
   Analysis code and results for two FDA toxicity datasets, DILIrank and
   DICTrank. Time-split validation degrades probability calibration far more
   than it degrades discrimination; the cause is decomposed into prevalence
-  shift and era shift; and yearly retraining followed by recalibration
-  remains effective at label delays of up to five years.
+  shift and a residual that survives matching both base rates; and yearly
+  retraining followed by recalibration remains effective at label delays of
+  up to five years.
 keywords:
   - calibration
   - temporal validation
