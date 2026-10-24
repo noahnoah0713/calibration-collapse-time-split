@@ -60,15 +60,17 @@ def main():
     if not os.path.isdir(FIGDIR):
         print("건너뜀 — figures/ 가 없다.")
         return 0
+    # 원고는 이 저장소에 없다 (게재 전이다). 원고가 없으면 "원고가 쓰지
+    # 않는 그림" 을 물어볼 수 없으므로 그 검사만 건너뛴다 — 폭 검사는
+    # figures/ 만 있으면 할 수 있고, 그쪽이 이 스크립트의 본론이다.
     used = set()
-    f = os.path.join(MAN, "figures.tex")
-    if os.path.exists(f):
-        txt = io.open(f, encoding="utf-8").read()
-        used |= set(re.findall(r"\\includegraphics\[[^\]]*\]\{([^}]+)\}", txt))
-    f = os.path.join(MAN, "supplementary.tex")
-    if os.path.exists(f):
-        txt = io.open(f, encoding="utf-8").read()
-        used |= set(re.findall(r"\\includegraphics\[[^\]]*\]\{([^}]+)\}", txt))
+    have_man = False
+    for n in ("figures.tex", "supplementary.tex"):
+        f = os.path.join(MAN, n)
+        if os.path.exists(f):
+            have_man = True
+            txt = io.open(f, encoding="utf-8").read()
+            used |= set(re.findall(r"\\includegraphics\[[^\]]*\]\{([^}]+)\}", txt))
 
     print("그림 폭 검사 — sn-jnl 단일단 판면 폭 %.0fpt (119mm)" % TEXT_W)
     print("")
@@ -95,7 +97,7 @@ def main():
             bad.append("글자 %.1fpt" % font)
         if rule < MIN_RULE:
             bad.append("선 %.2fpt" % rule)
-        if n not in used and n[:-4] not in used:
+        if have_man and n not in used and n[:-4] not in used:
             bad.append("원고가 쓰지 않는다")
         if bad:
             nbad += 1
@@ -108,7 +110,10 @@ def main():
     if nbad:
         print("문제 %d건. src/make_figures.py 의 COL1·COL2 를 보고 다시 그릴 것." % nbad)
     else:
-        print("그림 %d개 전부 판면 폭에 맞다." % len(names))
+        print(
+            "그림 %d개 전부 판면 폭에 맞다.%s"
+            % (len(names), "" if have_man else " (원고가 없어 사용 여부는 보지 않았다)")
+        )
     print("실패 %d건" % nbad)
     return 1 if nbad else 0
 
