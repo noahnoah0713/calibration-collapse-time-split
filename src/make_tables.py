@@ -242,6 +242,7 @@ class Doc(object):
         있는지는 MAIN_ORDER·SUPP_ORDER 가 알고 있으므로 여기서 자동으로
         바꾼다 — 각주 문구를 손으로 고치면 또 어긋난다.
         """
+
         def sub(m):
             lab = m.group(1)
             if self.kind == "main" and lab in SUPP_ORDER:
@@ -3114,9 +3115,7 @@ _PQEN = {
     "C2r. 연도 무작위+양성률 맞춤+재보정": "Shuffled years, prevalence matched, recalibrated",
 }
 _b = []
-_b.append(
-    head("Dataset", "Design", "$n$", "ECE", "AUROC", "Calibration slope")
-)
+_b.append(head("Dataset", "Design", "$n$", "ECE", "AUROC", "Calibration slope"))
 for i, d in enumerate(DS):
     if i:
         _b.append("\\midrule")
@@ -3141,9 +3140,7 @@ for i, d in enumerate(DS):
                 (
                     ("\\textbf{%s}" % f4(g.ece.mean()))
                     if arm.startswith("P2")
-                    else (
-                        pm(g.ece.mean(), g.ece.std(ddof=1)) if len(g) > 1 else f4(g.ece.mean())
-                    )
+                    else (pm(g.ece.mean(), g.ece.std(ddof=1)) if len(g) > 1 else f4(g.ece.mean()))
                 ),
                 f4(g.auroc.mean()),
                 f4(g.slope.mean()),

@@ -35,8 +35,8 @@ MAN = os.path.join(ROOT, "manuscript")
 SRC = os.path.join(ROOT, "src")
 
 MM = 2.84526  # 1mm 의 pt 값
-TEXT_W = 119.0 * MM       # 339pt — 세로쓰기 표가 들어갈 폭
-TEXT_H = 194.25 * MM      # 553pt — 가로로 돌린 표가 들어갈 폭
+TEXT_W = 119.0 * MM  # 339pt — 세로쓰기 표가 들어갈 폭
+TEXT_H = 194.25 * MM  # 553pt — 가로로 돌린 표가 들어갈 폭
 SIZES = ["normalsize", "small", "footnotesize", "scriptsize"]
 
 PRE = r"""\documentclass[10pt]{article}
@@ -65,7 +65,9 @@ def tables(path):
         r"(\\begin\{tabular\}.*?\\end\{tabular\})"
     )
     for m in re.finditer(pat, t, re.S):
-        out.append((m.group(2), m.group(3) or "normalsize", m.group(1) == "sidewaystable", m.group(4)))
+        out.append(
+            (m.group(2), m.group(3) or "normalsize", m.group(1) == "sidewaystable", m.group(4))
+        )
     return out
 
 
@@ -124,7 +126,10 @@ def main():
     for lab, size, sideways, _ in items:
         got = w.get(lab, {}).get(size)
         if got is None:
-            print("%-16s     ?   —  %-13s %-9s X 폭을 재지 못했다" % (lab.replace("tab:", ""), size, ""))
+            print(
+                "%-16s     ?   —  %-13s %-9s X 폭을 재지 못했다"
+                % (lab.replace("tab:", ""), size, "")
+            )
             nbad += 1
             continue
         lim = TEXT_H if sideways else TEXT_W
