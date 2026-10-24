@@ -171,7 +171,8 @@ assert len(EMPTY) == 4, "공집합 블록 %d개" % len(EMPTY)
 
 # ---------------------------------------------------------------- 출력 버퍼
 class Doc(object):
-    def __init__(self, title):
+    def __init__(self, title, kind):
+        self.kind = kind  # "main" 또는 "supp"
         self.L = []
         self.T = []  # (라벨, 줄 목록) — 표 하나당 하나
         self._open = None  # 지금 쌓는 중인 표
@@ -202,13 +203,23 @@ class Doc(object):
         요구한다. 코드가 계산하기 편한 순서와 본문이 읽는 순서는 다르고,
         2026-10-24 에 실제로 어긋나 있었다 (본문이 Table 10 을 Table 7 보다
         먼저 가리켰다). 순서는 아래 MAIN_ORDER 한 곳에서 정한다.
+
+        글자 크기와 가로쓰기는 LAYOUT 에서 라벨로 찾는다. sn-jnl 단일단의
+        본문 폭은 119mm(339pt)뿐이라 열이 일곱 개를 넘으면 그대로는 넘친다.
+        어느 표를 줄이고 어느 표를 돌릴지는 눈대중이 아니라
+        src/verify13.py 가 pdflatex 로 실측해 검사한다.
         """
         assert len(caption.split()) <= 15, "캡션 %d단어: %s" % (len(caption.split()), caption)
+        caption, legend = self._xref(caption), self._xref(legend)
+        size, sideways = LAYOUT.get(label, (None, False))
+        env = "sidewaystable" if sideways else "table"
         self.n += 1
         self._open = []
         self.w()
-        self.w("\\begin{table}[%s]" % placement)
+        self.w("\\begin{%s}[%s]" % (env, placement))
         self.w("\\caption{%s}\\label{%s}" % (caption, label))
+        if size:
+            self.w("\\%s" % size)
         self.w("\\begin{tabular}{@{}%s@{}}" % colspec)
         self.w("\\toprule")
         for ln in body:
@@ -216,9 +227,30 @@ class Doc(object):
         self.w("\\botrule")
         self.w("\\end{tabular}")
         self.w("\\footnotetext{%s}" % legend)
-        self.w("\\end{table}")
+        self.w("\\end{%s}" % env)
         self.T.append((label, self._open))
         self._open = None
+
+    _XREF = re.compile(r"(?:Table~)?\\ref\{(tab:[^}]+)\}")
+
+    def _xref(self, s):
+        """문서를 넘는 \\ref 를 글자 참조로 바꾼다.
+
+        왜 — 본문과 보충자료는 별도 문서다. 보충 표의 각주가 본문 표를
+        \\ref 로 가리키면 컴파일 결과에 ?? 가 찍힌다. 2026-10-24 에 표를
+        본문에서 보충자료로 옮기면서 11곳이 그렇게 됐다. 어느 쪽 문서에
+        있는지는 MAIN_ORDER·SUPP_ORDER 가 알고 있으므로 여기서 자동으로
+        바꾼다 — 각주 문구를 손으로 고치면 또 어긋난다.
+        """
+        def sub(m):
+            lab = m.group(1)
+            if self.kind == "main" and lab in SUPP_ORDER:
+                return sref(lab)
+            if self.kind == "supp" and lab in MAIN_ORDER:
+                return mref(lab)
+            return m.group(0)
+
+        return self._XREF.sub(sub, s)
 
     def save(self, path, order=None):
         """order 가 주어지면 그 순서로 쓴다. 빠진 표나 모르는 라벨이 있으면
@@ -240,6 +272,23 @@ class Doc(object):
         return len(self.head) + len(body)
 
 
+def mref(label):
+    """본문 표 번호를 글자로 돌려준다.
+
+    왜 — 보충자료는 별도 문서라 \\ref 가 본문 표에 닿지 못하고 ?? 가 찍힌다
+    (2026-10-24 에 11곳이 그랬다). MAIN_ORDER 가 번호를 정하므로 거기서
+    세고, 라벨이 본문에 없으면 멈춘다.
+    """
+    assert label in MAIN_ORDER, "본문 표가 아니다: %s" % label
+    return "Table %d" % (MAIN_ORDER.index(label) + 1)
+
+
+def sref(label):
+    """보충 표 번호를 글자로 돌려준다 (본문에서 보충자료를 가리킬 때)."""
+    assert label in SUPP_ORDER, "보충 표가 아니다: %s" % label
+    return "Additional file 1: Table S%d" % (SUPP_ORDER.index(label) + 1)
+
+
 def row(*cells):
     return " & ".join(str(c) for c in cells) + " \\\\"
 
@@ -248,8 +297,47 @@ def head(*cells):
     return row(*cells) + "\n\\midrule"
 
 
-MAIN = Doc("Main-text tables")
-SUPP = Doc("Supplementary tables")
+# 표마다 글자 크기와 가로쓰기 여부. (크기, 가로쓰기) 이고 크기가 None 이면
+# 본문 크기다. sn-jnl 단일단의 본문 폭은 119mm = 339pt, 가로로 돌리면
+# 194.25mm = 553pt 다. 어느 값이 필요한지는 src/verify13.py 가 pdflatex 로
+# 표의 자연 폭을 재서 검사하므로, 여기를 손으로 고치면 그 검사가 맞는지
+# 말해 준다. 적지 않은 표는 그대로 본문 크기·세로쓰기다.
+LAYOUT = {
+    # 세로쓰기로 들어가지만 본문 크기로는 넘치는 표
+    "tab:brier": ("small", False),
+    "tab:prequential": ("footnotesize", False),
+    "tab:recal": ("small", False),
+    "tab:covshift": ("footnotesize", False),
+    "tab:conflict": ("small", False),
+    "tab:fdrall": ("footnotesize", False),
+    "tab:desc": ("footnotesize", False),
+    "tab:curation": ("footnotesize", False),
+    # 가로로 돌려야 하는 표
+    "tab:sweep": (None, True),
+    "tab:nontemporal": ("footnotesize", True),
+    "tab:shiftmatched": (None, True),
+    "tab:recency": ("scriptsize", True),
+    "tab:prior": (None, True),
+    "tab:applicability": ("small", True),
+    "tab:hparam": (None, True),
+    "tab:power": (None, True),
+    "tab:reverse": (None, True),
+    "tab:concept": ("small", True),
+    "tab:ratioci": (None, True),
+    "tab:trivial": (None, True),
+    "tab:era": (None, True),
+    "tab:mondrian": (None, True),
+    "tab:prior2": (None, True),
+    "tab:adfilter": (None, True),
+    "tab:interval": (None, True),
+    "tab:gridr3": (None, True),
+    "tab:horizon": (None, True),
+    "tab:tieavg": (None, True),
+    "tab:subcalib": (None, True),
+}
+
+MAIN = Doc("Main-text tables", "main")
+SUPP = Doc("Supplementary tables", "supp")
 
 # 본문이 처음 인용하는 순서. 학술지 규정이 이 순서로 번호 매기라고 한다.
 # 본문을 고쳐 인용 순서가 바뀌면 이 목록도 같이 고친다 — 어긋나면
@@ -258,23 +346,11 @@ MAIN_ORDER = [
     "tab:split",
     "tab:brier",
     "tab:prev",
-    "tab:sweep",
-    "tab:nontemporal",
-    "tab:shiftmatched",
     "tab:recal",
     "tab:conformal",
-    "tab:recency",
-    "tab:prior",
     "tab:covshift",
-    "tab:applicability",
-    "tab:hparam",
-    "tab:power",
     "tab:prequential",
-    "tab:reverse",
-    "tab:concept",
-    "tab:ratioci",
     "tab:metrics",
-    "tab:trivial",
 ]
 
 # 보충 표도 같은 규정을 따른다. 본문은 \ref 가 아니라 "Additional file 1:
@@ -283,15 +359,27 @@ MAIN_ORDER = [
 # src/verify12.py 의 보충표 검사가 멈춘다.
 SUPP_ORDER = [
     "tab:fdrall",
+    "tab:sweep",
     "tab:era",
     "tab:desc",
+    "tab:nontemporal",
+    "tab:shiftmatched",
     "tab:mondrian",
+    "tab:recency",
+    "tab:prior",
     "tab:prior2",
+    "tab:applicability",
     "tab:adfilter",
+    "tab:hparam",
+    "tab:power",
     "tab:interval",
+    "tab:reverse",
+    "tab:concept",
     "tab:gridr3",
     "tab:horizon",
+    "tab:ratioci",
     "tab:tieavg",
+    "tab:trivial",
     "tab:overlap",
     "tab:curation",
     "tab:conflict",
@@ -334,7 +422,7 @@ _rc = {d: bc[(bc.dataset == d) & (bc.split == "random_cv")] for d in DS}
 MAIN.table(
     "Discrimination and calibration under three validation designs",
     "tab:split",
-    "llcc",
+    "lP{3.4cm}cc",
     _b,
     "All three designs use the same compounds, model and features within each dataset "
     "(%d DILIrank, %d DICTrank). Cross-validation entries are the mean and standard deviation "
@@ -508,7 +596,7 @@ _nz = [(k, v) for k, v in sorted(_nge.items()) if v > 0]
 MAIN.table(
     "Prevalence-matched random controls for expected calibration error",
     "tab:prev",
-    "llccc",
+    "lP{3.6cm}ccc",
     _b,
     "Each control is averaged over %d partitions. R2 matches the held-out positive rate to the "
     "temporal held-out set; R3 matches the training rate as well, at the cost of a smaller "
@@ -802,7 +890,7 @@ assert len(_allr) == _nrows, "각주 범위 %d 과 표 행 %d 이 어긋난다" 
 SUPP.table(
     "Sensitivity of the primary result to three data-curation decisions",
     "tab:curation",
-    "llccccc",
+    "lP{2.2cm}ccccc",
     _b,
     "\\textbf{The control ECE column is the denominator of the ratio in the same row and differs "
     "between rows}: the approval-year and ATC rows use a size-matched random control re-drawn for "
@@ -876,10 +964,10 @@ _rvR = {
     for d in DS
     for b in ("R1", "R2", "R3")
 }
-MAIN.table(
+SUPP.table(
     "Reversed temporal split as a control against label censoring",
     "tab:reverse",
-    "llcccccccc",
+    "lP{3.9cm}cccccccc",
     _b,
     "Training on compounds approved from 2010 onwards and testing on earlier ones makes the "
     "held-out labels the mature ones, so label immaturity cannot explain a collapse in this "
@@ -978,10 +1066,10 @@ _nt = sm[~sm.split.str.startswith("T")]
 assert sm.n_rep_valid.nunique() == 1, "분할별 반복 수가 다르다"
 _SMREP = int(sm.n_rep_valid.iloc[0])
 _tt = {d: sm[(sm.dataset == d) & (sm.split.str.startswith("T"))].iloc[0] for d in DS}
-MAIN.table(
+SUPP.table(
     "Non-temporal splits that saturate covariate shift",
     "tab:nontemporal",
-    "llcccccccc"[:10],
+    "lP{1.8cm}cccccccc",
     _b,
     "Each split keeps the held-out size of the temporal split and carries its own random control "
     "matched to that split's held-out prevalence (%d repeats, the R2 design of "
@@ -1072,10 +1160,10 @@ _P = {
 _nolab = [_P[(d, k)] for d in DS for k in ("P0", "P1", "P2", "P3")]
 _neg = [r for r in _nolab if float(r.recovery) < 0]
 _best = {d: max(float(_P[(d, k)].recovery) for k in ("P0", "P1", "P2", "P3")) for d in DS}
-MAIN.table(
+SUPP.table(
     "Estimating the held-out prior without held-out labels",
     "tab:prior",
-    "lllcccc",
+    "lP{3.6cm}lcccc",
     _b,
     "Only the prior estimate changes between rows; the correction applied to the intercept is the "
     "one of strategy (D) in Table~\\ref{tab:recal}, and (P4) is that strategy. Gap closed is "
@@ -1196,7 +1284,7 @@ for k in ["MolWt", "MolLogP", "TPSA", "NumHAcceptors", "NumRotatableBonds", "Num
 SUPP.table(
     "Median RDKit descriptors in the training and held-out halves",
     "tab:desc",
-    "lcccc",
+    "P{2.3cm}cccc",
     _b,
     "Medians of the six descriptors used by the primary model, with the signed change from "
     "training to held-out in parentheses. Compounds approved from 2010 onwards are larger, more "
@@ -1275,10 +1363,10 @@ for d in DS:
     _chk = _dec[d]["era"] + _dec[d]["rate"] + _dec[d]["size"]
     assert abs(_chk - _dec[d]["tot"]) < 1e-9, "3분해 합 불일치 %s" % d
 _nrep = int(cs.n_rep_valid.max())
-MAIN.table(
+SUPP.table(
     "Concept shift isolated by holding training size and prevalence fixed",
     "tab:concept",
-    "llccccccccc",
+    "lP{2.9cm}ccccccccc",
     _b,
     "Every arm is scored on the same held-out compounds, the %d and %d approved from 2010 "
     "onwards; arms A and A2 use out-of-fold predictions so no compound is scored by a model "
@@ -1367,7 +1455,7 @@ for i, d in enumerate(DS):
 _aur = {d: (sw[sw.dataset == d].auroc.min(), sw[sw.dataset == d].auroc.max()) for d in DS}
 _ecr = {d: sw[sw.dataset == d].ece.max() / sw[sw.dataset == d].ece.min() for d in DS}
 _nrw = int(sw.n_rep.max())
-MAIN.table(
+SUPP.table(
     "Calibration tracks the training prevalence gap while discrimination does not",
     "tab:sweep",
     "lcccccccc",
@@ -1531,10 +1619,10 @@ assert (
     abs(float(_SS["DILIrank"].ece) - float(_BB["DILIrank"].ece)) < 1e-12
 ), "DILIrank sweep 최솟값이 균등이 아니다 — 본문 서술을 고쳐야 한다"
 
-MAIN.table(
+SUPP.table(
     "Recency weighting of the training set does not repair calibration",
     "tab:recency",
-    "llcccccccccc",
+    "lP{2.0cm}cccccccccc",
     _b,  # 12열
     "Weights are $0.5^{(2010-\\mathrm{year})/\\tau}$, so a smaller half-life $\\tau$ "
     "concentrates the training set on recent approvals; uniform weights reproduce the "
@@ -1642,10 +1730,10 @@ for d in DS:
             r = r.iloc[0]
             _GR[(d, nm)] = (float(r.ece_ratio), float(r.ratio_lo), float(r.ratio_hi))
 _calmax = max(max(abs(v[1]), abs(v[2])) for (dd, kk), v in _GR.items() if kk == "cal")
-MAIN.table(
+SUPP.table(
     "Calibration degrades across the whole chemical space, not only unfamiliar compounds",
     "tab:applicability",
-    "llcccccccc",
+    "lP{3.5cm}cccccccc",
     _b,
     "Each stratum is compared against random splits matched to its own size and positive "
     "rate, because the prevalence differences documented in Table~\\ref{tab:sweep} confound "
@@ -1778,10 +1866,10 @@ _nb = sum(
     for c in ("C0.", "C1.", "C2.")
     if _tbr(d, "무작위분할", "M.").brier < _tbr(d, "무작위분할", c).brier
 )
-MAIN.table(
+SUPP.table(
     "Under temporal validation the model is outscored by a constant",
     "tab:trivial",
-    "llcccc",
+    "lP{4.2cm}cccc",
     _b,
     "Brier score, lower is better. The Brier Skill Score is $1-\\mathrm{BS}_{\\mathrm{model}}/"
     "\\mathrm{BS}_{\\mathrm{C0}}$, so a negative value means the model is worse than predicting "
@@ -1822,7 +1910,7 @@ for i, d in enumerate(DS):
         )
 _rlo = ri.ratio_lo.min()
 _rmin = ri.loc[ri.ratio_lo.idxmin()]
-MAIN.table(
+SUPP.table(
     "Calibration-error ratios exclude one in every control design",
     "tab:ratioci",
     "llcccc",
@@ -1880,7 +1968,7 @@ _T = {d: cm[(cm.dataset == d) & (cm.arm.str.startswith("T"))].iloc[0] for d in D
 MAIN.table(
     "Binning-free metrics give the same ordering as expected calibration error",
     "tab:metrics",
-    "llcccc",
+    "lP{3.8cm}cccc",
     _b,
     "Each entry is the temporal-split value divided by the mean of %d matched "
     "random-split controls. ECE uses ten equal-width bins. The debiased ECE subtracts "
@@ -1956,10 +2044,10 @@ _nb = {
     )
     for d in DS
 }
-MAIN.table(
+SUPP.table(
     "Tuning lowers calibration error but leaves the split-design gap",
     "tab:hparam",
-    "llccccc",
+    "lP{3.8cm}ccccc",
     _b,
     "A grid of %d configurations crossing tree depth, number of trees, learning rate and "
     "minimum child weight was evaluated in full. Configurations were selected on the most "
@@ -2040,10 +2128,10 @@ for i, d in enumerate(DS):
 _npow = int((rp.mde_over_gap <= 0.25).sum())
 _nhold = int(rp.verdict.str.startswith("(다)").sum())
 _dep = rp[rp.deployable == "배포 가능"]
-MAIN.table(
+SUPP.table(
     "Minimum detectable improvement for each proposed remedy",
     "tab:power",
-    "lllccccc",
+    "lP{3.1cm}lccccc",
     _b,
     "Each remedy is compared with the uncalibrated model on the same validation set by a "
     "paired bootstrap of %s resamples in which the predictions are held fixed, so the two "
@@ -2119,7 +2207,7 @@ MAIN.table(
     "tab:covshift",
     # 열은 7개다 (Dataset, Training weights, Effective n, Max w, AUROC,
     # ECE, Resolution). 서식이 8열이면 빈 열이 하나 붙어 정렬이 밀린다.
-    "llccccc",
+    "lP{2.2cm}ccccc",
     _b,
     "Training compounds are weighted by $w(x)=P(\\mathrm{post}|x)/(1-P(\\mathrm{post}|x))$, "
     "where the probability comes from out-of-fold predictions of a classifier trained to "
@@ -2185,7 +2273,7 @@ _gta = int((g3.r3_d_reliability > g3.r3_d_resolution.abs()).sum())
 SUPP.table(
     "The headline ratio holds across every model and representation",
     "tab:gridr3",
-    "lllccccc"[:8],
+    "lllccccc",
     _b,
     "The control matches the prevalence of both the training and the validation set, "
     "which is the most conservative of the three designs used in this work. Each entry "
@@ -2254,7 +2342,7 @@ _g0 = {d: hz[hz.dataset == d].sort_values("year_from") for d in DS}
 SUPP.table(
     "Calibration loss appears in every approval window after control",
     "tab:horizon",
-    "llcccccc"[:8],
+    "llcccccc",
     _b,
     "The validation set is split by approval window and each window is compared with "
     "controls of the same size and prevalence; the R3 control matches the prevalence of "
@@ -2334,10 +2422,10 @@ for i, d in enumerate(DS):
         first = False
 _win = int((sm2m.diff_se_units > 2).sum())
 _tie = int((sm2m.diff_se_units.abs() <= 2).sum())
-MAIN.table(
+SUPP.table(
     "At equal shift the temporal split still loses more calibration",
     "tab:shiftmatched",
-    "lllcccccc"[:9],
+    "lllcccccc",
     _b,
     "Non-temporal splits are built by blending the rank along a chemical axis with a random "
     "rank, so the amount of shift can be tuned continuously; $\\alpha^{*}$ is the blend "
@@ -2423,7 +2511,7 @@ _cpos = _gc[_gc.recovery > 0]
 SUPP.table(
     "Nine quantification estimators do not recover the validation prevalence",
     "tab:prior2",
-    "lllccccc"[:8],
+    "lP{4.6cm}lccccc",
     _b,
     "The estimators are classify and count (CC), its adjusted (ACC) and "
     "probabilistic adjusted (PACC) forms, the "
@@ -2527,7 +2615,7 @@ SUPP.table(
     "Removing the arbitrariness from the point estimates of the recalibration "
     "and conformal analyses",
     "tab:tieavg",
-    "llcccccc",
+    "lP{5.0cm}cccccc",
     _b,
     "Three arbitrary implementation choices are randomised jointly over %d "
     "repetitions: the assignment of boundary-year ties to the internal "
@@ -2636,7 +2724,7 @@ SUPP.table(
     # Negative, Set size, z+, z-). 전에는 "llllccccc"[:10] 로 적혀 있었는데
     # 그 문자열이 9자라 슬라이스가 9개만 돌려줬고, 모든 행이 열을 하나씩
     # 넘겨 LaTeX 가 "Extra alignment tab" 으로 멈췄다 (2026-10-23 확인).
-    "llllcccccc",
+    "llP{3.4cm}lcccccc",
     _b,
     "Marginal split conformal calibrates one quantile on the whole calibration "
     "set and guarantees only overall coverage, so the per-class figures of the "
@@ -2884,7 +2972,7 @@ _b.append(
 SUPP.table(
     "Every test previously outside a correction family, folded back in",
     "tab:fdrall",
-    "lcccc",
+    "P{2.5cm}cccc",
     _b,
     "The main multiple-comparison analysis corrects within three pre-specified "
     "families and leaves the tests of several later sections outside any of them, "
@@ -2984,7 +3072,7 @@ _ntotS = sum(
 SUPP.table(
     "Calibration loss is present in every subgroup that could be measured",
     "tab:subcalib",
-    "llccccccc",
+    "lP{4.0cm}ccccccc",
     _b,
     "The subgroup analyses in the main text report discrimination only, which "
     "leaves open whether the calibration loss is concentrated in a therapeutic "
@@ -3027,7 +3115,7 @@ _PQEN = {
 }
 _b = []
 _b.append(
-    head("Dataset", "Design", "$n$", "ECE", "SD", "AUROC", "Calibration slope", "Mean prediction")
+    head("Dataset", "Design", "$n$", "ECE", "AUROC", "Calibration slope")
 )
 for i, d in enumerate(DS):
     if i:
@@ -3050,11 +3138,15 @@ for i, d in enumerate(DS):
                 d if first else "",
                 _PQEN[arm],
                 "%d" % int(g.n.mean()),
-                ("\\textbf{%s}" % f4(g.ece.mean())) if arm.startswith("P2") else f4(g.ece.mean()),
-                (f4(g.ece.std(ddof=1)) if len(g) > 1 else "---"),
+                (
+                    ("\\textbf{%s}" % f4(g.ece.mean()))
+                    if arm.startswith("P2")
+                    else (
+                        pm(g.ece.mean(), g.ece.std(ddof=1)) if len(g) > 1 else f4(g.ece.mean())
+                    )
+                ),
                 f4(g.auroc.mean()),
                 f4(g.slope.mean()),
-                f4(g.mean_pred.mean()),
             )
         )
         first = False
@@ -3072,8 +3164,10 @@ _r3rat = {
 MAIN.table(
     "Annual retraining with recalibration is the one remedy that works",
     "tab:prequential",
-    "llcccccc",
+    "lP{2.5cm}cccc",
     _b,
+    "The shuffled-year rows are averages over ten shuffles and carry their "
+    "standard deviation; the three prequential arms are single runs. "
     "Each validation year is predicted by a model trained only on compounds "
     "approved before it, and the predictions of all years are pooled into a "
     "single evaluation set, which is the same set of compounds used throughout "
@@ -3228,7 +3322,7 @@ _ngrp = {d: _cfg[_cfg.dataset == d]["_k"].nunique() for d in DS}
 SUPP.table(
     "Structure groups removed because their labels disagreed",
     "tab:conflict",
-    "llll",
+    "llP{4.2cm}l",
     _b,
     "Standardisation collapses salt forms, hydrates and stereoisomers of one "
     "parent structure into a single record, keyed on the first 14 characters of "
