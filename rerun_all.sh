@@ -172,6 +172,7 @@ run make_filter_lists.py   # 큐레이션 필터가 제거한 화합물 목록 (
 run make_report.py
 run make_tables.py
 run make_figures.py
+run make_fig_floats.py        # figures.tex -> manuscript/floats/fig_*.tex
 
 # ---------------------------------------------------------- 7 검증
 run verify9.py

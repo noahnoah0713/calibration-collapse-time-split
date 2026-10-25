@@ -1,15 +1,15 @@
 cff-version: 1.2.0
 title: >-
-  Beyond AUROC: Quantifying Calibration Collapse in Time-Split
-  Validation of Hepatotoxicity and Cardiotoxicity Models
+  Beyond AUROC: quantifying calibration collapse in time-split
+  validation of hepatotoxicity and cardiotoxicity models
 message: Please cite this software using the metadata in this record.
 type: software
 authors:
   - family-names: Lee
     given-names: Noah
     alias: 이노아
-version: v0.2
-date-released: "2026-10-24"
+version: v1.0
+date-released: "2026-10-25"
 # 개념 DOI 를 적는다. 버전 DOI 는 릴리스마다 Zenodo 가 새로 만들므로
 # 여기에 박아 두면 바로 낡는다 (v0.1 의 버전 DOI 가 그랬다).
 doi: 10.5281/zenodo.23583593

@@ -110,6 +110,15 @@ def main():
             % (n, w, sc, font, rule, "OK" if not bad else "X " + ", ".join(bad))
         )
 
+    # 반대 방향 — 원고가 부르는 그림 파일이 실제로 있는가. 2026-10-25 에
+    # 새 Figure 1 을 끼워 넣고 PDF 를 아직 만들지 않았는데도 이 검사가
+    # 통과했다. 폴더에 있는 파일만 보았기 때문이다.
+    for u in sorted(used):
+        f = u if u.lower().endswith(".pdf") else u + ".pdf"
+        if not os.path.exists(os.path.join(FIGDIR, f)):
+            print("%-34s %7s %6s %7s %7s X 원고가 부르는데 파일이 없다" % (f, "-", "-", "-", "-"))
+            nbad += 1
+
     print("")
     if nbad:
         print("문제 %d건. src/make_figures.py 의 COL1·COL2 를 보고 다시 그릴 것." % nbad)

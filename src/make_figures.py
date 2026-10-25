@@ -413,7 +413,7 @@ def fig1():
     panel_label(ax, "c", x=-0.30, y=1.17)
 
     fig.tight_layout(w_pad=1.9)
-    save(fig, "Fig1_split_strategies")
+    save(fig, "Fig2_split_strategies")
 
 
 # ============================================================ Fig 2
@@ -475,7 +475,7 @@ def fig2():
         panel_label(ax, lab, x=-0.26, y=1.18)  # 제목/눈금과 겹치지 않게
 
     fig.tight_layout(w_pad=1.5)
-    save(fig, "Fig2_calibration_curves")
+    save(fig, "Fig3_calibration_curves")
 
 
 # ============================================================ Fig 7
@@ -589,7 +589,7 @@ def fig7():
     panel_label(ax, "c", x=-0.30, y=1.14)
 
     fig.tight_layout(w_pad=1.9)
-    save(fig, "Fig7_robustness")
+    save(fig, "Fig8_robustness")
 
 
 # ============================================================ Fig 3
@@ -735,7 +735,7 @@ def fig3():
     panel_label(ax, "b")
 
     fig.tight_layout(w_pad=3.0)
-    save(fig, "Fig3_prevalence_sweep")
+    save(fig, "Fig4_prevalence_sweep")
 
 
 # ============================================================ Fig S1
@@ -918,7 +918,7 @@ def fig5():
     panel_label(ax, "b", x=-0.22, y=1.14)
 
     fig.tight_layout(w_pad=2.4)
-    save(fig, "Fig5_recalibration_conformal")
+    save(fig, "Fig6_recalibration_conformal")
 
 
 def fig6():
@@ -1004,7 +1004,7 @@ def fig6():
     panel_label(ax, "b")
 
     fig.tight_layout(w_pad=2.4)
-    save(fig, "Fig6_retraining_delay")
+    save(fig, "Fig7_retraining_delay")
 
 
 def fig4():
@@ -1159,19 +1159,517 @@ def fig4():
     panel_label(ax, "b", x=-0.22, y=1.10)
 
     fig.tight_layout(pad=0.3, w_pad=1.4)
-    save(fig, "Fig4_shift_matched")
+    save(fig, "Fig5_shift_matched")
+
+
+# ============================================================ Fig 1 설계 모식도
+# 왜 이 그림이 있는가 — 이 저널의 같은 주제 논문(Landrum 2023, SIMPD)도 첫 그림이
+# 분할 설계 모식도다. 설계 자체가 이 논문의 주장이므로 글보다 그림이 빠르다.
+# 숫자는 손으로 적지 않는다: results/ 에서 읽고, 읽은 값이 분석집합 크기와
+# 맞는지 그 자리에서 확인한다.
+def _tag(ax, x, y, txt, color, fs=6.0):
+    ax.text(
+        x,
+        y,
+        txt,
+        transform=ax.transAxes,
+        fontsize=fs,
+        color="white",
+        ha="center",
+        va="center",
+        fontweight="bold",
+        bbox=dict(boxstyle="round,pad=0.22", fc=color, ec="none"),
+    )
+
+
+def _rect(ax, x0, y0, w, h, ec, fc="none", lw=0.6, ls="-"):
+    ax.add_patch(
+        plt.Rectangle(
+            (x0, y0),
+            w,
+            h,
+            transform=ax.transAxes,
+            fill=fc != "none",
+            fc=fc,
+            ec=ec,
+            lw=lw,
+            ls=ls,
+            zorder=1,
+        )
+    )
+
+
+def _blank(figsize):
+    fig = plt.figure(figsize=figsize)
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+    return fig, ax
+
+
+def _split_facts():
+    """시간분할 학습·검증 크기와 양성률. 결과 파일에서만 읽는다."""
+    tb = pd.read_csv(RES / "trivial_baseline.csv")
+    tb = tb[
+        tb["split"].astype(str).str.contains("시간")
+        & tb["predictor"].astype(str).str.startswith("M.")
+    ]
+    out = {}
+    for ds in ("DILIrank", "DICTrank"):
+        r = tb[tb["dataset"].astype(str).str.startswith(ds)]
+        assert len(r) == 1, (ds, len(r))
+        r = r.iloc[0]
+        out[ds] = dict(
+            ntr=int(r["n_train"]),
+            nte=int(r["n_test"]),
+            ptr=float(r["pi_train"]),
+            pte=float(r["pi_test"]),
+        )
+    assert out["DILIrank"]["ntr"] + out["DILIrank"]["nte"] == 796
+    assert out["DICTrank"]["ntr"] + out["DICTrank"]["nte"] == 919
+    return out
+
+
+def _matched_sizes():
+    """R2·R3 가 양성률을 맞추느라 줄어든 검증군 크기."""
+    pc = pd.read_csv(RES / "prevalence_control.csv")
+    out = {}
+    for ds in ("DILIrank", "DICTrank"):
+        r = pc[
+            pc["dataset"].astype(str).str.startswith(ds)
+            & pc["setting"].astype(str).str.startswith("R3")
+        ]
+        assert len(r) == 1, ds
+        out[ds] = int(round(float(r.iloc[0]["n"])))
+    return out
+
+
+def fig_design():
+    f = _split_facts()
+    m = _matched_sizes()
+    fig, ax = _blank((COL1, 2.95))
+
+    # ---------------------------------------------------------- a 분할 설계
+    XL0, XL1, XB, XR0, XR1 = 0.10, 0.545, 0.555, 0.565, 0.99
+    ax.text(0.005, 0.985, "a", transform=ax.transAxes, fontsize=8, fontweight="bold", va="top")
+    ax.text(
+        (XL0 + XL1) / 2,
+        0.975,
+        "trained on earlier approvals",
+        transform=ax.transAxes,
+        fontsize=6.2,
+        ha="center",
+        va="top",
+        color=C["gray"],
+    )
+    ax.text(
+        (XR0 + XR1) / 2,
+        0.975,
+        "held out: later approvals",
+        transform=ax.transAxes,
+        fontsize=6.2,
+        ha="center",
+        va="top",
+        color=C["gray"],
+    )
+    ax.plot(
+        [XB, XB],
+        [0.655, 0.935],
+        transform=ax.transAxes,
+        color="#000000",
+        lw=0.7,
+        ls=(0, (2.4, 1.6)),
+        zorder=3,
+    )
+    ax.text(
+        XB,
+        0.943,
+        "approval year %d" % CUTOFF,
+        transform=ax.transAxes,
+        fontsize=6.2,
+        ha="center",
+        va="bottom",
+        fontweight="bold",
+    )
+
+    for i_, ds in enumerate(("DILIrank", "DICTrank")):
+        y = 0.845 - i_ * 0.125
+        col = DS_COLOR[ds]
+        d = f[ds]
+        ax.text(
+            XL0 - 0.015,
+            y + 0.040,
+            ds,
+            transform=ax.transAxes,
+            fontsize=6.6,
+            color=col,
+            ha="right",
+            va="center",
+            fontweight="bold",
+        )
+        ax.text(
+            XL0 - 0.015,
+            y + 0.005,
+            "n = %d" % (d["ntr"] + d["nte"]),
+            transform=ax.transAxes,
+            fontsize=6.0,
+            color=C["gray"],
+            ha="right",
+            va="center",
+        )
+        _rect(ax, XL0, y - 0.010, XL1 - XL0, 0.065, ec=col, fc=col + "22")
+        _rect(ax, XR0, y - 0.010, XR1 - XR0, 0.065, ec=col, fc=col + "66")
+        ax.text(
+            (XL0 + XL1) / 2,
+            y + 0.0225,
+            "%d compounds   %.1f%% positive" % (d["ntr"], 100 * d["ptr"]),
+            transform=ax.transAxes,
+            fontsize=6.0,
+            ha="center",
+            va="center",
+        )
+        ax.text(
+            (XR0 + XR1) / 2,
+            y + 0.0225,
+            "%d   %.1f%% positive" % (d["nte"], 100 * d["pte"]),
+            transform=ax.transAxes,
+            fontsize=6.0,
+            ha="center",
+            va="center",
+        )
+
+    ax.annotate(
+        "",
+        xy=(XR1, 0.640),
+        xytext=(XL0 - 0.015, 0.640),
+        xycoords=ax.transAxes,
+        textcoords=ax.transAxes,
+        arrowprops=dict(
+            arrowstyle="-|>", lw=0.6, color="#000000", shrinkA=0, shrinkB=0, mutation_scale=6
+        ),
+    )
+    ax.text(
+        XR1,
+        0.615,
+        "approval year",
+        transform=ax.transAxes,
+        fontsize=6.0,
+        ha="right",
+        va="top",
+        color=C["gray"],
+    )
+
+    # ---------------------------------------------------------- b 통제 사다리
+    ax.text(0.005, 0.545, "b", transform=ax.transAxes, fontsize=8, fontweight="bold", va="top")
+    ax.text(
+        0.050,
+        0.535,
+        "random-split controls on the same compounds",
+        transform=ax.transAxes,
+        fontsize=6.2,
+        va="top",
+        color=C["gray"],
+    )
+    rows = [
+        ("T", C["gray"], "the %d time split" % CUTOFF),
+        ("R1", C["green"], "random, same held-out size"),
+        ("R2", C["accent"], "+ held-out positive rate as in T"),
+        ("R3", C["purple"], "+ training positive rate as in T"),
+    ]
+    for j_, (tag, col, txt) in enumerate(rows):
+        y = 0.430 - j_ * 0.093
+        _tag(ax, 0.050, y, tag, col)
+        ax.text(0.098, y, txt, transform=ax.transAxes, fontsize=6.1, va="center")
+    ax.annotate(
+        "",
+        xy=(0.016, 0.115),
+        xytext=(0.016, 0.370),
+        xycoords=ax.transAxes,
+        textcoords=ax.transAxes,
+        arrowprops=dict(
+            arrowstyle="-|>", lw=0.6, color=C["gray"], shrinkA=0, shrinkB=0, mutation_scale=6
+        ),
+    )
+    ax.text(
+        0.0065,
+        0.243,
+        "constraints added",
+        transform=ax.transAxes,
+        fontsize=6.0,
+        rotation=90,
+        ha="center",
+        va="center",
+        color=C["gray"],
+    )
+    ax.text(
+        0.050,
+        0.045,
+        "matching the rates costs held-out size: %d and %d $\\rightarrow$ %d and %d"
+        % (f["DILIrank"]["nte"], f["DICTrank"]["nte"], m["DILIrank"], m["DICTrank"]),
+        transform=ax.transAxes,
+        fontsize=6.0,
+        va="center",
+        color=C["gray"],
+    )
+
+    # ---------------------------------------------------------- c 측정 대상
+    ax.text(0.520, 0.545, "c", transform=ax.transAxes, fontsize=8, fontweight="bold", va="top")
+    ax.text(
+        0.565,
+        0.535,
+        "measured on the held-out set",
+        transform=ax.transAxes,
+        fontsize=6.2,
+        va="top",
+        color=C["gray"],
+    )
+    chips = [
+        ("discrimination", "AUROC against random partitions"),
+        ("calibration", "ECE and the Murphy decomposition"),
+        ("coverage", "split conformal prediction"),
+        ("remedies", "recalibration, periodic retraining"),
+    ]
+    for j_, (head_, sub) in enumerate(chips):
+        y = 0.430 - j_ * 0.105
+        _rect(ax, 0.565, y - 0.038, 0.425, 0.076, ec="#BBBBBB")
+        ax.text(
+            0.583,
+            y + 0.015,
+            head_,
+            transform=ax.transAxes,
+            fontsize=6.1,
+            va="center",
+            fontweight="bold",
+        )
+        ax.text(
+            0.583,
+            y - 0.016,
+            sub,
+            transform=ax.transAxes,
+            fontsize=6.0,
+            va="center",
+            color=C["gray"],
+        )
+
+    save(fig, "Fig1_study_design")
+
+
+# ============================================================ 그래픽 초록
+# 저널 규격(2026-10-25 확인): 920 x 300 px, 150 KB 이하, jpeg/png/svg,
+# 흰 배경, 색 사용 권장. bbox="tight" 는 크기를 바꾸므로 여기서만 끈다.
+GA_W, GA_H, GA_DPI = 920, 300, 100
+
+
+def fig_graphical_abstract():
+    f = _split_facts()
+    perm = pd.read_csv(RES / "permutation_test.csv").set_index("dataset")
+    pc = pd.read_csv(RES / "prevalence_control.csv")
+    pre = pd.read_csv(RES / "prequential_retraining_delta.csv")
+    d_auroc, ratio, d_ece = {}, {}, {}
+    for ds in ("DILIrank", "DICTrank"):
+        d_auroc[ds] = float(perm.loc[ds, "delta_auroc"])
+        r = pc[
+            pc["dataset"].astype(str).str.startswith(ds)
+            & pc["setting"].astype(str).str.startswith("R1")
+        ]
+        assert len(r) == 1, ds
+        ratio[ds] = float(r.iloc[0]["ece_ratio"])
+        q = pre[
+            pre["dataset"].astype(str).str.startswith(ds)
+            & pre["arm"].astype(str).str.startswith("P2")
+        ]
+        assert len(q) == 1, ds
+        d_ece[ds] = float(q.iloc[0]["delta"])
+
+    # 부동소수 내림 때문에 919 px 가 나온 적이 있다 — 아주 작은 값을 더해 막는다.
+    fig, ax = _blank((GA_W / GA_DPI + 1e-6, GA_H / GA_DPI + 1e-6))
+    fig.set_dpi(GA_DPI)
+    fig.patch.set_facecolor("white")
+
+    for x in (0.355, 0.675):
+        ax.plot([x, x], [0.08, 0.82], transform=ax.transAxes, color="#D9D9D9", lw=0.9)
+
+    def head2(x, line1, line2):
+        ax.text(
+            x, 0.915, line1, transform=ax.transAxes, fontsize=9.2, va="center", fontweight="bold"
+        )
+        if line2:
+            ax.text(
+                x, 0.775, line2, transform=ax.transAxes, fontsize=7.4, va="center", color=C["gray"]
+            )
+
+    # 1 설계
+    head2(0.022, "Split at approval year %d" % CUTOFF, "two FDA reference lists")
+    for i_, ds in enumerate(("DILIrank", "DICTrank")):
+        y = 0.52 - i_ * 0.21
+        col = DS_COLOR[ds]
+        d = f[ds]
+        ax.text(
+            0.022,
+            y,
+            ds,
+            transform=ax.transAxes,
+            fontsize=8.4,
+            color=col,
+            va="center",
+            fontweight="bold",
+        )
+        _rect(ax, 0.128, y - 0.055, 0.145, 0.11, ec=col, fc=col + "22", lw=0.9)
+        _rect(ax, 0.278, y - 0.055, 0.055, 0.11, ec=col, fc=col + "66", lw=0.9)
+        ax.text(
+            0.2005,
+            y,
+            "train %d" % d["ntr"],
+            transform=ax.transAxes,
+            fontsize=7.4,
+            ha="center",
+            va="center",
+        )
+        ax.text(
+            0.3055,
+            y,
+            "%d" % d["nte"],
+            transform=ax.transAxes,
+            fontsize=7.4,
+            ha="center",
+            va="center",
+        )
+    ax.text(
+        0.3055,
+        0.165,
+        "held out",
+        transform=ax.transAxes,
+        fontsize=7.0,
+        ha="center",
+        va="center",
+        color=C["gray"],
+    )
+
+    # 2 결과 — 막대 길이가 곧 배수다. 글자만 늘어놓으면 그림이 아니다.
+    head2(0.378, "Calibration collapses", "calibration error vs a random split")
+    unit = 0.040
+    for i_, ds in enumerate(("DILIrank", "DICTrank")):
+        col = DS_COLOR[ds]
+        y = 0.505 - i_ * 0.235
+        ax.text(
+            0.378,
+            y,
+            ds,
+            transform=ax.transAxes,
+            fontsize=8.0,
+            color=col,
+            va="center",
+            fontweight="bold",
+        )
+        _rect(ax, 0.470, y + 0.025, unit, 0.050, ec=C["gray"], fc="#DDDDDD", lw=0.7)
+        ax.text(
+            0.470 + unit + 0.008,
+            y + 0.050,
+            "random",
+            transform=ax.transAxes,
+            fontsize=6.4,
+            va="center",
+            color=C["gray"],
+        )
+        _rect(ax, 0.470, y - 0.075, unit * ratio[ds], 0.050, ec=col, fc=col + "99", lw=0.7)
+        ax.text(
+            0.470 + unit * ratio[ds] + 0.008,
+            y - 0.050,
+            "$\\times$%.2f" % ratio[ds],
+            transform=ax.transAxes,
+            fontsize=8.4,
+            va="center",
+            fontweight="bold",
+            color=col,
+        )
+    ax.text(
+        0.378,
+        0.115,
+        "AUROC fell by only %.3f and %.3f" % (d_auroc["DILIrank"], d_auroc["DICTrank"]),
+        transform=ax.transAxes,
+        fontsize=7.2,
+        va="center",
+        color=C["gray"],
+    )
+
+    # 3 처방
+    head2(0.698, "One remedy survives", "refit as approvals accumulate,")
+    ax.text(
+        0.698,
+        0.655,
+        "recalibrating each time",
+        transform=ax.transAxes,
+        fontsize=7.4,
+        va="center",
+        color=C["gray"],
+    )
+    for i_, ds in enumerate(("DILIrank", "DICTrank")):
+        col = DS_COLOR[ds]
+        y = 0.45 - i_ * 0.21
+        ax.text(
+            0.698,
+            y,
+            ds,
+            transform=ax.transAxes,
+            fontsize=8.4,
+            color=col,
+            va="center",
+            fontweight="bold",
+        )
+        ax.text(
+            0.820,
+            y,
+            "ECE $-$%.3f" % abs(d_ece[ds]),
+            transform=ax.transAxes,
+            fontsize=8.6,
+            va="center",
+            fontweight="bold",
+            color=col,
+        )
+    ax.text(
+        0.698,
+        0.115,
+        "an upper bound: labels assumed final at approval",
+        transform=ax.transAxes,
+        fontsize=6.8,
+        va="center",
+        color=C["gray"],
+    )
+
+    out = FIG / "graphical_abstract.png"
+    fig.savefig(out, dpi=GA_DPI, bbox_inches=None, pad_inches=0, facecolor="white")
+    plt.close(fig)
+    with open(out, "rb") as fh:
+        hd = fh.read(33)
+    w = int.from_bytes(hd[16:20], "big")
+    h = int.from_bytes(hd[20:24], "big")
+    kb = os.path.getsize(out) / 1024.0
+    assert (w, h) == (GA_W, GA_H), (w, h)
+    assert kb <= 150, kb
+    print("  저장: %s/graphical_abstract.png  %dx%d px, %.0f KB" % (FIG.name, w, h, kb))
 
 
 def main():
+    """인자 없이 돌리면 전부 다시 그린다. 모형을 다시 적합하므로 오래 걸린다.
+    설계 모식도와 그래픽 초록은 결과 파일만 읽으므로 따로 돌릴 수 있다:
+        python3 src/make_figures.py design"""
+    import sys
+
+    only = set(sys.argv[1:])
     print("그림 생성 중...")
-    fig1()
-    fig2()
-    fig3()
-    fig4()
-    fig5()
-    fig6()
-    fig7()
-    figS1()
+    if not only or "design" in only:
+        fig_design()
+        fig_graphical_abstract()
+    if not only:
+        fig1()
+        fig2()
+        fig3()
+        fig4()
+        fig5()
+        fig6()
+        fig7()
+        figS1()
     print(f"\n완료. {FIG} 확인")
     print("PDF는 벡터(투고용), PNG는 600dpi(확인용)")
 
