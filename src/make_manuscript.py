@@ -32,6 +32,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAN = os.path.join(ROOT, "manuscript")
 SRC = os.path.join(MAN, "main.tex")
 OUT = os.path.join(MAN, "submission.tex")
+# 보충자료도 같이 펼친다. 저널은 "LaTeX 원고를 한 .tex 문서로 내라" 고
+# 하는데 supplementary.tex 는 tables_supp.tex 를 \input 하고 있었다.
+# 그대로 올리면 투고 시스템이 tables_supp.tex 를 못 찾아 멈춘다
+# (2026-10-24 에 실제로 "File `tables_supp.tex\' not found" 로 멈췄다).
+SRC2 = os.path.join(MAN, "supplementary.tex")
+OUT2 = os.path.join(MAN, "additional_file_1.tex")
 
 if not os.path.exists(SRC):
     # 2026-10-22: 공개 저장소에는 원고를 넣지 않는다 (재현과 무관하고
@@ -107,6 +113,20 @@ def main():
         return 0
     io.open(OUT, "w", encoding="utf-8").write(txt)
     print("저장: %s" % OUT)
+
+    # 보충자료도 한 파일로 펼친다.
+    if os.path.exists(SRC2):
+        t2 = expand(SRC2, set())
+        left2 = [
+            ln
+            for ln in t2.split("\n")
+            if re.match(r"\s*\\input\{", ln) and not ln.strip().startswith("%")
+        ]
+        if left2:
+            raise SystemExit("보충자료에 펼치지 못한 \\input 이 남았다: %s" % left2[:3])
+        t2 = head + t2 if not t2.startswith("%%") else t2
+        io.open(OUT2, "w", encoding="utf-8").write(t2)
+        print("저장: %s" % OUT2)
     return 0
 
 

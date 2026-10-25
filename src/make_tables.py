@@ -196,13 +196,18 @@ class Doc(object):
         else:
             self._open.append(s)
 
-    def table(self, caption, label, colspec, body, legend, placement="h"):
+    def table(self, caption, label, colspec, body, legend, placement="htbp"):
         """표 하나를 모아 둔다. 바로 쓰지 않고 save() 에서 정해진 순서로 쓴다.
 
         왜 — 학술지는 표를 "본문에 처음 인용되는 순서로" 번호 매기라고
         요구한다. 코드가 계산하기 편한 순서와 본문이 읽는 순서는 다르고,
         2026-10-24 에 실제로 어긋나 있었다 (본문이 Table 10 을 Table 7 보다
         먼저 가리켰다). 순서는 아래 MAIN_ORDER 한 곳에서 정한다.
+
+        배치는 [htbp] 다. 전에는 [h] 뿐이었는데, 줄간격 2배인 심사본에서는
+        "여기" 에 자리가 나는 일이 거의 없어 LaTeX 가 표를 계속 미뤘다.
+        그 결과 Table 1 이 28쪽, Table 7·8 이 참고문헌 뒤 78~79쪽에 실렸다
+        (2026-10-24 확인). t/b/p 를 열어 주면 본문 근처 위아래로 들어간다.
 
         글자 크기와 가로쓰기는 LAYOUT 에서 라벨로 찾는다. sn-jnl 단일단의
         본문 폭은 119mm(339pt)뿐이라 열이 일곱 개를 넘으면 그대로는 넘친다.
@@ -270,6 +275,17 @@ class Doc(object):
             for _, lines in self.T:
                 body += lines
         io.open(path, "w", encoding="utf-8").write("\n".join(self.head + body) + "\n")
+        # 표 하나짜리 파일도 따로 쓴다. 본문은 이것을 인용한 자리에서
+        # \input 한다 — 표를 전부 Results 뒤에 몰아 두면 LaTeX 가 정의된
+        # 자리보다 앞에 놓지 못해 표가 본문에서 멀어진다 (2026-10-24 에
+        # Table 1 이 28쪽, Table 7·8 이 참고문헌 뒤에 실렸다).
+        if self.kind == "main":
+            d = os.path.join(os.path.dirname(path), "floats")
+            if not os.path.isdir(d):
+                os.makedirs(d)
+            for lab, lines in self.T:
+                f = os.path.join(d, "tab_%s.tex" % lab.split(":", 1)[1])
+                io.open(f, "w", encoding="utf-8").write("\n".join(lines).lstrip("\n") + "\n")
         return len(self.head) + len(body)
 
 
@@ -304,33 +320,27 @@ def head(*cells):
 # pdflatex 로 표의 자연 폭을 재서 검사하므로, 여기를 손으로 고치면 그
 # 검사가 맞는지 말해 준다. 적지 않은 표는 그대로 본문 크기·세로쓰기다.
 LAYOUT = {
-    # 세로쓰기로 들어가지만 본문 크기로는 넘치는 표
-    "tab:prequential": ("small", False),
+    # (글자크기, 가로쓰기). 크기가 None 이면 본문 크기다.
+    # 본문은 세로 A4 판면 372 x 553pt, 보충자료는 가로 A4 731 x 484pt 다.
+    # 폭과 높이를 모두 src/verify13.py 가 pdflatex 로 실측해 검사한다.
+    # 높이가 넘치면 LaTeX 는 "Float too large" 를 내거나(세로쓰기) 아무
+    # 말 없이 잘라 버린다 — 2026-10-24 에 S8 의 캡션과 머리행이 그렇게
+    # 사라졌다. 그래서 행이 많은 표는 글자를 줄여 높이를 맞춘다.
+    "tab:prequential": ("footnotesize", False),
+    "tab:subcalib": ("small", False),
     "tab:fdrall": ("small", False),
     "tab:desc": ("small", False),
-    "tab:curation": ("small", False),
-    # 가로로 돌려야 하는 표
-    "tab:sweep": (None, True),
-    "tab:era": (None, True),
-    "tab:nontemporal": ("small", True),
-    "tab:shiftmatched": (None, True),
-    "tab:mondrian": (None, True),
-    "tab:recency": ("scriptsize", True),
-    "tab:prior": (None, True),
-    "tab:prior2": (None, True),
-    "tab:applicability": ("small", True),
-    "tab:adfilter": (None, True),
-    "tab:hparam": (None, True),
-    "tab:power": (None, True),
-    "tab:interval": (None, True),
-    "tab:reverse": (None, True),
-    "tab:concept": ("small", True),
-    "tab:gridr3": (None, True),
-    "tab:horizon": (None, True),
-    "tab:ratioci": (None, True),
-    "tab:tieavg": (None, True),
-    "tab:trivial": (None, True),
-    "tab:subcalib": (None, True),
+    "tab:curation": ("footnotesize", False),
+    "tab:nontemporal": ("small", False),
+    "tab:applicability": ("small", False),
+    "tab:concept": ("footnotesize", False),
+    "tab:mondrian": ("scriptsize", False),
+    "tab:prior2": ("small", False),
+    "tab:power": ("small", False),
+    "tab:gridr3": ("footnotesize", False),
+    "tab:tieavg": ("small", False),
+    "tab:recency": ("footnotesize", False),
+    "tab:conflict": ("tiny", False),
 }
 
 MAIN = Doc("Main-text tables", "main")
@@ -1619,7 +1629,7 @@ assert (
 SUPP.table(
     "Recency weighting of the training set does not repair calibration",
     "tab:recency",
-    "lP{2.0cm}cccccccccc",
+    "lP{4.2cm}cccccccccc",
     _b,  # 12열
     "Weights are $0.5^{(2010-\\mathrm{year})/\\tau}$, so a smaller half-life $\\tau$ "
     "concentrates the training set on recent approvals; uniform weights reproduce the "
@@ -1633,11 +1643,11 @@ SUPP.table(
     "AUROC falls from %s to %s and the calibration slope from %s to %s, on an effective "
     "sample of %d rather than %d. Flattening the predictions lowers ECE and leaves a model "
     "that no longer separates the classes, which is the very error this paper argues "
-    "against. Half-lives were chosen without looking at the held-out set, by an inner split "
-    "of the training era (fit before 2000, select on 2000--2009); that selection rule did "
-    "find the sweep optimum for DICTrank, so the procedure works even though what it selects "
-    "is not useful. Read with Table~\\ref{tab:recal}: the only intervention that recovers a "
-    "large share of the lost calibration uses labelled recent compounds."
+    "against. Half-lives were chosen without the held-out set, by an inner split of "
+    "the training era (fit before 2000, select on 2000--2009). Read with "
+    "Table~\\ref{tab:recal}: the "
+    "only intervention that recovers a large share of the lost calibration uses "
+    "labelled recent compounds."
     % (
         f4(_SS["DILIrank"].ece),
         float(_HH["DICTrank"].tau),
@@ -2725,22 +2735,19 @@ SUPP.table(
     _b,
     "Marginal split conformal calibrates one quantile on the whole calibration "
     "set and guarantees only overall coverage, so the per-class figures of the "
-    "main conformal analysis are descriptive. Mondrian conformal calibrates a "
-    "separate quantile on each true-label stratum of the calibration set, which "
-    "guarantees coverage within each class and needs no knowledge of the test "
-    "label. Because it relies only on exchangeability within a class, it stays "
-    "valid under arbitrary label shift, which makes it a diagnostic as well as a "
-    "remedy: whatever coverage deficit survives it cannot be attributed to the "
-    "change in prevalence. The random split is a size-matched control over %d "
-    "repetitions, and the prevalence-matched control subsamples each repetition's "
-    "evaluation set to the positive rate of the temporal validation set, which "
-    "changes the label marginal and nothing else. Two checks confirm the "
-    "implementation: under the exchangeable control Mondrian attains nominal "
-    "coverage in both classes, and moving to the prevalence-matched control moves "
-    "overall coverage by %s--%s for the marginal procedure but by at most %s for "
-    "Mondrian. $z$ is a one-sided binomial statistic against the nominal level and "
-    "is reported only for the single temporal split. %s The cost is set size, "
-    "which rises by %s--%s under the temporal split; no prediction set is empty."
+    "main conformal analysis are descriptive. Mondrian conformal takes a separate "
+    "quantile on each true-label stratum, which guarantees coverage within each "
+    "class, needs no knowledge of the test label, and stays valid under arbitrary "
+    "label shift. It is therefore a diagnostic as well as a remedy: a deficit that "
+    "survives it cannot be attributed to the change in prevalence. The random split "
+    "is a size-matched control over %d repetitions, and the prevalence-matched "
+    "control subsamples each repetition's evaluation set to the temporal positive "
+    "rate. Under the exchangeable control Mondrian attains nominal coverage in both "
+    "classes, and moving to the prevalence-matched control shifts overall coverage "
+    "by %s--%s for the marginal procedure but by at most %s for Mondrian. $z$ is a "
+    "one-sided binomial statistic against the nominal level, reported only for the "
+    "single temporal split. %s The cost is set size, which rises by %s--%s under "
+    "the temporal split; no prediction set is empty."
     % (
         int(mdc[mdc.arm == _MA10[1]].reps.iloc[0]),
         f4(
