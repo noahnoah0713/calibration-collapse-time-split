@@ -1642,6 +1642,20 @@ def fig_graphical_abstract():
     out = FIG / "graphical_abstract.png"
     fig.savefig(out, dpi=GA_DPI, bbox_inches=None, pad_inches=0, facecolor="white")
     plt.close(fig)
+
+    # 인치 x dpi 는 부동소수라 matplotlib 판에 따라 918~920 px 가 나온다
+    # (3.10 에서 920, 3.11 에서 918 — 2026-10-26 에 이 단정문이 터져서
+    # 뒤의 그림 두 개가 아예 그려지지 않았다). 규격이 정확한 치수를
+    # 요구하므로 흰 바탕에 올려 정확히 맞춘다.
+    from PIL import Image
+
+    im = Image.open(out).convert("RGB")
+    if im.size != (GA_W, GA_H):
+        canvas = Image.new("RGB", (GA_W, GA_H), "white")
+        canvas.paste(im.crop((0, 0, min(im.width, GA_W), min(im.height, GA_H))), (0, 0))
+        canvas.save(out, optimize=True)
+        print("  크기 보정: %dx%d -> %dx%d px" % (im.width, im.height, GA_W, GA_H))
+
     with open(out, "rb") as fh:
         hd = fh.read(33)
     w = int.from_bytes(hd[16:20], "big")
@@ -1866,10 +1880,12 @@ def main():
     print("그림 생성 중...")
     quick = not only or ("design" in only) or ("quick" in only)
     if quick:
+        # 본문 그림을 먼저 만든다. 그래픽 초록은 투고 필수가 아니므로
+        # 거기서 문제가 나도 본문 그림은 이미 나와 있어야 한다.
         fig_design()
-        fig_graphical_abstract()
         fig_space()
         fig_decision()
+        fig_graphical_abstract()
     if not only:
         fig1()
         fig2()
