@@ -5,7 +5,7 @@
 [![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](environment.yml)
 
-![Summary: splitting two FDA toxicity lists at approval year 2010 collapses calibration while discrimination barely moves, and refitting with recalibration recovers most of it](figures/graphical_abstract.png)
+![Summary: splitting two FDA toxicity lists at approval year 2010 collapses calibration while discrimination barely moves, and refitting with recalibration recovers most of it](figures/graphical_abstract_hires.png)
 
 Hepatotoxicity (DILIrank) and cardiotoxicity (DICTrank) models lose about
 0.08 AUROC when the held-out set is defined by approval year rather than at
@@ -265,7 +265,10 @@ src/              96 analysis and verification scripts (_shared.py is the common
 tests/            unit tests for the shared metric functions
 data/processed/   processed data the analyses read
 results/          every intermediate and final result: 102 CSV, 70 TXT, 2 JSON
-figures/          figures for the manuscript, PDF and 600 dpi PNG
+figures/          figures for the manuscript, PDF and 600 dpi PNG, plus the
+                  graphical abstract in three forms: .svg and a 920x300 .png
+                  at the size the journal specifies, and _hires.png at 4x for
+                  reading on screen
 _backup/          results from before the precision fix; record_precision_fix.py
                   reads them to document what it changed
 ```

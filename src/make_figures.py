@@ -1470,6 +1470,7 @@ def fig_design():
 #     (svg.fonttype="path") 보는 쪽에 Arial 이 없어도 모양이 같다.
 #     투고에는 svg 를 내고, png 는 미리보기·대체용이다.
 GA_W, GA_H, GA_DPI = 920, 300, 100
+GA_HIRES = 4  # 읽기용 사본의 배율
 
 
 def _ga_panel_rule(ax, x):
@@ -1620,17 +1621,29 @@ def fig_graphical_abstract():
         assert len(q) == 1, ds
         d_ece[ds] = float(q.iloc[0]["delta"])
 
+    # 세 벌을 낸다.
+    #   graphical_abstract.svg        투고용 벡터 (글자는 패스)
+    #   graphical_abstract.png        투고용 래스터 — 규격 그대로 920x300 px
+    #   graphical_abstract_hires.png  읽기용 고해상도 (4배, 3680x1200 px)
+    # 왜 고해상도본이 따로 필요한가 — 920x300 px 는 저널 규격이지 화면
+    # 규격이 아니다. 보고서나 README 에서 폭 130 mm 로 놓으면 180 dpi 밖에
+    # 안 돼 글자가 뭉개진다 (2026-10-26 확인). 같은 그림을 dpi 만 올려
+    # 다시 그려 두고, 사람이 읽는 자리에는 그쪽을 쓴다.
     made = []
-    for ext in ("svg", "png"):
+    for name, dpi in (
+        ("graphical_abstract.svg", GA_DPI),
+        ("graphical_abstract.png", GA_DPI),
+        ("graphical_abstract_hires.png", GA_DPI * GA_HIRES),
+    ):
         with mpl.rc_context({"svg.fonttype": "path"}):
-            # 부동소수 내림 탓에 918 px 가 나온 적이 있다. png 는 아래에서
-            # 흰 바탕에 올려 정확히 맞춘다.
+            # 부동소수 내림 탓에 918 px 가 나온 적이 있다. 규격 png 는
+            # 아래에서 흰 바탕에 올려 정확히 맞춘다.
             fig, ax = _blank((GA_W / GA_DPI + 1e-6, GA_H / GA_DPI + 1e-6))
             fig.set_dpi(GA_DPI)
             fig.patch.set_facecolor("white")
             _ga_draw(ax, f, d_auroc, ratio, d_ece)
-            out = FIG / ("graphical_abstract." + ext)
-            fig.savefig(out, dpi=GA_DPI, bbox_inches=None, pad_inches=0, facecolor="white")
+            out = FIG / name
+            fig.savefig(out, dpi=dpi, bbox_inches=None, pad_inches=0, facecolor="white")
             plt.close(fig)
         made.append(out)
 
@@ -1651,9 +1664,11 @@ def fig_graphical_abstract():
     assert (w, h) == (GA_W, GA_H), (w, h)
     for out in made:
         kb = os.path.getsize(out) / 1024.0
-        assert kb <= 150, (out.name, kb)
+        # 150 KB 한도는 저널에 내는 두 벌에만 걸린다.
+        if "hires" not in out.name:
+            assert kb <= 150, (out.name, kb)
         print("  저장: %s/%s  %.0f KB" % (FIG.name, out.name, kb))
-    print("     (svg 가 투고용 — 글자를 패스로 바꿔 글꼴이 없어도 같다)")
+    print("     (투고에는 svg, 보고서·README 에는 _hires.png 를 쓴다)")
 
 
 # ============================================================ Fig 5 화학공간
