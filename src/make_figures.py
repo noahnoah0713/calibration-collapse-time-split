@@ -589,7 +589,7 @@ def fig7():
     panel_label(ax, "c", x=-0.30, y=1.14)
 
     fig.tight_layout(w_pad=1.9)
-    save(fig, "Fig8_robustness")
+    save(fig, "Fig9_robustness")
 
 
 # ============================================================ Fig 3
@@ -918,7 +918,7 @@ def fig5():
     panel_label(ax, "b", x=-0.22, y=1.14)
 
     fig.tight_layout(w_pad=2.4)
-    save(fig, "Fig6_recalibration_conformal")
+    save(fig, "Fig7_recalibration_conformal")
 
 
 def fig6():
@@ -1004,7 +1004,7 @@ def fig6():
     panel_label(ax, "b")
 
     fig.tight_layout(w_pad=2.4)
-    save(fig, "Fig7_retraining_delay")
+    save(fig, "Fig8_retraining_delay")
 
 
 def fig4():
@@ -1159,7 +1159,7 @@ def fig4():
     panel_label(ax, "b", x=-0.22, y=1.10)
 
     fig.tight_layout(pad=0.3, w_pad=1.4)
-    save(fig, "Fig5_shift_matched")
+    save(fig, "Fig6_shift_matched")
 
 
 # ============================================================ Fig 1 설계 모식도
@@ -1405,7 +1405,9 @@ def fig_design():
     ax.text(
         0.050,
         0.045,
-        "matching the rates costs held-out size: %d and %d $\\rightarrow$ %d and %d"
+        # mathtext 를 쓰면 그 글자만 DejaVu 로 조판돼 Arial 과 섞인다
+        # (2026-10-26, pdffonts 로 확인). 화살표 대신 말로 적는다.
+        "matching the rates costs held-out size: %d and %d drop to %d and %d"
         % (f["DILIrank"]["nte"], f["DICTrank"]["nte"], m["DILIrank"], m["DICTrank"]),
         transform=ax.transAxes,
         fontsize=6.0,
@@ -1576,7 +1578,7 @@ def fig_graphical_abstract():
         ax.text(
             0.470 + unit * ratio[ds] + 0.008,
             y - 0.050,
-            "$\\times$%.2f" % ratio[ds],
+            "\u00d7%.2f" % ratio[ds],
             transform=ax.transAxes,
             fontsize=8.4,
             va="center",
@@ -1620,7 +1622,7 @@ def fig_graphical_abstract():
         ax.text(
             0.820,
             y,
-            "ECE $-$%.3f" % abs(d_ece[ds]),
+            "ECE \u2212%.3f" % abs(d_ece[ds]),
             transform=ax.transAxes,
             fontsize=8.6,
             va="center",
@@ -1650,6 +1652,210 @@ def fig_graphical_abstract():
     print("  저장: %s/graphical_abstract.png  %dx%d px, %.0f KB" % (FIG.name, w, h, kb))
 
 
+# ============================================================ Fig 5 화학공간
+# 왜 — 케미인포매틱스 독자가 기대하는 화학공간 그림이 하나도 없었다. 이동이
+# 실재한다는 것(a, b)과, 그런데도 보정 손실이 공간의 가장자리에만 있지
+# 않다는 것(c)을 한 장에 둔다. 셋 다 지금까지 보충 표로만 있던 내용이다.
+DESC_LABEL = {
+    "MolWt": "molecular weight",
+    "MolLogP": "logP",
+    "TPSA": "polar surface area",
+    "NumHDonors": "H-bond donors",
+    "NumHAcceptors": "H-bond acceptors",
+    "NumRotatableBonds": "rotatable bonds",
+}
+TERTILE = {
+    "Tanimoto 하위 1/3": "least similar",
+    "Tanimoto 중위 1/3": "middle",
+    "Tanimoto 상위 1/3": "most similar",
+}
+
+
+def fig_space():
+    de = pd.read_csv(RES / "shift_quantification_descriptors.csv")
+    sq = pd.read_csv(RES / "shift_quantification.csv").set_index("dataset")
+    ad = pd.read_csv(RES / "applicability_domain.csv")
+
+    fig = plt.figure(figsize=(COL1, 3.55))
+    gs = fig.add_gridspec(
+        2,
+        2,
+        height_ratios=[1.0, 0.92],
+        width_ratios=[1.0, 1.0],
+        left=0.135,
+        right=0.985,
+        bottom=0.085,
+        top=0.935,
+        hspace=0.62,
+        wspace=0.42,
+    )
+    axa = fig.add_subplot(gs[0, :])
+    axb = fig.add_subplot(gs[1, 0])
+    axc = fig.add_subplot(gs[1, 1])
+
+    # ---- a 기술자 중앙값 변화율
+    order = list(DESC_LABEL)
+    ypos = np.arange(len(order))[::-1]
+    h = 0.34
+    for k, ds in enumerate(("DILIrank", "DICTrank")):
+        g = de[de["dataset"] == ds].set_index("descriptor")
+        vals = []
+        for d_ in order:
+            tr, te = float(g.loc[d_, "median_train"]), float(g.loc[d_, "median_test"])
+            vals.append(100.0 * (te - tr) / tr)
+        axa.barh(
+            ypos + (h / 2 if k == 0 else -h / 2),
+            vals,
+            height=h,
+            color=DS_COLOR[ds],
+            edgecolor="none",
+            label=ds,
+            zorder=2,
+        )
+    axa.axvline(0, color="#000000", lw=0.5, zorder=3)
+    axa.set_yticks(ypos)
+    axa.set_yticklabels([DESC_LABEL[d_] for d_ in order])
+    axa.set_xlabel("change in the median from training to held out (%)")
+    axa.set_xlim(-4, 68)
+    # 수소결합 주개는 중앙값이 그대로다. 막대 길이가 0 이면 자료가 빠진 것처럼
+    # 보이므로 글자로 적는다.
+    zi = order.index("NumHDonors")
+    axa.text(1.0, ypos[zi], "no change", fontsize=5.8, color=C["gray"], va="center")
+    axa.legend(loc="lower right", frameon=False, handlelength=1.1, borderpad=0.2)
+    bare(axa)
+    panel_label(axa, "a", x=-0.195, y=1.20)
+
+    # ---- b 시대 분류 AUC
+    cats = ["fingerprint\n+ descriptors", "descriptors\nonly", "random\nsplit"]
+    cols = ["era_auc_full", "era_auc_desc_only", "random_split_era_auc"]
+    lo = min(float(sq.loc[d_, "null_p025"]) for d_ in ("DILIrank", "DICTrank"))
+    hi = max(float(sq.loc[d_, "null_p975"]) for d_ in ("DILIrank", "DICTrank"))
+    axb.axhspan(lo, hi, color="#E8E8E8", zorder=1)
+    axb.axhline(0.5, color=C["ref"], lw=0.5, ls=(0, (2.4, 1.6)), zorder=2)
+    for k, ds in enumerate(("DILIrank", "DICTrank")):
+        xs = np.arange(len(cats)) + (-0.12 if k == 0 else 0.12)
+        ys = [float(sq.loc[ds, c]) for c in cols]
+        axb.plot(
+            xs,
+            ys,
+            ds_marker(ds),
+            color=DS_COLOR[ds],
+            ms=3.6,
+            mfc=DS_COLOR[ds],
+            mec="white",
+            mew=0.4,
+            ls="none",
+            zorder=4,
+        )
+    axb.set_xticks(np.arange(len(cats)))
+    axb.set_xticklabels(cats)
+    axb.set_ylim(0.42, 0.85)
+    axb.set_ylabel("era-classification AUC")
+    axb.text(
+        0.03,
+        hi - 0.012,
+        "permutation null",
+        transform=axb.get_yaxis_transform(),
+        fontsize=5.8,
+        color=C["gray"],
+        va="top",
+    )
+    bare(axb)
+    panel_label(axb, "b", x=-0.33, y=1.20)
+
+    # ---- c 유사도 삼분위별 ECE 비
+    keys = list(TERTILE)
+    for k, ds in enumerate(("DILIrank", "DICTrank")):
+        g = ad[ad["dataset"] == ds].set_index("stratum")
+        xs = np.arange(len(keys)) + (-0.12 if k == 0 else 0.12)
+        ys = np.array([float(g.loc[t, "ece_ratio"]) for t in keys])
+        lo_ = ys - np.array([float(g.loc[t, "ratio_lo"]) for t in keys])
+        hi_ = np.array([float(g.loc[t, "ratio_hi"]) for t in keys]) - ys
+        axc.errorbar(
+            xs,
+            ys,
+            yerr=[lo_, hi_],
+            fmt=ds_marker(ds),
+            color=DS_COLOR[ds],
+            ms=3.4,
+            mfc=DS_COLOR[ds],
+            mec="white",
+            mew=0.4,
+            lw=0.7,
+            capsize=1.6,
+            zorder=4,
+        )
+    axc.axhline(1.0, color="#000000", lw=0.5, ls=(0, (2.4, 1.6)), zorder=2)
+    axc.set_xticks(np.arange(len(keys)))
+    axc.set_xticklabels([TERTILE[t] for t in keys])
+    axc.set_xlabel("similarity to the training set")
+    axc.set_ylabel("calibration-error ratio")
+    axc.set_xlim(-0.5, len(keys) - 0.5)
+    bare(axc)
+    panel_label(axc, "c", x=-0.33, y=1.20)
+
+    save(fig, "Fig5_chemical_space")
+
+
+# ============================================================ Fig 10 결정곡선
+# 왜 — "그래서 쓸 때 뭐가 달라지는가" 에 답하는 결과가 results/ 에 계산되어
+# 있는데도 원고에 한 줄도 들어가 있지 않았다 (2026-10-26 확인).
+# 주의: 순편익은 검증군 유병률에 직접 의존하므로 무작위분할 팔(R)은 같은
+# 축에 놓을 수 없다. 여기에는 같은 검증군 안의 팔만 그린다.
+DC_ARMS = [
+    ("A. 시간분할 무보정", "no correction", "-", True),
+    ("C. 시간분할 + 사전확률 보정", "base-rate correction", (0, (3.2, 1.6)), False),
+]
+
+
+def fig_decision():
+    dc = pd.read_csv(RES / "decision_curve.csv")
+    fig, axes = plt.subplots(1, 2, figsize=(COL1, 1.95))
+    for ax, ds in zip(axes, ("DILIrank", "DICTrank")):
+        g = dc[dc["dataset"] == ds]
+        col = DS_COLOR[ds]
+        ta = g[g["arm"] == DC_ARMS[0][0]].sort_values("p_t")
+        ax.plot(
+            ta["p_t"],
+            ta["nb_treat_all"],
+            color=C["ref"],
+            lw=0.8,
+            ls=(0, (1.4, 1.4)),
+            zorder=2,
+            label="flag every compound",
+        )
+        ax.axhline(0, color="#000000", lw=0.5, zorder=3)
+        for arm, lab, ls, filled in DC_ARMS:
+            h = g[g["arm"] == arm].sort_values("p_t")
+            assert len(h) == 9, (ds, arm, len(h))
+            ax.plot(
+                h["p_t"],
+                h["net_benefit"],
+                ds_marker(ds),
+                color=col,
+                ls=ls,
+                lw=0.9,
+                ms=3.0,
+                mfc=col if filled else "white",
+                mec=col,
+                mew=0.7,
+                zorder=4,
+                label=lab,
+            )
+        ax.set_title(ds, color=col, pad=3)
+        ax.set_xlabel("threshold probability")
+        ax.set_xlim(0.0, 0.65)
+        bare(ax)
+    axes[0].set_ylabel("net benefit")
+    axes[0].legend(
+        loc="lower left", frameon=False, handlelength=1.6, borderpad=0.2, labelspacing=0.25
+    )
+    panel_label(axes[0], "a", x=-0.30, y=1.20)
+    panel_label(axes[1], "b", x=-0.24, y=1.20)
+    fig.subplots_adjust(left=0.135, right=0.985, bottom=0.215, top=0.855, wspace=0.34)
+    save(fig, "Fig10_decision_curve")
+
+
 def main():
     """인자 없이 돌리면 전부 다시 그린다. 모형을 다시 적합하므로 오래 걸린다.
     설계 모식도와 그래픽 초록은 결과 파일만 읽으므로 따로 돌릴 수 있다:
@@ -1658,9 +1864,12 @@ def main():
 
     only = set(sys.argv[1:])
     print("그림 생성 중...")
-    if not only or "design" in only:
+    quick = not only or ("design" in only) or ("quick" in only)
+    if quick:
         fig_design()
         fig_graphical_abstract()
+        fig_space()
+        fig_decision()
     if not only:
         fig1()
         fig2()

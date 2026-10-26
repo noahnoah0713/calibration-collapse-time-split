@@ -123,9 +123,18 @@ def written(num, t):
     except ValueError:
         return core in t
     dec = len(core.split(".")[1]) if "." in core else 0
+    # 음수를 찾을 때는 앞의 빼기표를 **요구**한다. 양수를 찾을 때는
+    # 빼기표가 붙은 토큰을 건너뛴다 (2026-10-26). 전에는 음수 질의가
+    # 어떤 경우에도 맞지 않아, 본문이 "$-0.458$" 로 적은 값을 대조할
+    # 방법이 없었다.
+    neg = target < 0
+    target = abs(target)
     for m in re.finditer(r"(\d+(?:\.\d+)?)" + re.escape(suf), t):
         k = m.start(1)
-        if k and (t[k - 1] in "-\u2212." or t[k - 1].isdigit()):
+        prev = t[k - 1] if k else ""
+        if k and (prev == "." or prev.isdigit()):
+            continue
+        if neg != (prev in "-\u2212"):
             continue
         tok = m.group(1)
         frac = tok.split(".")[1] if "." in tok else ""
@@ -258,6 +267,37 @@ def checks():
     r3 = cv("brier_decomposition_r3.csv")
     for _, r in r3[r3.baseline.str.startswith("R3")].iterrows():
         claim("%s R3 보정 기여율" % r.dataset, "%.1f", float(r.share2_reliability))
+    # 2026-10-26 추가 — 초록의 머리 수치가 대조 목록에 없었다. 실제로
+    # "재학습+재보정" 의 짝지은 개선이 0.1654552 인데 원고 네 곳이 0.166 을
+    # 싣고 있었다 (보충표 각주의 네 자리 값 -0.1655 를 한 번 더 반올림한
+    # 이중 반올림이다). 아래 세 묶음이 초록이 내세우는 수치 전부다.
+    for _, r in pt.iterrows():
+        claim("%s AUROC 하락폭" % r.dataset, "%.3f", float(r.delta_auroc))
+
+    pre = cv("prequential_retraining_delta.csv")
+    for _, r in pre[pre.arm.str.startswith("P2")].iterrows():
+        claim("%s 재학습+재보정 ECE 개선" % r.dataset, "%.3f", abs(float(r.delta)), ["0.166"])
+
+    cf = cv("conformal_prediction.csv")
+    for _, r in cf[cf.alpha == 0.1].iterrows():
+        claim(
+            "%s 시간분할 적합예측 포함률" % r.dataset,
+            "%.1f\\%%",
+            100.0 * float(r.marginal_coverage_temporal),
+        )
+
+    # §22 결정곡선 — 2026-10-26 에 본문으로 들어온 값이다.
+    dc = cv("decision_curve.csv")
+    _dili = dc[(dc.dataset == "DILIrank")]
+    for armpre, nm in (("A.", "무보정"), ("C.", "사전확률 보정")):
+        g = _dili[_dili.arm.str.startswith(armpre)].set_index("p_t")
+        for thr in (0.4, 0.5, 0.6):
+            claim(
+                "DILIrank 순편익 %s p_t=%.1f" % (nm, thr),
+                "%.3f",
+                float(g.loc[thr, "net_benefit"]),
+            )
+
     # §10 표의 보정 기울기 — 2026-10-20 단정밀도 수정으로 움직인 칸이다.
     for d in ("DILIrank", "DICTrank"):
         g = rec[rec.dataset.str.startswith(d)]
@@ -297,6 +337,51 @@ def main():
                 "       (안 적힌 값 %d개: %s%s)"
                 % (len(miss), ", ".join(m[1] for m in miss[:6]), " ..." if len(miss) > 6 else "")
             )
+    # ---- 그림 범례가 조판되는가 (2026-10-26) ----------------------------
+    # sn-jnl 에서 figure 환경 안의 \footnotetext 는 어디에도 조판되지 않는다.
+    # 표 각주는 나오므로 눈치채기 어렵다. 실제로 그림 10개의 범례가 전부
+    # PDF 에서 빠져 있었다. 그림 범례는 캡션 안에 있어야 한다.
+    nleg = 0
+    print("")
+    print("그림 범례 검사")
+    for fn in ("figures.tex", "supplementary.tex", "additional_file_1.tex"):
+        q = os.path.join(MAN, fn)
+        if not os.path.exists(q):
+            continue
+        raw = io.open(q, encoding="utf-8", errors="replace").read()
+        for blk in re.findall(r"\\begin\{figure\}.*?\\end\{figure\}", raw, re.S):
+            if "\\footnotetext" in blk:
+                lab = re.search(r"\\label\{([^}]+)\}", blk)
+                nleg += 1
+                print(
+                    "     X %s 의 %s 범례가 figure 안의 footnotetext 다 — 조판되지 않는다"
+                    % (fn, lab.group(1) if lab else "?")
+                )
+    if not nleg:
+        print("     figure 환경 안에 조판되지 않는 footnotetext 가 없다")
+    nbad += nleg
+
+    # ---- 되살아나면 안 되는 옛 수치 (2026-10-26) ------------------------
+    # claim() 의 alt 는 "0.166" 처럼 양수로 적힌 경우만 잡는다. 원고가
+    # "$-0.166$" 로 적으면 written() 이 앞의 빼기표를 보고 건너뛰어 놓친다.
+    # 부호와 무관하게 막아야 하는 값은 여기에 적는다.
+    STALE = [
+        (r"(?<![\d.])0\.166(?![\d])", "재학습+재보정 ECE 개선 — 현재 값은 0.165 다"),
+    ]
+    nstale = 0
+    print("")
+    print("되살아나면 안 되는 옛 수치")
+    for doc in DOCS:
+        t = PROSE.get(doc, "")
+        for pat, why in STALE:
+            hits = len(re.findall(pat, t))
+            if hits:
+                nstale += hits
+                print("     X %-24s %d곳: %s" % (doc, hits, why))
+    if not nstale:
+        print("     금지 목록 %d개 — 어느 문서에도 없다" % len(STALE))
+    nbad += nstale
+
     # ---- 그림 인용 점검 (2026-10-22) -----------------------------------
     # 왜 — 본문이 한 번도 가리키지 않는 그림은 학술지에서 결함으로 잡힌다.
     # 실제로 Fig4·Fig5·Fig6 이 라벨만 있고 \ref 가 0회였다. 그림을 넣는
