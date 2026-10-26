@@ -170,6 +170,8 @@ run record_precision_fix.py  # 2026-10-20 정밀도 수정 전·후 기록 (백�
 
 run make_filter_lists.py   # 큐레이션 필터가 제거한 화합물 목록 (보충 표 S13·S15)
 run make_report.py
+run make_curation_chain.py    # 제외 경로 집계 -> results/curation_chain.csv
+                              # (make_figures 의 Fig S2 가 이 CSV 를 읽는다)
 run make_tables.py
 run make_figures.py
 run make_fig_floats.py        # figures.tex -> manuscript/floats/fig_*.tex

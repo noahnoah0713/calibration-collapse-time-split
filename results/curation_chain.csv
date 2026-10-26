@@ -1,0 +1,13 @@
+dataset,order,step,n,removed,reason,source
+DILIrank,1,unique records in the source file,1336,0,,label_audit_summary.txt
+DILIrank,2,"labelled, ambiguous concern excluded",982,354,ambiguous concern,label_audit_summary.txt
+DILIrank,3,structure obtained,891,91,no structure found,dilirank2_with_smiles.csv
+DILIrank,4,distinct skeletons,870,21,duplicate skeleton,dilirank2_clean.csv
+DILIrank,5,carbon-containing,861,9,no carbon after standardisation,dilirank2_with_year_preconflict.csv
+DILIrank,6,labels agree within a skeleton,860,1,conflicting labels in a group,dilirank2_with_year.csv
+DILIrank,7,analysis set,796,64,no matched approval year,dilirank2_with_year.csv (approval_year)
+DICTrank,1,unique records in the source file,1292,0,,label_audit_summary.txt
+DICTrank,2,"labelled, ambiguous concern excluded",1185,107,ambiguous concern,label_audit_summary.txt
+DICTrank,3,"structure obtained, skeletons distinct, approval year matched",953,232,"no structure, duplicate skeleton, or no matched approval year",dictrank_processed_prefilter.csv
+DICTrank,4,carbon-containing,932,21,no carbon after standardisation,dictrank_processed_preconflict.csv
+DICTrank,5,analysis set,919,13,conflicting labels in a group,dictrank_processed.csv

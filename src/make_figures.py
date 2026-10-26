@@ -58,6 +58,7 @@ r"""
 """
 
 import os
+import textwrap
 import warnings
 from pathlib import Path
 
@@ -1916,7 +1917,7 @@ def fig_removed_structures():
     ax = fig.add_axes([0, 0, 1, 1])
     ax.imshow(img)
     ax.axis("off")
-    save(fig, "FigS2_removed_structures")
+    save(fig, "FigS3_removed_structures")
     print("     구조 %d개 / %d행" % (len(mols), nrow))
 
 
@@ -1976,7 +1977,105 @@ def fig_approval_years():
     fig.subplots_adjust(left=0.115, right=0.985, bottom=0.135, top=0.935, hspace=0.42)
     panel_label(axes[0], "a", x=-0.105, y=1.22)
     panel_label(axes[1], "b", x=-0.105, y=1.22)
-    save(fig, "FigS3_approval_years")
+    save(fig, "FigS4_approval_years")
+
+
+# ============================================================ Fig S2 큐레이션
+# 왜 — 원자료에서 분석집합까지 어떻게 줄었는지는 Methods 에 글로만 있었다.
+# 수는 src/make_curation_chain.py 가 결과 파일과 단계별 스냅샷에서 모아
+# results/curation_chain.csv 로 적어 둔 것만 쓴다. 손으로 적은 값은 없다.
+def fig_curation():
+    ch = pd.read_csv(RES / "curation_chain.csv")
+    sets = [(ds, ch[ch["dataset"] == ds].sort_values("order")) for ds in ("DILIrank", "DICTrank")]
+    nrow = sum(len(g) for _, g in sets)
+    fig, ax = _blank((COL1, 0.40 * nrow + 0.75))
+    top, bottom = 0.955, 0.035
+    span = top - bottom
+    slot = span / (nrow + 1.1)
+    y = top
+    for ds, g in sets:
+        col = DS_COLOR[ds]
+        n0 = float(g["n"].iloc[0])
+        ax.text(
+            0.015,
+            y,
+            ds,
+            transform=ax.transAxes,
+            fontsize=7.2,
+            color=col,
+            va="center",
+            fontweight="bold",
+        )
+        y -= slot * 0.62
+        for k, (_, r) in enumerate(g.iterrows()):
+            frac = float(r["n"]) / n0
+            half = 0.325 * frac
+            x0, x1 = 0.635 - half, 0.635 + half
+            last = k == len(g) - 1
+            _rect(
+                ax,
+                x0,
+                y - 0.020,
+                x1 - x0,
+                0.040,
+                ec=col,
+                fc=col + ("AA" if last else "33"),
+                lw=0.7,
+            )
+            ax.text(
+                0.300,
+                y,
+                "\n".join(textwrap.wrap(str(r["step"]), 34)),
+                transform=ax.transAxes,
+                fontsize=6.0,
+                ha="right",
+                va="center",
+                linespacing=1.35,
+                fontweight="bold" if last else "normal",
+            )
+            ax.text(
+                0.635,
+                y,
+                "%d" % int(r["n"]),
+                transform=ax.transAxes,
+                fontsize=6.4,
+                ha="center",
+                va="center",
+                fontweight="bold" if last else "normal",
+                color="white" if last else "#000000",
+            )
+            if not last:
+                nxt = g.iloc[k + 1]
+                ax.annotate(
+                    "",
+                    xy=(0.635, y - slot + 0.021),
+                    xytext=(0.635, y - 0.021),
+                    xycoords=ax.transAxes,
+                    textcoords=ax.transAxes,
+                    arrowprops=dict(
+                        arrowstyle="-|>",
+                        lw=0.5,
+                        color=C["gray"],
+                        shrinkA=0,
+                        shrinkB=0,
+                        mutation_scale=5,
+                    ),
+                )
+                txt = "−%d  %s" % (int(nxt["removed"]), str(nxt["reason"]))
+                ax.text(
+                    0.660,
+                    # 두 줄이 되면 아래 막대에 닿는다. 조금 올려 둔다.
+                    y - slot * (0.40 if len(txt) > 40 else 0.5),
+                    "\n".join(textwrap.wrap(txt, 40)),
+                    transform=ax.transAxes,
+                    fontsize=5.9,
+                    va="center",
+                    linespacing=1.35,
+                    color=C["gray"],
+                )
+            y -= slot
+        y -= slot * 0.48
+    save(fig, "FigS2_curation_chain")
 
 
 def main():
@@ -1994,6 +2093,7 @@ def main():
         fig_design()
         fig_space()
         fig_decision()
+        fig_curation()
         fig_removed_structures()
         fig_approval_years()
         fig_graphical_abstract()
