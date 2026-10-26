@@ -23,6 +23,7 @@
 import io
 import os
 import re
+import sys
 
 import pandas as pd
 
@@ -162,5 +163,117 @@ def main():
         )
 
 
+# ---------------------------------------------------------------- 재현 점검
+# `python src/make_curation_chain.py --recheck`
+#
+# 무엇을 보는가 — 원자료와 SMILES 캐시에서 DICTrank 큐레이션을 지금 코드로
+# 처음부터 다시 돌려, **나오는 화합물 집합이 저장된 분석집합과 같은지**를
+# 본다. 중간 수치가 아니라 집합이 판정 기준이다.
+#
+# 왜 중간 수치가 아닌가 — 2026-10-26 확인: dictrank_pipeline.standardize 는
+# 탄소 조각이 없으면 None 을 돌려준다. 저장된 파일이 만들어질 때는 그
+# 규칙이 뒤쪽의 별도 필터였다(그래서 structure_filter_log.txt 가 "0건
+# 제거, 이미 적용됨" 이다). 그 결과 같은 목적지로 가는 경로가 둘이다.
+#
+#   당시 경로   1,087 -> 968(중복) -> 953(연도) -> 932(탄소) -> 919(라벨충돌)
+#   현재 경로   1,087 -> 1,057(표준화에서 탄소 제외) -> 945(중복)
+#                     -> 932(연도) -> 919(라벨충돌)
+#
+# 두 경로 모두 932 를 지나 919 로 끝나고, 끝에 남는 화합물도 같다.
+# 그러므로 Methods 의 1,087 과 968 은 "그때 그 경로의 수" 로 읽어야 하며,
+# 결과가 달라지는 것은 아니다. 이 점검은 그 사실을 계속 확인해 준다.
+#
+# 몇 분 걸린다(Drugs@FDA 벌크 파일을 읽는다). 평소 재실행에는 넣지 않는다.
+def recheck():
+    import json
+
+    import rdkit
+    from rdkit import Chem, RDLogger
+
+    sp = os.path.join(ROOT, "src")
+    if sp not in sys.path:
+        sys.path.insert(0, sp)
+    from dictrank_pipeline import load_fda_years, map_year, standardize
+
+    RDLogger.DisableLog("rdApp.*")
+
+    d = pd.read_excel(
+        os.path.join(ROOT, "data", "raw", "dictrank_dataset_508.xlsx"), sheet_name="Table S1"
+    )
+    d.columns = [c.strip() for c in d.columns]
+    d = d.rename(columns={"Active Ingredient(s)": "CompoundName", "DICT _ Concern": "concern"})
+    n_raw = len(d)
+    d["y"] = d["concern"].astype(str).str.lower().str.strip().map({"most": 1, "less": 1, "no": 0})
+    d = d.dropna(subset=["y", "CompoundName"]).copy()
+    n_lab = len(d)
+
+    cache = json.load(io.open(os.path.join(PROC, "smiles_cache.json"), encoding="utf-8"))
+    d["smiles_raw"] = [
+        (cache.get(str(n).strip()) or {}).get("smiles_raw") for n in d["CompoundName"]
+    ]
+    d = d.dropna(subset=["smiles_raw"])
+    n_smi = len(d)
+
+    d["smiles"] = d["smiles_raw"].apply(standardize)
+    d = d.dropna(subset=["smiles"])
+    n_std = len(d)
+
+    d["ikey14"] = d["smiles"].apply(lambda x: Chem.MolToInchiKey(Chem.MolFromSmiles(x))[:14])
+    pre = d.copy()
+    d = d.drop_duplicates("ikey14").reset_index(drop=True)
+    n_ded = len(d)
+
+    mf, ms, mfw = load_fda_years()
+    d["approval_year"] = d["CompoundName"].astype(str).apply(lambda n: map_year(n, mf, ms, mfw))
+    d = d.dropna(subset=["approval_year"])
+    n_year = len(d)
+
+    grp = pre.groupby("ikey14")["y"].nunique()
+    bad = set(grp[grp > 1].index)
+    fresh = d[~d["ikey14"].isin(bad)]
+
+    cur = pd.read_csv(os.path.join(PROC, "dictrank_processed.csv"))
+    a = set(fresh["ikey14"].astype(str))
+    b = set(cur["ikey14"].astype(str))
+    same = a == b
+
+    L = []
+    w = L.append
+    w("DICTrank 큐레이션 재현 점검 — 원자료에서 다시 돌려 분석집합과 대조")
+    w("=" * 70)
+    w(
+        "환경: RDKit %s / pandas %s / Python %s"
+        % (rdkit.__version__, pd.__version__, sys.version.split()[0])
+    )
+    w("")
+    w("  원자료 행                    %5d" % n_raw)
+    w("  라벨 이진화 후               %5d" % n_lab)
+    w("  SMILES 확보(캐시 적중)       %5d   (Methods: 1087)" % n_smi)
+    w("  표준화 통과                  %5d" % n_std)
+    w("  중복 제거(14자리 키)         %5d   (당시 경로: 968)" % n_ded)
+    w("  승인연도 확보                %5d" % n_year)
+    w("  라벨 충돌 키 제외 후         %5d" % len(fresh))
+    w("")
+    w("  저장된 분석집합              %5d" % len(cur))
+    w("  겹치는 화합물                %5d" % len(a & b))
+    w("  재현본에만 있는 것           %5d" % len(a - b))
+    w("  저장본에만 있는 것           %5d" % len(b - a))
+    w("")
+    if same:
+        w("판정: 화합물 집합이 완전히 같다. 지금 코드로 원자료에서 다시 돌려도")
+        w("      분석집합이 그대로 나온다. 중간 수치가 다른 것은 탄소 규칙이")
+        w("      별도 필터에서 표준화 안으로 옮겨간 탓이며, 결과를 바꾸지 않는다.")
+    else:
+        w("판정: 화합물 집합이 다르다. 투고 전에 반드시 확인할 것.")
+    txt = "\n".join(L) + "\n"
+    io.open(os.path.join(RES, "curation_chain_recheck.txt"), "w", encoding="utf-8").write(txt)
+    print(txt)
+    print("저장: results/curation_chain_recheck.txt")
+    return 0 if same else 1
+
+
 if __name__ == "__main__":
-    main()
+    if "--recheck" in sys.argv:
+        sys.exit(recheck())
+    else:
+        main()
