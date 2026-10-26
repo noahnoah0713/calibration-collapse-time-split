@@ -486,6 +486,49 @@ def main():
             print("     보충 표 %d개 — 전부 언급되고 번호 순서대로다" % len(slabs))
     nbad += nsupp
 
+    # ---------------------------------------------------------------- 7b-2
+    # 보충 **그림**도 표와 같은 규정을 따른다. 본문이 "Additional file 1:
+    # Figure S<n>" 이라는 글자로 가리키므로 supplementary.tex 의 그림 순서가
+    # 곧 S 번호다. 2026-10-26 에 보충 그림이 1개에서 3개로 늘었다.
+    nsfig = 0
+    print("")
+    print("보충 그림 번호 검사")
+    q = os.path.join(MAN, "supplementary.tex")
+    if os.path.exists(q):
+        raw = io.open(q, encoding="utf-8", errors="replace").read()
+        nocom = "\n".join(re.sub(r"(?<!\\\\)%.*$", "", ln) for ln in raw.split("\n"))
+        blocks = re.findall(r"\\begin\{figure\}.*?\\end\{figure\}", nocom, re.S)
+        flabs = []
+        for b in blocks:
+            mm = re.search(r"\\label\{(fig:[^}]+)\}", b)
+            if mm:
+                flabs.append(mm.group(1))
+        seqf = []
+        for mm in re.finditer(
+            r"Figures?[~ ]S\d+(?:\s*(?:,|and|to|--)\s*(?:Figure[~ ])?S\d+)*", prose
+        ):
+            for g in re.findall(r"S(\d+)", mm.group(0)):
+                k = int(g)
+                if k not in seqf:
+                    seqf.append(k)
+        oobf = [k for k in seqf if k < 1 or k > len(flabs)]
+        unc = [i + 1 for i in range(len(flabs)) if i + 1 not in seqf]
+        if oobf:
+            nsfig += len(oobf)
+            print("     X 없는 보충 그림을 가리킨다: %s (보충 그림은 %d개)" % (oobf, len(flabs)))
+        if unc:
+            nsfig += len(unc)
+            print(
+                "     X 보충 그림 %d개가 본문에 언급되지 않는다: %s"
+                % (len(unc), ", ".join("S%d (%s)" % (i, flabs[i - 1]) for i in unc))
+            )
+        if seqf != sorted(seqf):
+            nsfig += 1
+            print("     X 보충 그림 번호 순서와 등장 순서가 다르다: %s" % seqf)
+        if not oobf and not unc and seqf == sorted(seqf):
+            print("     보충 그림 %d개 — 전부 언급되고 번호 순서대로다" % len(flabs))
+    nbad += nsfig
+
     # ---------------------------------------------------------------- 7c
     # 문서를 넘는 \\ref 가 없는가.
     # 왜 — 본문과 보충자료는 별도 문서다. 보충 표의 각주가 본문 표를
