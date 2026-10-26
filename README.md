@@ -2,6 +2,10 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23583593.svg)](https://doi.org/10.5281/zenodo.23583593)
 [![checks](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml/badge.svg)](https://github.com/noahnoah0713/calibration-collapse-time-split/actions/workflows/checks.yml)
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](environment.yml)
+
+![Summary: splitting two FDA toxicity lists at approval year 2010 collapses calibration while discrimination barely moves, and refitting with recalibration recovers most of it](figures/graphical_abstract.png)
 
 Hepatotoxicity (DILIrank) and cardiotoxicity (DICTrank) models lose about
 0.08 AUROC when the held-out set is defined by approval year rather than at
@@ -9,6 +13,25 @@ random. Their expected calibration error more than doubles, and with
 prevalence held equal on both sides of the split it is still 1.37x and 1.21x
 the matched control. This repository holds the analysis code and every
 intermediate result behind that claim.
+
+| | DILIrank | DICTrank |
+|---|---|---|
+| Compounds (training / held out) | 796 (640 / 156) | 919 (652 / 267) |
+| AUROC, time split vs random | −0.088 | −0.077 |
+| Calibration error, ratio to a size-matched random split | **×3.35** | **×2.08** |
+| …after matching the positive rate on both sides | **×1.37** | **×1.21** |
+| Share of the Brier increase that is calibration, not discrimination | 86.1% | 82.5% |
+| Conformal coverage at a nominal 90% | 73.7% | 82.4% |
+| Calibration error recovered by refitting with recalibration | −0.165 | −0.176 |
+
+That table is the one place in this repository where figures are quoted by
+hand, so here is where each comes from: the AUROC drops from
+`results/permutation_test.csv`, both calibration ratios from
+`results/prevalence_control.csv`, the Brier shares from
+`results/brier_decomposition.csv`, the coverage from
+`results/conformal_prediction.csv`, and the recalibration effect from
+`results/prequential_retraining_delta.csv`. Everywhere else — the report, the
+tables and the figures — the numbers are read from those files by script.
 
 Everything in the paper — each number, table and figure — is regenerated
 from `data/processed/` by the scripts here. Nothing is typed in by hand.
@@ -238,17 +261,18 @@ inputs, the second now compares syntax trees.
 ## Layout
 
 ```
-src/              89 analysis and verification scripts (_shared.py is the common module)
+src/              96 analysis and verification scripts (_shared.py is the common module)
 tests/            unit tests for the shared metric functions
 data/processed/   processed data the analyses read
-results/          every intermediate and final result: 100 CSV, 68 TXT, 2 JSON
+results/          every intermediate and final result: 102 CSV, 70 TXT, 2 JSON
 figures/          figures for the manuscript, PDF and 600 dpi PNG
 _backup/          results from before the precision fix; record_precision_fix.py
                   reads them to document what it changed
 ```
 
-Of the 170 files in `results/`, 97 are read by name by the report, tables and
-figures. The rest are per-analysis summaries a reader can skim without
+Of the 174 files in `results/`, 97 are read by name by the report, tables and
+figures. The CSV files are the machine-readable record and their column names
+are English; the TXT files are per-analysis summaries written in Korean. The rest are per-analysis summaries a reader can skim without
 running anything, permutation null distributions kept so the tests need not
 be repeated, and audit records for SMILES, approval years, labels and ATC
 assignments. The resume caches the permutation scripts write are not
