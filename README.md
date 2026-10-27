@@ -313,9 +313,9 @@ analysis was run with:
 
 > Lee, N. (2026). *Beyond AUROC: Quantifying Calibration Collapse in
 > Time-Split Validation of Hepatotoxicity and Cardiotoxicity Models*
-> (v0.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23583594
+> (v1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23679813
 
-Zenodo mints two DOIs. The one above belongs to v0.1 and never moves, which
+Zenodo mints two DOIs. The one above belongs to v1.0 and never moves, which
 is what a paper should cite. `10.5281/zenodo.23583593` is the concept DOI:
 it always resolves to the newest release, and that is the one in the badge
 at the top.

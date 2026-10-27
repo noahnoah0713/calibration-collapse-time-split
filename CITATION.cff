@@ -9,7 +9,7 @@ authors:
     given-names: Noah
     alias: 이노아
 version: v1.0
-date-released: "2026-10-25"
+date-released: "2026-10-27"
 # 개념 DOI 를 적는다. 버전 DOI 는 릴리스마다 Zenodo 가 새로 만들므로
 # 여기에 박아 두면 바로 낡는다 (v0.1 의 버전 DOI 가 그랬다).
 doi: 10.5281/zenodo.23583593
