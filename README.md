@@ -89,12 +89,12 @@ analysis set, not the raw downloads; the path from raw files back to these
 is in the next section. The KEGG mapping is a cached lookup and is subject
 to KEGG's own terms.
 
-`data/processed/` is all you need. Of the 89 scripts in `src/`, five read
+`data/processed/` is all you need. Of the 96 scripts in `src/`, five read
 raw files: `map_approval_year.py` and `dictrank_pipeline.py` build the
 processed data, and `ev_years.py`, `check_years.py` and `check_labels.py`
 audit it against the raw source. The first two are not called by
 `rerun_all.sh`; the other three skip themselves when `data/raw/` is absent.
-The remaining 84 touch only `data/processed/` and `results/`.
+The remaining 91 touch only `data/processed/` and `results/`.
 
 One consequence: `results/year_evidence.csv`, `results/year_corrections.csv`
 and `results/year_match_types.csv` — the evidence behind the approval-year
